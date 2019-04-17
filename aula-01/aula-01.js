@@ -292,7 +292,10 @@ function mdc2(a, b) {
 
 #18
 function horner(x, g, a) {
-  if (g >= 1){
+    if (g < 1) {
+	throw new RangeError("g deve ser maior que zero");
+    }
+
     let p = a[g-1];
     let i = g - 1;
     while (i >= 0){
@@ -300,11 +303,27 @@ function horner(x, g, a) {
       i -= 1;
     }
     return p;
-  } else {
-    console.log("O numero g tem que ser g>=1");
-    return null;
-  }
 }
 	
 #19
+function fibonacci(n) {
+    if (n <= 0){
+	throw new RangeError("O numero 'n' tem que ser n>=0");
+    }
+	
+    let a = 0;
+    let c = 1;
+    if (n == 0 || n == 1) {
+	return n;
+    }
+    let i = 1;
+    while (i <= n) {
+	let t = c;
+	c += a;
+	a = t;
+	i += 1;
+    }
+
+    return c;
+}
 
