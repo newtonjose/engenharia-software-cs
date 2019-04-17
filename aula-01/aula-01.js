@@ -204,8 +204,107 @@ function Raiz(n, i) {
 	r = (r + n/r)/2;
 	i -= 1;
     }
-
-    return r;
+	
+# 14
+function primo(n) {
+  if (n > 1){
+    let i = 2;
+    while (i < n){
+    	if (n%i == 0){
+        return false;   
+      }
+      i += 1;
+    }
+    return true;
+  }
+   console.log("O numero n > 1");
+   return null;
+}
+	
+# 15
+function crivoErastostenes(a, n) {
+    if (n > 1) {
+	// busca por valores diferente de zero
+	for (let i = 2; i < n; i++) {
+	    if (a[i] != 0){
+		console.log("Existe valores em a, onde nao sao iguais a zero");
+		return null;
+	    }
+	}
+    
+	let i = 2;
+	let limite = Math.sqrt(n); // numero base 
+	while (i <= limite) {
+	    if (a[i] == 0){
+		let multiplo = i + 1;
+		while (multiplo <= n){
+		    a[multiplo] = 1;
+		    multiplo += i;
+		}
+	    }
+	    i += 1;
+	}
+    } else {
+	console.log("O numero n tem que ser maior que 1");
+	return null;
+    }
 }
 
-    
+# 16
+function mdc(a, b) {
+  if (b <= a && b > 0){
+    while (b != 0){
+      let m = a%b;
+      a = b;
+      b = m;
+    }
+    return a;
+  } else {
+    cosole.log("Os numeros a >= b e b > 0");
+    return null
+  }
+}
+	
+# 17
+function mdc2(a, b) {
+    if (0 < b){
+	for (let i = 0; i < a.lenth; i++){
+	    if (a < b){
+		console.log("Existem valores em 'a' menor que 'b'");
+		return null;
+	    }
+	}
+	
+	while (b != a){
+	    // 'a' sempre sera maior que 'b' pelo if anterior
+	    if (a > b){
+		a -= b;
+	    } else {
+		b -= a;
+	    }
+	}
+	return a;
+    } else {
+	console.log("Os numero deverao a >= b e b > 0");
+	return null;
+    }
+}
+
+#18
+function horner(x, g, a) {
+  if (g >= 1){
+    let p = a[g-1];
+    let i = g - 1;
+    while (i >= 0){
+      p = p*x + a[i];
+      i -= 1;
+    }
+    return p;
+  } else {
+    console.log("O numero g tem que ser g>=1");
+    return null;
+  }
+}
+	
+#19
+
