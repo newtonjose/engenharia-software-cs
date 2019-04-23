@@ -1,9 +1,9 @@
 // JavaScript
 # 01
 function numVerdadeiro(n){
-    var i = n/100;
-    var j = n%100;
-    var m = i+j;
+    let i = n/100;
+    let j = n%100;
+    let m = i+j;
     if (m*m == n){
     	return true;
     } else {
