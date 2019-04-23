@@ -145,7 +145,9 @@ function Pi(n) {
 
 #10
 function logaritmoNatural(n, k){
-    if (n >= 1 && k >= 2){
+    if (n < 1 && k < 2){
+	throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
+    }
 	let i = 2;
 	let e = n + 1;
 	let numerador = n;
@@ -159,9 +161,6 @@ function logaritmoNatural(n, k){
 	}
 
 	return e;
-    } else {
-	throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
-    }
 }
 
 #11
