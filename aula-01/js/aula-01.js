@@ -13,81 +13,81 @@ function numVerdadeiro(n){
 
 # 02
 function propriedade153(cdu) {
-    if (cdu >= 100 && cdu <= 999) {
-	let c = n/100;
-	let cdu = n%100;
-	let d = cdu/10;
-	let u = cdu%10;
-	if ((c*c*c + d*d*d + u*u*u) == n) {
-	    return true;
-	} else {
-	    return false;
-	}
+    if (cdu < 100 && cdu > 999) {
+	throw new RangeError("O numeros devem ser 100 <= cdu <= 999");
+    }
+    
+    let c = n/100;
+    let cdu = n%100;
+    let d = cdu/10;
+    let u = cdu%10;
+    if ((c*c*c + d*d*d + u*u*u) == n) {
+	return true;
     } else {
-	throw new RangeError("O numeros devem ser cdu >= 100 && cdu <= 999");
+	return false;
     }
 }
 
 
 # 03
 function diaDaSemana(d, m, a){
-    if ((d >= 1 && d <= 31) && (d >= 1 && d <= 12) && (a > 1753)) {
-	if (m == 1 || m == 2) {
-	    m = m + 12;
-	    a = a - 1;
-	}
-	let i = d + 2*m + 3*(m+1);
-	let j = 5 + a + (a/4) – (a/100) + (a/400);
-	let s = i / j;
-	return s % 7;
-    } else {
-	throw new RangeError("O numeros devem ser d >= 1, d <= 31, d >= 1, d <= 12, a > 1753!");
+    if ((d < 1 && d > 31) && (m < 1 && m > 12) && (a <= 1753)) {
+	throw new RangeError("O numeros devem ser d >= 1, d <= 31, m >= 1, m <= 12, a > 1753!");
     }
+    
+    if (m == 1 || m == 2) {
+	m = m + 12;
+	a = a - 1;
+    }
+    let i = d + 2*m + 3*(m+1);
+    let j = 5 + a + (a/4) – (a/100) + (a/400);
+    let s = i / j;
+    return s % 7;
 }
 
 # 04
 function restoDivisaoInteira(x, y){
-    if (y >= 0 && x > 0) {
-	let s = x;
-	while(y <= s) {
-	    s = s - y;
-	    y = y + 1;
-	}
-	return s;
-    } else {
+    if (y < 0 && x <= 0) {
 	throw new RangeError("O numeros devem ser y >= 0 && x > 0");
     }
+    let s = x;
+    while(y <= s) {
+	s = s - y;
+	y = y + 1;
+    }
+    return s;
 }
 
 # 05
 function somaNaturais(n){
-    if (n >= 1) {
-	let i = 2;
-	let s = 1;
-
-	while(i <= n){
-	    s = s + i;
-	    i = i + 1;
-	}
-
-	return s;
-    } else {
+    if (n < 1) {
 	throw new RangeError("O numero 'n' tem que ser n >= 1");
     }
-	
+    let i = 2;
+    let s = 1;
+
+    while(i <= n){
+	s = s + i;
+	i = i + 1;
+    }
+
+    return s;
 }
 
 # 06
 function Fatorial(n){
-    if (n >= 1) {
-	let i = 2;
-	let f = 1;
-	while(i <= n){
-	    f = f * i;
-	    i = i + 1;
-	}
-	return f;
+    if (n < 1) {
+	throw new RangeError("O numero 'n' tem que ser n >= 1");
     }
+    
+    let i = 2;
+    let f = 1;
+    while(i <= n){
+	f = f * i;
+	i = i + 1;
+    }
+    
+    return f;
 }
 
 # 07
@@ -211,7 +211,7 @@ function Raiz(n, i) {
 	i -= 1;
     }
 }
-	
+
 # 14
 function primo(n) {
     if (n < 1){
@@ -227,7 +227,7 @@ function primo(n) {
     }
     return true;
 }
-	
+
 # 15
 function crivoErastostenes(a, n) {
     if (n < 1){
@@ -262,13 +262,13 @@ function mdc(a, b) {
     }
     
     while (b != 0){
-      let m = a%b;
-      a = b;
-      b = m;
+	let m = a%b;
+	a = b;
+	b = m;
     }
     return a;
 }
-	
+
 # 17
 function mdc2(a, b) {
     if (b < 0){
@@ -280,7 +280,7 @@ function mdc2(a, b) {
 	    throw new RangeError("Existem valores em no vetor a que e' menor que 'b'!");
 	}
     }
-		
+    
     while (b != a){
 	// 'a' sempre sera maior que 'b' pelo if anterior
 	if (a > b){
@@ -302,8 +302,8 @@ function horner(x, g, a) {
     let p = a[g-1];
     let i = g - 1;
     while (i >= 0){
-      p = p*x + a[i];
-      i -= 1;
+	p = p*x + a[i];
+	i -= 1;
     }
     return p;
 }
