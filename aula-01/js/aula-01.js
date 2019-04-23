@@ -148,19 +148,19 @@ function logaritmoNatural(n, k){
     if (n < 1 && k < 2){
 	throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
     }
-	let i = 2;
-	let e = n + 1;
-	let numerador = n;
-	let denomidador = 1;
+    let i = 2;
+    let e = n + 1;
+    let numerador = n;
+    let denomidador = 1;
 
-	while (i <= k){
-	    numerador = numerador*numerador;
-	    denominador = denominador*i;
-	    e += (numerador/denominador);
-	    i += 1;
-	}
+    while (i <= k){
+	numerador = numerador*numerador;
+	denominador = denominador*i;
+	e += (numerador/denominador);
+	i += 1;
+    }
 
-	return e;
+    return e;
 }
 
 #11
