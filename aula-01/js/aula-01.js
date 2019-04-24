@@ -1,11 +1,11 @@
 // JavaScript
 # 01
 const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
-    let m = num / 100;
+    let m = Math.floor(num / 100);
     let n = num % 100;
-    let soma = m + n;
+    let s = m + n;
 
-    if (soma * soma == num) {
+    if (s * s == num) {
     	return true;
     }
     
