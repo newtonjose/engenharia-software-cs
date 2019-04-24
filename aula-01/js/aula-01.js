@@ -1,5 +1,4 @@
-// JavaScript
-# 01
+// 01
 const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
     let m = Math.floor(num / 100);
     let n = num % 100;
@@ -12,93 +11,105 @@ const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
     return false;
 }
 
-# 02
-function propriedade153(cdu) {
-    if (cdu < 100 && cdu > 999) {
-	throw new RangeError("O numeros devem ser 100 <= cdu <= 999");
+// 02
+const somaCubos = function samaCubosDosDigitosUsandoPropriedade153(num) {
+    if (num < 100 && num > 999) {
+	throw new RangeError("O numeros devem ser 100 <= num <= 999");
+    }
+
+    let pow = Math.pow;
+    
+    let c = Math.floor(n / 100);
+    let du = num % 100;
+    let d = Math.floor(du / 10);
+    let u = du % 10;
+    let s = pow(c, 3) + pow(d, 3) + pow(u, 3);
+    
+    if (s == n) {
+	return true;
     }
     
-    let c = n/100;
-    let cdu = n%100;
-    let d = cdu/10;
-    let u = cdu%10;
-    if ((c*c*c + d*d*d + u*u*u) == n) {
-	return true;
-    } else {
-	return false;
-    }
+    return false;
 }
 
-
-# 03
-function diaDaSemana(d, m, a){
-    if ((d < 1 && d > 31) && (m < 1 && m > 12) && (a <= 1753)) {
+// 03
+const diaDaSemana4 = function diaDaSemanaParaData(dia, mes, ano) {
+    if ((dia < 1 && dia > 31) && (mes < 1 && mes > 12) && (ano <= 1753)) {
 	throw new RangeError("O numeros devem ser d >= 1, d <= 31, m >= 1, m <= 12, a > 1753!");
     }
-    
-    if (m == 1 || m == 2) {
-	m = m + 12;
-	a = a - 1;
+
+    if (mes == 1 || mes == 2) {
+	mes += 12;
+	ano -= 1;
     }
-    let i = d + 2*m + 3*(m+1);
-    let j = 5 + a + (a/4) – (a/100) + (a/400);
+    
+    let i = dia + (2 * mes) + (3 * (mes + 1));
+    let j = 5 + ano + (ano / 4) - (ano / 100) + (ano / 400);
     let s = i / j;
+
     return s % 7;
 }
 
-# 04
-function restoDivisaoInteira(x, y){
+// 04
+const resto = function restoDivisaoInteira(x, y) {
     if (y < 0 && x <= 0) {
 	throw new RangeError("O numeros devem ser y >= 0 && x > 0");
     }
+    
     let s = x;
-    while(y <= s) {
+    
+    while (y <= s) {
 	s = s - y;
 	y = y + 1;
     }
+    
     return s;
 }
 
-# 05
-function somaNaturais(n){
+// 05
+cont somaNaturais = function somaPrimeirosNaturaisAteNumero(n) {
     if (n < 1) {
 	throw new RangeError("O numero 'n' tem que ser n >= 1");
     }
+    
     let i = 2;
     let s = 1;
 
-    while(i <= n){
-	s = s + i;
-	i = i + 1;
+    while (i <= n) {
+	s += i;
+	i += 1;
     }
 
     return s;
 }
 
-# 06
-function Fatorial(n){
+// 06
+const fatorial = function fatorialNumeroNatual(n) {
     if (n < 1) {
 	throw new RangeError("O numero 'n' tem que ser n >= 1");
     }
     
     let i = 2;
     let f = 1;
-    while(i <= n){
-	f = f * i;
-	i = i + 1;
+    
+    while (i <= n) {
+	f *= i;
+	i += 1;
     }
     
     return f;
 }
 
-# 07
-function Produto(a, b){
-    if (a >= 0 && b >=0){
-	let totalParcelas = a;
-	let parcela = b;
+// 07
+const produto = function produtoInteirosUsandoSomas(a, b){
+    if (a < 0 || b < 0) {
+	throw new RangeError("Os numeros a e b tem que ser maior ou igual a zero");
     }
-
-    if (b < a){
+    
+    let totalParcelas = a;
+    let parcela = b;
+    
+    if (b < a) {
 	totalParcelas = b;
 	parcela = a;
     }
@@ -106,125 +117,142 @@ function Produto(a, b){
     let i = 1;
     let s = 0;
 
-    while (i <= totalParcelas){
-	s = s + parcela;
-	i = i + 1;
+    while (i <= totalParcelas) {
+	s += parcela;
+	i += 1;
     }
 
     return s;
 }
 
-# 08
-function Potencia(x,  y) {
-    let potencia = 1;
-    let i = 1;
-
-    while(i <= y) {
-	potencia = Potencia(potencia, x);
-	i = i + 1;
+// 08
+const potencia = function calculaPotenciaUsandoSomas(x,  y) {
+    if (x < 0 || y < 0) {
+	throw new RangeError("Os numeros x e y tem que ser maior ou igual a zero");
     }
-
-    return potencia;
-}
-
-# 09
-function Pi(n) {
+    
+    let p = 1;
     let i = 1;
-    let s = -1;
-    let d = -1;
-    let p = 0;
 
-    while (i <= n){
-	d = d + 2;
-	s = -1 * s;
-	p = p + (4*s)/d;
-	i = i + 1;
+    while (i <= y) {
+	p = produto(p, x);
+	i += 1;
     }
 
     return p;
 }
 
-#10
-function logaritmoNatural(n, k){
-    if (n < 1 && k < 2){
+// 09
+const numPi = function calculaNumeroPiDadoNumeroNatual(num) {
+    if (num < 1) {
+	throw new RangeError("O numero num tem que ser num >= 1");
+    }
+    
+    let i = 1;
+    let s = -1;
+    let d = -1;
+    let pi = 0;
+
+    while (i <= num) {
+	d += 2;
+	s *= -1;
+	pi += (4 * s) / d;
+	i += 1;
+    }
+
+    return pi;
+}
+
+//10
+const logNatual = function calculaLogaritmoNaturalDadoNumerosNautais(n, k){
+    if (n < 1 && k < 2) {
 	throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
     }
+    
     let i = 2;
     let e = n + 1;
     let numerador = n;
     let denomidador = 1;
 
-    while (i <= k){
-	numerador = numerador*numerador;
-	denominador = denominador*i;
-	e += (numerador/denominador);
+    while (i <= k) {
+	numerador *= numerador;
+	denominador *= i;
+	e += (numerador / denominador);
 	i += 1;
     }
 
     return e;
 }
 
-#11
-function RazaoAurea(x, y, k) {
-    if ((x < 0 && x > y) && k <= 0){
+//11
+const razaoAurea = function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
+    if ((x < 0 && x > y) && k <= 0 ){
 	throw new RangeError("Números deve ser: x >= 0, x < y e k > 0");
     }
+    
     let c = y;
     let a = x;
     let i = 1;
 
-    while (i <= k){
+    while (i <= k) {
 	let t = c;
 	c += a;
 	a = t;
-	i = i + 1;
+	i += 1;
     }
 
-    return c/a;
+    return c / a;
 }
 
-#12
-function QuadradoPerfeito(n){
-    if (n < 1){
+//12
+const quadradoPerfeito = function verificaQuadradoPerfeitoDadoNumero(n) {
+    if (n < 1) {
 	throw new RangeError("O numero 'n' deverá ser maior que 1");
     }
+    
     let i = 1;
     let s = 1;
 
-    while (s < n){
+    while (s < n) {
 	i += 2;
 	s += i;
     }
 
-    if (s = n)
+    if (s == n) {
 	return true;
-    else
-	return false;
+    }
+    
+    return false;
 }
 
-#13
-function Raiz(n, i) {
+//13
+const raizQuadrada = function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
+    if (n < 0) {
+	throw new RangeError("O numero 'n' deverá ser maior que 0");
+    }
+    
     let r = 1;
 
-    while(i >= 0){
-	r = (r + n/r)/2;
+    while (i >= 0) {
+	r = (r + n / r) / 2;
 	i -= 1;
     }
+
+    return r;
 }
 
-# 14
-function primo(n) {
+// 14
+const numPrimo = function verificaNumeroPrimo(n) {
     if (n < 1){
 	throw new RangeError("O numero 'n' tem que ser maior que 1");
     }
     
     let i = 2;
-    while (i < n){
-    	if (n%i == 0){
-	    return false;   
-	}
+    while (i < n) {
+    	if (n % i == 0) { return false; }
 	i += 1;
     }
+    
     return true;
 }
 
