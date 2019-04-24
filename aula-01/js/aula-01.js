@@ -1,14 +1,15 @@
 // JavaScript
 # 01
-function numVerdadeiro(n){
-    let i = n/100;
-    let j = n%100;
-    let m = i+j;
-    if (m*m == n){
+const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
+    let m = num / 100;
+    let n = num % 100;
+    let soma = m + n;
+
+    if (soma * soma == num) {
     	return true;
-    } else {
-    	return false;
     }
+    
+    return false;
 }
 
 # 02
