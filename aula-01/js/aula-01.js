@@ -19,11 +19,7 @@ function samaCubosDosDigitosUsandoPropriedade153(num) {
     let u = du % 10;
     const s = c * c * c + d * d * d + u * u * u;
 
-    if (s == n) {
-        return true;
-    }
-
-    return false;
+    return s == n;
 }
 
 // 03
