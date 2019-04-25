@@ -155,7 +155,7 @@ public class Algoritmos {
             int i = 2;
             double e = n + 1;
             int numerador = n;
-            int denomidador = 1;
+            int denominador = 1;
 
             while (i <= k) {
                 numerador = numerador * numerador;
@@ -166,7 +166,7 @@ public class Algoritmos {
 
             return e;
         } else {
-            throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
+            throw new IllegalArgumentException("O numeros tem que ser n >= 1 && k >= 2");
         }
     }
 
