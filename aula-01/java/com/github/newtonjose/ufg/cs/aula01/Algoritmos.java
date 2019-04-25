@@ -355,9 +355,9 @@ public class Algoritmos {
         }
     }
 
-    public boolean cpf2(intArray d) throws Exception {
+    public boolean cpf2(int[] d) throws Exception {
         if (d.length != 11) {
-            throw Exception("o cpf deve ter 11 digitos");
+            throw new Exception("o cpf deve ter 11 digitos");
         }
 
         int c = 8;
