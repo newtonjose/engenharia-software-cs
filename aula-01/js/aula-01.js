@@ -9,6 +9,10 @@ function numeroVerdadeiroUsandoPropriedade3025(num) {
 
 // 02
 function samaCubosDosDigitosUsandoPropriedade153(num) {
+    if (typeof num != "number") {
+        throw new TypeError("argumento deve ser um número");
+    }
+    
     if (num < 100 && num > 999) {
         throw new RangeError("O numeros devem ser 100 <= num <= 999");
     }
