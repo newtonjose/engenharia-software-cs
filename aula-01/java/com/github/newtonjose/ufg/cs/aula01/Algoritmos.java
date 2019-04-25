@@ -1,6 +1,9 @@
 package com.github.newtonjose.ufg.cs.aula01;
 
-// Java
+/**
+ * Classe que implementa vários algoritmos acerca de propriedades matemáticas
+ * e operações com números.
+ */
 public class Algoritmos {
 
     public boolean numeroVerdadeiro(int n) {
