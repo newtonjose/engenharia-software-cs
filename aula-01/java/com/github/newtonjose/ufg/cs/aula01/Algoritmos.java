@@ -11,11 +11,7 @@ public class Algoritmos {
         double j = n % 100;
         double m = i + j;
 
-        if (m * m == n) {
-            return true;
-        } else {
-            return false;
-        }
+        return m * m == n;
     }
 
     public boolean propriedade153(int cdu) throws Exception {
