@@ -19,10 +19,11 @@ public class Algoritmos {
             throw new IllegalArgumentException("numero fora da faixa");
         }
 
-        double c = n / 100;
-        double cdu = n % 100;
-        double d = cdu / 10;
-        double u = cdu % 10;
+        double c = cdu / 100;
+        double du = cdu % 100;
+        double d = du / 10;
+        double u = du % 10;
+        
         if ((c * c * c + d * d * d + u * u * u) == cdu) {
             return true;
         } else {
