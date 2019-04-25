@@ -203,11 +203,7 @@ public class Algoritmos {
             s += i;
         }
 
-        if (s = n) {
-            return true;
-        } else {
-            return false;
-        }
+        return s == n;
     }
 
     public double raiz(int n, int i) {
@@ -237,7 +233,7 @@ public class Algoritmos {
         return true;
     }
 
-    public intArray crivoErastostenes(intArray a, int n) throws Exception {
+    public int[] crivoErastostenes(int[] a, int n) throws Exception {
         if (n < 1) {
             throw new Exception("O numero 'n' tem que ser maior que 1");
         }
@@ -283,12 +279,6 @@ public class Algoritmos {
             throw new Exception("Os numero deverao 'b' tem que ser maior que zero!");
         }
 
-        for (int i = 0; i < a.lenth; i++) {
-            if (a < b) {
-                throw new Exception("Existem valores em no vetor a que e' menor que 'b'!");
-            }
-        }
-
         while (b != a) {
             // 'a' sempre sera maior que 'b' pelo if anterior
             if (a > b) {
@@ -301,7 +291,7 @@ public class Algoritmos {
         return a;
     }
 
-    public int horner(int x, int g, intArray a) throws Exception {
+    public int horner(int x, int g, int[] a) throws Exception {
         if (g < 1) {
             throw new Exception("g deve ser maior que zero");
         }
@@ -322,8 +312,8 @@ public class Algoritmos {
         }
 
         int a = 0;
-        long c = 1;
-        long t;
+        int c = 1;
+        int t;
 
         if (n == 0 || n == 1) {
             return n;
@@ -340,9 +330,9 @@ public class Algoritmos {
         return c;
     }
 
-    public boolean cpf(intArray d) throws Exception {
+    public boolean cpf(int[] d) throws Exception {
         if (d.length != 11) {
-            throw Exception("o cpf deve ter 11 digitos");
+            throw new Exception("o cpf deve ter 11 digitos");
         }
 
         int j = 0;
