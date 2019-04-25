@@ -1,5 +1,5 @@
 // 01
-const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
+function numeroVerdadeiroUsandoPropriedade3025(num) {
     let m = Math.floor(num / 100);
     let n = num % 100;
     let s = m + n;
@@ -12,7 +12,7 @@ const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
 }
 
 // 02
-const somaCubos = function samaCubosDosDigitosUsandoPropriedade153(num) {
+function samaCubosDosDigitosUsandoPropriedade153(num) {
     if (num < 100 && num > 999) {
 	throw new RangeError("O numeros devem ser 100 <= num <= 999");
     }
@@ -33,7 +33,7 @@ const somaCubos = function samaCubosDosDigitosUsandoPropriedade153(num) {
 }
 
 // 03
-const diaDaSemana4 = function diaDaSemanaParaData(dia, mes, ano) {
+function diaDaSemanaParaData(dia, mes, ano) {
     if ((dia < 1 && dia > 31) && (mes < 1 && mes > 12) && (ano <= 1753)) {
 	throw new RangeError("O numeros devem ser d >= 1, d <= 31, m >= 1, m <= 12, a > 1753!");
     }
@@ -51,7 +51,7 @@ const diaDaSemana4 = function diaDaSemanaParaData(dia, mes, ano) {
 }
 
 // 04
-const resto = function restoDivisaoInteira(x, y) {
+function restoDivisaoInteira(x, y) {
     if (y < 0 && x <= 0) {
 	throw new RangeError("O numeros devem ser y >= 0 && x > 0");
     }
@@ -67,7 +67,7 @@ const resto = function restoDivisaoInteira(x, y) {
 }
 
 // 05
-cont somaNaturais = function somaPrimeirosNaturaisAteNumero(n) {
+function somaPrimeirosNaturaisAteNumero(n) {
     if (n < 1) {
 	throw new RangeError("O numero 'n' tem que ser n >= 1");
     }
@@ -84,7 +84,7 @@ cont somaNaturais = function somaPrimeirosNaturaisAteNumero(n) {
 }
 
 // 06
-const fatorial = function fatorialNumeroNatual(n) {
+function fatorialNumeroNatual(n) {
     if (n < 1) {
 	throw new RangeError("O numero 'n' tem que ser n >= 1");
     }
@@ -101,7 +101,7 @@ const fatorial = function fatorialNumeroNatual(n) {
 }
 
 // 07
-const produto = function produtoInteirosUsandoSomas(a, b){
+function produtoInteirosUsandoSomas(a, b){
     if (a < 0 || b < 0) {
 	throw new RangeError("Os numeros a e b tem que ser maior ou igual a zero");
     }
@@ -126,7 +126,7 @@ const produto = function produtoInteirosUsandoSomas(a, b){
 }
 
 // 08
-const potencia = function calculaPotenciaUsandoSomas(x,  y) {
+function calculaPotenciaUsandoSomas(x,  y) {
     if (x < 0 || y < 0) {
 	throw new RangeError("Os numeros x e y tem que ser maior ou igual a zero");
     }
@@ -143,7 +143,7 @@ const potencia = function calculaPotenciaUsandoSomas(x,  y) {
 }
 
 // 09
-const numPi = function calculaNumeroPiDadoNumeroNatual(num) {
+function calculaNumeroPiDadoNumeroNatual(num) {
     if (num < 1) {
 	throw new RangeError("O numero num tem que ser num >= 1");
     }
@@ -164,7 +164,7 @@ const numPi = function calculaNumeroPiDadoNumeroNatual(num) {
 }
 
 //10
-const logNatual = function calculaLogaritmoNaturalDadoNumerosNautais(n, k){
+function calculaLogaritmoNaturalDadoNumerosNautais(n, k){
     if (n < 1 && k < 2) {
 	throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
     }
@@ -185,7 +185,7 @@ const logNatual = function calculaLogaritmoNaturalDadoNumerosNautais(n, k){
 }
 
 //11
-const razaoAurea = function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
+function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
     if ((x < 0 && x > y) && k <= 0 ){
 	throw new RangeError("Números deve ser: x >= 0, x < y e k > 0");
     }
@@ -205,7 +205,7 @@ const razaoAurea = function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
 }
 
 //12
-const quadradoPerfeito = function verificaQuadradoPerfeitoDadoNumero(n) {
+function verificaQuadradoPerfeitoDadoNumero(n) {
     if (n < 1) {
 	throw new RangeError("O numero 'n' deverá ser maior que 1");
     }
@@ -226,7 +226,7 @@ const quadradoPerfeito = function verificaQuadradoPerfeitoDadoNumero(n) {
 }
 
 //13
-const raizQuadrada = function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
+function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
     if (n < 0) {
 	throw new RangeError("O numero 'n' deverá ser maior que 0");
     }
@@ -242,7 +242,7 @@ const raizQuadrada = function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
 }
 
 // 14
-const numPrimo = function verificaNumeroPrimo(n) {
+function verificaNumeroPrimo(n) {
     if (n < 1){
 	throw new RangeError("O numero 'n' tem que ser maior que 1");
     }
