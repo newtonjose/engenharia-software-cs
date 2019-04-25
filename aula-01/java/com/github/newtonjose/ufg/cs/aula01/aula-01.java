@@ -1,3 +1,5 @@
+package com.github.newtonjose.ufg.cs.aula01;
+
 // Java
 public class Algoritmos {
 
