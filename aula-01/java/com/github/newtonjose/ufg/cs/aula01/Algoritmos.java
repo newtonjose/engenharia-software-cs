@@ -15,19 +15,18 @@ public class Algoritmos {
     }
 
     public boolean propriedade153(int cdu) throws Exception {
-        if (cdu >= 100 && cdu <= 999) {
+        if (cdu < 100 || cdu > 999) {
+            throw new IllegalArgumentException("numero fora da faixa");
+        }
 
-            double c = n / 100;
-            double cdu = n % 100;
-            double d = cdu / 10;
-            double u = cdu % 10;
-            if ((c * c * c + d * d * d + u * u * u) == n) {
-                return true;
-            } else {
-                return false;
-            }
+        double c = n / 100;
+        double cdu = n % 100;
+        double d = cdu / 10;
+        double u = cdu % 10;
+        if ((c * c * c + d * d * d + u * u * u) == cdu) {
+            return true;
         } else {
-            throw new Exception("O numeros devem ser cdu >= 100 && cdu <= 999");
+            return false;
         }
     }
 
