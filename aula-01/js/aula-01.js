@@ -13,13 +13,11 @@ function samaCubosDosDigitosUsandoPropriedade153(num) {
         throw new RangeError("O numeros devem ser 100 <= num <= 999");
     }
 
-    let pow = Math.pow;
-
     let c = Math.floor(n / 100);
     let du = num % 100;
     let d = Math.floor(du / 10);
     let u = du % 10;
-    let s = pow(c, 3) + pow(d, 3) + pow(u, 3);
+    const s = c * c * c + d * d * d + u * u * u;
 
     if (s == n) {
         return true;
