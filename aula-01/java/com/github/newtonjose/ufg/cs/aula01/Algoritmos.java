@@ -28,21 +28,19 @@ public class Algoritmos {
     }
 
     public int diaDaSemana(int d, int m, int a) throws Exception {
-        if ((d >= 1 && d <= 31) && (d >= 1 && d <= 12) && (a > 1753)) {
-
-            if (m == 1 || m == 2) {
-                m = m + 12;
-                a = a - 1;
-            }
-
-            int i = d + 2 * m + 3 * (m + 1);
-            int j = 5 + a + a / 4 - a / 100 + (a / 400);
-            int s = i / j;
-
-            return s % 7;
-        } else {
+        if ((d < 1 || d > 31) || (d < 1 || d > 12) || (a <= 1753)) {
             throw new Exception("O numeros devem ser d >= 1, d <= 31, d >= 1, d <= 12, a > 1753!");
         }
+        if (m == 1 || m == 2) {
+            m = m + 12;
+            a = a - 1;
+        }
+
+        int i = d + 2 * m + 3 * (m + 1);
+        int j = 5 + a + a / 4 - a / 100 + (a / 400);
+        int s = i / j;
+
+        return s % 7;
     }
 
     public int restoDivisaoInteira(int x, int y) throws Exception {
