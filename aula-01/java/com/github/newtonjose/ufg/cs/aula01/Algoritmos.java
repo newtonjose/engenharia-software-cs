@@ -23,12 +23,8 @@ public class Algoritmos {
         double du = cdu % 100;
         double d = du / 10;
         double u = du % 10;
-        
-        if ((c * c * c + d * d * d + u * u * u) == cdu) {
-            return true;
-        } else {
-            return false;
-        }
+
+        return (c * c * c + d * d * d + u * u * u) == cdu;
     }
 
     public int diaDaSemana(int d, int m, int a) throws Exception {
