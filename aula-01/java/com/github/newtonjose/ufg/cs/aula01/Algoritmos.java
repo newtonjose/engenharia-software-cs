@@ -14,7 +14,7 @@ public class Algoritmos {
         return m * m == n;
     }
 
-    public boolean propriedade153(int cdu) {
+    public boolean propriedade153(final int cdu) {
         if (cdu < 100 || cdu > 999) {
             throw new IllegalArgumentException("numero fora da faixa");
         }
