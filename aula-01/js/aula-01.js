@@ -4,11 +4,7 @@ function numeroVerdadeiroUsandoPropriedade3025(num) {
     let n = num % 100;
     let s = m + n;
 
-    if (s * s == num) {
-        return true;
-    }
-
-    return false;
+    return s * s == num;
 }
 
 // 02
