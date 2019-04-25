@@ -6,10 +6,10 @@ package com.github.newtonjose.ufg.cs.aula01;
  */
 public class Algoritmos {
 
-    public boolean numeroVerdadeiro(int n) {
-        double i = n / 100;
-        double j = n % 100;
-        double m = i + j;
+    public boolean numeroVerdadeiro(final int n) {
+        final double i = n / 100;
+        final double j = n % 100;
+        final double m = i + j;
 
         return m * m == n;
     }
