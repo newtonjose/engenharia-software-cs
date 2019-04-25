@@ -36,8 +36,8 @@ public class Algoritmos {
             }
 
             int i = d + 2 * m + 3 * (m + 1);
-            double j = 5 + a + (a / 4) –(a / 100) + (a / 400);
-            double s = i / j;
+            int j = 5 + a + a / 4 - a / 100 + (a / 400);
+            int s = i / j;
 
             return s % 7;
         } else {
