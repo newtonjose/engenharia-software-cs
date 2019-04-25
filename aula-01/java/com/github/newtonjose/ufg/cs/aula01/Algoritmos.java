@@ -28,7 +28,7 @@ public class Algoritmos {
     }
 
     public int diaDaSemana(int d, int m, int a) throws Exception {
-        if ((d < 1 || d > 31) || (d < 1 || d > 12) || (a <= 1753)) {
+        if (dataInvalida(d, a)) {
             throw new Exception("O numeros devem ser d >= 1, d <= 31, d >= 1, d <= 12, a > 1753!");
         }
         if (m == 1 || m == 2) {
@@ -41,6 +41,10 @@ public class Algoritmos {
         int s = i / j;
 
         return s % 7;
+    }
+
+    private boolean dataInvalida(int d, int a) {
+        return (d < 1 || d > 31) || (d < 1 || d > 12) || (a <= 1753);
     }
 
     public int restoDivisaoInteira(int x, int y) throws Exception {
