@@ -12,7 +12,7 @@ const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
 }
 
 // 02
-const somaCubos = function samaCubosDosDigitosUsandoPropriedade153(num) {
+const somaCubos = function somaCubosDosDigitosDoNumero(num) {
     if (num < 100 && num > 999) {
 	throw new RangeError("O numeros devem ser 100 <= num <= 999");
     }
