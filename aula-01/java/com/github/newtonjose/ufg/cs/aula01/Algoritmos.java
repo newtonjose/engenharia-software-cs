@@ -44,6 +44,7 @@ public class Algoritmos {
     }
 
     private boolean dataInvalida(int d, int a) {
+        // FIXME admite 31/04/2019 (erro)
         return (d < 1 || d > 31) || (d < 1 || d > 12) || (a <= 1753);
     }
 
@@ -95,7 +96,7 @@ public class Algoritmos {
         }
     }
 
-    public long produto(int a, int b) throws Exception {
+    public int produto(int a, int b) {
         if (a >= 0 && b >= 0) {
 
             int totalParcelas = a;
@@ -107,7 +108,7 @@ public class Algoritmos {
             }
 
             int i = 1;
-            long s = 0;
+            int s = 0;
 
             while (i <= totalParcelas) {
                 s = s + parcela;
@@ -116,20 +117,20 @@ public class Algoritmos {
 
             return s;
         } else {
-            throw new Exception("O numero a >= 0  e b >=0");
+            throw new IllegalArgumentException("O numero a >= 0  e b >=0");
         }
     }
 
     public long potencia(int x, int y) {
-        long potencia = 1;
+        int produtorio = 1;
         int i = 1;
 
         while (i <= y) {
-            potencia = potencia(potencia, x);
+            produtorio = produto(produtorio, x);
             i = i + 1;
         }
 
-        return potencia;
+        return produtorio;
     }
 
     public double pi(int n) {
