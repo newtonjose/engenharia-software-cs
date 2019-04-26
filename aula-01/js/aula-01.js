@@ -1,152 +1,188 @@
+function _verificaTipoNumero(num) {
+  return typeof num == "number"
+}
+
 // 01
 const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
-    let m = Math.floor(num / 100);
-    let n = num % 100;
-    let s = m + n;
+  let m = Math.floor(num / 100);
+  let n = num % 100;
+  let s = m + n;
 
-    if (s * s == num) {
-    	return true;
-    }
-    
-    return false;
+  if (s * s == num) {
+    return true;
+  }
+  
+  return false;
 }
 
 // 02
 const somaCubos = function somaCubosDosDigitosDoNumero(num) {
-    if (num < 100 && num > 999) {
-	throw new RangeError("O numeros devem ser 100 <= num <= 999");
-    }
+  if ( !is_num(num) ) {
+    throw new TypeError("argumento deve ser um número");
+  }
+  
+  if (num < 100 && num > 999) {
+    throw new RangeError("O numeros devem ser 100 <= num <= 999");
+  }
 
-    let pow = Math.pow;
+  let pow = Math.pow;
+
+  let c = Math.floor(num / 100);
+  let du = num % 100;
+  let d = Math.floor(du / 10);
+  let u = du % 10;
+  let s = pow(c, 3) + pow(d, 3) + pow(u, 3);
     
-    let c = Math.floor(n / 100);
-    let du = num % 100;
-    let d = Math.floor(du / 10);
-    let u = du % 10;
-    let s = pow(c, 3) + pow(d, 3) + pow(u, 3);
-    
-    if (s == n) {
-	return true;
-    }
-    
-    return false;
+  if (s == n) {
+    return true;
+  }
+
+  return false;
 }
 
 // 03
 const diaDaSemana4 = function diaDaSemanaParaData(dia, mes, ano) {
-    if ((dia < 1 && dia > 31) && (mes < 1 && mes > 12) && (ano <= 1753)) {
-	throw new RangeError("O numeros devem ser d >= 1, d <= 31, m >= 1, m <= 12, a > 1753!");
-    }
+  if ( !is_num(dia) &&  !is_num(mes) &&  !is_num(ano) ) {
+    throw new TypeError("os argumentos devem ser do tipo número");
+  }
+  
+  if ((dia < 1 && dia > 31) && (mes < 1 && mes > 12) && (ano <= 1753)) {
+    throw new RangeError("O numeros devem ser d >= 1, d <= 31, m >= 1, m <= 12, a > 1753!");
+  }
+  
+  if (mes == 1 || mes == 2) {
+    mes += 12;
+    ano -= 1;
+  }
 
-    if (mes == 1 || mes == 2) {
-	mes += 12;
-	ano -= 1;
-    }
-    
-    let i = dia + (2 * mes) + (3 * (mes + 1));
-    let j = 5 + ano + (ano / 4) - (ano / 100) + (ano / 400);
-    let s = i / j;
+  let i = dia + (2 * mes) + (3 * (mes + 1));
+  let j = 5 + ano + (ano / 4) - (ano / 100) + (ano / 400);
+  let s = i / j;
 
-    return s % 7;
+  return s % 7;
 }
 
 // 04
 const resto = function restoDivisaoInteira(x, y) {
-    if (y < 0 && x <= 0) {
-	throw new RangeError("O numeros devem ser y >= 0 && x > 0");
-    }
+  if ( !is_num(x) &&  !is_num(y) ) {
+    throw new TypeError("os argumentos devem ser do tipo número");
+  }
+  
+  if (y < 0 && x <= 0) {
+	  throw new RangeError("O numeros devem ser y >= 0 && x > 0");
+  }
     
-    let s = x;
+  let s = x;
+
+  while (y <= s) {
+    s = s - y;
+    y = y + 1;
+  }
     
-    while (y <= s) {
-	s = s - y;
-	y = y + 1;
-    }
-    
-    return s;
+  return s;
 }
 
 // 05
 cont somaNaturais = function somaPrimeirosNaturaisAteNumero(n) {
-    if (n < 1) {
-	throw new RangeError("O numero 'n' tem que ser n >= 1");
-    }
+  if ( !is_num(n) ) {
+    throw new TypeError("O argumento deve ser um número");
+  }
     
-    let i = 2;
-    let s = 1;
+  if (n < 1) {
+	  throw new RangeError("O numero 'n' tem que ser n >= 1");
+  }
+    
+  let i = 2;
+  let s = 1;
 
-    while (i <= n) {
-	s += i;
-	i += 1;
-    }
+  while (i <= n) {
+    s += i;
+    i += 1;
+  }
 
-    return s;
+  return s;
 }
 
 // 06
 const fatorial = function fatorialNumeroNatual(n) {
-    if (n < 1) {
-	throw new RangeError("O numero 'n' tem que ser n >= 1");
-    }
+  if ( !is_num(n) ) {
+    throw new TypeError("O argumento deve ser um número");
+  }
+  
+  if (n < 1) {
+    throw new RangeError("O numero 'n' tem que ser n >= 1");
+  }
     
-    let i = 2;
-    let f = 1;
+  let i = 2;
+  let f = 1;
     
-    while (i <= n) {
-	f *= i;
-	i += 1;
-    }
+  while (i <= n) {
+    f *= i;
+    i += 1;
+  }
     
-    return f;
+  return f;
 }
 
 // 07
 const produto = function produtoInteirosUsandoSomas(a, b){
-    if (a < 0 || b < 0) {
-	throw new RangeError("Os numeros a e b tem que ser maior ou igual a zero");
-    }
+  if ( !is_num(a) &&  !is_num(b) ) {
+    throw new TypeError("os argumentos devem ser do tipo número");
+  }
+  
+  if (a < 0 || b < 0) {
+    throw new RangeError("Os numeros a e b tem que ser maior ou igual a zero");
+  }
     
-    let totalParcelas = a;
-    let parcela = b;
+  let totalParcelas = a;
+  let parcela = b;
     
-    if (b < a) {
-	totalParcelas = b;
-	parcela = a;
-    }
+  if (b < a) {
+    totalParcelas = b;
+    parcela = a;
+  }
 
-    let i = 1;
-    let s = 0;
+  let i = 1;
+  let s = 0;
 
-    while (i <= totalParcelas) {
-	s += parcela;
-	i += 1;
-    }
+  while (i <= totalParcelas) {
+    s += parcela;
+    i += 1;
+  }
 
-    return s;
+  return s;
 }
 
 // 08
 const potencia = function calculaPotenciaUsandoSomas(x,  y) {
-    if (x < 0 || y < 0) {
-	throw new RangeError("Os numeros x e y tem que ser maior ou igual a zero");
-    }
+  if ( !is_num(x) &&  !is_num(y) ) {
+    throw new TypeError("os argumentos devem ser do tipo número");
+  }
+  
+  if (x < 0 || y < 0) {
+    throw new RangeError("Os numeros x e y tem que ser maior ou igual a zero");
+  }
     
-    let p = 1;
-    let i = 1;
+  let p = 1;
+  let i = 1;
 
-    while (i <= y) {
-	p = produto(p, x);
-	i += 1;
-    }
+  while (i <= y) {
+    p = produto(p, x);
+    i += 1;
+  }
 
-    return p;
+  return p;
 }
 
 // 09
 const numPi = function calculaNumeroPiDadoNumeroNatual(num) {
-    if (num < 1) {
-	throw new RangeError("O numero num tem que ser num >= 1");
-    }
+  if ( !is_num(num) ) {
+    throw new TypeError("O argumento deve ser um número");
+  }
+  
+  if (num < 1) {
+    throw new RangeError("O numero num tem que ser num >= 1");
+  }
     
     let i = 1;
     let s = -1;
@@ -165,80 +201,96 @@ const numPi = function calculaNumeroPiDadoNumeroNatual(num) {
 
 //10
 const logNatual = function calculaLogaritmoNaturalDadoNumerosNautais(n, k){
-    if (n < 1 && k < 2) {
-	throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
-    }
+  if ( !is_num(n) &&  !is_num(k) ) {
+    throw new TypeError("os argumentos devem ser do tipo número");
+  }
+  
+  if (n < 1 && k < 2) {
+    throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
+  }
     
-    let i = 2;
-    let e = n + 1;
-    let numerador = n;
-    let denomidador = 1;
+  let i = 2;
+  let e = n + 1;
+  let numerador = n;
+  let denomidador = 1;
 
-    while (i <= k) {
-	numerador *= numerador;
-	denominador *= i;
-	e += (numerador / denominador);
-	i += 1;
-    }
+  while (i <= k) {
+    numerador *= numerador;
+    denominador *= i;
+    e += (numerador / denominador);
+    i += 1;
+  }
 
-    return e;
+  return e;
 }
 
 //11
 const razaoAurea = function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
-    if ((x < 0 && x > y) && k <= 0 ){
-	throw new RangeError("Números deve ser: x >= 0, x < y e k > 0");
-    }
+  if ( !is_num(x) &&  !is_num(y) && !is_num(y) ) {
+    throw new TypeError("os argumentos devem ser do tipo número");
+  }
+  
+  if ((x < 0 && x > y) && k <= 0 ){
+    throw new RangeError("Números deve ser: x >= 0, x < y e k > 0");
+  }
     
-    let c = y;
-    let a = x;
-    let i = 1;
+  let c = y;
+  let a = x;
+  let i = 1;
 
-    while (i <= k) {
-	let t = c;
-	c += a;
-	a = t;
-	i += 1;
-    }
+  while (i <= k) {
+    let t = c;
+    c += a;
+    a = t;
+    i += 1;
+  }
 
-    return c / a;
+  return c / a;
 }
 
 //12
 const quadradoPerfeito = function verificaQuadradoPerfeitoDadoNumero(n) {
-    if (n < 1) {
-	throw new RangeError("O numero 'n' deverá ser maior que 1");
-    }
-    
-    let i = 1;
-    let s = 1;
+  if ( !is_num(n) ) {
+    throw new TypeError("O argumento deve ser um número");
+  }
+  
+  if (n < 1) {
+    throw new RangeError("O numero 'n' deverá ser maior que 1");
+  }
 
-    while (s < n) {
-	i += 2;
-	s += i;
-    }
+  let i = 1;
+  let s = 1;
 
-    if (s == n) {
-	return true;
-    }
+  while (s < n) {
+    i += 2;
+    s += i;
+  }
+
+  if (s == n) {
+	  return true;
+  }
     
-    return false;
+  return false;
 }
 
 //13
 const raizQuadrada = function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
-    if (n < 0) {
-	throw new RangeError("O numero 'n' deverá ser maior que 0");
-    }
+  if ( !is_num(n) &&  !is_num(i) ) {
+    throw new TypeError("os argumentos devem ser do tipo número");
+  }
+  
+  if (n < 0) {
+    throw new RangeError("O numero 'n' deverá ser maior que 0");
+  }
     
-    let r = 1;
+  let r = 1;
 
-    while (i >= 0) {
-	r = (r + n / r) / 2;
-	i -= 1;
-    }
+  while (i >= 0) {
+    r = (r + n / r) / 2;
+    i -= 1;
+  }
 
-    return r;
+  return r;
 }
 
 // 14
