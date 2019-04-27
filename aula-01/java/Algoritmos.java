@@ -77,7 +77,6 @@ public class Algoritmos {
 	return s;
     }
 
-
     public long fatorial(final int n) {
 	if (n < 1) {
 	    throw new IllegalArgumentException("O numero 'n' tem que ser n >= 1");

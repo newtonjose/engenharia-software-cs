@@ -372,21 +372,11 @@ function mdc2(b, a) {
   if ( !verificaTipoNumero(b) ) {
     throw new TypeError("O argumento b deve ser um número");
   }
-  
-  if ( !verificaTipoArray(a) ) {
-    throw new TypeError("o argumento a deve ser do tipo array");
-  }
-  
+
   if (b < 0){
     throw new RangeError("Os numero deverao 'b tem que ser maior que zero!");
   }
 
-  for (let i = 0; i < a.lenth; i++){
-    if (a < b){
-	    throw new RangeError("Existem valores em no vetor a que e' menor que 'b'!");
-    }
-  }
-    
   while (b != a) {
     // 'a' sempre sera maior que 'b' pelo if anterior
     if (a > b) {
