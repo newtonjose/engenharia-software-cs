@@ -178,19 +178,19 @@ function calculaNumeroPiDadoNumeroNatual(num) {
     throw new RangeError("O numero num tem que ser num >= 1");
   }
     
-    let i = 1;
-    let s = -1;
-    let d = -1;
-    let pi = 0;
+  let i = 1;
+  let s = -1;
+  let d = -1;
+  let pi = 0;
 
-    while (i <= num) {
-      d += 2;
-      s *= -1;
-      pi += (4 * s) / d;
-      i += 1;
-    }
+  while (i <= num) {
+    d += 2;
+    s *= -1;
+    pi += (4 * s) / d;
+    i += 1;
+  }
 
-    return pi;
+  return pi;
 }
 
 //10

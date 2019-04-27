@@ -11,119 +11,106 @@ public class Algoritmos {
 	double j = n % 100;
 	double m = i + j;
 
-	if (m * m == n) {
-	    return true;
-	} else {
-	    return false;
-	}
+	return m * m == n;
     }
 
     public boolean propriedade153(int cdu) throws Exception {
-	if (cdu >= 100 && cdu <= 999) {
-
-	    double c = n / 100;
-	    double cdu = n % 100;
-	    double d = cdu / 10;
-	    double u = cdu % 10;
-	    if ((c * c * c + d *d *  + u * u *u) == n) {
-		return true;
-	    } else {
-		return false;
-	    }
-	} else {
+	if (cdu < 100 && cdu > 999) {
 	    throw new Exception("O numeros devem ser cdu >= 100 && cdu <= 999");
 	}
+
+	double c = n / 100;
+	double cdu = n % 100;
+	double d = cdu / 10;
+	double u = cdu % 10;
+	
+	return (c * c * c + d * d *  + u * u * u) == n
     }
 
     public int diaDaSemana(int d, int m, int a) throws Exception {
-	if ((d >= 1 && d <= 31) && (d >= 1 && d <= 12) && (a > 1753)) {
-
-	    if (m == 1 || m == 2) {
-		m = m + 12;
-		a = a - 1;
-	    }
-	    
-	    int i = d + 2 * m + 3 * (m + 1);
-	    double j = 5 + a + (a / 4) – (a / 100) + (a / 400);
-	    double s = i / j;
-	    
-	    return s % 7;
-	} else {
+	if ((d < 1 && d > 31) && (m < 1 && m > 12) && (a <= 1753)) {
 	    throw new Exception("O numeros devem ser d >= 1, d <= 31, d >= 1, d <= 12, a > 1753!");
 	}
+
+	if (m == 1 || m == 2) {
+	    m = m + 12;
+	    a = a - 1;
+	}
+
+	int i = d + 2 * m + 3 * (m + 1);
+	double j = 5 + a + (a / 4) – (a / 100) + (a / 400);
+	double s = i / j;
+
+	return s % 7;
     }
 
     public int restoDivisaoInteira(int x, int y) throws Exception {
-	if (y >= 0 && x > 0) {
+	if (y < 0 && x <= 0) {
+	    throw new Exception("O numeros devem ser y >= 0 && x > 0");
+	}
 
-            int s = x;
-            while (y <= s) {
-                s = s - y;
-                y = y + 1;
-            }
+	int s = x;
+	while (y <= s) {
+	    s = s - y;
+	    y = y + 1;
+	}
 
-            return s;
-        } else {
-            throw new Exception("Os numeros x tem que ser maior 0 e y tem que ser maior");
-        }	    
+	return s;
     }
 
     public int somaNaturais(int n) throws Exception {
-	if (n >= 1) {
+	if (n < 1) {
+	  throw new Exception("O numero 'n' tem que ser n >= 1");
+	}
 
-            int i = 2;
-            int s = 1;
-            while (i <= n) {
-                s += i;
-                i += 1;
-            }
+	int i = 2;
+	int s = 1;
+	while (i <= n) {
+	    s += i;
+	    i += 1;
+	}
 
-            return s;
-        } else {
-            throw new Exception("O numero n tem que ser maior que 1");
-        }
+	return s;
     }
 
 
     public long fatorial(int n) throws Exception {
-	if (n >= 1) {
+	if (n < 1) {
+	    throw new Exception("O numero 'n' tem que ser n >= 1");
+	}
 
-            int i = 2;
-            long f = 1;
-            while (i <= n) {
-                f = f * i;
-                i = i + 1;
-            }
+	int i = 2;
+	long f = 1;
+	while (i <= n) {
+	    f = f * i;
+	    i = i + 1;
+	}
 
-            return f;
-        } else {
-            throw new Exception("O numero n tem que ser maior que 1");
-        }
+	return f;
     }
 
     public long produto(int a, int b) throws Exception {
-	if (a >= 0 && b >= 0) {
+	if (a < 0 || b < 0) {
+	    throw new Exception("Os numeros a e b tem que ser maior ou igual a zero");
+	}
 
-            int totalParcelas = a;
-            int parcela = b;
+	int totalParcelas = a;
+	int parcela = b;
 
-            if (b < a) {
-                totalParcelas = b;
-                parcela = a;
-            }
+	if (b < a) {
+	    totalParcelas = b;
+	    parcela = a;
+	}
 
-            int i = 1;
-            long s = 0;
+	int i = 1;
+	long s = 0;
 
-            while (i <= totalParcelas) {
-                s = s + parcela;
-                i = i + 1;
-            }
+	while (i <= totalParcelas) {
+	    s = s + parcela;
+	    i = i + 1;
+	}
 
-            return s;
-        } else {
-            throw new Exception("O numero a >= 0  e b >=0");
-        }
+	return s;
     }
 
     public long potencia(int x, int y) {
@@ -138,61 +125,63 @@ public class Algoritmos {
 	return potencia;
     }
 
-    public double pi(int n) {
+    public double pi(int n) throws Exception {
+	if (n < 1) {
+	    throw new Exception("O numero n tem que ser n >= 1");
+	}
+
 	int i = 1;
-        int s = -1;
-        int d = -1;
-        double p = 0;
+	int s = -1;
+	int d = -1;
+	double p = 0;
 
-        while (i <= n) {
-            d = d + 2;
-            s = -1 * s;
-            p = p + (4 * s) / d;
-            i = i + 1;
-        }
+	while (i <= n) {
+	    d = d + 2;
+	    s = -1 * s;
+	    p = p + (4 * s) / d;
+	    i = i + 1;
+	}
 
-        return p;
+	return p;
     }
 
     public double logaritmoNatural(int n, int k) throws Exception {
-	if (n >= 1 && k >= 2) {
+	if (n < 1 && k < 2) {
+	    throw new Exception("O numeros tem que ser n >= 1 && k >= 2");
+	}
 
-            int i = 2;
-            double e = n + 1;
-            int numerador = n;
-            int denomidador = 1;
+	int i = 2;
+	double e = n + 1;
+	int numerador = n;
+	int denomidador = 1;
 
-            while (i <= k) {
-                numerador = numerador * numerador;
-                denominador = denominador * i;
-                e += (numerador / denominador);
-                i += 1;
-            }
+	while (i <= k) {
+	    numerador = numerador * numerador;
+	    denominador = denominador * i;
+	    e += (numerador / denominador);
+	    i += 1;
+	}
 
-            return e;
-        } else {
-            throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
-        }
+	return e;
     }
 
     public double razaoAurea(int x, int y, int k) throws Exception {
-	if ((x >= 0 && x < y) && k > 0) {
+	if ((x < 0 && x > y) && k <= 0 ){
+	    throw new Exception("Números deve ser: x >= 0, x < y e k > 0");
+	}
 
-            int c = y;
-            int a = x;
-            int i = 1;
+	int c = y;
+	int a = x;
+	int i = 1;
 
-            while (i <= k) {
-                int t = c;
-                c += a;
-                a = t;
-                i = i + 1;
-            }
+	while (i <= k) {
+	    int t = c;
+	    c += a;
+	    a = t;
+	    i = i + 1;
+	}
 
-            return c / a;
-        } else {
-            throw new Exception("Números deve ser: x >= 0, x < y e k > 0");
-        }
+	return c / a;
     }
 
     public boolean quadradoPerfeito(int n) throws Exception {
@@ -208,21 +197,21 @@ public class Algoritmos {
             s += i;
         }
 
-        if (s = n) {
-            return true;
-        } else {
-            return false;
-        }
+	return s = n;
     }
 
-    public double raiz(int n, int i) {
+    public double raiz(int n, int i) throws Exception {
+	if (n < 0) {
+	    throw new Exception("O numero 'n' deverá ser maior que 0");
+	}
+	
 	double r = 1;
 
 	while(i >= 0) {
 	    r = (r + n / r) / 2;
 	    i -= 1;
 	}
-	
+
 	return r;
     }
 
@@ -230,7 +219,7 @@ public class Algoritmos {
 	if (n < 1) {
 	    throw new Exception("O numero 'n' tem que ser maior que 1");
 	}
-    
+
 	int i = 2;
 	while (i < n) {
 	    if (n % i == 0) {
@@ -239,7 +228,7 @@ public class Algoritmos {
 	    
 	    i += 1;
 	}
-	
+
 	return true;
     }
 
@@ -257,6 +246,7 @@ public class Algoritmos {
 	int i = 2;
 	int multiplo;
 	double limite = Math.sqrt(n);
+	
 	while (i <= limite) {
 	    if (a[i] == 0) {
 		multiplo = i + 1;
@@ -277,13 +267,15 @@ public class Algoritmos {
 	if (b > a && b < 0) {
 	    throw new Exception("Os numeros deverao ser a >= b e b > 0");
 	}
-    
+
+	int m;
+
 	while (b != 0) {
-	    int m = a % b;
+	    m = a % b;
 	    a = b;
 	    b = m;
 	}
-	
+
 	return a;
     }
     
@@ -297,7 +289,7 @@ public class Algoritmos {
 		throw new Exception("Existem valores em no vetor a que e' menor que 'b'!");
 	    }
 	}
-		
+
 	while (b != a) {
 	    // 'a' sempre sera maior que 'b' pelo if anterior
 	    if (a > b) {
@@ -306,7 +298,7 @@ public class Algoritmos {
 		b -= a;
 	    }
 	}
-	
+
 	return a;
     }
 
@@ -321,7 +313,7 @@ public class Algoritmos {
 	    p = p * x + a[i];
 	    i -= 1;
 	}
-	
+
 	return p;
     }
 
@@ -329,7 +321,7 @@ public class Algoritmos {
 	if (n <= 0) {
 	    throw new Exception("O numero 'n' tem que ser n>=0");
 	}
-    
+
 	int a = 0;
 	long c = 1;
 	long t;
@@ -337,7 +329,7 @@ public class Algoritmos {
 	if (n == 0 || n == 1) {
 	    return n;
 	}
-	
+
 	int i = 1;
 	while (i <= n) {
 	    t = c;
@@ -348,55 +340,47 @@ public class Algoritmos {
 
 	return c;
     }
-    
+
     public boolean cpf(intArray d) throws Exception {
 	if (d.length != 11) {
 	    throw Exception("o cpf deve ter 11 digitos");
 	}
-    
+
 	int j = 0;
 	int k = 0;
 	for (int i = 0; i < 9; i++) {
 	    j += d[i];
 	}
-    
+
 	for (int i=1; i < 10; i++) {
 	    k += d[i]; 
 	}
-    
+
 	int dj = (j % 11) % 10;
 	int dk = (k % 11) % 10;
-    
-	if (dj == d[d.length - 1] && dk == d[d.length]){
-	    return true;
-	} else {
-	    return false; 
-	}
+
+	return (dj == d[d.length - 1]) && (dk == d[d.length]);
     }
 
     public boolean cpf2(intArray d) throws Exception {
 	if (d.length != 11) {
 	    throw Exception("o cpf deve ter 11 digitos");
 	}
-    
+
 	int c = 8;
 	int p = d[9];
 	int s = d[9];
-    
+
 	while (c >= 1) {
 	    p += d[c];
 	    s += p;
 	    c -= 1;
 	}
-    
+
 	int j = (s % 11) % 10;
 	int k = ((s - p + 9 * d[10]) % 11) % 10;
-    
-	if (j == d[d.length-1] && k == d[d.length]) {
-	    return true; 
-	} else {
-	    return false;
-	}
+
+	return (j == d[d.length-1]) && (k == d[d.length]);
     }
 }
 
