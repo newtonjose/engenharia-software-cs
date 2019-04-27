@@ -6,12 +6,11 @@ function verificaTipoArray(a) {
     return Array.isArray(a);
 }
 
-
 // 01
 const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
-  let m = Math.floor(num / 100);
-  let n = num % 100;
-  let s = m + n;
+  const m = Math.floor(num / 100);
+  const n = num % 100;
+  const s = m + n;
 
   if (s * s == num) {
     return true;
@@ -30,13 +29,13 @@ const somaCubos = function somaCubosDosDigitosDoNumero(num) {
     throw new RangeError("O numeros devem ser 100 <= num <= 999");
   }
 
-  let pow = Math.pow;
+  const pow = Math.pow;
 
-  let c = Math.floor(num / 100);
-  let du = num % 100;
-  let d = Math.floor(du / 10);
-  let u = du % 10;
-  let s = pow(c, 3) + pow(d, 3) + pow(u, 3);
+  const c = Math.floor(num / 100);
+  const du = num % 100;
+  const d = Math.floor(du / 10);
+  const u = du % 10;
+  const s = pow(c, 3) + pow(d, 3) + pow(u, 3);
     
   if (s == n) {
     return true;
@@ -60,9 +59,9 @@ const diaDaSemana4 = function diaDaSemanaParaData(dia, mes, ano) {
     ano -= 1;
   }
 
-  let i = dia + (2 * mes) + (3 * (mes + 1));
-  let j = 5 + ano + (ano / 4) - (ano / 100) + (ano / 400);
-  let s = i / j;
+  const i = dia + (2 * mes) + (3 * (mes + 1));
+  const j = 5 + ano + (ano / 4) - (ano / 100) + (ano / 400);
+  const s = i / j;
 
   return s % 7;
 }
@@ -139,8 +138,8 @@ const produto = function produtoInteirosUsandoSomas(a, b){
     throw new RangeError("Os numeros a e b tem que ser maior ou igual a zero");
   }
     
-  let totalParcelas = a;
-  let parcela = b;
+  const totalParcelas = a;
+  const parcela = b;
     
   if (b < a) {
     totalParcelas = b;
@@ -195,10 +194,10 @@ const numPi = function calculaNumeroPiDadoNumeroNatual(num) {
     let pi = 0;
 
     while (i <= num) {
-	d += 2;
-	s *= -1;
-	pi += (4 * s) / d;
-	i += 1;
+      d += 2;
+      s *= -1;
+      pi += (4 * s) / d;
+      i += 1;
     }
 
     return pi;
@@ -242,9 +241,10 @@ const razaoAurea = function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
   let c = y;
   let a = x;
   let i = 1;
-
+  let t;
+   
   while (i <= k) {
-    let t = c;
+    t = c;
     c += a;
     a = t;
     i += 1;
@@ -309,10 +309,12 @@ const numPrimo = function verificaNumeroPrimo(n) {
   }
     
   let i = 2;
+  
   while (i < n) {
     if (n % i == 0) { 
       return false; 
     }
+    
     i += 1;
   }
 
@@ -341,11 +343,12 @@ function crivoErastostenes(n, a) {
   }
     
   let i = 2;
-  let limite = Math.sqrt(n);
-  
+  let multiplo;
+  const limite = Math.sqrt(n);
+    
   while (i <= limite) {
     if (a[i] == 0) {
-      let multiplo = i + 1;
+      multiplo = i + 1;
       
       while (multiplo <= n) {
         a[multiplo] = 1;
@@ -366,9 +369,11 @@ function mdc(a, b) {
   if (b > a && b < 0) {
     throw new RangeError("Os numeros deverao ser a >= b e b > 0");
   }
-    
+
+  let m;
+  
   while (b != 0) {
-    let m = a%b;
+    m = a%b;
     a = b;
     b = m;
   }
@@ -452,9 +457,10 @@ function fibonacci(n) {
   }
   
   let i = 1;
+  let t;
   
   while (i <= n) {
-    let t = c;
+    t = c;
     c += a;
     a = t;
     i += 1;
@@ -475,17 +481,18 @@ function cpf(d) {
     
   let j = 0;
   let k = 0;
-  
-  for (let i = 0; i < 9; i++) {
+  let i;
+    
+  for (i = 0; i < 9; i++) {
     j += d[i];
   }
     
-  for (let i=1; i < 10; i++) {
+  for (i = 1; i < 10; i++) {
     k += d[i]; 
   }
     
-  let dj = (j%11) % 10;
-  let dk = (k%11) % 10;
+  const dj = (j % 11) % 10;
+  const dk = (k % 11) % 10;
     
   if (dj == d[d.length - 1] && dk == d[d.length]) {
     return true;
@@ -514,8 +521,8 @@ function cpf2(d) {
     c -= 1;
   }
     
-  let j = (s%11) % 10;
-  let k = ((s-p+9*d[10])%11) % 10;
+  const j = (s % 11) % 10;
+  const k = ((s - p + (9 * d[10])) % 11) % 10;
     
   if (j == d[d.length-1] && k == d[d.length]) {
    	return true; 
