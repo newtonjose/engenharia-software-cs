@@ -1,4 +1,5 @@
-// Java
+package com.github.newtonjose.ufg.cs.aula01;
+
 public class Algoritmos {
 
     public boolean numeroVerdadeiro(int n) {
