@@ -1,6 +1,11 @@
-function _verificaTipoNumero(num) {
+function verificaTipoNumero(num) {
   return typeof num == "number"
 }
+
+function verificaTipoArray(a) {
+    return Array.isArray(a);
+}
+
 
 // 01
 const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
@@ -17,7 +22,7 @@ const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
 
 // 02
 const somaCubos = function somaCubosDosDigitosDoNumero(num) {
-  if ( !is_num(num) ) {
+  if ( !verificaTipoNumero(num) ) {
     throw new TypeError("argumento deve ser um número");
   }
   
@@ -42,7 +47,7 @@ const somaCubos = function somaCubosDosDigitosDoNumero(num) {
 
 // 03
 const diaDaSemana4 = function diaDaSemanaParaData(dia, mes, ano) {
-  if ( !is_num(dia) &&  !is_num(mes) &&  !is_num(ano) ) {
+  if ( !verificaTipoNumero(dia) &&  !verificaTipoNumero(mes) &&  !verificaTipoNumero(ano) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
   
@@ -64,7 +69,7 @@ const diaDaSemana4 = function diaDaSemanaParaData(dia, mes, ano) {
 
 // 04
 const resto = function restoDivisaoInteira(x, y) {
-  if ( !is_num(x) &&  !is_num(y) ) {
+  if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(y) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
   
@@ -83,8 +88,8 @@ const resto = function restoDivisaoInteira(x, y) {
 }
 
 // 05
-cont somaNaturais = function somaPrimeirosNaturaisAteNumero(n) {
-  if ( !is_num(n) ) {
+const somaNaturais = function somaPrimeirosNaturaisAteNumero(n) {
+  if ( !verificaTipoNumero(n) ) {
     throw new TypeError("O argumento deve ser um número");
   }
     
@@ -105,7 +110,7 @@ cont somaNaturais = function somaPrimeirosNaturaisAteNumero(n) {
 
 // 06
 const fatorial = function fatorialNumeroNatual(n) {
-  if ( !is_num(n) ) {
+  if ( !verificaTipoNumero(n) ) {
     throw new TypeError("O argumento deve ser um número");
   }
   
@@ -126,7 +131,7 @@ const fatorial = function fatorialNumeroNatual(n) {
 
 // 07
 const produto = function produtoInteirosUsandoSomas(a, b){
-  if ( !is_num(a) &&  !is_num(b) ) {
+  if ( !verificaTipoNumero(a) &&  !verificaTipoNumero(b) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
   
@@ -155,7 +160,7 @@ const produto = function produtoInteirosUsandoSomas(a, b){
 
 // 08
 const potencia = function calculaPotenciaUsandoSomas(x,  y) {
-  if ( !is_num(x) &&  !is_num(y) ) {
+  if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(y) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
   
@@ -176,7 +181,7 @@ const potencia = function calculaPotenciaUsandoSomas(x,  y) {
 
 // 09
 const numPi = function calculaNumeroPiDadoNumeroNatual(num) {
-  if ( !is_num(num) ) {
+  if ( !verificaTipoNumero(num) ) {
     throw new TypeError("O argumento deve ser um número");
   }
   
@@ -201,7 +206,7 @@ const numPi = function calculaNumeroPiDadoNumeroNatual(num) {
 
 //10
 const logNatual = function calculaLogaritmoNaturalDadoNumerosNautais(n, k){
-  if ( !is_num(n) &&  !is_num(k) ) {
+  if ( !verificaTipoNumero(n) &&  !verificaTipoNumero(k) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
   
@@ -226,7 +231,7 @@ const logNatual = function calculaLogaritmoNaturalDadoNumerosNautais(n, k){
 
 //11
 const razaoAurea = function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
-  if ( !is_num(x) &&  !is_num(y) && !is_num(y) ) {
+  if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(y) && !verificaTipoNumero(y) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
   
@@ -250,7 +255,7 @@ const razaoAurea = function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
 
 //12
 const quadradoPerfeito = function verificaQuadradoPerfeitoDadoNumero(n) {
-  if ( !is_num(n) ) {
+  if ( !verificaTipoNumero(n) ) {
     throw new TypeError("O argumento deve ser um número");
   }
   
@@ -275,7 +280,7 @@ const quadradoPerfeito = function verificaQuadradoPerfeitoDadoNumero(n) {
 
 //13
 const raizQuadrada = function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
-  if ( !is_num(n) &&  !is_num(i) ) {
+  if ( !verificaTipoNumero(n) &&  !verificaTipoNumero(i) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
   
@@ -295,169 +300,226 @@ const raizQuadrada = function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
 
 // 14
 const numPrimo = function verificaNumeroPrimo(n) {
-    if (n < 1){
-	throw new RangeError("O numero 'n' tem que ser maior que 1");
-    }
+  if ( !verificaTipoNumero(n) ) {
+    throw new TypeError("O argumento deve ser um número");
+  }
+  
+  if (n < 1){
+    throw new RangeError("O numero 'n' tem que ser maior que 1");
+  }
     
-    let i = 2;
-    while (i < n) {
-    	if (n % i == 0) { return false; }
-	i += 1;
+  let i = 2;
+  while (i < n) {
+    if (n % i == 0) { 
+      return false; 
     }
-    
-    return true;
+    i += 1;
+  }
+
+  return true;
 }
 
 # 15
-function crivoErastostenes(a, n) {
-    if (n < 1){
-	throw new RangeError("O numero 'n' tem que ser maior que 1");
+function crivoErastostenes(n, a) {
+  if ( !verificaTipoNumero(a) &&  !verificaTipoNumero(n) ) {
+    throw new TypeError("os argumentos devem ser do tipo número");
+  }
+  
+  if ( !verificaTipoArray(a) ) {
+    throw new TypeError("o argumento a deve ser do tipo array");
+  }
+  
+  if (n < 1){
+    throw new RangeError("O numero 'n' tem que ser maior que 1");
+  }
+  
+  // busca por valores diferente de zero
+  for (let i = 2; i < n; i++) {
+    if (a[i] != 0){
+      throw new RangeError("Existe valores em a, onde nao sao iguais a zero");
+    }
+  }
+    
+  let i = 2;
+  let limite = Math.sqrt(n);
+  
+  while (i <= limite) {
+    if (a[i] == 0) {
+      let multiplo = i + 1;
+      
+      while (multiplo <= n) {
+        a[multiplo] = 1;
+        multiplo += i;
+      }
     }
     
-    // busca por valores diferente de zero
-    for (let i = 2; i < n; i++) {
-	if (a[i] != 0){
-	    throw new RangeError("Existe valores em a, onde nao sao iguais a zero");
-	}
-    }
-    
-    let i = 2;
-    let limite = Math.sqrt(n); // numero base 
-    while (i <= limite) {
-	if (a[i] == 0){
-	    let multiplo = i + 1;
-	    while (multiplo <= n){
-		a[multiplo] = 1;
-		multiplo += i;
-	    }
-	}
-	i += 1;
-    }
+    i += 1;
+  }
 }
 
 # 16
 function mdc(a, b) {
-    if (b > a && b < 0){
-	throw new RangeError("Os numeros deverao ser a >= b e b > 0");
-    }
+  if ( !verificaTipoNumero(a) &&  !verificaTipoNumero(b) ) {
+    throw new TypeError("os argumentos devem ser do tipo número");
+  }
+  
+  if (b > a && b < 0) {
+    throw new RangeError("Os numeros deverao ser a >= b e b > 0");
+  }
     
-    while (b != 0){
-	let m = a%b;
-	a = b;
-	b = m;
-    }
-    return a;
+  while (b != 0) {
+    let m = a%b;
+    a = b;
+    b = m;
+  }
+  
+  return a;
 }
 
 # 17
-function mdc2(a, b) {
-    if (b < 0){
-	throw new RangeError("Os numero deverao 'b' tem que ser maior que zero!");
-    }
+function mdc2(b, a) {
+  if ( !verificaTipoNumero(b) ) {
+    throw new TypeError("O argumento b deve ser um número");
+  }
+  
+  if ( !verificaTipoArray(a) ) {
+    throw new TypeError("o argumento a deve ser do tipo array");
+  }
+  
+  if (b < 0){
+    throw new RangeError("Os numero deverao 'b tem que ser maior que zero!");
+  }
 
-    for (let i = 0; i < a.lenth; i++){
-	if (a < b){
+  for (let i = 0; i < a.lenth; i++){
+    if (a < b){
 	    throw new RangeError("Existem valores em no vetor a que e' menor que 'b'!");
-	}
     }
+  }
     
-    while (b != a){
-	// 'a' sempre sera maior que 'b' pelo if anterior
-	if (a > b){
-	    a -= b;
-	} else {
+  while (b != a) {
+    // 'a' sempre sera maior que 'b' pelo if anterior
+    if (a > b) {
+      a -= b;
+    } else {
 	    b -= a;
-	}
     }
-    return a;
+  }
+  
+  return a;
 }
 
 
 #18
 function horner(x, g, a) {
-    if (g < 1) {
-	throw new RangeError("g deve ser maior que zero");
-    }
+  if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(g) ) {
+    throw new TypeError("os argumentos x e g devem ser do tipo número");
+  }
+  
+  if ( !verificaTipoArray(a) ) {
+    throw new TypeError("o argumento a deve ser do tipo array");
+  }
+  
+  if (g < 1) {
+    throw new RangeError("o agumento g deve ser maior que zero");
+  }
 
-    let p = a[g-1];
-    let i = g - 1;
-    while (i >= 0){
-	p = p*x + a[i];
-	i -= 1;
-    }
-    return p;
+  let p = a[g-1];
+  let i = g - 1;
+  
+  while (i >= 0) {
+    p = p*x + a[i];
+    i -= 1;
+  }
+  
+  return p;
 }
 
 #19
 function fibonacci(n) {
-    if (n <= 0){
-	throw new RangeError("O numero 'n' tem que ser n>=0");
-    }
+  if ( !verificaTipoNumero(n) ) {
+    throw new TypeError("O argumento n deve ser um número");
+  }
+  
+  if (n <= 0){
+    throw new RangeError("O argumento 'n' tem que ser n>=0");
+  }
     
-    let a = 0;
-    let c = 1;
-    if (n == 0 || n == 1) {
-	return n;
-    }
-    let i = 1;
-    while (i <= n) {
-	let t = c;
-	c += a;
-	a = t;
-	i += 1;
-    }
+  let a = 0;
+  let c = 1;
+  
+  if (n == 0 || n == 1) {
+    return n;
+  }
+  
+  let i = 1;
+  
+  while (i <= n) {
+    let t = c;
+    c += a;
+    a = t;
+    i += 1;
+  }
 
-    return c;
+  return c;
 }
 
 #20
 function cpf(d) {
-    if (d.length != 11){
+  if ( !verificaTipoArray(d) ) {
+    throw new TypeError("o argumento d deve ser do tipo array");
+  }
+  
+  if (d.length != 11) {
    	throw RangeError("o cpf deve ter 11 digitos");
-    }
+  }
     
-    let j = 0;
-    let k = 0;
-    for (let i = 0; i < 9; i++){
-   	j += d[i];
-    }
+  let j = 0;
+  let k = 0;
+  
+  for (let i = 0; i < 9; i++) {
+    j += d[i];
+  }
     
-    for (let i=1; i < 10; i++){
-   	k += d[i]; 
-    }
+  for (let i=1; i < 10; i++) {
+    k += d[i]; 
+  }
     
-    let dj = (j%11) % 10;
-    let dk = (k%11) % 10;
+  let dj = (j%11) % 10;
+  let dk = (k%11) % 10;
     
-    if (dj == d[d.length - 1] && dk == d[d.length]){
-	return true;
-    } else {
-	return false; 
-    }
+  if (dj == d[d.length - 1] && dk == d[d.length]) {
+    return true;
+  } else {
+    return false; 
+  }
 }
 
 #21
 function cpf2(d) {
-    if (d.length != 11){
-   	throw RangeError("o cpf deve ter 11 digitos");
-    }
+  if ( !verificaTipoArray(d) ) {
+    throw new TypeError("o argumento d deve ser do tipo array");
+  }
+  
+  if (d.length != 11){
+    throw RangeError("o cpf deve ter 11 digitos");
+  }
     
-    let c = 8;
-    let p = d[9];
-    let s = d[9];
+  let c = 8;
+  let p = d[9];
+  let s = d[9];
     
-    while (c >= 1){
-	p += d[c];
-	s += p;
-	c -= 1;
-    }
+  while (c >= 1) {
+    p += d[c];
+    s += p;
+    c -= 1;
+  }
     
-    let j = (s%11) % 10;
-    let k = ((s-p+9*d[10])%11) % 10;
+  let j = (s%11) % 10;
+  let k = ((s-p+9*d[10])%11) % 10;
     
-    if (j == d[d.length-1] && k == d[d.length]){
+  if (j == d[d.length-1] && k == d[d.length]) {
    	return true; 
-    } else {
-	return false;
-    }
+  } else {
+    return false;
+  }
 }
