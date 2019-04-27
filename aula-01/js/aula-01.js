@@ -128,8 +128,8 @@ function produtoInteirosUsandoSomas(a, b){
     throw new RangeError("Os numeros a e b tem que ser maior ou igual a zero");
   }
     
-  const totalParcelas = a;
-  const parcela = b;
+  let totalParcelas = a;
+  let parcela = b;
     
   if (b < a) {
     totalParcelas = b;

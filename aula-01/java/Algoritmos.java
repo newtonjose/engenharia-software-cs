@@ -6,10 +6,10 @@ package com.github.newtonjose.ufg.cs.aula01;
  */
 public class Algoritmos {
 
-    public boolean numeroVerdadeiro(int n) {
-	double i = n / 100;
-	double j = n % 100;
-	double m = i + j;
+    public boolean numeroVerdadeiro(final int n) {
+	final double i = n / 100;
+	final double j = n % 100;
+	final double m = i + j;
 
 	return m * m == n;
     }
@@ -19,15 +19,15 @@ public class Algoritmos {
 	    throw new Exception("O numeros devem ser cdu >= 100 && cdu <= 999");
 	}
 
-	double c = n / 100;
-	double cdu = n % 100;
-	double d = cdu / 10;
-	double u = cdu % 10;
+	double cdu = cdu % 100;
+	final double c = cdu / 100;
+	final double d = cdu / 10;
+	final double u = cdu % 10;
 	
-	return (c * c * c + d * d *  + u * u * u) == n
+	return (c * c * c + d * d *  + u * u * u) == cdu
     }
 
-    public int diaDaSemana(int d, int m, int a) throws Exception {
+    public int diaDaSemana(final int d, int m, int a) throws Exception {
 	if ((d < 1 && d > 31) && (m < 1 && m > 12) && (a <= 1753)) {
 	    throw new Exception("O numeros devem ser d >= 1, d <= 31, d >= 1, d <= 12, a > 1753!");
 	}
@@ -37,14 +37,14 @@ public class Algoritmos {
 	    a = a - 1;
 	}
 
-	int i = d + 2 * m + 3 * (m + 1);
-	double j = 5 + a + (a / 4) – (a / 100) + (a / 400);
-	double s = i / j;
+	final int i = d + 2 * m + 3 * (m + 1);
+	final double j = 5 + a + (a / 4) – (a / 100) + (a / 400);
+	final double s = i / j;
 
 	return s % 7;
     }
 
-    public int restoDivisaoInteira(int x, int y) throws Exception {
+    public int restoDivisaoInteira(final int x, int y) throws Exception {
 	if (y < 0 && x <= 0) {
 	    throw new Exception("O numeros devem ser y >= 0 && x > 0");
 	}
@@ -58,7 +58,7 @@ public class Algoritmos {
 	return s;
     }
 
-    public int somaNaturais(int n) throws Exception {
+    public int somaNaturais(final int n) throws Exception {
 	if (n < 1) {
 	  throw new Exception("O numero 'n' tem que ser n >= 1");
 	}
@@ -74,7 +74,7 @@ public class Algoritmos {
     }
 
 
-    public long fatorial(int n) throws Exception {
+    public long fatorial(final int n) throws Exception {
 	if (n < 1) {
 	    throw new Exception("O numero 'n' tem que ser n >= 1");
 	}
@@ -89,7 +89,7 @@ public class Algoritmos {
 	return f;
     }
 
-    public long produto(int a, int b) throws Exception {
+    public long produto(final int a, final int b) throws Exception {
 	if (a < 0 || b < 0) {
 	    throw new Exception("Os numeros a e b tem que ser maior ou igual a zero");
 	}
@@ -113,7 +113,7 @@ public class Algoritmos {
 	return s;
     }
 
-    public long potencia(int x, int y) {
+    public long potencia(final int x, final int y) {
 	int i = 1;
 	long potencia = 1;
 
@@ -125,7 +125,7 @@ public class Algoritmos {
 	return potencia;
     }
 
-    public double pi(int n) throws Exception {
+    public double pi(final int n) throws Exception {
 	if (n < 1) {
 	    throw new Exception("O numero n tem que ser n >= 1");
 	}
@@ -145,7 +145,7 @@ public class Algoritmos {
 	return p;
     }
 
-    public double logaritmoNatural(int n, int k) throws Exception {
+    public double logaritmoNatural(final int n, final int k) throws Exception {
 	if (n < 1 && k < 2) {
 	    throw new Exception("O numeros tem que ser n >= 1 && k >= 2");
 	}
@@ -165,7 +165,7 @@ public class Algoritmos {
 	return e;
     }
 
-    public double razaoAurea(int x, int y, int k) throws Exception {
+    public double razaoAurea(final int x, final int y, final int k) throws Exception {
 	if ((x < 0 && x > y) && k <= 0 ){
 	    throw new Exception("Números deve ser: x >= 0, x < y e k > 0");
 	}
@@ -184,7 +184,7 @@ public class Algoritmos {
 	return c / a;
     }
 
-    public boolean quadradoPerfeito(int n) throws Exception {
+    public boolean quadradoPerfeito(final int n) throws Exception {
 	if (n < 1) {
             throw new Exception("O numero 'n' deverá ser maior que 1");
         }
@@ -200,7 +200,7 @@ public class Algoritmos {
 	return s = n;
     }
 
-    public double raiz(int n, int i) throws Exception {
+    public double raiz(final int n, int i) throws Exception {
 	if (n < 0) {
 	    throw new Exception("O numero 'n' deverá ser maior que 0");
 	}
@@ -215,7 +215,7 @@ public class Algoritmos {
 	return r;
     }
 
-    public boolean primo(int n) throws Exception {
+    public boolean primo(final int n) throws Exception {
 	if (n < 1) {
 	    throw new Exception("O numero 'n' tem que ser maior que 1");
 	}
@@ -232,7 +232,7 @@ public class Algoritmos {
 	return true;
     }
 
-    public intArray crivoErastostenes(intArray a, int n) throws Exception {
+    public intArray crivoErastostenes(final intArray a, final int n) throws Exception {
 	if (n < 1) {
 	    throw new Exception("O numero 'n' tem que ser maior que 1");
 	}
@@ -245,7 +245,7 @@ public class Algoritmos {
     
 	int i = 2;
 	int multiplo;
-	double limite = Math.sqrt(n);
+	final double limite = Math.sqrt(n);
 	
 	while (i <= limite) {
 	    if (a[i] == 0) {
@@ -302,7 +302,7 @@ public class Algoritmos {
 	return a;
     }
 
-    public int horner(int x, int g, intArray a) throws Exception {
+    public int horner(final int x, final int g, final intArray a) throws Exception {
 	if (g < 1) {
 	    throw new Exception("g deve ser maior que zero");
 	}
@@ -317,7 +317,7 @@ public class Algoritmos {
 	return p;
     }
 
-    public long fibonacci(int n) throws Exception {
+    public long fibonacci(final int n) throws Exception {
 	if (n <= 0) {
 	    throw new Exception("O numero 'n' tem que ser n>=0");
 	}
@@ -341,7 +341,7 @@ public class Algoritmos {
 	return c;
     }
 
-    public boolean cpf(intArray d) throws Exception {
+    public boolean cpf(final intArray d) throws Exception {
 	if (d.length != 11) {
 	    throw Exception("o cpf deve ter 11 digitos");
 	}
@@ -356,13 +356,13 @@ public class Algoritmos {
 	    k += d[i]; 
 	}
 
-	int dj = (j % 11) % 10;
-	int dk = (k % 11) % 10;
+	final int dj = (j % 11) % 10;
+	final int dk = (k % 11) % 10;
 
 	return (dj == d[d.length - 1]) && (dk == d[d.length]);
     }
 
-    public boolean cpf2(intArray d) throws Exception {
+    public boolean cpf2(final intArray d) throws Exception {
 	if (d.length != 11) {
 	    throw Exception("o cpf deve ter 11 digitos");
 	}
@@ -377,8 +377,8 @@ public class Algoritmos {
 	    c -= 1;
 	}
 
-	int j = (s % 11) % 10;
-	int k = ((s - p + 9 * d[10]) % 11) % 10;
+	final int j = (s % 11) % 10;
+	final int k = ((s - p + 9 * d[10]) % 11) % 10;
 
 	return (j == d[d.length-1]) && (k == d[d.length]);
     }
