@@ -1,10 +1,14 @@
 package com.github.newtonjose.ufg.cs.aula01;
 
+
 /**
  * Classe que implementa vários algoritmos acerca de propriedades matemáticas
  * e operações com números.
  */
 public class Algoritmos {
+    private boolean dataInvalida(int d, int m, int a) {
+        return (d < 1 || d > 31) || (m < 1 || m > 12) || (a <= 1753);
+    }
 
     public boolean numeroVerdadeiro(final int n) {
 	final double i = n / 100;
@@ -19,16 +23,16 @@ public class Algoritmos {
 	    throw new IllegalArgumentException("O numeros devem ser cdu >= 100 && cdu <= 999");
 	}
 
-	double cdu = cdu % 100;
+	cdu = cdu % 100;
 	final double c = cdu / 100;
 	final double d = cdu / 10;
 	final double u = cdu % 10;
 	
-	return (c * c * c + d * d *  + u * u * u) == cdu
+	return (c * c * c + d * d *  + u * u * u) == cdu;
     }
 
     public int diaDaSemana(final int d, int m, int a) {
-	if ((d < 1 && d > 31) && (m < 1 && m > 12) && (a <= 1753)) {
+	if (!dataInvalida(d, m, a)) {
 	    throw new IllegalArgumentException("O numeros devem ser d >= 1, d <= 31, d >= 1, d <= 12, a > 1753!");
 	}
 
@@ -38,8 +42,8 @@ public class Algoritmos {
 	}
 
 	final int i = d + 2 * m + 3 * (m + 1);
-	final double j = 5 + a + (a / 4) – (a / 100) + (a / 400);
-	final double s = i / j;
+	final int j = 5 + a + a / 4 - a / 100 + a / 400;
+	final int s = i / j;
 
 	return s % 7;
     }
@@ -89,7 +93,7 @@ public class Algoritmos {
 	return f;
     }
 
-    public long produto(final int a, final int b) {
+    public int produto(final int a, final int b) {
 	if (a < 0 || b < 0) {
 	    throw new IllegalArgumentException("Os numeros a e b tem que ser maior ou igual a zero");
 	}
@@ -103,7 +107,7 @@ public class Algoritmos {
 	}
 
 	int i = 1;
-	long s = 0;
+	int s = 0;
 
 	while (i <= totalParcelas) {
 	    s = s + parcela;
@@ -113,16 +117,16 @@ public class Algoritmos {
 	return s;
     }
 
-    public long potencia(final int x, final int y) {
+    public int potencia(final int x, final int y) {
 	int i = 1;
-	long potencia = 1;
+	int produtorio = 1;
 
 	while (i <= y) {
-	    potencia = potencia(potencia, x);
+	    produtorio = produto(produtorio, x);
 	    i = i + 1;
 	}
 
-	return potencia;
+	return produtorio;
     }
 
     public double pi(final int n) {
@@ -153,7 +157,7 @@ public class Algoritmos {
 	int i = 2;
 	double e = n + 1;
 	int numerador = n;
-	int denomidador = 1;
+	int denominador = 1;
 
 	while (i <= k) {
 	    numerador = numerador * numerador;
@@ -197,7 +201,7 @@ public class Algoritmos {
             s += i;
         }
 
-	return s = n;
+	return s == n;
     }
 
     public double raiz(final int n, int i) {
@@ -232,7 +236,7 @@ public class Algoritmos {
 	return true;
     }
 
-    public intArray crivoErastostenes(final intArray a, final int n) {
+    public int[] crivoErastostenes(final int[] a, final int n) {
 	if (n < 1) {
 	    throw new IllegalArgumentException("O numero 'n' tem que ser maior que 1");
 	}
@@ -284,12 +288,6 @@ public class Algoritmos {
 	    throw new IllegalArgumentException("Os numero deverao 'b' tem que ser maior que zero!");
 	}
 
-	for (int i = 0; i < a.lenth; i++) {
-	    if (a < b) {
-		throw new IllegalArgumentException("Existem valores em no vetor a que e' menor que 'b'!");
-	    }
-	}
-
 	while (b != a) {
 	    // 'a' sempre sera maior que 'b' pelo if anterior
 	    if (a > b) {
@@ -302,7 +300,7 @@ public class Algoritmos {
 	return a;
     }
 
-    public int horner(final int x, final int g, final intArray a) {
+    public int horner(final int x, final int g, final int[] a) {
 	if (g < 1) {
 	    throw new IllegalArgumentException("g deve ser maior que zero");
 	}
@@ -322,7 +320,7 @@ public class Algoritmos {
 	    throw new IllegalArgumentException("O numero 'n' tem que ser n>=0");
 	}
 
-	int a = 0;
+	long a = 0;
 	long c = 1;
 	long t;
 	
@@ -341,9 +339,9 @@ public class Algoritmos {
 	return c;
     }
 
-    public boolean cpf(final intArray d) {
+    public boolean cpf(final int[] d) {
 	if (d.length != 11) {
-	    throw IllegalArgumentException("o cpf deve ter 11 digitos");
+	    throw new IllegalArgumentException("o cpf deve ter 11 digitos");
 	}
 
 	int j = 0;
@@ -362,9 +360,9 @@ public class Algoritmos {
 	return (dj == d[d.length - 1]) && (dk == d[d.length]);
     }
 
-    public boolean cpf2(final intArray d) {
+    public boolean cpf2(final int[] d) {
 	if (d.length != 11) {
-	    throw IllegalArgumentException("o cpf deve ter 11 digitos");
+	    throw new IllegalArgumentException("o cpf deve ter 11 digitos");
 	}
 
 	int c = 8;
@@ -383,4 +381,3 @@ public class Algoritmos {
 	return (j == d[d.length-1]) && (k == d[d.length]);
     }
 }
-

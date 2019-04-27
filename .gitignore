@@ -1,1 +1,5 @@
+# emacs file
 *~
+
+# java compiled file
+*.class
