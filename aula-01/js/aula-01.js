@@ -12,11 +12,7 @@ const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
   const n = num % 100;
   const s = m + n;
 
-  if (s * s == num) {
-    return true;
-  }
-  
-  return false;
+  return s * s == num;
 }
 
 // 02
@@ -29,19 +25,13 @@ const somaCubos = function somaCubosDosDigitosDoNumero(num) {
     throw new RangeError("O numeros devem ser 100 <= num <= 999");
   }
 
-  const pow = Math.pow;
-
   const c = Math.floor(num / 100);
   const du = num % 100;
   const d = Math.floor(du / 10);
   const u = du % 10;
-  const s = pow(c, 3) + pow(d, 3) + pow(u, 3);
-    
-  if (s == n) {
-    return true;
-  }
+  const s = c * c * c + d * d * d + u * u * u;
 
-  return false;
+  return s == n;
 }
 
 // 03
@@ -271,11 +261,7 @@ const quadradoPerfeito = function verificaQuadradoPerfeitoDadoNumero(n) {
     s += i;
   }
 
-  if (s == n) {
-	  return true;
-  }
-    
-  return false;
+  return s == n;
 }
 
 //13
@@ -493,12 +479,9 @@ function cpf(d) {
     
   const dj = (j % 11) % 10;
   const dk = (k % 11) % 10;
-    
-  if (dj == d[d.length - 1] && dk == d[d.length]) {
-    return true;
-  } else {
-    return false; 
-  }
+
+  return (dj == d[d.length - 1]) && (dk == d[d.length]);
+
 }
 
 #21
@@ -523,10 +506,6 @@ function cpf2(d) {
     
   const j = (s % 11) % 10;
   const k = ((s - p + (9 * d[10])) % 11) % 10;
-    
-  if (j == d[d.length-1] && k == d[d.length]) {
-   	return true; 
-  } else {
-    return false;
-  }
+
+  return (j == d[d.length-1]) && (k == d[d.length]);
 }
