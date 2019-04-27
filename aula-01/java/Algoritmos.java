@@ -14,9 +14,9 @@ public class Algoritmos {
 	return m * m == n;
     }
 
-    public boolean propriedade153(int cdu) throws Exception {
+    public boolean propriedade153(int cdu) {
 	if (cdu < 100 && cdu > 999) {
-	    throw new Exception("O numeros devem ser cdu >= 100 && cdu <= 999");
+	    throw new IllegalArgumentException("O numeros devem ser cdu >= 100 && cdu <= 999");
 	}
 
 	double cdu = cdu % 100;
@@ -27,9 +27,9 @@ public class Algoritmos {
 	return (c * c * c + d * d *  + u * u * u) == cdu
     }
 
-    public int diaDaSemana(final int d, int m, int a) throws Exception {
+    public int diaDaSemana(final int d, int m, int a) {
 	if ((d < 1 && d > 31) && (m < 1 && m > 12) && (a <= 1753)) {
-	    throw new Exception("O numeros devem ser d >= 1, d <= 31, d >= 1, d <= 12, a > 1753!");
+	    throw new IllegalArgumentException("O numeros devem ser d >= 1, d <= 31, d >= 1, d <= 12, a > 1753!");
 	}
 
 	if (m == 1 || m == 2) {
@@ -44,9 +44,9 @@ public class Algoritmos {
 	return s % 7;
     }
 
-    public int restoDivisaoInteira(final int x, int y) throws Exception {
+    public int restoDivisaoInteira(final int x, int y) {
 	if (y < 0 && x <= 0) {
-	    throw new Exception("O numeros devem ser y >= 0 && x > 0");
+	    throw new IllegalArgumentException("O numeros devem ser y >= 0 && x > 0");
 	}
 
 	int s = x;
@@ -58,9 +58,9 @@ public class Algoritmos {
 	return s;
     }
 
-    public int somaNaturais(final int n) throws Exception {
+    public int somaNaturais(final int n) {
 	if (n < 1) {
-	  throw new Exception("O numero 'n' tem que ser n >= 1");
+	  throw new IllegalArgumentException("O numero 'n' tem que ser n >= 1");
 	}
 
 	int i = 2;
@@ -74,9 +74,9 @@ public class Algoritmos {
     }
 
 
-    public long fatorial(final int n) throws Exception {
+    public long fatorial(final int n) {
 	if (n < 1) {
-	    throw new Exception("O numero 'n' tem que ser n >= 1");
+	    throw new IllegalArgumentException("O numero 'n' tem que ser n >= 1");
 	}
 
 	int i = 2;
@@ -89,9 +89,9 @@ public class Algoritmos {
 	return f;
     }
 
-    public long produto(final int a, final int b) throws Exception {
+    public long produto(final int a, final int b) {
 	if (a < 0 || b < 0) {
-	    throw new Exception("Os numeros a e b tem que ser maior ou igual a zero");
+	    throw new IllegalArgumentException("Os numeros a e b tem que ser maior ou igual a zero");
 	}
 
 	int totalParcelas = a;
@@ -125,9 +125,9 @@ public class Algoritmos {
 	return potencia;
     }
 
-    public double pi(final int n) throws Exception {
+    public double pi(final int n) {
 	if (n < 1) {
-	    throw new Exception("O numero n tem que ser n >= 1");
+	    throw new IllegalArgumentException("O numero n tem que ser n >= 1");
 	}
 
 	int i = 1;
@@ -145,9 +145,9 @@ public class Algoritmos {
 	return p;
     }
 
-    public double logaritmoNatural(final int n, final int k) throws Exception {
+    public double logaritmoNatural(final int n, final int k) {
 	if (n < 1 && k < 2) {
-	    throw new Exception("O numeros tem que ser n >= 1 && k >= 2");
+	    throw new IllegalArgumentException("O numeros tem que ser n >= 1 && k >= 2");
 	}
 
 	int i = 2;
@@ -165,9 +165,9 @@ public class Algoritmos {
 	return e;
     }
 
-    public double razaoAurea(final int x, final int y, final int k) throws Exception {
+    public double razaoAurea(final int x, final int y, final int k) {
 	if ((x < 0 && x > y) && k <= 0 ){
-	    throw new Exception("Números deve ser: x >= 0, x < y e k > 0");
+	    throw new IllegalArgumentException("Números deve ser: x >= 0, x < y e k > 0");
 	}
 
 	int c = y;
@@ -184,9 +184,9 @@ public class Algoritmos {
 	return c / a;
     }
 
-    public boolean quadradoPerfeito(final int n) throws Exception {
+    public boolean quadradoPerfeito(final int n) {
 	if (n < 1) {
-            throw new Exception("O numero 'n' deverá ser maior que 1");
+            throw new IllegalArgumentException("O numero 'n' deverá ser maior que 1");
         }
 
         int i = 1;
@@ -200,9 +200,9 @@ public class Algoritmos {
 	return s = n;
     }
 
-    public double raiz(final int n, int i) throws Exception {
+    public double raiz(final int n, int i) {
 	if (n < 0) {
-	    throw new Exception("O numero 'n' deverá ser maior que 0");
+	    throw new IllegalArgumentException("O numero 'n' deverá ser maior que 0");
 	}
 	
 	double r = 1;
@@ -215,9 +215,9 @@ public class Algoritmos {
 	return r;
     }
 
-    public boolean primo(final int n) throws Exception {
+    public boolean primo(final int n) {
 	if (n < 1) {
-	    throw new Exception("O numero 'n' tem que ser maior que 1");
+	    throw new IllegalArgumentException("O numero 'n' tem que ser maior que 1");
 	}
 
 	int i = 2;
@@ -232,14 +232,14 @@ public class Algoritmos {
 	return true;
     }
 
-    public intArray crivoErastostenes(final intArray a, final int n) throws Exception {
+    public intArray crivoErastostenes(final intArray a, final int n) {
 	if (n < 1) {
-	    throw new Exception("O numero 'n' tem que ser maior que 1");
+	    throw new IllegalArgumentException("O numero 'n' tem que ser maior que 1");
 	}
     
 	for (int i = 2; i < n; i++) {
 	    if (a[i] != 0){
-		throw new Exception("Existe valores em a, onde nao sao iguais a zero");
+		throw new IllegalArgumentException("Existe valores em a, onde nao sao iguais a zero");
 	    }
 	}
     
@@ -263,9 +263,9 @@ public class Algoritmos {
 	return a;
     }
 
-    public int mdc(int a, int b) throws Exception {
+    public int mdc(int a, int b) {
 	if (b > a && b < 0) {
-	    throw new Exception("Os numeros deverao ser a >= b e b > 0");
+	    throw new IllegalArgumentException("Os numeros deverao ser a >= b e b > 0");
 	}
 
 	int m;
@@ -279,14 +279,14 @@ public class Algoritmos {
 	return a;
     }
     
-    public int mdc2(int a, int b) throws Exception {
+    public int mdc2(int a, int b) {
 	if (b < 0) {
-	    throw new Exception("Os numero deverao 'b' tem que ser maior que zero!");
+	    throw new IllegalArgumentException("Os numero deverao 'b' tem que ser maior que zero!");
 	}
 
 	for (int i = 0; i < a.lenth; i++) {
 	    if (a < b) {
-		throw new Exception("Existem valores em no vetor a que e' menor que 'b'!");
+		throw new IllegalArgumentException("Existem valores em no vetor a que e' menor que 'b'!");
 	    }
 	}
 
@@ -302,9 +302,9 @@ public class Algoritmos {
 	return a;
     }
 
-    public int horner(final int x, final int g, final intArray a) throws Exception {
+    public int horner(final int x, final int g, final intArray a) {
 	if (g < 1) {
-	    throw new Exception("g deve ser maior que zero");
+	    throw new IllegalArgumentException("g deve ser maior que zero");
 	}
 
 	int p = a[g-1];
@@ -317,9 +317,9 @@ public class Algoritmos {
 	return p;
     }
 
-    public long fibonacci(final int n) throws Exception {
+    public long fibonacci(final int n) {
 	if (n <= 0) {
-	    throw new Exception("O numero 'n' tem que ser n>=0");
+	    throw new IllegalArgumentException("O numero 'n' tem que ser n>=0");
 	}
 
 	int a = 0;
@@ -341,9 +341,9 @@ public class Algoritmos {
 	return c;
     }
 
-    public boolean cpf(final intArray d) throws Exception {
+    public boolean cpf(final intArray d) {
 	if (d.length != 11) {
-	    throw Exception("o cpf deve ter 11 digitos");
+	    throw IllegalArgumentException("o cpf deve ter 11 digitos");
 	}
 
 	int j = 0;
@@ -362,9 +362,9 @@ public class Algoritmos {
 	return (dj == d[d.length - 1]) && (dk == d[d.length]);
     }
 
-    public boolean cpf2(final intArray d) throws Exception {
+    public boolean cpf2(final intArray d) {
 	if (d.length != 11) {
-	    throw Exception("o cpf deve ter 11 digitos");
+	    throw IllegalArgumentException("o cpf deve ter 11 digitos");
 	}
 
 	int c = 8;
