@@ -7,7 +7,7 @@ function verificaTipoArray(a) {
 }
 
 // 01
-const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
+function numeroVerdadeiroUsandoPropriedade3025(num) {
   const m = Math.floor(num / 100);
   const n = num % 100;
   const s = m + n;
@@ -16,7 +16,7 @@ const numVerdadeiro = function numeroVerdadeiroUsandoPropriedade3025(num) {
 }
 
 // 02
-const somaCubos = function somaCubosDosDigitosDoNumero(num) {
+function somaCubosDosDigitosDoNumero(num) {
   if ( !verificaTipoNumero(num) ) {
     throw new TypeError("argumento deve ser um número");
   }
@@ -35,7 +35,7 @@ const somaCubos = function somaCubosDosDigitosDoNumero(num) {
 }
 
 // 03
-const diaDaSemana4 = function diaDaSemanaParaData(dia, mes, ano) {
+function diaDaSemanaParaData(dia, mes, ano) {
   if ( !verificaTipoNumero(dia) &&  !verificaTipoNumero(mes) &&  !verificaTipoNumero(ano) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
@@ -57,7 +57,7 @@ const diaDaSemana4 = function diaDaSemanaParaData(dia, mes, ano) {
 }
 
 // 04
-const resto = function restoDivisaoInteira(x, y) {
+function restoDivisaoInteira(x, y) {
   if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(y) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
@@ -77,7 +77,7 @@ const resto = function restoDivisaoInteira(x, y) {
 }
 
 // 05
-const somaNaturais = function somaPrimeirosNaturaisAteNumero(n) {
+function somaPrimeirosNaturaisAteNumero(n) {
   if ( !verificaTipoNumero(n) ) {
     throw new TypeError("O argumento deve ser um número");
   }
@@ -98,7 +98,7 @@ const somaNaturais = function somaPrimeirosNaturaisAteNumero(n) {
 }
 
 // 06
-const fatorial = function fatorialNumeroNatual(n) {
+function fatorialNumeroNatual(n) {
   if ( !verificaTipoNumero(n) ) {
     throw new TypeError("O argumento deve ser um número");
   }
@@ -119,7 +119,7 @@ const fatorial = function fatorialNumeroNatual(n) {
 }
 
 // 07
-const produto = function produtoInteirosUsandoSomas(a, b){
+function produtoInteirosUsandoSomas(a, b){
   if ( !verificaTipoNumero(a) &&  !verificaTipoNumero(b) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
@@ -148,7 +148,7 @@ const produto = function produtoInteirosUsandoSomas(a, b){
 }
 
 // 08
-const potencia = function calculaPotenciaUsandoSomas(x,  y) {
+function calculaPotenciaUsandoSomas(x,  y) {
   if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(y) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
@@ -169,7 +169,7 @@ const potencia = function calculaPotenciaUsandoSomas(x,  y) {
 }
 
 // 09
-const numPi = function calculaNumeroPiDadoNumeroNatual(num) {
+function calculaNumeroPiDadoNumeroNatual(num) {
   if ( !verificaTipoNumero(num) ) {
     throw new TypeError("O argumento deve ser um número");
   }
@@ -194,7 +194,7 @@ const numPi = function calculaNumeroPiDadoNumeroNatual(num) {
 }
 
 //10
-const logNatual = function calculaLogaritmoNaturalDadoNumerosNautais(n, k){
+function calculaLogaritmoNaturalDadoNumerosNautais(n, k){
   if ( !verificaTipoNumero(n) &&  !verificaTipoNumero(k) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
@@ -219,7 +219,7 @@ const logNatual = function calculaLogaritmoNaturalDadoNumerosNautais(n, k){
 }
 
 //11
-const razaoAurea = function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
+function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
   if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(y) && !verificaTipoNumero(y) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
@@ -244,7 +244,7 @@ const razaoAurea = function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
 }
 
 //12
-const quadradoPerfeito = function verificaQuadradoPerfeitoDadoNumero(n) {
+function verificaQuadradoPerfeitoDadoNumero(n) {
   if ( !verificaTipoNumero(n) ) {
     throw new TypeError("O argumento deve ser um número");
   }
@@ -265,7 +265,7 @@ const quadradoPerfeito = function verificaQuadradoPerfeitoDadoNumero(n) {
 }
 
 //13
-const raizQuadrada = function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
+function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
   if ( !verificaTipoNumero(n) &&  !verificaTipoNumero(i) ) {
     throw new TypeError("os argumentos devem ser do tipo número");
   }
@@ -285,7 +285,7 @@ const raizQuadrada = function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
 }
 
 // 14
-const numPrimo = function verificaNumeroPrimo(n) {
+function verificaNumeroPrimo(n) {
   if ( !verificaTipoNumero(n) ) {
     throw new TypeError("O argumento deve ser um número");
   }
