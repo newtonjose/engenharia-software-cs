@@ -306,8 +306,6 @@ function verificaNumeroPrimo(n) {
     return true;
 }
 
-# 15
-
 function crivoErastostenes(n, a) {
     if (!verificaTipoNumero(a) && !verificaTipoNumero(n)) {
         throw new TypeError("os argumentos devem ser do tipo número");
