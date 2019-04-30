@@ -16,9 +16,14 @@ function verificaTipoArray(a) {
  * propriedade 3025.
  */
 function propriedade3025(numero) {
-    const m = Math.floor(numero / 100);
-    const n = numero % 100;
-    const s = m + n;
+    // TODO verificar se null
+    // TODO verificar se é um numero
+    // TODO verificar se é um inteiro
+    // TODO verificar se está na faixa
+
+    const doisPrimeirosDigitos = Math.floor(numero / 100);
+    const doisUltimosDigitos = numero % 100;
+    const s = doisPrimeirosDigitos + doisUltimosDigitos;
 
     return s * s == numero;
 }
