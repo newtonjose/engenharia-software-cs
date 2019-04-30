@@ -2,12 +2,20 @@ function verificaTipoNumero(num) {
     return typeof num == "number"
 }
 
+// TODO nao se confunde com a definição da função existente? Motivação?
 function verificaTipoArray(a) {
     return Array.isArray(a);
 }
 
-// 01
-function numeroVerdadeiroUsandoPropriedade3025(num) {
+/**
+ * Verifica se o número fornecido satisfaz a propriedade 3025.
+ * Consulte detalhes definidos no algoritmo 1.
+ *
+ * @param num {number} O número a ser verificado.
+ * @returns {boolean} O valor verdadeiro se o número fornecido satisfaz a
+ * propriedade 3025.
+ */
+function propriedade3025(num) {
     const m = Math.floor(num / 100);
     const n = num % 100;
     const s = m + n;
