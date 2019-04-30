@@ -122,7 +122,6 @@ function fatorialNumeroNatual(n) {
 
     let i = 2;
     let f = 1;
-
     while (i <= n) {
         f *= i;
         i += 1;
@@ -171,7 +170,6 @@ function calculaPotenciaUsandoSomas(x, y) {
 
     let p = 1;
     let i = 1;
-
     while (i <= y) {
         p = produto(p, x);
         i += 1;
@@ -194,7 +192,6 @@ function calculaNumeroPiDadoNumeroNatual(num) {
     let s = -1;
     let d = -1;
     let pi = 0;
-
     while (i <= num) {
         d += 2;
         s *= -1;
