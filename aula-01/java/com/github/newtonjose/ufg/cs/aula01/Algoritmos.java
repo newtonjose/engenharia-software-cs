@@ -34,7 +34,7 @@ public class Algoritmos {
         return (c * c * c + d * d * +u * u * u) == cdu;
     }
 
-    public int diaDaSemana(final int d, int m, int a) {
+    public int diaDaSemana(final int d, final int m, final int a) {
         if (!dataInvalida(d, m, a)) {
             throw new IllegalArgumentException("O numeros devem ser d >= 1, d <= 31, d >= 1, d <= 12, a > 1753!");
         }
