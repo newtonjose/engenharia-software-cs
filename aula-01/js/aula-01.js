@@ -499,6 +499,8 @@ function cpf2(d) {
         throw RangeError("o cpf deve ter 11 digitos");
     }
 
+    // TODO verificar se números são dígitos (0 a 9 inclusive, apenas).
+
     let c = 8;
     let p = d[9];
     let s = d[9];
