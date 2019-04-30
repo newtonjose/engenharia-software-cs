@@ -9,6 +9,7 @@ public class Algoritmos {
         return (d < 1 || d > 31) || (m < 1 || m > 12) || (a <= 1753);
     }
 
+    // TODO numero verdadeiro, neste contexto, não tem sentido. Mude o nome!
     public boolean numeroVerdadeiro(final int n) {
         final double i = n / 100;
         final double j = n % 100;
@@ -19,7 +20,8 @@ public class Algoritmos {
 
     public boolean propriedade153(int cdu) {
         if (cdu < 100 && cdu > 999) {
-            throw new IllegalArgumentException("O numeros devem ser cdu >= 100 && cdu <= 999");
+            throw new IllegalArgumentException("O numeros devem ser cdu >= 100 "
+                    + "&& cdu <= 999");
         }
 
         cdu = cdu % 100;
