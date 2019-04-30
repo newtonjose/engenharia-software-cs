@@ -25,7 +25,7 @@ function propriedade3025(numero) {
     const doisUltimosDigitos = numero % 100;
     const s = doisPrimeirosDigitos + doisUltimosDigitos;
 
-    return s * s == numero;
+    return (s * s) == numero;
 }
 
 // 02
