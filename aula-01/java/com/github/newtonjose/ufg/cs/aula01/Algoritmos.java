@@ -24,6 +24,8 @@ public class Algoritmos {
                     + "&& cdu <= 999");
         }
 
+        // FIXME provavelmente é um bug (verifique o algoritmo)!
+        // TODO adicionalmente, não deveria usar parametro como variavel local
         cdu = cdu % 100;
         final double c = cdu / 100;
         final double d = cdu / 10;
