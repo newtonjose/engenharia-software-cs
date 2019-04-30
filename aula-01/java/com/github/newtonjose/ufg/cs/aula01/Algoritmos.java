@@ -1,6 +1,5 @@
 package com.github.newtonjose.ufg.cs.aula01;
 
-
 /**
  * Classe que implementa vários algoritmos acerca de propriedades matemáticas
  * e operações com números.
