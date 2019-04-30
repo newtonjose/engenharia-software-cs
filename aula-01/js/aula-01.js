@@ -275,7 +275,7 @@ function verificaQuadradoPerfeitoDadoNumero(n) {
 }
 
 //13
-function calcualRaizQuadradaUsandoMetodoBabilonico(n, i) {
+function raizQuadrada(n, i) {
     if (!verificaTipoNumero(n) && !verificaTipoNumero(i)) {
         throw new TypeError("os argumentos devem ser do tipo número");
     }
