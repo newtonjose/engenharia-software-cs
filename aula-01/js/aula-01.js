@@ -190,13 +190,14 @@ function calculaNumeroPiDadoNumeroNatual(num) {
 
     let i = 1;
     let s = -1;
+    // TODO se d é um gerador de ímpares, não seria melhor impar como nome?
     let d = -1;
     let pi = 0;
     while (i <= num) {
-        d += 2;
-        s *= -1;
-        pi += (4 * s) / d;
-        i += 1;
+        d = d + 2;
+        s = -s;
+        pi = pi + (4 * s) / d;
+        i = i + 1;
     }
 
     return pi;
