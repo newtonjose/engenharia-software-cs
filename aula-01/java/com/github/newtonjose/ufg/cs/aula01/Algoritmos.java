@@ -34,21 +34,20 @@ public class Algoritmos {
         return (c * c * c + d * d * +u * u * u) == cdu;
     }
 
-    public int diaDaSemana(final int d, final int m, final int a) {
-        if (!dataInvalida(d, m, a)) {
+    public int diaDaSemana(final int dia, final int mes, final int ano) {
+        if (!dataInvalida(dia, mes, ano)) {
             throw new IllegalArgumentException("O numeros devem ser d >= 1, d <= 31, d >= 1, d <= 12, a > 1753!");
         }
 
-        if (m == 1 || m == 2) {
-            m = m + 12;
-            a = a - 1;
-        }
+        final boolean janeiroOuFevereiro = mes == 1 || mes == 2;
+        final int m = janeiroOuFevereiro ? mes + 12 : mes;
+        final int a = janeiroOuFevereiro ? ano - 1 : ano;
 
-        final int i = d + 2 * m + 3 * (m + 1);
-        final int j = 5 + a + a / 4 - a / 100 + a / 400;
-        final int s = i / j;
+        // FIXME expressao nao esta correta
+        final int drDobbsExpr = (dia + 2 * m + 3 * (m + 1)) / (5 + a + a / 4
+                - a / 100 + a / 400);
 
-        return s % 7;
+        return drDobbsExpr % 7;
     }
 
     public int restoDivisaoInteira(final int x, int y) {
