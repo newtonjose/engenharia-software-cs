@@ -11,16 +11,16 @@ function verificaTipoArray(a) {
  * Verifica se o número fornecido satisfaz a propriedade 3025.
  * Consulte detalhes definidos no algoritmo 1.
  *
- * @param num {number} O número a ser verificado.
+ * @param numero {number} O número a ser verificado.
  * @returns {boolean} O valor verdadeiro se o número fornecido satisfaz a
  * propriedade 3025.
  */
-function propriedade3025(num) {
-    const m = Math.floor(num / 100);
-    const n = num % 100;
+function propriedade3025(numero) {
+    const m = Math.floor(numero / 100);
+    const n = numero % 100;
     const s = m + n;
 
-    return s * s == num;
+    return s * s == numero;
 }
 
 // 02
