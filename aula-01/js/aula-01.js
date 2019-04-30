@@ -139,8 +139,8 @@ function produtoInteirosUsandoSomas(a, b) {
     let i = 1;
     let s = 0;
     while (i <= totalParcelas) {
-        s += parcela;
-        i += 1;
+        s = s + parcela;
+        i = i + 1;
     }
 
     return s;
