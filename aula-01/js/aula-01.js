@@ -1,4 +1,4 @@
-function verificaTipoNumero(num) {
+function seTipoNumerico(num) {
     return typeof num == "number"
 }
 
@@ -30,7 +30,7 @@ function propriedade3025(numero) {
 
 // 02
 function somaCubosDosDigitosDoNumero(num) {
-    if (!verificaTipoNumero(num)) {
+    if (!seTipoNumerico(num)) {
         throw new TypeError("argumento deve ser um número");
     }
 
@@ -49,7 +49,7 @@ function somaCubosDosDigitosDoNumero(num) {
 
 // 03
 function diaDaSemanaParaData(dia, mes, ano) {
-    if (!verificaTipoNumero(dia) && !verificaTipoNumero(mes) && !verificaTipoNumero(ano)) {
+    if (!seTipoNumerico(dia) && !seTipoNumerico(mes) && !seTipoNumerico(ano)) {
         throw new TypeError("os argumentos devem ser do tipo número");
     }
 
@@ -71,7 +71,7 @@ function diaDaSemanaParaData(dia, mes, ano) {
 
 // 04
 function restoDivisaoInteira(x, y) {
-    if (!verificaTipoNumero(x) && !verificaTipoNumero(y)) {
+    if (!seTipoNumerico(x) && !seTipoNumerico(y)) {
         throw new TypeError("os argumentos devem ser do tipo número");
     }
 
@@ -91,7 +91,7 @@ function restoDivisaoInteira(x, y) {
 
 // 05
 function somaPrimeirosNaturaisAteNumero(n) {
-    if (!verificaTipoNumero(n)) {
+    if (!seTipoNumerico(n)) {
         throw new TypeError("O argumento deve ser um número");
     }
 
@@ -112,7 +112,7 @@ function somaPrimeirosNaturaisAteNumero(n) {
 
 // 06
 function fatorialNumeroNatual(n) {
-    if (!verificaTipoNumero(n)) {
+    if (!seTipoNumerico(n)) {
         throw new TypeError("O argumento deve ser um número");
     }
 
@@ -132,7 +132,7 @@ function fatorialNumeroNatual(n) {
 
 // 07
 function produtoInteirosUsandoSomas(a, b) {
-    if (!verificaTipoNumero(a) && !verificaTipoNumero(b)) {
+    if (!seTipoNumerico(a) && !seTipoNumerico(b)) {
         throw new TypeError("os argumentos devem ser do tipo número");
     }
 
@@ -160,7 +160,7 @@ function produtoInteirosUsandoSomas(a, b) {
 
 // 08
 function calculaPotenciaUsandoSomas(x, y) {
-    if (!verificaTipoNumero(x) && !verificaTipoNumero(y)) {
+    if (!seTipoNumerico(x) && !seTipoNumerico(y)) {
         throw new TypeError("os argumentos devem ser do tipo número");
     }
 
@@ -180,7 +180,7 @@ function calculaPotenciaUsandoSomas(x, y) {
 
 // 09
 function calculaNumeroPiDadoNumeroNatual(num) {
-    if (!verificaTipoNumero(num)) {
+    if (!seTipoNumerico(num)) {
         throw new TypeError("O argumento deve ser um número");
     }
 
@@ -205,7 +205,7 @@ function calculaNumeroPiDadoNumeroNatual(num) {
 
 //10
 function calculaLogaritmoNaturalDadoNumerosNautais(n, k) {
-    if (!verificaTipoNumero(n) && !verificaTipoNumero(k)) {
+    if (!seTipoNumerico(n) && !seTipoNumerico(k)) {
         throw new TypeError("os argumentos devem ser do tipo número");
     }
 
@@ -230,7 +230,7 @@ function calculaLogaritmoNaturalDadoNumerosNautais(n, k) {
 
 //11
 function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
-    if (!verificaTipoNumero(x) && !verificaTipoNumero(y) && !verificaTipoNumero(y)) {
+    if (!seTipoNumerico(x) && !seTipoNumerico(y) && !seTipoNumerico(y)) {
         throw new TypeError("os argumentos devem ser do tipo número");
     }
 
@@ -255,7 +255,7 @@ function calculaRazaoAureaDadoNumerosInteiros(x, y, k) {
 
 //12
 function verificaQuadradoPerfeitoDadoNumero(n) {
-    if (!verificaTipoNumero(n)) {
+    if (!seTipoNumerico(n)) {
         throw new TypeError("O argumento deve ser um número");
     }
 
@@ -276,7 +276,7 @@ function verificaQuadradoPerfeitoDadoNumero(n) {
 
 //13
 function raizQuadrada(n, i) {
-    if (!verificaTipoNumero(n) && !verificaTipoNumero(i)) {
+    if (!seTipoNumerico(n) && !seTipoNumerico(i)) {
         throw new TypeError("os argumentos devem ser do tipo número");
     }
 
@@ -296,7 +296,7 @@ function raizQuadrada(n, i) {
 
 // 14
 function verificaNumeroPrimo(n) {
-    if (!verificaTipoNumero(n)) {
+    if (!seTipoNumerico(n)) {
         throw new TypeError("O argumento deve ser um número");
     }
 
@@ -318,7 +318,7 @@ function verificaNumeroPrimo(n) {
 }
 
 function crivoErastostenes(n, a) {
-    if (!verificaTipoNumero(a) && !verificaTipoNumero(n)) {
+    if (!seTipoNumerico(a) && !seTipoNumerico(n)) {
         throw new TypeError("os argumentos devem ser do tipo número");
     }
 
@@ -358,7 +358,7 @@ function crivoErastostenes(n, a) {
 # 16
 
 function mdc(a, b) {
-    if (!verificaTipoNumero(a) && !verificaTipoNumero(b)) {
+    if (!seTipoNumerico(a) && !seTipoNumerico(b)) {
         throw new TypeError("os argumentos devem ser do tipo número");
     }
 
@@ -380,7 +380,7 @@ function mdc(a, b) {
 # 17
 
 function mdc2(b, a) {
-    if (!verificaTipoNumero(b)) {
+    if (!seTipoNumerico(b)) {
         throw new TypeError("O argumento b deve ser um número");
     }
 
@@ -404,7 +404,7 @@ function mdc2(b, a) {
 #18
 
 function horner(x, g, a) {
-    if (!verificaTipoNumero(x) && !verificaTipoNumero(g)) {
+    if (!seTipoNumerico(x) && !seTipoNumerico(g)) {
         throw new TypeError("os argumentos x e g devem ser do tipo número");
     }
 
@@ -430,7 +430,7 @@ function horner(x, g, a) {
 #19
 
 function fibonacci(n) {
-    if (!verificaTipoNumero(n)) {
+    if (!seTipoNumerico(n)) {
         throw new TypeError("O argumento n deve ser um número");
     }
 
