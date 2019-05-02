@@ -3,3 +3,6 @@
 
 # java compiled file
 *.class
+
+# node files
+aula-01/js/node_modules/
