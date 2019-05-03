@@ -1,38 +1,59 @@
-function verificaTipoNumero(num) {
-  return typeof num == "number"
+/**
+* 21 algoritmos matemáticos com o propósito de fazer aquecimento em
+* Construção de Software.
+*
+* <p>Os algoritmos implementados está disponíveis na <a href=""/>aula 01.</p>
+*/
+class Algoritmos {
+    /** Função auxiliar que verifica se um dado paramêtro é do tipo 'number' **/
+    function verificaTipoNumero(num) {
+      return typeof num == "number"
+    }
+
+    /** Função auxiliar que verifica se um dado paramêtro é tipo 'array' **/
+    function verificaTipoArray(a) {
+        return Array.isArray(a);
+    }
+
+    /**
+    * Verifica se um dado numero é verdadeiro usando a Propriedade 3025.
+    *
+    * @param {number} n Numero inteiro natural.
+    *
+    * @returns {boolean} Valor lógico: verdadeiro ou falso.
+    **/
+    function numeroVerdadeiroUsandoPropriedade3025(n) {
+      const m = Math.floor(n / 100);
+      const n = n % 100;
+      const s = m + n;
+
+      return s * s == n;
+    }
+
+    /** **/
+    function somaCubosDosDigitosDoNumero(num) {
+      if ( !verificaTipoNumero(num) ) {
+        throw new TypeError("argumento deve ser um número");
+      }
+
+      if (num < 100 && num > 999) {
+        throw new RangeError("O numeros devem ser 100 <= num <= 999");
+      }
+
+      const c = Math.floor(num / 100);
+      const du = num % 100;
+      const d = Math.floor(du / 10);
+      const u = du % 10;
+      const s = c * c * c + d * d * d + u * u * u;
+
+      return s == n;
+    }
 }
 
-function verificaTipoArray(a) {
-    return Array.isArray(a);
-}
-
-// 01
-function numeroVerdadeiroUsandoPropriedade3025(num) {
-  const m = Math.floor(num / 100);
-  const n = num % 100;
-  const s = m + n;
-
-  return s * s == num;
-}
+module.exports = Algoritmos;
 
 // 02
-function somaCubosDosDigitosDoNumero(num) {
-  if ( !verificaTipoNumero(num) ) {
-    throw new TypeError("argumento deve ser um número");
-  }
-  
-  if (num < 100 && num > 999) {
-    throw new RangeError("O numeros devem ser 100 <= num <= 999");
-  }
 
-  const c = Math.floor(num / 100);
-  const du = num % 100;
-  const d = Math.floor(du / 10);
-  const u = du % 10;
-  const s = c * c * c + d * d * d + u * u * u;
-
-  return s == n;
-}
 
 // 03
 function diaDaSemanaParaData(dia, mes, ano) {
