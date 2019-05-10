@@ -3,59 +3,63 @@
  * Construção de Software.
  *
  * <p>Os algoritmos implementados estão disponíveis na 
- * <a href=""/>aula 01.</p>
+ * <a href="https://drive.google.com/file/d/1zCxtSyjkEvF6T3ieJ0r3_BJii9kx-FMI"/>
+ * aula 01.</p>
+ *
+ * @type {module.Algoritmos}
  */
 class Algoritmos {
-    /** Função auxiliar que verifica se um dado paramêtro é 
-     * do tipo 'number'.
+    /**
+     * Função auxiliar que verifica se um dado paramêtro é do tipo 'number'.
      **/
-    function verificaTipoNumero(n) {
+     verificaTipoNumero(n) {
         return typeof n == "number";
     }
 
-    /** Função auxiliar que verifica se um dado paramêtro é 
-     * do tipo 'array' 
+    /**
+     * Função auxiliar que verifica se um dado paramêtro é do tipo 'array'.
      **/
-    function verificaTipoArray(a) {
+     verificaTipoArray(a) {
         return Array.isArray(a);
     }
 
     /**
-     * Verifica se um dado numero é verdadeiro usando a
-     * Propriedade 3025.
+     * Verifica se um dado numero é verdadeiro usando a Propriedade 3025.
      *
      * @param {number} n Numero inteiro natural.
      *
      * @returns {boolean} true ou false Valor lógico.
      **/
-    function numeroVerdadeiroUsandoPropriedade3025(n) {
+     numeroVerdadeiroUsandoPropriedade3025(n) {
         const m = Math.floor(n / 100);
-        const n = n % 100;
+        const p = n % 100;
         const s = m + n;
 
-        return s * s == n;
+        return s * s == p;
     }
 
     /**
      * Verifica se a soma dos cubos dos digitos de um dado número é
      * igual ao número dado.
      *
-     * @param {number} num Numero inteiro natural.
+     * @param {number} n Numero inteiro natural.
      *
      * @returns {boolean} true ou false Valor lógico.
+     *
+     * @throws {TypeError} Se o argumento não for um número.
+     * @throws {RangeError} Se o argumento estiver fora do intervalo 100 a 999.
      **/
-    function somaCubosDosDigitosDoNumero(num) {
-        if ( !verificaTipoNumero(num) ) {
-            throw new TypeError("argumento deve ser um número");
+     somaCubosDosDigitosDoNumero(n) {
+        if ( !verificaTipoNumero(n) ) {
+            throw new TypeError("Argumento deve ser um número");
         }
 
-        if (num < 100 && num > 999) {
-            throw new RangeError("O numeros devem ser \
-                100 <= num <= 999");
+        if (n < 100 && n > 999) {
+            throw new RangeError("O numeros devem ser 100 <= n <= 999");
         }
 
-        const c = Math.floor(num / 100);
-        const du = num % 100;
+        const c = Math.floor(n / 100);
+        const du = n % 100;
         const d = Math.floor(du / 10);
         const u = du % 10;
         const s = c * c * c + d * d * d + u * u * u;
@@ -72,18 +76,20 @@ class Algoritmos {
      * @param {number} ano Número natural maior ou igual a 1753.
      *
      * @returns {number} Numero natural entre 0 e 8.
+     *
+     * @throws {TypeError} Se qualquer um dos argumentos não for um número.
+     * @throws {RangeError} Se os argumentos estiver fora dos seguintes
+     * intervalos: 1 <= dia <= 31; 1 <= mes <= 12 e ano > 1753.
      **/
-    function diaDaSemanaParaData(dia, mes, ano) {
+     diaDaSemanaParaData(dia, mes, ano) {
         if ( !verificaTipoNumero(dia) &&  !verificaTipoNumero(mes) &&
              !verificaTipoNumero(ano) ) {
-            throw new TypeError("os argumentos devem ser do \
-                tipo número");
+            throw new TypeError("os argumentos devem ser do tipo número");
         }
 
-        if ((dia < 1 && dia > 31) && (mes < 1 && mes > 12) &&
-            (ano <= 1753)) {
-            throw new RangeError("O numeros devem ser d >= 1, \
-                d <= 31, m >= 1, m <= 12, a > 1753!");
+        if ((dia < 1 && dia > 31) && (mes < 1 && mes > 12) && (ano <= 1753)) {
+            throw new RangeError("O numeros devem ser 1 <= dia <= 31; \ " +
+                "1 <= mes <= 12 e ano > 1753!");
         }
 
         if (mes == 1 || mes == 2) {
@@ -106,11 +112,14 @@ class Algoritmos {
      * @param {number} y Número racional.
      *
      * @returns {number} resto Número inteiro natural.
+     *
+     * @throws {TypeError} Se qualquer um dos argumentos não for um número.
+     * @throws {RangeError} Se os argumentos estiver fora dos intervalos:
+     * y >= 0; x > 0.
      **/
-    function restoDivisaoInteira(x, y) {
+     restoDivisaoInteira(x, y) {
         if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(y) ) {
-            throw new TypeError("os argumentos devem ser do tipo \
-                número");
+            throw new TypeError("os argumentos devem ser do tipo número");
         }
 
         if (y < 0 && x <= 0) {
@@ -133,9 +142,12 @@ class Algoritmos {
      *
      * @param {number} n Número inteiro natural.
      *
-     * returns {number} s Número inteiro natual.
+     * @returns {number} s Número inteiro natural.
+     *
+     * @throws {TypeError} Se o argumento não for um número.
+     * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
-    function somaPrimeirosNaturaisAteNumero(n) {
+     somaPrimeirosNaturaisAteNumero(n) {
         if ( !verificaTipoNumero(n) ) {
             throw new TypeError("O argumento deve ser um número");
         }
@@ -162,9 +174,11 @@ class Algoritmos {
      * @param {number} n Número inteiro natural.
      *
      * @returns {number} fat Número inteiro natural.
+     *
+     * @throws {TypeError} Se o argumento não for um número.
+     * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
-
-    function fatorialNumeroNatual(n) {
+     fatorialNumeroNatual(n) {
         if ( !verificaTipoNumero(n) ) {
             throw new TypeError("O argumento deve ser um número");
         }
@@ -192,16 +206,19 @@ class Algoritmos {
      * @param {number} b Número inteiro natural.
      *
      * @returns {number} prod Número inteiro natural.
+     *
+     * @throws {TypeError} Se qualquer um dos argumentos não for um número.
+     * @throws {RangeError} Se os argumentos estiverem fora dos intervalos:
+     * a >= 0; b >= 0.
      **/
-    function produtoInteirosUsandoSomas(a, b){
+     produtoInteirosUsandoSomas(a, b){
         if ( !verificaTipoNumero(a) &&  !verificaTipoNumero(b) ) {
             throw new TypeError("os argumentos devem ser do tipo \
                 número");
         }
 
         if (a < 0 || b < 0) {
-            throw new RangeError("Os numeros a e b tem que ser \
-                maior ou igual a zero");
+            throw new RangeError("Os argumentos devem ser: a >= 0; b >= 0");
         }
 
         let totalParcelas = a;
@@ -230,16 +247,18 @@ class Algoritmos {
      * @param {number} y Número inteiro natural.
      *
      * @returns {number} p Número inteiro natural.
+     *
+     * @throws {TypeError} Se qualquer um dos argumentos não for um número.
+     * @throws {RangeError} Se os argumentos estiver fora dos intervalos:
+     * x >= 0; y >= 0.
      **/
-    function calculaPotenciaUsandoSomas(x,  y) {
+     calculaPotenciaUsandoSomas(x,  y) {
         if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(y) ) {
-            throw new TypeError("os argumentos devem ser do tipo \
-                número");
+            throw new TypeError("Os argumentos devem ser do tipo número");
         }
 
         if (x < 0 || y < 0) {
-            throw new RangeError("Os numeros x e y tem que ser \
-                maior ou igual a zero");
+            throw new RangeError("Os argumentos devem ser: x >= 0; y >= 0");
         }
 
         let p = 1;
@@ -259,8 +278,11 @@ class Algoritmos {
      * @param {number} n Numero inteiro natural.
      *
      * @returns {number} pi Número racional positivo.
+     *
+     * @throws {TypeError} Se o argumento não for um número.
+     * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
-    function calculaNumeroPiDadoNumeroNatual(n) {
+     calculaNumeroPiDadoNumeroNatual(n) {
         if ( !verificaTipoNumero(n) ) {
             throw new TypeError("O argumento deve ser um número");
         }
@@ -293,22 +315,24 @@ class Algoritmos {
      * aproximação.
      *
      * @returns {number} e Número racional positivo.
+     *
+     * @throws {TypeError} Se qualquer um dos argumentos não for um número.
+     * @throws {RangeError} Se os argumentos estiver fora dos intervalos:
+     * n >= 1; k >= 2.
      **/
-    function calculaLogaritmoNatural(n, k){
+     calculaLogaritmoNatural(n, k){
         if ( !verificaTipoNumero(n) &&  !verificaTipoNumero(k) ) {
-            throw new TypeError("os argumentos devem ser do tipo \
-                número");
+            throw new TypeError("Os argumentos devem ser do tipo número");
         }
 
         if (n < 1 && k < 2) {
-            throw new RangeError("O numeros tem que ser n >= 1 && \
-                k >= 2");
+            throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
         }
 
         let i = 2;
         let e = n + 1;
         let numerador = n;
-        let denomidador = 1;
+        let denominador = 1;
 
         while (i <= k) {
             numerador *= numerador;
@@ -326,20 +350,22 @@ class Algoritmos {
      *
      * @param {number} x Numero inteiro natural.
      * @param {number} y Numero inteiro natural.
-     * @param {number} k Numero inteiro natural usado como fator
-     * de prescisão.
+     * @param {number} k Numero inteiro natural usado como fator de prescisão.
      *
      * @returns {number} c/a Número racional positivo.
+     *
+     * @throws {TypeError} Se qualquer um dos argumentos não for um número.
+     * @throws {RangeError} Se os argumentos estiverem fora dos intervalos:
+     * x >= 0; x < y e k > 0.
      **/
-    function calculaRazaoAurea(x, y, k) {
+     calculaRazaoAurea(x, y, k) {
         if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(y) &&
-             !verificaTipoNumero(y) ) {
-            throw new TypeError("os argumentos devem ser do tipo número");
+            !verificaTipoNumero(y) ) {
+            throw new TypeError("Os argumentos devem ser do tipo número");
         }
 
         if ((x < 0 && x > y) && k <= 0 ){
-            throw new RangeError("Números deve ser: \
-                x >= 0, x < y e k > 0");
+            throw new RangeError("Números deve ser: x >= 0, x < y e k > 0");
         }
 
         let c = y;
@@ -364,12 +390,15 @@ class Algoritmos {
     * @param {number} n Número inteiro.
     *
     * @returns {boolean} true ou false Valor lógico.
+    *
+    * @throws {TypeError} Se o argumento não for um número.
+    * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
     **/
-    function verificaQuadradoPerfeitoDadoNumero(n) {
+    verificaQuadradoPerfeitoDadoNumero(n) {
         if ( !verificaTipoNumero(n) ) {
             throw new TypeError("O argumento deve ser um número");
         }
-        
+
         if (n < 1) {
             throw new RangeError("O numero 'n' deverá ser maior que 1");
         }
@@ -393,11 +422,14 @@ class Algoritmos {
      * prescisão.
      *
      * @returns {number} r Número racional positivo.
+     *
+     * @throws {TypeError} Se qualquer um dos argumentos não for um número.
+     * @throws {RangeError} Se os argumentos estiverem fora dos intervalos:
+     * n > 0.
      **/
-    function calcualRaizQuadrada(n, i) {
+     calcualRaizQuadrada(n, i) {
         if ( !verificaTipoNumero(n) &&  !verificaTipoNumero(i) ) {
-            throw new TypeError("os argumentos devem ser do tipo \
-            número");
+            throw new TypeError("os argumentos devem ser do tipo número");
         }
         
         if (n < 0) {
@@ -421,8 +453,11 @@ class Algoritmos {
      * @param {number} n Número inteiro natural.
      *
      * @returns {boolean} true ou false Valor lógico.
+     *
+     * @throws {TypeError} Se o argumento não for um número.
+     * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
-    function verificaNumeroPrimo(n) {
+     verificaNumeroPrimo(n) {
         if ( !verificaTipoNumero(n) ) {
         throw new TypeError("O argumento deve ser um número");
         }
@@ -452,8 +487,13 @@ class Algoritmos {
      * @param {array} a Array de inteiros, com valores iguais a zero.
      *
      * @returns {boolean} true ou false Valor lógico.
+     *
+     * @throws {TypeError} Se qualquer um dos argumentos não for um número.
+     * @throws {TypeError} Se o argumento a não for um array.
+     * @throws {RangeError} Se o argumento estiver for do intervalo: n > 1.
+     * @throws {RangeError} Se o argumento array tiver valor diferente de zero.
      **/
-    function crivoErastostenes(n, a) {
+     crivoErastostenes(n, a) {
         if ( !verificaTipoNumero(a) &&  !verificaTipoNumero(n) ) {
             throw new TypeError("os argumentos devem ser do tipo \
                 número");
@@ -503,16 +543,18 @@ class Algoritmos {
      * @param {number} b Número inteiro natural.
      *
      * @returns {number} a Número inteiro natural.
+     *
+     * @throws {TypeError} Se qualquer um dos argumentos não for um número.
+     * @throws {RangeError} Se os argumentos estiverem fora dos intervalos:
+     * a >= b e b > 0.
      **/
-    function maiorDivisorComum(a, b) {
+     maiorDivisorComum(a, b) {
         if ( !verificaTipoNumero(a) &&  !verificaTipoNumero(b) ) {
-            throw new TypeError("os argumentos devem ser do tipo \
-                número");
+            throw new TypeError("Os argumentos devem ser do tipo número");
         }
 
         if (b > a && b < 0) {
-            throw new RangeError("Os numeros deverao ser \
-                a >= b e b > 0");
+            throw new RangeError("Os numeros deverao ser a >= b e b > 0");
         }
 
         let m;
@@ -534,8 +576,12 @@ class Algoritmos {
      * @param {array} a Array de números inteiros naturais.
      *
      * @returns {array} a Array de números inteiros naturais.
+     *
+     * @throws {TypeError} Se o primeiro argumento não for um número.
+     * @throws {RangeError} Se o primeiro argumento estiver fora do intervalo:
+     * b > 0.
      **/
-    function maiorDivisorComumSemResto(b, a) {
+     maiorDivisorComumSemResto(b, a) {
         if ( !verificaTipoNumero(b) ) {
             throw new TypeError("O argumento b deve ser um número");
         }
@@ -565,11 +611,15 @@ class Algoritmos {
      * @param {array} a Array de numeros rais.
      *
      * @returns {number} p Número real.
+     *
+     * @throws {TypeError} Se os dois primeiros argumentos não forem um número.
+     * @throws {TypeError} Se o terceiro argumento não for um array.
+     * @throws {RangeError} Se o segundo argumento estiver for do intervalo:
+     * g > 1.
      **/
-    function regraHorner(x, g, a) {
+     regraHorner(x, g, a) {
         if ( !verificaTipoNumero(x) &&  !verificaTipoNumero(g) ) {
-            throw new TypeError("os argumentos x e g devem ser do \
-                tipo número");
+            throw new TypeError("os argumentos x e g devem ser do tipo número");
         }
 
         if ( !verificaTipoArray(a) ) {
@@ -597,8 +647,11 @@ class Algoritmos {
      * @param {number} n Número inteiro natural.
      *
      * @returns {number} f Número inteiro natural.
+     *
+     * @throws {TypeError} Se o argumento não for um número.
+     * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 0.
      **/
-    function fibonacci(n) {
+     fibonacci(n) {
         if ( !verificaTipoNumero(n) ) {
             throw new TypeError("O argumento n deve ser um número");
         }
@@ -634,14 +687,30 @@ class Algoritmos {
      * @param {array} a Array de numeros rais.
      * 
      * @returns {boolean} true ou false Valor lógico.
+     *
+     * @throws {TypeError} Se o argumento não for um array.
+     * @throws {TypeError} Se o argumento tiver elemento que não é número.
+     * @throws {RangeError} Se o argumento não tiver 11 digitos.
+     * @throws {RangeError} Se no argumento tiver algum número: 0 <= n >= 9.
      **/
-    function cpf(a) {
+     cpf(a) {
         if ( !verificaTipoArray(a) ) {
             throw new TypeError("o argumento d deve ser do tipo array");
         }
 
         if (a.length != 11) {
-            throw RangeError("o cpf deve ter 11 digitos");
+            throw RangeError("o cpf deve ter 11 digitos"); 
+        }
+
+        for (let i = 0; i < 11; i++) {
+            if ( !verificaTipoNumero(a[i]) ) {
+                throw new TypeError("Os valores do array dever ser do tipo " +
+                    "número " + a[i]);
+            }
+            if (a[i] < 0 || a[i] > 9) {
+                throw RangeError("Os números do CPF devem ser de 0 a 9: " +
+                    a[i]);
+            }
         }
 
         let j = 0;
@@ -659,7 +728,7 @@ class Algoritmos {
         const aj = (j % 11) % 10;
         const ak = (k % 11) % 10;
 
-        return (aj == a[a.length - 1]) && (ak == a[a.length]);
+        return (ak === a[a.length]) && (aj === a[a.length - 1]);
     }
 
     /**
@@ -669,14 +738,30 @@ class Algoritmos {
      * @param {array} d Array de numeros rais.
      * 
      * @returns {boolean} true ou false Valor lógico.
+     *
+     * @throws {TypeError} Se o argumento não for um array.
+     * @throws {TypeError} Se o argumento tiver elemento que não é número.
+     * @throws {RangeError} Se o argumento não tiver 11 digitos.
+     * @throws {RangeError} Se no argumento tiver algum número: 0 <= n >= 9.
      **/
-    function cpf2(d) {
+     cpf2(d) {
         if ( !verificaTipoArray(d) ) {
             throw new TypeError("o argumento d deve ser do tipo array");
         }
 
-        if (d.length != 11){
+        if (d.length !== 11){
             throw RangeError("o cpf deve ter 11 digitos");
+        }
+
+        for (let i = 0; i < 11; i++) {
+            if ( !verificaTipoNumero(d[i]) ) {
+                throw new TypeError("Os valores do array dever ser do tipo " +
+                    "número " + d[i]);
+            }
+            if (d[i] < 0 || d[i] > 9) {
+                throw RangeError("Os números do CPF devem ser de 0 a 9: " +
+                    d[i]);
+            }
         }
 
         let c = 8;
@@ -692,7 +777,7 @@ class Algoritmos {
         const j = (s % 11) % 10;
         const k = ((s - p + (9 * d[10])) % 11) % 10;
 
-        return (j == d[d.length-1]) && (k == d[d.length]);
+        return (j === d[d.length-1]) && (k === d[d.length]);
     }
 }
 
