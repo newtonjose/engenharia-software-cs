@@ -9,8 +9,7 @@
  * @type {module.Algoritmos}
  */
 class Algoritmos {
-
-    const vp = new ValidaParametros();
+    vp = new ValidaParametros();
 
     /**
      * Função auxiliar que verifica se uma data é invalida para a 
@@ -83,7 +82,7 @@ class Algoritmos {
             throw new TypeError("os argumentos devem ser do tipo número");
         }
 
-        if (!this.validaData(dia, mes, ano) {
+        if (!this.validaData(dia, mes, ano)) {
             throw new RangeError("A data é invalida! Para uma data valida " +
                 "1 <= dia <= 31, 1 <= mes <= 12 e ano > 1753!");
         }

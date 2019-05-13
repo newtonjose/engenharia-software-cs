@@ -1,6 +1,9 @@
 # emacs file
 *~
 
+# intelliJ files
+.idea/
+
 # java compiled file
 *.class
 
