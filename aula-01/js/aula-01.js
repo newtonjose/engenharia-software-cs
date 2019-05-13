@@ -446,7 +446,7 @@ class Algoritmos {
 
         return s == n;
     }
-    
+
     /**
      * Calcula a raiz quadrada de um número usando o Método Babilônico.
      *
@@ -607,7 +607,7 @@ class Algoritmos {
      * @param {number} b Número inteiro natural.
      * @param {array} a Array de números inteiros naturais.
      *
-     * @returns {array} a Array de números inteiros naturais.
+     * @returns {array} a Máximo divisor comum de a e b.
      *
      * @throws {TypeError} Se o primeiro argumento não for um número.
      * @throws {RangeError} Se o primeiro argumento estiver fora do intervalo:
