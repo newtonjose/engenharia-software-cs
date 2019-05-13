@@ -17,5 +17,8 @@
     "type": "git",
     "url": "git+https://github.com/kyriosdata/exemplo.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel-eslint": "^10.0.1"
+  }
 }

@@ -1,4 +1,43 @@
 /**
+ * Classe auxiliar para validar parametros passados. A classe valida tipo
+ * {array} e tipo {number}.
+ *
+ * @type {module.ValidaParametros}
+ */
+class ValidaParametros {
+    /**
+     * Função auxiliar que verifica se um dado paramêtro é do tipo 'number'.
+     **/
+    verificaTipoNumero(n) {
+        return typeof n == "number";
+    }
+
+    /**
+     * Função auxiliar que verifica se um dado paramêtro é do tipo 'array'.
+     **/
+    verificaTipoArray(a) {
+        return Array.isArray(a);
+    }
+
+    /**
+     * Verifica se os elementos de um array de parametros é do tipo número.
+     *
+     * @param {array} prts Array de numeros.
+     *
+     * @returns {boolean} true ou false Valor lógico.
+     **/
+    validaParametrosTipoNumero(prts) {
+        for (let i = 0; i < prts.length; i++) {
+            if (!this.verificaTipoNumero(prts[i])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+/**
  * 21 algoritmos matemáticos com o propósito de fazer aquecimento em
  * Construção de Software.
  *
@@ -9,6 +48,7 @@
  * @type {module.Algoritmos}
  */
 class Algoritmos {
+
     vp = new ValidaParametros();
 
     /**
@@ -16,7 +56,7 @@ class Algoritmos {
      * função diaDaSemana.
      **/
     validaData(d, m, a) {
-        return (d < 1 && d > 31) && (m < 1 && m > 12) && (a <= 1753)
+        return (d < 1 && d > 31) && (m < 1 && m > 12) && (a <= 1753);
     }
     
     /**
@@ -259,7 +299,7 @@ class Algoritmos {
         let i = 1;
 
         while (i <= y) {
-            p = produto(p, x);
+            p = this.produtoInteiros(p, x);
             i += 1;
         }
 
@@ -463,7 +503,7 @@ class Algoritmos {
         
         while (i < n) {
             if (n % i == 0) {
-		return false;
+                return false;
             }
             
             i += 1;
@@ -663,7 +703,7 @@ class Algoritmos {
         let t;
 
         while (i <= n) {
-            t = c;
+            t = f;
             f += a;
             a = t;
             i += 1;
@@ -772,45 +812,6 @@ class Algoritmos {
         const k = ((s - p + (9 * d[10])) % 11) % 10;
 
         return (j === d[d.length - 1]) && (k === d[d.length]);
-    }
-}
-
-/**
- * Classe auxiliar para validar parametros passados. A classe valida tipo 
- * {array} e tipo {number}.
- *
- * @type {module.ValidaParametros}
- */
-class ValidaParametros {
-    /**
-     * Função auxiliar que verifica se um dado paramêtro é do tipo 'number'.
-     **/
-    verificaTipoNumero(n) {
-        return typeof n == "number";
-    }
-    
-    /**
-     * Função auxiliar que verifica se um dado paramêtro é do tipo 'array'.
-     **/
-    verificaTipoArray(a) {
-        return Array.isArray(a);
-    }
-    
-    /**
-     * Verifica se os elementos de um array de parametros é do tipo número.
-     *
-     * @param {array} prts Array de numeros.
-     * 
-     * @returns {boolean} true ou false Valor lógico.
-     **/
-    validaParametrosTipoNumero(prts) {
-        for (let i = 0; i < prts.length; i++) {
-            if (!this.verificaTipoNumero(prts[i])) {
-                return false;
-            }
-        }
-        
-        return true;
     }
 }
 
