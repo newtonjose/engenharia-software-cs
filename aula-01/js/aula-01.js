@@ -19,6 +19,10 @@ class ValidaParametros {
         return Array.isArray(a);
     }
 
+    verificaTipoFloat(n){
+        return Number(n) === n && n % 1 !== 0;
+    }
+
     /**
      * Verifica se os elementos de um array de parametros é do tipo número.
      *
@@ -36,6 +40,8 @@ class ValidaParametros {
         return true;
     }
 }
+const vp = new ValidaParametros();
+
 
 /**
  * 21 algoritmos matemáticos com o propósito de fazer aquecimento em
@@ -48,8 +54,6 @@ class ValidaParametros {
  * @type {module.Algoritmos}
  */
 class Algoritmos {
-
-    vp = new ValidaParametros();
 
     /**
      * Função auxiliar que verifica se uma data é invalida para a 
@@ -67,11 +71,24 @@ class Algoritmos {
      * @returns {boolean} true ou false Valor lógico.
      **/
     numeroVerdadeiro(n) {
+        if (!vp.verificaTipoNumero(n)) {
+            throw new TypeError("Argumento deve ser um número");
+        }
+
+        console.log(typeof n);
+        if (n < 0 || n > 9999) {
+            throw new RangeError("O numeros devem ser 0 ≤ n ≤ 9999");
+        }
+
+        if (vp.verificaTipoFloat(n)) {
+            throw new RangeError("O numeros devem ser tipo inteiro.");
+        }
+
         const m = Math.floor(n / 100);
         const p = n % 100;
-        const s = m + n;
+        const s = m + p;
 
-        return s * s == p;
+        return s * s == n;
     }
 
     /**
@@ -86,7 +103,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo 100 a 999.
      **/
     verificaCubosDosDigitos(n) {
-        if (!this.vp.verificaTipoNumero(n)) {
+        if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("Argumento deve ser um número");
         }
 
@@ -816,4 +833,3 @@ class Algoritmos {
 }
 
 module.exports = Algoritmos;
-module.exports = ValidaParametros;
