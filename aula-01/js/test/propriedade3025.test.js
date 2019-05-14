@@ -1,4 +1,5 @@
-const funcao = require("../propriedade3025");
+const Algoritmos = require("../aula-01");
+const funcao = Algoritmos.numeroVerdadeiro;
 
 test("3025 satisfaz (caso classico)", () => {
     expect(funcao(3025)).toBe(true);
@@ -15,7 +16,6 @@ test("argumento null/undefined", () => {
 test("argumento nao numerico", () => {
     expect(() => { funcao("abcd"); }).toThrow();
 });
-
 
 test("valor negativo fora da faixa", () => {
     expect(() => { funcao(-1); }).toThrow(RangeError);
