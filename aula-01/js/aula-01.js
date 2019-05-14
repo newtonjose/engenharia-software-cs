@@ -19,7 +19,7 @@ class ValidaParametros {
         return Array.isArray(a);
     }
 
-    verificaTipoFloat(n){
+    verificaTipoFloat(n) {
         return Number(n) === n && n % 1 !== 0;
     }
 
@@ -39,15 +39,31 @@ class ValidaParametros {
 
         return true;
     }
-}
-const vp = new ValidaParametros();
 
+    /**
+     * Função auxiliar que verifica se uma data é invalida para a
+     * função diaDaSemana.
+     **/
+    static validaData(d, m, a) {
+        return d < 1 || d > 31 || m < 1 || m > 12 || a <= 1753;
+    }
+
+    static validaEntrada(a) {
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] == null || a[i] == undefined) {
+                return false;
+            }
+        }
+    }
+}
+
+const vp = new ValidaParametros();
 
 /**
  * 21 algoritmos matemáticos com o propósito de fazer aquecimento em
  * Construção de Software.
  *
- * <p>Os algoritmos implementados estão disponíveis na 
+ * <p>Os algoritmos implementados estão disponíveis na
  * <a href="https://drive.google.com/file/d/1zCxtSyjkEvF6T3ieJ0r3_BJii9kx-FMI"/>
  * aula 01.</p>
  *
@@ -56,26 +72,22 @@ const vp = new ValidaParametros();
 class Algoritmos {
 
     /**
-     * Função auxiliar que verifica se uma data é invalida para a 
-     * função diaDaSemana.
-     **/
-    validaData(d, m, a) {
-        return (d < 1 && d > 31) && (m < 1 && m > 12) && (a <= 1753);
-    }
-    
-    /**
      * Verifica se um dado numero é verdadeiro usando a Propriedade 3025.
      *
      * @param {number} n Numero inteiro natural.
      *
      * @returns {boolean} true ou false Valor lógico.
      **/
-    numeroVerdadeiro(n) {
+    static numeroVerdadeiro(n) {
+        if (ValidaParametros.validaEntrada([n])) {
+            throw new Error("Entrada invalidada, null e undefined nao " +
+                "sao entradas validas");
+        }
+
         if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("Argumento deve ser um número");
         }
 
-        console.log(typeof n);
         if (n < 0 || n > 9999) {
             throw new RangeError("O numeros devem ser 0 ≤ n ≤ 9999");
         }
@@ -88,7 +100,7 @@ class Algoritmos {
         const p = n % 100;
         const s = m + p;
 
-        return s * s == n;
+        return s * s === n;
     }
 
     /**
@@ -102,13 +114,22 @@ class Algoritmos {
      * @throws {TypeError} Se o argumento não for um número.
      * @throws {RangeError} Se o argumento estiver fora do intervalo 100 a 999.
      **/
-    verificaCubosDosDigitos(n) {
+    static verificaCubosDosDigitos(n) {
+        if (ValidaParametros.validaEntrada([n])) {
+            throw new Error("Entrada invalidada, null e undefined nao " +
+                "sao entradas validas");
+        }
+
         if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("Argumento deve ser um número");
         }
 
-        if (n < 100 && n > 999) {
+        if (n < 100 || n > 999) {
             throw new RangeError("O numeros devem ser 100 <= n <= 999");
+        }
+
+        if (vp.verificaTipoFloat(n)) {
+            throw new RangeError("O numeros devem ser tipo inteiro.");
         }
 
         const c = Math.floor(n / 100);
@@ -117,9 +138,9 @@ class Algoritmos {
         const u = du % 10;
         const s = c * c * c + d * d * d + u * u * u;
 
-        return s == n;
-    }    
-    
+        return s === n;
+    }
+
     /**
      * A função implementa um algoritmo que dado uma data retorna o dia
      * semana, 1 - segunda; 2 - terça, 3 ...
@@ -134,26 +155,36 @@ class Algoritmos {
      * @throws {RangeError} Se os argumentos estiver fora dos seguintes
      * intervalos: 1 <= dia <= 31; 1 <= mes <= 12 e ano > 1753.
      **/
-    diaDaSemana(dia, mes, ano) {
-        if ( !this.vp.validaParametrosTipoNumero([dia, mes, ano])) {
+    static diaDaSemana(dia, mes, ano) {
+        if (ValidaParametros.validaEntrada([dia, mes, ano])) {
+            throw new Error("Entrada invalidada, null e undefined nao " +
+                "sao entradas validas");
+        }
+
+        if (!vp.validaParametrosTipoNumero([dia, mes, ano])) {
             throw new TypeError("os argumentos devem ser do tipo número");
         }
 
-        if (!this.validaData(dia, mes, ano)) {
+        if (ValidaParametros.validaData(dia, mes, ano)) {
             throw new RangeError("A data é invalida! Para uma data valida " +
                 "1 <= dia <= 31, 1 <= mes <= 12 e ano > 1753!");
         }
 
-        if (mes == 1 || mes == 2) {
+        if (vp.verificaTipoFloat(dia) || vp.verificaTipoFloat(mes) ||
+            vp.verificaTipoFloat(ano)) {
+            throw new RangeError("O numeros devem ser tipo inteiro.");
+        }
+
+        if (mes === 1 || mes === 2) {
             mes += 12;
             ano -= 1;
         }
 
-        const i = dia + (2 * mes) + (3 * (mes + 1));
-        const j = 5 + ano + (ano / 4) - (ano / 100) + (ano / 400);
-        const s = i / j;
+        const i = dia + 2 * mes + (3 * (mes + 1)) / 5;
+        const j = ano + (ano / 4) - (ano / 100) + (ano / 400);
+        const s = i + j;
 
-        return s % 7;
+        return Math.floor(s % 7);
     }
 
     /**
@@ -169,20 +200,27 @@ class Algoritmos {
      * @throws {RangeError} Se os argumentos estiver fora dos intervalos:
      * y >= 0; x > 0.
      **/
-    restoDivisaoInteira(x, y) {
-        if (!this.vp.validaParametrosTipoNumero([x, y])) {
-            throw new TypeError("os argumentos devem ser do tipo número");
+    static restoDivisaoInteira(x, y) {
+        if (ValidaParametros.validaEntrada([x, y])) {
+            throw new Error("Entrada invalidada, null e undefined nao " +
+                "sao entradas validas");
+        }
+        if (!vp.validaParametrosTipoNumero([x, y])) {
+            throw new TypeError("Os argumentos devem ser do tipo número");
         }
 
-        if (y < 0 && x <= 0) {
-            throw new RangeError("O numeros devem ser y >= 0 && x > 0");
+        if (x < 0 || y <= 0) {
+            throw new RangeError("Os numeros devem ser y >= 0 && x > 0");
+        }
+
+        if (vp.verificaTipoFloat(x) || vp.verificaTipoFloat(y)) {
+            throw new RangeError("O numeros devem ser tipo inteiro.");
         }
 
         let resto = x;
 
         while (y <= resto) {
-            resto = resto - y;
-            y = y + 1;
+            resto -= y;
         }
 
         return resto;
@@ -200,7 +238,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     somaNaturais(n) {
-        if ( !this.vp.verificaTipoNumero(n) ) {
+        if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("O argumento deve ser um número");
         }
 
@@ -231,7 +269,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     fatorialNumero(n) {
-        if (!this.vp.verificaTipoNumero(n)) {
+        if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("O argumento deve ser um número");
         }
 
@@ -263,8 +301,8 @@ class Algoritmos {
      * @throws {RangeError} Se os argumentos estiverem fora dos intervalos:
      * a >= 0; b >= 0.
      **/
-    produtoInteiros(a, b){
-        if (!this.vp.validaParametrosTipoNumero([a, b])) {
+    produtoInteiros(a, b) {
+        if (!vp.validaParametrosTipoNumero([a, b])) {
             throw new TypeError("os argumentos devem ser do tipo número");
         }
 
@@ -303,8 +341,8 @@ class Algoritmos {
      * @throws {RangeError} Se os argumentos estiver fora dos intervalos:
      * x >= 0; y >= 0.
      **/
-    calculaPotencia(x,  y) {
-        if (!this.vp.validaParametrosTipoNumero([x, y])) {
+    calculaPotencia(x, y) {
+        if (!vp.validaParametrosTipoNumero([x, y])) {
             throw new TypeError("Os argumentos devem ser do tipo número");
         }
 
@@ -334,7 +372,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     numeroPi(n) {
-        if (!this.vp.verificaTipoNumero(n)) {
+        if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("O argumento deve ser um número");
         }
 
@@ -371,8 +409,8 @@ class Algoritmos {
      * @throws {RangeError} Se os argumentos estiver fora dos intervalos:
      * n >= 1; k >= 2.
      **/
-    logaritmoNatural(n, k){
-        if ( !this.vp.validaParametrosTipoNumero([n, k])) {
+    logaritmoNatural(n, k) {
+        if (!vp.validaParametrosTipoNumero([n, k])) {
             throw new TypeError("Os argumentos devem ser do tipo número");
         }
 
@@ -410,11 +448,11 @@ class Algoritmos {
      * x >= 0; x < y e k > 0.
      **/
     razaoAurea(x, y, k) {
-        if (!this.vp.validaParametrosTipoNumero([x, y, k])) {
+        if (!vp.validaParametrosTipoNumero([x, y, k])) {
             throw new TypeError("Os argumentos devem ser do tipo número");
         }
 
-        if ((x < 0 && x > y) && k <= 0 ){
+        if ((x < 0 && x > y) && k <= 0) {
             throw new RangeError("Números deve ser: x >= 0, x < y e k > 0");
         }
 
@@ -445,7 +483,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     quadradoPerfeito(n) {
-        if (!this.vp.verificaTipoNumero(n)) {
+        if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("O argumento deve ser um número");
         }
 
@@ -478,14 +516,14 @@ class Algoritmos {
      * n > 0.
      **/
     raizQuadrada(n, i) {
-        if (!this.vp.validaParametrosTipoNumero([n, i])) {
+        if (!vp.validaParametrosTipoNumero([n, i])) {
             throw new TypeError("os argumentos devem ser do tipo número");
         }
-        
+
         if (n < 0) {
             throw new RangeError("O numero 'n' deverá ser maior que 0");
         }
-        
+
         let r = 1;
 
         while (i >= 0) {
@@ -508,21 +546,21 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     numeroPrimo(n) {
-        if ( !this.vp.verificaTipoNumero(n) ) {
+        if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("O argumento deve ser um número");
         }
-        
-        if (n < 1){
+
+        if (n < 1) {
             throw new RangeError("O numero 'n' tem que ser maior que 1");
         }
-        
+
         let i = 2;
-        
+
         while (i < n) {
             if (n % i == 0) {
                 return false;
             }
-            
+
             i += 1;
         }
 
@@ -544,23 +582,23 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento array tiver valor diferente de zero.
      **/
     crivoErastostenes(n, a) {
-        if (!this.vp.validaParametrosTipoNumero([n, a])) { 
-            //!this.vp.verificaTipoNumero(a) &&  !this.verificaTipoNumero(n)
+        if (!vp.validaParametrosTipoNumero([n, a])) {
+            //!vp.verificaTipoNumero(a) &&  !this.verificaTipoNumero(n)
             throw new TypeError("Os argumentos devem ser do tipo número.");
         }
-        
-        if ( !this.vp.verificaTipoArray(a) ) {
+
+        if (!vp.verificaTipoArray(a)) {
             throw new TypeError("O argumento a deve ser do tipo array.");
         }
-        
-        if (n < 1){
+
+        if (n < 1) {
             throw new RangeError("O numero 'n' tem que ser maior que 1");
         }
-        
+
         // busca por valores diferente de zero
         for (let i = 2; i < n; i++) {
-            if (a[i] != 0){
-                throw new RangeError("Existe valores em a, onde nao sao " + 
+            if (a[i] != 0) {
+                throw new RangeError("Existe valores em a, onde nao sao " +
                     "iguais a zero");
             }
         }
@@ -582,7 +620,7 @@ class Algoritmos {
             i += 1;
         }
 
-        return a[n-1] == 1;
+        return a[n - 1] == 1;
     }
 
     /**
@@ -598,7 +636,7 @@ class Algoritmos {
      * a >= b e b > 0.
      **/
     maiorDivisorComum(a, b) {
-        if (!this.vp.validaParametrosTipoNumero([a, b])) {
+        if (!vp.validaParametrosTipoNumero([a, b])) {
             throw new TypeError("Os argumentos devem ser do tipo número");
         }
 
@@ -609,7 +647,7 @@ class Algoritmos {
         let m;
 
         while (b != 0) {
-            m = a%b;
+            m = a % b;
             a = b;
             b = m;
         }
@@ -631,12 +669,12 @@ class Algoritmos {
      * b > 0.
      **/
     maiorDivisorComumSemResto(b, a) {
-        if ( !this.vp.verificaTipoNumero(b) ) {
+        if (!vp.verificaTipoNumero(b)) {
             throw new TypeError("O argumento b deve ser um número");
         }
 
-        if (b < 0){
-            throw new RangeError("Os numero deverao 'b tem que ser " + 
+        if (b < 0) {
+            throw new RangeError("Os numero deverao 'b tem que ser " +
                 "maior que zero!");
         }
 
@@ -667,11 +705,11 @@ class Algoritmos {
      * g > 1.
      **/
     regraHorner(x, g, a) {
-        if ( !this.vp.validaParametrosTipoNumero([x, g])) {
+        if (!vp.validaParametrosTipoNumero([x, g])) {
             throw new TypeError("os argumentos x e g devem ser do tipo número");
         }
 
-        if ( !this.vp.verificaTipoArray(a) ) {
+        if (!vp.verificaTipoArray(a)) {
             throw new TypeError("o argumento a deve ser do tipo array");
         }
 
@@ -679,11 +717,11 @@ class Algoritmos {
             throw new RangeError("o agumento g deve ser maior que zero");
         }
 
-        let p = a[g-1];
+        let p = a[g - 1];
         let i = g - 1;
 
         while (i >= 0) {
-            p = p*x + a[i];
+            p = p * x + a[i];
             i -= 1;
         }
 
@@ -701,11 +739,11 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 0.
      **/
     fibonacci(n) {
-        if ( !this.vp.verificaTipoNumero(n) ) {
+        if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("O argumento n deve ser um número");
         }
 
-        if (n <= 0){
+        if (n <= 0) {
             throw new RangeError("O argumento 'n' tem que ser n>=0");
         }
 
@@ -734,7 +772,7 @@ class Algoritmos {
      * corretamente.
      *
      * @param {array} a Array de numeros rais.
-     * 
+     *
      * @returns {boolean} true ou false Valor lógico.
      *
      * @throws {TypeError} Se o argumento não for um array.
@@ -743,17 +781,17 @@ class Algoritmos {
      * @throws {RangeError} Se no argumento tiver algum número: 0 <= n >= 9.
      **/
     validaCPF(a) {
-        if ( !this.vp.verificaTipoArray(a) ) {
+        if (!vp.verificaTipoArray(a)) {
             throw new TypeError("o argumento d deve ser do tipo array");
         }
-        
-        if (!this.vp.validaParametrosTipoNumero(a) ) {
+
+        if (!vp.validaParametrosTipoNumero(a)) {
             throw new TypeError("Os valores do array dever ser do tipo " +
                 "número.");
         }
 
         if (a.length != 11) {
-            throw RangeError("O cpf deve ter 11 digitos"); 
+            throw RangeError("O cpf deve ter 11 digitos");
         }
 
         for (let i = 0; i < 11; i++) {
@@ -772,7 +810,7 @@ class Algoritmos {
         }
 
         for (i = 1; i < 10; i++) {
-            k += a[i]; 
+            k += a[i];
         }
 
         const aj = (j % 11) % 10;
@@ -786,7 +824,7 @@ class Algoritmos {
      * corretamenten usando o Método de Horner.
      *
      * @param {array} d Array de numeros rais.
-     * 
+     *
      * @returns {boolean} true ou false Valor lógico.
      *
      * @throws {TypeError} Se o argumento não for um array.
@@ -795,16 +833,16 @@ class Algoritmos {
      * @throws {RangeError} Se no argumento tiver algum número: 0 <= n >= 9.
      **/
     validaCPFRegraHorner(d) {
-        if (!this.vp.verificaTipoArray(d)) {
+        if (!vp.verificaTipoArray(d)) {
             throw new TypeError("o argumento d deve ser do tipo array");
         }
-        
-        if (!this.vp.validaParametrosTipoNumero(d)) {
+
+        if (!vp.validaParametrosTipoNumero(d)) {
             throw new TypeError("Os valores do array dever ser do tipo " +
                 "número.");
         }
 
-        if (d.length !== 11){
+        if (d.length !== 11) {
             throw RangeError("o cpf deve ter 11 digitos");
         }
 

@@ -1,16 +1,16 @@
 const Algoritmos = require("../aula-01");
-const funcao = Algoritmos.numeroVerdadeiro;
+const funcao = Algoritmos.verificaCubosDosDigitos;
 
-test("3025 satisfaz (caso classico)", () => {
-    expect(funcao(3025)).toBe(true);
+test("153 satisfaz (caso classico)", () => {
+    expect(funcao(153)).toBe(true);
 });
 
-test("3024 nao satisfaz", () => {
-    expect(funcao(3024)).toBe(false);
+test("154 nao satisfaz", () => {
+    expect(funcao(154)).toBe(false);
 });
 
 test("argumento null/undefined", () => {
-    expect(() => { funcao(); }).toThrow();
+    expect(() => { funcao(); }).toThrow(Error);
 });
 
 test("argumento nao numerico", () => {
@@ -21,8 +21,8 @@ test("valor negativo fora da faixa", () => {
     expect(() => { funcao(-1); }).toThrow(RangeError);
 });
 
-test("valor com mais de 4 digitos fora da faixa", () => {
-    expect(() => funcao(10000)).toThrow(RangeError);
+test("valor com mais de 3 digitos fora da faixa", () => {
+    expect(() => funcao(1000)).toThrow(RangeError);
 });
 
 test("valor deve ser inteiro", () => {
