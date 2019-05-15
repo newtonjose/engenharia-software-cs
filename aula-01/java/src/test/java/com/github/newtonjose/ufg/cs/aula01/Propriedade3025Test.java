@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Created by aluno on 14/05/19.
  */
-public class Propriedade3025Test {
+class Propriedade3025Test {
 
     @Test
     void propriedade3025Satisfaz() {
@@ -25,5 +25,8 @@ public class Propriedade3025Test {
     void propriedade3025ArgumentoInvalido() {
         assertThrows(IllegalArgumentException.class,
                 () -> Algoritmos.numeroVerdadeiro(-1));
+
+        assertThrows(IllegalArgumentException.class,
+                () -> Algoritmos.numeroVerdadeiro(10000));
     }
 }

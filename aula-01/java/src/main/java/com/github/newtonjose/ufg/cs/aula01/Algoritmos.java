@@ -5,34 +5,55 @@ package com.github.newtonjose.ufg.cs.aula01;
  * Classe que implementa vários algoritmos acerca de propriedades matemáticas
  * e operações com números.
  * <p>Os algoritmos implementados estão disponíveis na
- *  <a href="https://drive.google.com/file/d/1zCxtSyjkEvF6T3ieJ0r3_BJii9kx-FMI"/>
- *  aula 01.</p>
- *  <p></p>
+ * <a href="https://drive.google.com/file/d/1zCxtSyjkEvF6T3ieJ0r3_BJii9kx-FMI"/>
+ * aula 01.</p>
+ * <p></p>
+ *
  * @author Josenilton Santos
  * @version 1.0
- * @since   2019-03-15
+ * @since 2019-03-15
  */
 public class Algoritmos {
-    private boolean dataInvalida(int d, int m, int a) {
-        return (d < 1 || d > 31) || (m < 1 || m > 12) || (a <= 1753);
+
+    /** Constante que representa o máximo dia de um mês. */
+    private static final int DIA_MAX = 31;
+
+    /** Constante que representa o máximo dia de um ano. */
+    private static final int MES_MAX = 12;
+
+    /** Constante que representa o menor ano permitido. */
+    private static final int ANO_MIN = 1753;
+
+    /**
+     * Função auxiliar para validar um data.
+     * @param d Dia do mês.
+     * @param m Mês do ano.
+     * @param a Ano depois de 1753.
+     * @return boolean Verdadeiro caso a data seja valida, false caso contrário.
+     */
+    private boolean dataInvalida(final int d, final int m, final int a) {
+        return ((d < 1 || d > DIA_MAX) || (m < 1 || m > MES_MAX)
+                || (a <= ANO_MIN));
     }
 
     /**
      * Verifica se um dado numero é verdadeiro usando a Propriedade 3025.
      *
      * @param n Numero inteiro natural.
-     *
-     * @returns boolean Retorna {true} se o número fornecido como argumento
+     * @return boolean Retorna {true} se o número fornecido como argumento
      * satisfaz a propriedade Propriedade 3025, {false} caso contrário.
      */
     public static boolean numeroVerdadeiro(final int n) {
-        if (n < 0 || n > 9999) {
-            throw new IllegalArgumentException("Numero fora do range " +
-                    "100 && n <= 999");
+        final int manNumber = 9999;
+
+        if (n < 0 || n > manNumber) {
+            throw new IllegalArgumentException("Numero fora do range "
+                    + "100 <= n <= 999");
         }
 
-        final double i = n / 100;
-        final double j = n % 100;
+        final int div = 100;
+        final double i = n / div;
+        final double j = n % div;
         final double m = i + j;
 
         return m * m == n;
@@ -42,23 +63,27 @@ public class Algoritmos {
      * Verifica se a soma dos cubos dos digitos de um dado número é
      * igual ao número dado.
      *
-     * @param n Numero inteiro natural.
-     *
-     * @returns boolean Retorna {true} se satisfazer a propriedade 153
+     * @param cdu Numero inteiro natural.
+     * @throws IllegalArgumentException Se o argumento estiver fora do
+     * intervalo 100 a 999.
+     * @return boolean Retorna {true} se satisfazer a propriedade 153
      * e {false} caso contrário.
-     *
-     * @throws IllegalArgumentException Se o argumento estiver fora do intervalo 100 a 999.
      */
-    public boolean verificaCubosDosDigitos(final int cdu) {
-        if (cdu < 100 && cdu > 999) {
-            throw new IllegalArgumentException("O numeros devem ser cdu >= " +
-                    "100 && cdu <= 999");
+    public static boolean verificaCubosDosDigitos(final int cdu) {
+        final int minCdu = 100;
+        final int maxCdu = 999;
+        if (cdu < minCdu || cdu > maxCdu) {
+            throw new IllegalArgumentException("O numeros devem ser cdu >= "
+                    + "100 && cdu <= 999");
         }
 
-        final double r = cdu % 100;
-        final double c = r / 100;
-        final double d = r / 10;
-        final double u = r % 10;
+        final int divCem = 100;
+        final double r = cdu % divCem;
+        final double c = r / divCem;
+
+        final int divDez = 10;
+        final double d = r / divDez;
+        final double u = r % divDez;
 
         return (c * c * c + d * d * +u * u * u) == cdu;
     }
@@ -70,17 +95,15 @@ public class Algoritmos {
      * @param dia Numero natural menor ou igual a 31.
      * @param mes Número natural menor ou igual a 12.
      * @param ano Número natural maior ou igual a 1753.
-     *
-     * @returns int Retorna um número que equivale ao dia da semana da data
-     * passada como paramêtro.
-     *
      * @throws IllegalArgumentException Se os argumentos estiver fora dos
      * seguintes intervalos: 1 <= dia <= 31; 1 <= mes <= 12 e ano > 1753.
+     * @return int Retorna um número que equivale ao dia da semana da data
+     * passada como paramêtro.
      */
     public int diaDaSemana(final int dia, final int mes, final int ano) {
         if (!dataInvalida(dia, mes, ano)) {
-            throw new IllegalArgumentException("O numeros devem ser d >= 1, d" +
-                    " <= 31, d >= 1, d <= 12, a > 1753!");
+            throw new IllegalArgumentException("O numeros devem ser d >= 1, d"
+                    + " <= 31, d >= 1, d <= 12, a > 1753!");
         }
 
         // FINDMORE: como funciona isso em Java
@@ -99,16 +122,14 @@ public class Algoritmos {
      *
      * @param x Numero racional.
      * @param y Número racional.
-     *
-     * @returns int Retorna o resto da duvisão inteira.
-     *
      * @throws IllegalArgumentException Se os argumentos estiver fora dos
-     * intervalos: y >= 0; x > 0.
+     *                                  intervalos: y >= 0; x > 0.
+     * @return int Retorna o resto da duvisão inteira.
      */
     public int restoDivisaoInteira(final int x, int y) {
         if (y < 0 && x <= 0) {
-            throw new IllegalArgumentException("O numeros devem ser y >= 0 && " +
-                    "x > 0.");
+            throw new IllegalArgumentException("O numeros devem ser y >= 0 && "
+                    + "x > 0.");
         }
 
         int resto = x;
@@ -125,16 +146,14 @@ public class Algoritmos {
      * ate o dado número.
      *
      * @param n Número inteiro natural.
-     *
-     * @returns int Número inteiro natural.
-     *
      * @throws IllegalArgumentException Se o argumento estiver fora do
-     * intervalo: n >= 1.
+     *                                  intervalo: n >= 1.
+     * @return int Número inteiro natural.
      */
     public int somaNaturais(final int n) {
         if (n < 1) {
-            throw new IllegalArgumentException("O numero 'n' tem que ser " +
-                    "n >= 1.");
+            throw new IllegalArgumentException("O numero 'n' tem que ser "
+                    + "n >= 1.");
         }
 
         int i = 2;
@@ -152,15 +171,14 @@ public class Algoritmos {
      * recursividade.
      *
      * @param n Número inteiro natural.
-     *
-     * @returns int Fatorial do parâmetro.
-     *
-     * @throws IllegalArgumentException Se o argumento estiver fora do intervalo: n >= 1.
+     * @throws IllegalArgumentException Se o argumento estiver fora do
+     * intervalo: n >= 1.
+     * @return int Fatorial do parâmetro.
      */
     public long fatorialNumero(final int n) {
         if (n < 1) {
-            throw new IllegalArgumentException("O numero 'n' tem que ser " +
-                    "n >= 1.");
+            throw new IllegalArgumentException("O numero 'n' tem que ser "
+                    + "n >= 1.");
         }
 
         int i = 2;
@@ -179,16 +197,14 @@ public class Algoritmos {
      *
      * @param a Número inteiro natural.
      * @param b Número inteiro natural.
-     *
-     * @returns int Produto dos dois parâmetros.
-     *
-     * @throws IllegalArgumentException Se os argumentos estiverem fora dos intervalos:
-     * a >= 0; b >= 0.
+     * @throws IllegalArgumentException Se os argumentos estiverem fora
+     * dos intervalos: a >= 0; b >= 0.
+     * @return int Produto dos dois parâmetros.
      */
     public int produtoInteiros(final int a, final int b) {
         if (a < 0 || b < 0) {
-            throw new IllegalArgumentException("Os numeros a e b tem que ser " +
-                    "maior ou igual a zero");
+            throw new IllegalArgumentException("Os numeros a e b tem que ser "
+                    + "maior ou igual a zero");
         }
 
         int totalParcelas = a;
@@ -215,11 +231,9 @@ public class Algoritmos {
      *
      * @param x Numero inteiro natural.
      * @param y Número inteiro natural.
-     *
-     * @returns int Potência dos parâmetros.
-     *
-     * @throws IllegalArgumentException Se os argumentos estiver fora dos intervalos:
-     * x >= 0; y >= 0.
+     * @throws IllegalArgumentException Se os argumentos estiver fora dos
+     * intervalos: x >= 0; y >= 0.
+     * @return int Potência dos parâmetros.
      */
     public int calculaPotencia(final int x, final int y) {
         int i = 1;
@@ -237,10 +251,9 @@ public class Algoritmos {
      * Retorna o valor de Pi aproximado pelo um dado número.
      *
      * @param n Numero inteiro natural.
-     *
-     * @returns double Valor do número Pi aproximado.
-     *
-     * @throws IllegalArgumentException Se o argumento estiver fora do intervalo: n >= 1.
+     * @throws IllegalArgumentException Se o argumento estiver fora do
+     * intervalo: n >= 1.
+     * @return double Valor do número Pi aproximado.
      */
     public double numeroPi(final int n) {
         if (n < 1) {
@@ -267,18 +280,15 @@ public class Algoritmos {
      * aproximação.
      *
      * @param n Numero inteiro natural.
-     * @param k Numero inteiro nartual usado como o fator de
-     * aproximação.
-     *
-     * @returns double Logaritmo do parâmetro.
-     *
-     * @throws IllegalArgumentException Se os argumentos estiver fora dos intervalos:
-     * n >= 1; k >= 2.
+     * @param k Numero inteiro nartual usado como o fator de aproximação.
+     * @throws IllegalArgumentException Se os argumentos estiver fora dos
+     * intervalos: n >= 1; k >= 2.
+     * @return double Logaritmo do parâmetro.
      */
     public double logaritmoNatural(final int n, final int k) {
         if (n < 1 && k < 2) {
-            throw new IllegalArgumentException("O numeros tem que ser n >= 1 " +
-                    "&& k >= 2");
+            throw new IllegalArgumentException("O numeros tem que ser n >= 1 "
+                    + "&& k >= 2");
         }
 
         int i = 2;
@@ -303,17 +313,14 @@ public class Algoritmos {
      * @param x Numero inteiro natural.
      * @param y Numero inteiro natural.
      * @param k Numero inteiro natural usado como fator de prescisão.
-     *
-     * @returns double Razão áurea de dois numeros.
-     *
-     * @throws {TypeError} Se qualquer um dos argumentos não for um número.
-     * @throws IllegalArgumentException Se os argumentos estiverem fora dos intervalos:
-     * x >= 0; x < y e k > 0.
+     * @throws IllegalArgumentException Se os argumentos estiverem fora dos
+     * intervalos: x >= 0; x < y e k > 0.
+     * @return double Razão áurea de dois numeros.
      */
     public double razaoAurea(final int x, final int y, final int k) {
         if ((x < 0 && x > y) && k <= 0) {
-            throw new IllegalArgumentException("Números deve ser: x >= 0, x <" +
-                    " y e k > 0");
+            throw new IllegalArgumentException("Números deve ser: x >= 0, x < "
+                    + "y e k > 0");
         }
 
         int c = y;
@@ -335,16 +342,15 @@ public class Algoritmos {
      * esquação do algoritmo.
      *
      * @param n Número inteiro.
-     *
-     * @returns {boolean} boolean Retorna {true} se o número fornecido é
+     * @throws IllegalArgumentException Se o argumento estiver fora do
+     * intervalo: n >= 1.
+     * @return {boolean} boolean Retorna {true} se o número fornecido é
      * um quadrado perfeito, caso contrário, {false}.
-     *
-     * @throws IllegalArgumentException Se o argumento estiver fora do intervalo: n >= 1.
      **/
     public boolean quadradoPerfeito(final int n) {
         if (n < 1) {
-            throw new IllegalArgumentException("O numero 'n' deverá ser maior" +
-                    " que 1");
+            throw new IllegalArgumentException("O numero 'n' deverá ser maior "
+                    + "que 1");
         }
 
         int i = 1;
@@ -363,16 +369,14 @@ public class Algoritmos {
      *
      * @param n Número racional positivo.
      * @param i Numero inteiro nartual usado como o fator de prescisão.
-     *
-     * @returns double Retorna raiz quadrada de n usando a precisão i.
-     *
-     * @throws IllegalArgumentException Se os argumentos estiverem fora dos intervalos:
-     * n > 0.
+     * @throws IllegalArgumentException Se os argumentos estiverem fora dos
+     * intervalos: n > 0.
+     * @return double Retorna raiz quadrada de n usando a precisão i.
      **/
     public double raizQuadrada(final int n, int i) {
         if (n < 0) {
-            throw new IllegalArgumentException("O numero 'n' deverá ser maior" +
-                    " que 0");
+            throw new IllegalArgumentException("O numero 'n' deverá ser maior "
+                    + "que 0");
         }
 
         double numRaiz = 1;
@@ -390,15 +394,14 @@ public class Algoritmos {
      * ou ele mesmo.
      *
      * @param n Número inteiro natural.
-     *
-     * @returns boolean Retorna {true} caso n é primo, {false} caso contrario.
-     *
-     * @throws IllegalArgumentException Se o argumento estiver fora do intervalo: n >= 1.
+     * @throws IllegalArgumentException Se o argumento estiver fora do
+     * intervalo: n >= 1.
+     * @return boolean Retorna {true} caso n é primo, {false} caso contrario.
      **/
     public boolean numeroPrimo(final int n) {
         if (n < 1) {
-            throw new IllegalArgumentException("O numero 'n' tem que ser " +
-                    "maior que 1");
+            throw new IllegalArgumentException("O numero 'n' tem que ser "
+                    + "maior que 1");
         }
 
         int i = 2;
@@ -419,23 +422,23 @@ public class Algoritmos {
      *
      * @param n Número inteiro natural.
      * @param a Array de inteiros, com valores iguais a zero.
-     *
-     * @returns boolean Retorna {true} caso o valor da n possição do array
+     * @throws IllegalArgumentException Se o argumento estiver
+     * for do intervalo: n > 1.
+     * @throws IllegalArgumentException Se o argumento array tiver valor
+     * diferente de zero.
+     * @return boolean Retorna {true} caso o valor da n possição do array
      * seja diferente de 1, {false} caso contrario.
-     *
-     * @throws IllegalArgumentException Se o argumento estiver for do intervalo: n > 1.
-     * @throws IllegalArgumentException Se o argumento array tiver valor diferente de zero.
      **/
     public boolean crivoErastostenes(final int[] a, final int n) {
         if (n < 1) {
-            throw new IllegalArgumentException("O numero 'n' tem que ser " +
-                    "maior que 1");
+            throw new IllegalArgumentException("O numero 'n' tem que ser "
+                    + "maior que 1");
         }
 
         for (int i = 2; i < n; i++) {
             if (a[i] != 0) {
-                throw new IllegalArgumentException("Existe valores em a, onde" +
-                        " nao sao iguais a zero");
+                throw new IllegalArgumentException("Existe valores em a, onde "
+                        + "nao sao iguais a zero");
             }
         }
 
@@ -464,16 +467,14 @@ public class Algoritmos {
      *
      * @param a Número inteiro natural.
      * @param b Número inteiro natural.
-     *
-     * @returns int Máximo divisor comum de a e b.
-     *
-     * @throws IllegalArgumentException Se os argumentos estiverem fora dos intervalos:
-     * a >= b e b > 0.
+     * @throws IllegalArgumentException Se os argumentos estiverem fora dos
+     * intervalos: a >= b e b > 0.
+     * @return int Máximo divisor comum de a e b.
      **/
     public int maiorDivisorComum(int a, int b) {
         if (b > a && b < 0) {
-            throw new IllegalArgumentException("Os numeros deverao ser a >= b" +
-                    " e b > 0");
+            throw new IllegalArgumentException("Os numeros deverao ser a >= b"
+                    + " e b > 0");
         }
 
         int m;
@@ -493,16 +494,14 @@ public class Algoritmos {
      *
      * @param b Número inteiro natural.
      * @param a Array de números inteiros naturais.
-     *
-     * @returns int Máximo divisor comum de a e b.
-     *
-     * @throws IllegalArgumentException Se o primeiro argumento estiver fora do intervalo:
-     * b > 0.
+     * @throws IllegalArgumentException Se o primeiro argumento estiver
+     * fora do intervalo: b > 0.
+     * @return int Máximo divisor comum de a e b.
      **/
     public int maiorDivisorComumSemResto(int a, int b) {
         if (b < 0) {
-            throw new IllegalArgumentException("Os numero deverao 'b' tem que" +
-                    " ser maior que zero!");
+            throw new IllegalArgumentException("Os numero deverao 'b' tem que "
+                    + "ser maior que zero!");
         }
 
         while (b != a) {
@@ -523,11 +522,9 @@ public class Algoritmos {
      * @param x Número real.
      * @param g Número real.
      * @param a Array de numeros rais.
-     *
-     * @returns int Número real.
-     *
-     * @throws IllegalArgumentException Se o segundo argumento estiver for do intervalo:
-     * g > 1.
+     * @throws IllegalArgumentException Se o segundo argumento estiver for do
+     * intervalo: g > 1.
+     * @return int Número real.
      **/
     public int regraHorner(final int x, final int g, final int[] a) {
         if (g < 1) {
@@ -548,13 +545,12 @@ public class Algoritmos {
      * Calcula o número de Fibonacci sem usar recursividade.
      *
      * @param n Número inteiro natural.
-     *
-     * @returns long Número inteiro natural.
-     *
-     * @throws IllegalArgumentException Se o argumento estiver fora do intervalo: n >= 0.
+     * @throws IllegalArgumentException Se o argumento estiver fora do
+     * intervalo: n >= 0.
+     * @return long Número inteiro natural.
      **/
     public long fibonacci(final int n) {
-        if (n <= 0) {
+        if (n < 0) {
             throw new IllegalArgumentException("O numero 'n' tem que ser n>=0");
         }
 
@@ -581,12 +577,11 @@ public class Algoritmos {
      * Verifica se um dado CPF segue a regra de formação dos digitos
      * corretamente.
      *
-     * @param a Array de numeros rais.
-     *
-     * @returns boolean true ou false Valor lógico.
-     * 
+     * @param d Array de numeros rais.
      * @throws IllegalArgumentException Se o argumento não tiver 11 digitos.
-     * @throws IllegalArgumentException Se no argumento tiver algum número: 0 <= n >= 9.
+     * @throws IllegalArgumentException Se no argumento tiver algum
+     * número: 0 <= n >= 9.
+     * @return boolean true ou false Valor lógico.
      **/
     public boolean validaCPF(final int[] d) {
         if (d.length != 11) {
@@ -614,11 +609,10 @@ public class Algoritmos {
      * corretamenten usando o Método de Horner.
      *
      * @param d Array de numeros rais.
-     *
-     * @returns boolean true ou false Valor lógico.
-     *
      * @throws IllegalArgumentException Se o argumento não tiver 11 digitos.
-     * @throws IllegalArgumentException Se no argumento tiver algum número: 0 <= n >= 9.
+     * @throws IllegalArgumentException Se no argumento tiver algum
+     * número: 0 <= n >= 9.
+     * @return boolean true ou false Valor lógico.
      **/
     public boolean validaCPFRegraHorner(final int[] d) {
         if (d.length != 11) {
