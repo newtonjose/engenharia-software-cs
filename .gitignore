@@ -21,4 +21,4 @@ aula-01/js/out/
 *target/
 
 # iml files
-*ufg.cs.iml
+*.iml
