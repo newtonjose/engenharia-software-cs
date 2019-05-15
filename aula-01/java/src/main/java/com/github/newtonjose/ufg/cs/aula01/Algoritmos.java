@@ -26,6 +26,11 @@ public class Algoritmos {
      * satisfaz a propriedade Propriedade 3025, {false} caso contrário.
      */
     public static boolean numeroVerdadeiro(final int n) {
+        if (n < 0 || n > 9999) {
+            throw new IllegalArgumentException("Numero fora do range " +
+                    "100 && n <= 999");
+        }
+
         final double i = n / 100;
         final double j = n % 100;
         final double m = i + j;

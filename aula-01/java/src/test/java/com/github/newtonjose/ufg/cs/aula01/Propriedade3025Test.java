@@ -3,6 +3,7 @@ package com.github.newtonjose.ufg.cs.aula01;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -11,7 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class Propriedade3025Test {
 
     @Test
-    void propriedade3025Ok() {
+    void propriedade3025Satisfaz() {
         assertTrue(Algoritmos.numeroVerdadeiro(3025));
+    }
+
+    @Test
+    void propriedade3025NaoSatisfaz() {
+        assertFalse(Algoritmos.numeroVerdadeiro(3024));
+    }
+
+    @Test
+    void propriedade3025ArgumentoInvalido() {
+        assertThrows(IllegalArgumentException.class,
+                () -> Algoritmos.numeroVerdadeiro(-1));
     }
 }
