@@ -25,7 +25,7 @@ public class Algoritmos {
      * @returns boolean Retorna {true} se o número fornecido como argumento
      * satisfaz a propriedade Propriedade 3025, {false} caso contrário.
      */
-    public boolean numeroVerdadeiro(final int n) {
+    public static boolean numeroVerdadeiro(final int n) {
         final double i = n / 100;
         final double j = n % 100;
         final double m = i + j;
@@ -50,10 +50,10 @@ public class Algoritmos {
                     "100 && cdu <= 999");
         }
 
-        cdu = cdu % 100;
-        final double c = cdu / 100;
-        final double d = cdu / 10;
-        final double u = cdu % 10;
+        final double r = cdu % 100;
+        final double c = r / 100;
+        final double d = r / 10;
+        final double u = r % 10;
 
         return (c * c * c + d * d * +u * u * u) == cdu;
     }

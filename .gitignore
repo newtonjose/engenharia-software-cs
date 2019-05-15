@@ -3,6 +3,8 @@
 
 # intelliJ files
 .idea/
+aula-01/java/.idea/
+
 
 # java compiled file
 *.class
@@ -13,3 +15,10 @@ aula-01/js/package-lock.json
 
 # jsdoc files
 aula-01/js/out/
+
+
+#mvn files
+*target/
+
+# iml files
+*ufg.cs.iml
