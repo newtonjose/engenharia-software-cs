@@ -15,30 +15,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  */
 public class Algoritmos {
 
-    /**
-     * Calcula o fatorial de um dado numero natural sem usar
-     * recursividade.
-     *
-     * @param n Número inteiro natural.
-     * @throws IllegalArgumentException Se o argumento estiver fora do
-     * intervalo: n >= 1.
-     * @return int Fatorial do parâmetro.
-     */
-    public long fatorialNumero(final int n) {
-        if (n < 1) {
-            throw new IllegalArgumentException("O numero 'n' tem que ser "
-                    + "n >= 1.");
-        }
 
-        int i = 2;
-        long f = 1;
-        while (i <= n) {
-            f = f * i;
-            i = i + 1;
-        }
-
-        return f;
-    }
 
     /**
      * Dado dois numeros inteiros a função calcula o produto dos dois

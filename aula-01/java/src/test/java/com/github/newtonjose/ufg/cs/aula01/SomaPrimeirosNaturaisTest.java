@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Created by aluno on 16/05/19.
+ * Classe de teste unidade da classe SomaPrimeirosNaturais com cobertura 100%
  */
 class SomaPrimeirosNaturaisTest {
     @Test
