@@ -38,8 +38,8 @@ class DiaDaSemanaTest {
         assertThrows(IllegalArgumentException.class,
                 () -> DiaDaSemana.getDiaDaSemana(16, 5, 1753));
 
-//        assertThrows(IllegalArgumentException.class,
-//                () -> DiaDaSemana.getDiaDaSemana(16, 5, 1000));
+        assertThrows(IllegalArgumentException.class,
+                () -> DiaDaSemana.getDiaDaSemana(16, 5, 1000));
     }
 
     @Test

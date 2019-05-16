@@ -15,29 +15,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  */
 public class Algoritmos {
 
-    /**
-     * Dado dois numeros, está função encontra o resto da divisão de x por y.
-     *
-     * @param x Numero racional.
-     * @param y Número racional.
-     * @throws IllegalArgumentException Se os argumentos estiver fora dos
-     *                                  intervalos: y >= 0; x > 0.
-     * @return int Retorna o resto da duvisão inteira.
-     */
-    public int restoDivisaoInteira(final int x, int y) {
-        if (y < 0 && x <= 0) {
-            throw new IllegalArgumentException("O numeros devem ser y >= 0 && "
-                    + "x > 0.");
-        }
 
-        int resto = x;
-        while (y <= resto) {
-            resto = resto - y;
-            y = y + 1;
-        }
-
-        return resto;
-    }
 
     /**
      * Dado um número natural, soma os todos os primeiros naturais
