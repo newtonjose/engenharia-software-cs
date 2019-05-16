@@ -37,35 +37,6 @@ public class Algoritmos {
     }
 
     /**
-     * Verifica se a soma dos cubos dos digitos de um dado número é
-     * igual ao número dado.
-     *
-     * @param cdu Numero inteiro natural.
-     * @throws IllegalArgumentException Se o argumento estiver fora do
-     * intervalo 100 a 999.
-     * @return boolean Retorna {true} se satisfazer a propriedade 153
-     * e {false} caso contrário.
-     */
-    public static boolean verificaCubosDosDigitos(final int cdu) {
-        final int minCdu = 100;
-        final int maxCdu = 999;
-        if (cdu < minCdu || cdu > maxCdu) {
-            throw new IllegalArgumentException("O numeros devem ser cdu >= "
-                    + "100 && cdu <= 999");
-        }
-
-        final int divCem = 100;
-        final double r = cdu % divCem;
-        final double c = r / divCem;
-
-        final int divDez = 10;
-        final double d = r / divDez;
-        final double u = r % divDez;
-
-        return (c * c * c + d * d * +u * u * u) == cdu;
-    }
-
-    /**
      * A função implementa um algoritmo que dado uma data calcula qual o dia
      * da semana, 1 - segunda; 2 - terça, 3 ...
      *
