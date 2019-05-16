@@ -51,7 +51,8 @@ class ValidaParametros {
     static validaEntrada(a) {
         for (let i = 0; i < a.length; i++) {
             if (a[i] == null || a[i] == undefined) {
-                return false;
+                throw new Error("Entrada invalidada, null e undefined nao " +
+                    "sao entradas validas");
             }
         }
     }
@@ -79,10 +80,7 @@ class Algoritmos {
      * @returns {boolean} true ou false Valor lógico.
      **/
     static propriedade3025(n) {
-        if (ValidaParametros.validaEntrada([n])) {
-            throw new Error("Entrada invalidada, null e undefined nao " +
-                "sao entradas validas");
-        }
+        ValidaParametros.validaEntrada([n])
 
         if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("Argumento deve ser um número");
@@ -115,10 +113,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo 100 a 999.
      **/
     static propriedade153(n) {
-        if (ValidaParametros.validaEntrada([n])) {
-            throw new Error("Entrada invalidada, null e undefined nao " +
-                "sao entradas validas");
-        }
+        ValidaParametros.validaEntrada([n])
 
         if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("Argumento deve ser um número");
@@ -156,10 +151,7 @@ class Algoritmos {
      * intervalos: 1 <= dia <= 31; 1 <= mes <= 12 e ano > 1753.
      **/
     static diaDaSemana(dia, mes, ano) {
-        if (ValidaParametros.validaEntrada([dia, mes, ano])) {
-            throw new Error("Entrada invalidada, null e undefined nao " +
-                "sao entradas validas");
-        }
+        ValidaParametros.validaEntrada([dia, mes, ano])
 
         if (!vp.validaParametrosTipoNumero([dia, mes, ano])) {
             throw new TypeError("os argumentos devem ser do tipo número");
@@ -201,10 +193,8 @@ class Algoritmos {
      * y >= 0; x > 0.
      **/
     static restoDivisaoInteira(x, y) {
-        if (ValidaParametros.validaEntrada([x, y])) {
-            throw new Error("Entrada invalidada, null e undefined nao " +
-                "sao entradas validas");
-        }
+        ValidaParametros.validaEntrada([x, y])
+
         if (!vp.validaParametrosTipoNumero([x, y])) {
             throw new TypeError("Os argumentos devem ser do tipo número");
         }
@@ -238,10 +228,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     static somaNaturais(n) {
-        if (ValidaParametros.validaEntrada([n])) {
-            throw new Error("Entrada invalidada, null e undefined nao "
-                + "sao entradas validas.");
-        }
+        ValidaParametros.validaEntrada([n])
 
         if (!ValidaParametros.verificaTipoNumero(n)) {
             throw new TypeError("O argumento deve ser um número");
