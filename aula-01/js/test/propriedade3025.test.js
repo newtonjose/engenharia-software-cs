@@ -1,5 +1,5 @@
 const Algoritmos = require("../aula-01");
-const funcao = Algoritmos.numeroVerdadeiro;
+const funcao = Algoritmos.propriedade3025;
 
 test("3025 satisfaz (caso classico)", () => {
     expect(funcao(3025)).toBe(true);

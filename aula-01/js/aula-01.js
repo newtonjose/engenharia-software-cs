@@ -78,7 +78,7 @@ class Algoritmos {
      *
      * @returns {boolean} true ou false Valor lógico.
      **/
-    static numeroVerdadeiro(n) {
+    static propriedade3025(n) {
         if (ValidaParametros.validaEntrada([n])) {
             throw new Error("Entrada invalidada, null e undefined nao " +
                 "sao entradas validas");
@@ -114,7 +114,7 @@ class Algoritmos {
      * @throws {TypeError} Se o argumento não for um número.
      * @throws {RangeError} Se o argumento estiver fora do intervalo 100 a 999.
      **/
-    static verificaCubosDosDigitos(n) {
+    static propriedade153(n) {
         if (ValidaParametros.validaEntrada([n])) {
             throw new Error("Entrada invalidada, null e undefined nao " +
                 "sao entradas validas");
@@ -237,13 +237,22 @@ class Algoritmos {
      * @throws {TypeError} Se o argumento não for um número.
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
-    somaNaturais(n) {
-        if (!vp.verificaTipoNumero(n)) {
+    static somaNaturais(n) {
+        if (ValidaParametros.validaEntrada([n])) {
+            throw new Error("Entrada invalidada, null e undefined nao "
+                + "sao entradas validas.");
+        }
+
+        if (!ValidaParametros.verificaTipoNumero(n)) {
             throw new TypeError("O argumento deve ser um número");
         }
 
         if (n < 1) {
             throw new RangeError("O numero 'n' tem que ser n >= 1");
+        }
+
+        if (ValidaParametros.verificaTipoFloat(n)) {
+            throw new RangeError("O numero deve ser tipo inteiro.");
         }
 
         let i = 2;

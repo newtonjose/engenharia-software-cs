@@ -1,5 +1,5 @@
 const Algoritmos = require("../aula-01");
-const funcao = Algoritmos.verificaCubosDosDigitos;
+const funcao = Algoritmos.propriedade153;
 
 test("153 satisfaz (caso classico)", () => {
     expect(funcao(153)).toBe(true);
