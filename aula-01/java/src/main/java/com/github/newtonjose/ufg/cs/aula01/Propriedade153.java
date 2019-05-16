@@ -10,7 +10,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @version 1.1
  * @since 2019-03-15
  */
-public class Propriedade153 {
+public final class Propriedade153 {
     /**
      * Maior valor válido para propriedade 153.
      */

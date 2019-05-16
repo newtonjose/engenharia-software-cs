@@ -15,56 +15,6 @@ package com.github.newtonjose.ufg.cs.aula01;
  */
 public class Algoritmos {
 
-    /** Constante que representa o máximo dia de um mês. */
-    private static final int DIA_MAX = 31;
-
-    /** Constante que representa o máximo dia de um ano. */
-    private static final int MES_MAX = 12;
-
-    /** Constante que representa o menor ano permitido. */
-    private static final int ANO_MIN = 1753;
-
-    /**
-     * Função auxiliar para validar um data.
-     * @param d Dia do mês.
-     * @param m Mês do ano.
-     * @param a Ano depois de 1753.
-     * @return boolean Verdadeiro caso a data seja valida, false caso contrário.
-     */
-    private boolean dataInvalida(final int d, final int m, final int a) {
-        return ((d < 1 || d > DIA_MAX) || (m < 1 || m > MES_MAX)
-                || (a <= ANO_MIN));
-    }
-
-    /**
-     * A função implementa um algoritmo que dado uma data calcula qual o dia
-     * da semana, 1 - segunda; 2 - terça, 3 ...
-     *
-     * @param dia Numero natural menor ou igual a 31.
-     * @param mes Número natural menor ou igual a 12.
-     * @param ano Número natural maior ou igual a 1753.
-     * @throws IllegalArgumentException Se os argumentos estiver fora dos
-     * seguintes intervalos: 1 <= dia <= 31; 1 <= mes <= 12 e ano > 1753.
-     * @return int Retorna um número que equivale ao dia da semana da data
-     * passada como paramêtro.
-     */
-    public int diaDaSemana(final int dia, final int mes, final int ano) {
-        if (!dataInvalida(dia, mes, ano)) {
-            throw new IllegalArgumentException("O numeros devem ser d >= 1, d"
-                    + " <= 31, d >= 1, d <= 12, a > 1753!");
-        }
-
-        // FINDMORE: como funciona isso em Java
-        final boolean janeiroOuFevereiro = mes == 1 || mes == 2;
-        final int m = janeiroOuFevereiro ? mes + 12 : mes;
-        final int a = janeiroOuFevereiro ? ano - 1 : ano;
-
-        final int drDobbsExpr = ((dia + 2 * m + 3 * (m + 1)) / (5 + a + a) /
-                (4 - a) / (100 + a) / 400);
-
-        return drDobbsExpr % 7;
-    }
-
     /**
      * Dado dois numeros, está função encontra o resto da divisão de x por y.
      *
