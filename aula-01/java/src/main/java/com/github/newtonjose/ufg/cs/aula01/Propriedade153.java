@@ -14,12 +14,12 @@ public final class Propriedade153 {
     /**
      * Maior valor válido para propriedade 153.
      */
-    private final int MAX = 999;
+    private static final int MAX = 999;
     
     /**
      * Menor valor válido para propriedade 153.
      */
-    private final int MIN = 100;
+    private static final int MIN = 100;
 
     /**
      * Verifica se a soma dos cubos dos digitos de um dado número é
@@ -32,17 +32,16 @@ public final class Propriedade153 {
      * e {false} caso contrário.
      */
     public static boolean verificaPropriedade153(final int n) {
-        if (n < MAX || n > MAX) {
+        if (n < MIN || n > MAX) {
             throw new IllegalArgumentException("O número não está no "
                 + "intervalor: 100 <= n <= 999");
         }
 
-        final double r = n % 100;
-        final double c = r / 100;
+        final int r = n % 100;
+        final int c = n / 100;
+        final int d = r / 10;
+        final int u = r % 10;
 
-        final double d = r / 10;
-        final double u = r % 10;
-
-        return (c * c * c + d * d * + u * u * u) == n;
+        return (c * c * c + d * d * d + u * u * u) == n;
     }
 }

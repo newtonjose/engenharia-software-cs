@@ -24,9 +24,9 @@ class Propriedade3025Test {
     @Test
     void propriedade3025ArgumentoInvalido() {
         assertThrows(IllegalArgumentException.class,
-                () -> Propriedade3025.verificaPropriedade3025(0));
+                () -> Propriedade3025.verificaPropriedade3025(-1));
 
         assertThrows(IllegalArgumentException.class,
-                () -> Propriedade3025.verificaPropriedade3025(10000));
+                () -> Propriedade3025.verificaPropriedade3025(100000));
     }
 }

@@ -15,7 +15,7 @@ public final class Propriedade3025 {
     /**
      * Maximo número que a propriedade se aplica.
      */
-    private final int MAX = 9999;
+    private static final int MAX = 9999;
 
     //private final int DIVISOR = 100;
 
