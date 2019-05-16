@@ -7,26 +7,26 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Created by aluno on 14/05/19.
+ * Classe de teste da Propriedade 3025 com 100% de cobertura.
  */
 class Propriedade3025Test {
 
     @Test
     void propriedade3025Satisfaz() {
-        assertTrue(Algoritmos.numeroVerdadeiro(3025));
+        assertTrue(Propriedade3025.verificaPropriedade3025(3025));
     }
 
     @Test
     void propriedade3025NaoSatisfaz() {
-        assertFalse(Algoritmos.numeroVerdadeiro(3024));
+        assertFalse(Propriedade3025.verificaPropriedade3025(3024));
     }
 
     @Test
     void propriedade3025ArgumentoInvalido() {
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.numeroVerdadeiro(-1));
+                () -> Propriedade3025.verificaPropriedade3025(0));
 
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.numeroVerdadeiro(10000));
+                () -> Propriedade3025.verificaPropriedade3025(10000));
     }
 }

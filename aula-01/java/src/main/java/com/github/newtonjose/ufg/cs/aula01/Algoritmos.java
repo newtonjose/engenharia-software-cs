@@ -37,29 +37,6 @@ public class Algoritmos {
     }
 
     /**
-     * Verifica se um dado numero é verdadeiro usando a Propriedade 3025.
-     *
-     * @param n Numero inteiro natural.
-     * @return boolean Retorna {true} se o número fornecido como argumento
-     * satisfaz a propriedade Propriedade 3025, {false} caso contrário.
-     */
-    public static boolean numeroVerdadeiro(final int n) {
-        final int manNumber = 9999;
-
-        if (n < 0 || n > manNumber) {
-            throw new IllegalArgumentException("Numero fora do range "
-                    + "100 <= n <= 999");
-        }
-
-        final int div = 100;
-        final double i = n / div;
-        final double j = n % div;
-        final double m = i + j;
-
-        return m * m == n;
-    }
-
-    /**
      * Verifica se a soma dos cubos dos digitos de um dado número é
      * igual ao número dado.
      *
