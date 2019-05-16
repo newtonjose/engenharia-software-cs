@@ -67,7 +67,8 @@ public class DiaDaSemana {
      * @return int Retorna um número que equivale ao dia da semana da data
      * passada como paramêtro.
      * @throws IllegalArgumentException Se os argumentos estiver fora dos
-     *                                  seguintes intervalos: 1 <= dia <= 31; 1 <= mes <= 12 e ano > 1753.
+     *                                  seguintes intervalos: 1 <= dia <= 31;
+     *                                  1 <= mes <= 12 e ano > 1753.
      */
     public static int getDiaDaSemana(final int dia, final int mes,
                                      final int ano) {
