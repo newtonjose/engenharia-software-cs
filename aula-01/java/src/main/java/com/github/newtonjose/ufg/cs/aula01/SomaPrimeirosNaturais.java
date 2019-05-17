@@ -1,7 +1,14 @@
 package com.github.newtonjose.ufg.cs.aula01;
 
 /**
- * Created by aluno on 16/05/19.
+ * Classe implementa o algoritmo matemático para soma dos n primeiros naturais
+ * dado um número.
+ *
+ * <p>Implementa um somatório para os primeiros n naturais n * (n + 1) / 2.</p>
+ *
+ * @author Josenilton Santos
+ * @version 1.1
+ * @since 2019-03-15
  */
 public class SomaPrimeirosNaturais {
 

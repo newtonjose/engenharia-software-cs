@@ -1,12 +1,12 @@
 package com.github.newtonjose.ufg.cs.aula01;
 
 /**
- * Classe implementa o algoritmo matemático que verifica se um dado numero
+ * Classe implementa o algoritmo matematico que verifica se um dado numero
  * segue a propriedade do número 3025.
  *
  * <p>Implementa a Propriedade 3025, tal que 30 + 25 = 55 e o
- * quadrado desta soma resulta no próprio número, 55² = 3025.</p>
- * 
+ * quadrado desta soma resulta no proprio numero, 55² = 3025.</p>
+ *
  * @author Josenilton Santos
  * @version 1.1
  * @since 2019-03-15
