@@ -10,6 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Classe de teste da Class Propriedade153 com 100% de cobertura.
  */
 class Propriedade153Test {
+    @Test
+    void criarObjetoDaClasse() {
+        assertThrows(UnsupportedOperationException.class,
+                () -> new Propriedade153());
+    }
 
     @Test
     void propriedade153Satisfaz() {

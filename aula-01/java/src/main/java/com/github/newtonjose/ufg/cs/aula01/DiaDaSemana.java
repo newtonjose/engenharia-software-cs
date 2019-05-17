@@ -42,7 +42,7 @@ public class DiaDaSemana {
     /**
      * Número auxiliar que representa o número de meses de um ano.
      */
-    private static final int NUM_MESES = 13;
+    private static final int NUM_MESES = 12;
 
     /**
      * Função auxiliar para validar uma data.
@@ -78,7 +78,7 @@ public class DiaDaSemana {
         }
 
         // FINDMORE: como funciona isso em Java
-        final boolean janeiroOuFevereiro = (mes == 1) || (mes == 2);
+        final boolean janeiroOuFevereiro = mes == 1 || mes == 2;
 
         final int m;
         if (!janeiroOuFevereiro) {

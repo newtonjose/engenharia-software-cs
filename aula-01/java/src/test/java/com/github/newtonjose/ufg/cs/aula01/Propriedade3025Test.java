@@ -10,6 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Classe de teste da Propriedade 3025 com 100% de cobertura.
  */
 class Propriedade3025Test {
+    @Test
+    void criarObjetoDaClasse() {
+        assertThrows(UnsupportedOperationException.class,
+                () -> new Propriedade3025());
+    }
 
     @Test
     void propriedade3025Satisfaz() {

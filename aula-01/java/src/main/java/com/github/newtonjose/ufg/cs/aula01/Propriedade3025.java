@@ -13,11 +13,21 @@ package com.github.newtonjose.ufg.cs.aula01;
  */
 public final class Propriedade3025 {
     /**
+     * Contrutor protegido.
+     */
+    protected Propriedade3025() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Maximo número que a propriedade se aplica.
      */
     private static final int MAX = 9999;
 
-    //private final int DIVISOR = 100;
+    /**
+     * Divisor usado pelo algoritmo verificaPropriedade3025.
+     */
+    private static final int DIVISOR = 100;
 
     /**
      * Verifica se um dado numero é verdadeiro usando a Propriedade 3025.
@@ -32,8 +42,8 @@ public final class Propriedade3025 {
                     + "100 <= n <= 999");
         }
 
-        final double i = n / 100;
-        final double j = n % 100;
+        final double i = n / DIVISOR;
+        final double j = n % DIVISOR;
         final double m = i + j;
 
         return m * m == n;

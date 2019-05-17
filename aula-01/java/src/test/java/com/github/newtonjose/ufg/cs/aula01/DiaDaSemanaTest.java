@@ -17,8 +17,14 @@ class DiaDaSemanaTest {
 
     @Test
     void getDiaDaSemanaMesUm() {
-        assertEquals(3, DiaDaSemana.getDiaDaSemana(14,
+        assertEquals(0, DiaDaSemana.getDiaDaSemana(14,
                 1, 2019));
+    }
+
+    @Test
+    void getDiaDaSemanaMesDois() {
+        assertEquals(0, DiaDaSemana.getDiaDaSemana(11,
+                2, 2019));
     }
 
     @Test

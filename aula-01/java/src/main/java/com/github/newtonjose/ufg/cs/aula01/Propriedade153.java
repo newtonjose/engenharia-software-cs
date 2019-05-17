@@ -12,6 +12,13 @@ package com.github.newtonjose.ufg.cs.aula01;
  */
 public final class Propriedade153 {
     /**
+     * Contrutor protegido.
+     */
+    protected Propriedade153() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Maior valor válido para propriedade 153.
      */
     private static final int MAX = 999;
