@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class Aplicacao {
     /**
      * Metodo main que imprime a data do dia na tela.
-     * @param args Argumento de entrada.
+     * @param args Argumentos de entrada.
      */
     public static void main(final String[] args) {
         System.out.println(LocalDate.now().getDayOfWeek());
