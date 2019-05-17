@@ -29,6 +29,16 @@ public final class Propriedade153 {
     private static final int MIN = 100;
 
     /**
+     * Número usado como divisor para obter centena.
+     */
+    private static final int DIVISOR_CEM = 100;
+
+    /**
+     * Número usado como divisor para obter dezena.
+     */
+    private static final int DIVISOR_DEZ = 10;
+
+    /**
      * Verifica se a soma dos cubos dos digitos de um dado número é
      * igual ao número dado.
      *
@@ -44,10 +54,10 @@ public final class Propriedade153 {
                 + "intervalor: 100 <= n <= 999");
         }
 
-        final int r = n % 100;
-        final int c = n / 100;
-        final int d = r / 10;
-        final int u = r % 10;
+        final int r = n % DIVISOR_CEM;
+        final int c = n / DIVISOR_CEM;
+        final int d = r / DIVISOR_DEZ;
+        final int u = r % DIVISOR_DEZ;
 
         return (c * c * c + d * d * d + u * u * u) == n;
     }
