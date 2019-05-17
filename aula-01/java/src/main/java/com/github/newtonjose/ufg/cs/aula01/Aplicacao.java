@@ -9,7 +9,11 @@ import java.time.LocalDate;
  * <p>Veja detalhes no exercício 4 (aula-01).</p>
  */
 public class Aplicacao {
-    public static void main(String[] args) {
-	    System.out.println(LocalDate.now().getDayOfWeek());
+    /**
+     * Metodo main que imprime a data do dia na tela.
+     * @param args Argumentos de entrada.
+     */
+    public static void main(final String[] args) {
+        System.out.println(LocalDate.now().getDayOfWeek());
     }
 }

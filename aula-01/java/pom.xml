@@ -228,9 +228,9 @@
                 <version>3.1.0</version>
                 <configuration>
                     <show>public</show>
-                    <additionalOptions>
-                        <additionalOption>-html5</additionalOption>
-                    </additionalOptions>
+                    <!--<additionalOptions>-->
+                        <!--<additionalOption>-html5</additionalOption>-->
+                    <!--</additionalOptions>-->
                 </configuration>
             </plugin>
 

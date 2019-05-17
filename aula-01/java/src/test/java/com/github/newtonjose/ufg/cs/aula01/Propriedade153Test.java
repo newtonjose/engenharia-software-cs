@@ -7,31 +7,31 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Classe de teste da Propriedade 3025 com 100% de cobertura.
+ * Classe de teste da Class Propriedade153 com 100% de cobertura.
  */
-class Propriedade3025Test {
+class Propriedade153Test {
     @Test
     void criarObjetoDaClasse() {
         assertThrows(UnsupportedOperationException.class,
-                () -> new Propriedade3025());
+                () -> new Propriedade153());
     }
 
     @Test
-    void propriedade3025Satisfaz() {
-        assertTrue(Propriedade3025.verificaPropriedade3025(3025));
+    void propriedade153Satisfaz() {
+        assertTrue(Propriedade153.verificaPropriedade153(153));
     }
 
     @Test
-    void propriedade3025NaoSatisfaz() {
-        assertFalse(Propriedade3025.verificaPropriedade3025(3024));
+    void propriedade153NaoSatisfaz() {
+        assertFalse(Propriedade153.verificaPropriedade153(154));
     }
 
     @Test
-    void propriedade3025ArgumentoInvalido() {
+    void propriedade153ArgumentoInvalido() {
         assertThrows(IllegalArgumentException.class,
-                () -> Propriedade3025.verificaPropriedade3025(-1));
+                () -> Propriedade153.verificaPropriedade153(99));
 
         assertThrows(IllegalArgumentException.class,
-                () -> Propriedade3025.verificaPropriedade3025(100000));
+                () -> Propriedade153.verificaPropriedade153(1000));
     }
 }
