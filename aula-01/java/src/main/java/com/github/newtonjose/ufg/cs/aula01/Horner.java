@@ -9,11 +9,11 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @version 1.1
  * @since 2019-03-15
  */
-public class Produto {
+public class Horner {
     /**
      * Contrutor protegido.
      */
-    protected Produto() {
+    protected Horner() {
         throw new UnsupportedOperationException();
     }
 

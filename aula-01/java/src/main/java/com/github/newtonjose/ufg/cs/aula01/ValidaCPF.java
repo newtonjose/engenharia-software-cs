@@ -9,11 +9,11 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @version 1.1
  * @since 2019-03-15
  */
-public class Produto {
+public class ValidaCPF {
     /**
      * Contrutor protegido.
      */
-    protected Produto() {
+    protected ValidaCPF() {
         throw new UnsupportedOperationException();
     }
 
@@ -25,7 +25,7 @@ public class Produto {
     /**
      *
      */
-    private static final int constante = 8;
+    private static int constante = 8;
 
     /**
      * Verifica se um dado CPF segue a regra de formação dos digitos
