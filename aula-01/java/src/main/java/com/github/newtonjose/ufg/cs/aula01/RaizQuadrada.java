@@ -20,7 +20,7 @@ public class RaizQuadrada {
     /**
      *
      */
-    private static doble numRaiz = 1;
+    private static double numRaiz = 1;
 
     /**
      *

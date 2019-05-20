@@ -10,6 +10,13 @@ import java.time.LocalDate;
  */
 public class Aplicacao {
     /**
+     * Contrutor.
+     */
+    Aplicacao() {
+
+    }
+
+    /**
      * Metodo main que imprime a data do dia na tela.
      * @param args Argumentos de entrada.
      */
