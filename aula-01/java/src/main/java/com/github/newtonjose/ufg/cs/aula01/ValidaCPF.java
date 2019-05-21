@@ -20,42 +20,60 @@ public class ValidaCPF {
     /**
      *
      */
-    private static final int resto = 10;
+    private static final int RESTO = 10;
 
     /**
      *
      */
-    private static int constante = 8;
+    private static final int ONZE = 11;
+
+    /**
+     *
+     */
+    private static final int DEZ = 10;
+
+    /**
+     *
+     */
+    private static final int NOVE = 9;
+
+    /**
+     *
+     */
+    private static final int OITO = 8;
 
     /**
      * Verifica se um dado CPF segue a regra de formação dos digitos
      * corretamente.
      *
-     * @param d Array de numeros rais.
+     * @param cpf Array de numeros rais.
      * @throws IllegalArgumentException Se o argumento não tiver 11 digitos.
      * @throws IllegalArgumentException Se no argumento tiver algum
      * número: 0 <= n >= 9.
      * @return boolean true ou false Valor lógico.
      **/
-    public static boolean validaCPF(final int[] d) {
-        if (d.length != 11) {
+    public static boolean validaCPF(final int[] cpf) {
+        if (cpf.length != ONZE) {
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
         }
 
+        //TODO: Verificar numeros invalidos no vetor
+
         int j = 0;
         int k = 0;
-        for (int i = 0; i < 9; i++) {
-            j += d[i];
+        //CONST = 8;
+        for (int i = 0; i < NOVE; i++) {
+            j += cpf[i];
         }
 
-        for (int i = 1; i < 10; i++) {
-            k += d[i];
+        for (int i = 1; i < DEZ; i++) {
+            k += cpf[i];
         }
 
-        final int dj = (j % 11) % resto;
-        final int dk = (k % 11) % resto;
+        final int dj = (j % ONZE) % RESTO;
+        final int dk = (k % ONZE) % RESTO;
 
-        return (dj == d[d.length - 1]) && (dk == d[d.length]);
+        return (dj == cpf[cpf.length - 1]) && (dk == cpf[cpf.length]);
     }
 
     /**
@@ -69,21 +87,21 @@ public class ValidaCPF {
      * @return boolean true ou false Valor lógico.
      **/
     public static boolean validaCPFRegraHorner(final int[] d) {
-        if (d.length != 11) {
+        if (d.length != ONZE) {
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
         }
 
-        int p = d[9];
-        int s = d[9];
-
-        while (constante >= 1) {
-            p += d[constante];
+        int p = d[NOVE];
+        int s = d[NOVE];
+        int o = OITO;
+        while (o >= 1) {
+            p += d[o];
             s += p;
-            constante -= 1;
+            o -= 1;
         }
 
-        final int j = (s % 11) % resto;
-        final int k = ((s - p + 9 * d[10]) % 11) % resto;
+        final int j = (s % ONZE) % RESTO;
+        final int k = ((s - p + NOVE * d[DEZ]) % ONZE) % RESTO;
 
         return (j == d[d.length - 1]) && (k == d[d.length]);
     }
