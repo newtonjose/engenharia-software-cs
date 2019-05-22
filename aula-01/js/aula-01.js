@@ -8,18 +8,18 @@ class ValidaParametros {
     /**
      * Função auxiliar que verifica se um dado paramêtro é do tipo 'number'.
      **/
-    verificaTipoNumero(n) {
+    static verificaTipoNumero(n) {
         return typeof n == "number";
     }
 
     /**
      * Função auxiliar que verifica se um dado paramêtro é do tipo 'array'.
      **/
-    verificaTipoArray(a) {
+    static verificaTipoArray(a) {
         return Array.isArray(a);
     }
 
-    verificaTipoFloat(n) {
+    static verificaTipoFloat(n) {
         return Number(n) === n && n % 1 !== 0;
     }
 
@@ -53,6 +53,11 @@ class ValidaParametros {
             if (a[i] == null || a[i] == undefined) {
                 throw new Error("Entrada invalidada, null e undefined nao " +
                     "sao entradas validas");
+            }
+            
+            if (!this.verificaTipoNumero(a[i])) {
+                throw new TypeError("argumento(s) valido(s) é/são do tipo " + 
+                    "número.");
             }
         }
     }
@@ -264,13 +269,15 @@ class Algoritmos {
      * @throws {TypeError} Se o argumento não for um número.
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
-    fatorialNumero(n) {
-        if (!vp.verificaTipoNumero(n)) {
-            throw new TypeError("O argumento deve ser um número");
-        }
+    static fatorialNumero(n) {
+        ValidaParametros.validaEntrada([n])
 
         if (n < 1) {
-            throw new RangeError("O numero 'n' tem que ser n >= 1");
+            throw new RangeError("O argumento deve ser maior ou igual a 1.");
+        }
+
+        if (ValidaParametros.verificaTipoFloat(n)) {
+            throw new RangeError("O argumento deve ser tipo inteiro.");
         }
 
         let i = 2;

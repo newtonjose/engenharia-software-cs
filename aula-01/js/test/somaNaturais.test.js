@@ -2,7 +2,7 @@ const Algoritmos = require("../aula-01");
 const funcao = Algoritmos.somaNaturais;
 
 test("soma dos naturais caso valido", () => {
-    expect(funcao(5)).toBe(12);
+    expect(funcao(5)).toBe(15);
 });
 
 test("argumento null/undefined", () => {
@@ -10,7 +10,7 @@ test("argumento null/undefined", () => {
 });
 
 test("argumento nao numerico", () => {
-    expect(() => { funcao("abcd"; }).toThrow();
+    expect(() => { funcao("abcd"); }).toThrow();
 });
 
 test("valor fora da faixa", () => {
