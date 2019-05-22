@@ -32,17 +32,16 @@ public class MaiorDivisorComum {
                     + " e b > 0");
         }
 
-        int m;
-
+        int maiorDc;
         int auxA = a;
         int auxB = b;
-        while (b != 0) {
-            m = a % b;
-            auxA = b;
-            auxB = m;
+        while (auxB != 0) {
+            maiorDc = auxA % auxB;
+            auxA = auxB;
+            auxB = maiorDc;
         }
 
-        return a;
+        return auxA;
     }
 
     /**
@@ -63,15 +62,14 @@ public class MaiorDivisorComum {
 
         int auxA = a;
         int auxB = b;
-        while (b != a) {
-            // 'a' sempre sera maior que 'b' pelo if anterior
-            if (a > b) {
-                auxA -= b;
+        while (auxA != auxB) {
+            if (auxA > auxB) {
+                auxA -= auxB;
             } else {
-                auxB -= a;
+                auxB -= auxA;
             }
         }
 
-        return a;
+        return auxA;
     }
 }
