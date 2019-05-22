@@ -19,7 +19,7 @@ public class Potencia {
      *
      */
     private static int produtorio = 1;
-    
+
     /**
      * Calcula a potência de dois numeros usando apenas somas.
      *
@@ -30,11 +30,11 @@ public class Potencia {
      * @return int Potência dos parâmetros.
      */
     public static int calculaPotencia(final int x, final int y) {
-	if (x <= 0 || y <=0) {
+        if (x <= 0 || y <= 0) {
             throw new IllegalArgumentException("Os numeros x e y deverão "
-					       + "ser x >=0 e y >=0.");
+                           + "ser x >=0 e y >=0.");
         }
-	
+
         int i = 1;
         while (i <= y) {
             produtorio = Produto.calculaProdutoInteiros(produtorio, x);
@@ -43,5 +43,4 @@ public class Potencia {
 
         return produtorio;
     }
-    
 }

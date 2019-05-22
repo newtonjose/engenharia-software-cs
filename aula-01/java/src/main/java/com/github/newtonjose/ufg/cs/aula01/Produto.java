@@ -21,21 +21,21 @@ public class Produto {
      *
      */
     private static int produto = 0;
-    
+
     /**
      * Dado dois numeros inteiros a função calcula o produto dos dois
      * usando somatório.
      *
      * @param a Número inteiro natural.
      * @param b Número inteiro natural.
-     * @throws IllegalArgumentException Se os argumentos estiverem fora
-     * dos intervalos: a >= 0; b >= 0.
      * @return int Produto dos dois parâmetros.
+     * @throws IllegalArgumentException Se os argumentos estiverem fora
+     *                                  dos intervalos: a >= 0; b >= 0.
      */
     public static int calculaProdutoInteiros(final int a, final int b) {
         if (a < 0 || b < 0) {
             throw new IllegalArgumentException("Os numeros a e b tem que ser "
-					       + "maior ou igual a zero");
+                    + "maior ou igual a zero");
         }
 
         int totalParcelas = a;
@@ -54,4 +54,4 @@ public class Produto {
 
         return produto;
     }
-} 
+}

@@ -35,7 +35,7 @@ public class Fibonacci {
             throw new IllegalArgumentException("O numero 'n' tem que ser n>=0");
         }
 
-	long t;
+        long t;
         long a = 0;
 
         if (n == 0 || n == 1) {

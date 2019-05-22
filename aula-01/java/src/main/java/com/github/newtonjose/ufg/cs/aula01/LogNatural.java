@@ -4,7 +4,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * <h1>Classe Logaritmo natural</h1>
  * Classe que implementa o algoritmo que calcula o .
  * <p>Something here</p>
- * 
+ *
  * @author Josenilton Santos
  * @version 1.1
  * @since 2019-03-15
@@ -17,10 +17,16 @@ public class LogNatural {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     *
+     */
     private static int numerador;
 
+    /**
+     *
+     */
     private static double logNatural;
-    
+
     /**
      *
      */
@@ -42,18 +48,17 @@ public class LogNatural {
                     + "&& k >= 2");
         }
 
-	numerador = n;
-	logNatural = n + 1;
+        numerador = n;
+        logNatural = n + 1;
 
-	int i = 2;
-        while (i <= k) {
-            numerador = numerador * numerador;
-            denominador = denominador * i;
-            logNatural += (numerador / denominador);
-            i += 1;
-        }
+        int i = 2;
+            while (i <= k) {
+                numerador = numerador * numerador;
+                denominador = denominador * i;
+                logNatural += (numerador / denominador);
+                i += 1;
+            }
 
         return logNatural;
     }
-
 }

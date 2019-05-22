@@ -4,7 +4,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * <h1>Classe Logaritmo natural</h1>
  * Classe que implementa o algoritmo que calcula o .
  * <p>Something here</p>
- * 
+ *
  * @author Josenilton Santos
  * @version 1.1
  * @since 2019-03-15
@@ -29,17 +29,17 @@ public class RazaoAurea {
      * @return double Razão áurea de dois numeros.
      */
     public static double calculaRazaoAurea(final int x, final int y,
-					   final int k) {
+                                           final int k) {
         if ((x < 0 || x > y) || k <= 0) {
             throw new IllegalArgumentException("Números deve ser: x >= 0, x < "
                     + "y e k > 0");
         }
 
-	int t;
+        int t;
         int c = y;
         int a = x;
 
-	int i = 1;
+        int i = 1;
         while (i <= k) {
             t = c;
             c += a;

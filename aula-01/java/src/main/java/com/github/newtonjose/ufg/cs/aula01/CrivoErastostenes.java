@@ -50,7 +50,7 @@ public class CrivoErastostenes {
 
         final double limite = Math.sqrt(n); //FIXME
 
-	    int i = 2;
+        int i = 2;
         while (i <= limite) {
             if (a[i] == 0) {
                 multiplo = i + 1;

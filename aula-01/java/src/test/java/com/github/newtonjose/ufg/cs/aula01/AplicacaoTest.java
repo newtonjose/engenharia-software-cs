@@ -7,12 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Classe de teste da função main da classe Aplicação.
  */
-class AplicacaoTest extends Aplicacao {
+class AplicacaoTest {
 
     @Test
     void testaMain() {
-        Aplicacao instance = new Aplicacao();
         String [] args = {};
-        main(args);
+        Aplicacao.main(args);
     }
 }

@@ -8,12 +8,13 @@ import java.time.LocalDate;
  *
  * <p>Veja detalhes no exercício 4 (aula-01).</p>
  */
-public class Aplicacao {
+public final class Aplicacao {
     /**
-     * Contrutor.
+     * Construtor privado, retorna error de operação não suportada em caso de
+     * uso.
      */
-    Aplicacao() {
-
+    private Aplicacao() {
+        throw new UnsupportedOperationException();
     }
 
     /**
