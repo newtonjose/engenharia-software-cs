@@ -1,11 +1,13 @@
 package com.github.newtonjose.cs.aula07.estruturas;
 
 /**
- * Created by aluno on 21/05/19.
+ * <h1>Implementa o metodo para encontra a menor temperatura.</h1>
+ *
+ *<p>Encontrar a menor valor em um vetor de valores recebido como argumento.</p>
  */
 public final class MenorTemperatura {
     /**
-     * Contrutor protegido.
+     * Contrutor protegido,.
      */
     protected MenorTemperatura() {
         throw new UnsupportedOperationException();
