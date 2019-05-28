@@ -34,7 +34,7 @@ public final class Algoritmos {
      * @throws IllegalArgumentException Se o argumento array tiver valor
      *                                  diferente de zero.
      **/
-    public static boolean calculaCrivoErastostenes(final int[] a, final int n) {
+    public static boolean calculaCrivoEratostenes(final int[] a, final int n) {
         if (n < 1) {
             throw new IllegalArgumentException("O numero 'n' tem que ser "
                     + "maior que 1");
