@@ -2,7 +2,7 @@ package com.github.newtonjose.ufg.cs.aula01;
 
 /**
  * Implementação dos Algoritmos Matemáticos dado na aula 01.
- *
+ * <p>
  * <p>Classe que implementa vários algoritmos acerca de propriedades matemáticas
  * e operações com números.Os algoritmos implementados estão disponíveis na
  * <a href="https://drive.google.com/file/d/1zCxtSyjkEvF6T3ieJ0r3_BJii9kx-FMI"/>
@@ -27,12 +27,12 @@ public final class Algoritmos {
      *
      * @param n Número inteiro natural.
      * @param a Array de inteiros, com valores iguais a zero.
-     * @throws IllegalArgumentException Se o argumento estiver
-     * for do intervalo: n > 1.
-     * @throws IllegalArgumentException Se o argumento array tiver valor
-     * diferente de zero.
      * @return boolean Retorna {true} caso o valor da n possição do array
      * seja diferente de 1, {false} caso contrario.
+     * @throws IllegalArgumentException Se o argumento estiver
+     *                                  for do intervalo: n > 1.
+     * @throws IllegalArgumentException Se o argumento array tiver valor
+     *                                  diferente de zero.
      **/
     public static boolean calculaCrivoErastostenes(final int[] a, final int n) {
         if (n < 1) {
@@ -176,9 +176,9 @@ public final class Algoritmos {
      * Calcula o número de Fibonacci sem usar recursividade.
      *
      * @param n Número inteiro natural.
-     * @throws IllegalArgumentException Se o argumento estiver fora do
-     * intervalo: n >= 0.
      * @return long Número inteiro natural.
+     * @throws IllegalArgumentException Se o argumento estiver fora do
+     *                                  intervalo: n >= 0.
      **/
     public static long fibonacci(final int n) {
         if (n < 0) {
@@ -210,9 +210,9 @@ public final class Algoritmos {
      * @param x Número real.
      * @param g Número real.
      * @param a Array de numeros rais.
-     * @throws IllegalArgumentException Se o segundo argumento estiver for do
-     * intervalo: g > 1.
      * @return int Número real.
+     * @throws IllegalArgumentException Se o segundo argumento estiver for do
+     *                                  intervalo: g > 1.
      **/
     public static int regraHorner(final int x, final int g, final int[] a) {
         if (g < 1) {
@@ -235,9 +235,9 @@ public final class Algoritmos {
      *
      * @param n Numero inteiro natural.
      * @param k Numero inteiro nartual usado como o fator de aproximação.
-     * @throws IllegalArgumentException Se os argumentos estiver fora dos
-     * intervalos: n >= 1; k >= 2.
      * @return double Logaritmo do parâmetro.
+     * @throws IllegalArgumentException Se os argumentos estiver fora dos
+     *                                  intervalos: n >= 1; k >= 2.
      */
     public static double calculaLogNatural(final int n, final int k) {
         if (n < 1 || k < 2) {
@@ -320,13 +320,14 @@ public final class Algoritmos {
      * Constante usada como multiplicador no método numeroPi.
      */
     private static final int MULT = 4;
+
     /**
      * Retorna o valor de Pi aproximado pelo um dado número.
      *
      * @param n Numero inteiro natural.
-     * @throws IllegalArgumentException Se o argumento estiver fora do
-     * intervalo: n >= 1.
      * @return double Valor do número Pi aproximado.
+     * @throws IllegalArgumentException Se o argumento estiver fora do
+     *                                  intervalo: n >= 1.
      */
     public static double numeroPi(final int n) {
         if (n < 1) {
@@ -381,9 +382,9 @@ public final class Algoritmos {
      *
      * @param x Numero inteiro natural.
      * @param y Número inteiro natural.
-     * @throws IllegalArgumentException Se os argumentos estiver fora dos
-     * intervalos: x >= 0; y >= 0.
      * @return int Potência dos parâmetros.
+     * @throws IllegalArgumentException Se os argumentos estiver fora dos
+     *                                  intervalos: x >= 0; y >= 0.
      */
     public static int calculaPotencia(final int x, final int y) {
         if (x <= 0 || y <= 0) {
@@ -462,10 +463,10 @@ public final class Algoritmos {
      * igual ao número dado.
      *
      * @param n Numero inteiro natural.
+     * @return boolean Retorna {true} se satisfazer a propriedade 153 e
+     * {false} caso contrário.
      * @throws IllegalArgumentException Se o argumento estiver fora do
-     * intervalo 100 a 999.
-     * @return boolean Retorna {true} se satisfazer a propriedade 153
-     * e {false} caso contrário.
+     *                                  intervalo 100 a 999.
      */
     public static boolean verificaPropriedade153(final int n) {
         if (n < MIN || n > MAX) {
@@ -492,6 +493,8 @@ public final class Algoritmos {
      * @param n Numero inteiro natural.
      * @return boolean Retorna {true} se o número fornecido como argumento
      * satisfaz a propriedade Propriedade 3025, {false} caso contrário.
+     * @throws IllegalArgumentException Se o argumento estiver fora do
+     *                                  intervalo 0 a 9999
      */
     public static boolean verificaPropriedade3025(final int n) {
         if (n < 0 || n > MAX2) {
@@ -575,9 +578,9 @@ public final class Algoritmos {
      * @param x Numero inteiro natural.
      * @param y Numero inteiro natural.
      * @param k Numero inteiro natural usado como fator de prescisão.
-     * @throws IllegalArgumentException Se os argumentos estiverem fora dos
-     * intervalos: x >= 0; x < y e k > 0.
      * @return double Razão áurea de dois numeros.
+     * @throws IllegalArgumentException Se os argumentos estiverem fora dos
+     *                                  intervalos: x >= 0; x < y e k > 0.
      */
     public static double calculaRazaoAurea(final int x, final int y,
                                            final int k) {
@@ -606,9 +609,9 @@ public final class Algoritmos {
      *
      * @param x Numero racional.
      * @param y Número racional.
+     * @return int Retorna o resto da duvisão inteira.
      * @throws IllegalArgumentException Se os argumentos estiver fora dos
      *                                  intervalos: y >= 0; x > 0.
-     * @return int Retorna o resto da duvisão inteira.
      */
     public static int calculaRestoDivisao(final int x, final int y) {
         if (x < 0 || y <= 0) {
@@ -616,10 +619,9 @@ public final class Algoritmos {
                     + "x > 0.");
         }
 
-        int i = y;
         int resto = x;
-        while (i <= resto) {
-            resto -= i;
+        while (y <= resto) {
+            resto -= y;
         }
 
         return resto;
@@ -631,7 +633,6 @@ public final class Algoritmos {
      *
      * @param n Número inteiro natural.
      * @return int Número inteiro natural.
-     *
      * @throws IllegalArgumentException Se o argumento estiver fora do
      *                                  intervalo: n >= 1.
      */
@@ -681,10 +682,10 @@ public final class Algoritmos {
      * corretamente.
      *
      * @param cpf Array de numeros rais.
+     * @return boolean true ou false Valor lógico.
      * @throws IllegalArgumentException Se o argumento não tiver 11 digitos.
      * @throws IllegalArgumentException Se no argumento tiver algum
-     * número: 0 <= n >= 9.
-     * @return boolean true ou false Valor lógico.
+     *                                  número: 0 <= n >= 9.
      **/
     public static boolean validaCPF(final int[] cpf) {
         if (cpf.length != ONZE) {
@@ -720,10 +721,10 @@ public final class Algoritmos {
      * corretamenten usando o Método de Horner.
      *
      * @param cpf Array de numeros rais.
+     * @return boolean true ou false Valor lógico.
      * @throws IllegalArgumentException Se o argumento não tiver 11 digitos.
      * @throws IllegalArgumentException Se no argumento tiver algum
-     * número: 0 <= n >= 9.
-     * @return boolean true ou false Valor lógico.
+     *                                  número: 0 <= n >= 9.
      **/
     public static boolean validaCPFRegraHorner(final int[] cpf) {
         if (cpf.length != ONZE) {
