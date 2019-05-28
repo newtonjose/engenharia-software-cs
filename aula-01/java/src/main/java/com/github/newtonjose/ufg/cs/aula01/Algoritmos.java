@@ -16,7 +16,7 @@ package com.github.newtonjose.ufg.cs.aula01;
 public final class Algoritmos {
 
     /**
-     * Contrutor privado.
+     * Contrutor da classe definido como privado pois a mesma é do tipo final.
      */
     private Algoritmos() {
 
