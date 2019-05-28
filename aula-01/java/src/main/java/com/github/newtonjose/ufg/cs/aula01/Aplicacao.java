@@ -11,6 +11,13 @@ import java.time.LocalDate;
 public final class Aplicacao {
 
     /**
+     * Construtor privado pois a classe é do tipo final.
+     */
+    private Aplicacao() {
+
+    }
+
+    /**
      * Metodo main que imprime a data do dia na tela.
      * @param args Argumentos de entrada.
      */

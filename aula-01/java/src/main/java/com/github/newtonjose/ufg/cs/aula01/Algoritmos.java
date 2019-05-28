@@ -692,11 +692,16 @@ public final class Algoritmos {
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
         }
 
-        //TODO: Verificar numeros invalidos no vetor
+        for (int v : cpf) {
+            if (v < 0 || v > NOVE) {
+                throw new IllegalArgumentException("os números do cpf fora do "
+                        + "range aceito.");
+            }
+        }
 
         int j = 0;
         int k = 0;
-        //CONST = 8;
+
         for (int i = 0; i < NOVE; i++) {
             j += cpf[i];
         }
@@ -715,29 +720,36 @@ public final class Algoritmos {
      * Verifica se um dado CPF segue a regra de formação dos digitos
      * corretamenten usando o Método de Horner.
      *
-     * @param d Array de numeros rais.
+     * @param cpf Array de numeros rais.
      * @throws IllegalArgumentException Se o argumento não tiver 11 digitos.
      * @throws IllegalArgumentException Se no argumento tiver algum
      * número: 0 <= n >= 9.
      * @return boolean true ou false Valor lógico.
      **/
-    public static boolean validaCPFRegraHorner(final int[] d) {
-        if (d.length != ONZE) {
+    public static boolean validaCPFRegraHorner(final int[] cpf) {
+        if (cpf.length != ONZE) {
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
         }
 
-        int p = d[NOVE];
-        int s = d[NOVE];
+        for (int v : cpf) {
+            if (v < 0 || v > NOVE) {
+                throw new IllegalArgumentException("os números do cpf fora do "
+                        + "range aceito.");
+            }
+        }
+
+        int p = cpf[NOVE];
+        int s = cpf[NOVE];
         int o = OITO;
         while (o >= 1) {
-            p += d[o];
+            p += cpf[o];
             s += p;
             o -= 1;
         }
 
         final int j = (s % ONZE) % RESTO;
-        final int k = ((s - p + NOVE * d[DEZ]) % ONZE) % RESTO;
+        final int k = ((s - p + NOVE * cpf[DEZ]) % ONZE) % RESTO;
 
-        return (j == d[d.length - 1]) && (k == d[d.length]);
+        return (j == cpf[cpf.length - 1]) && (k == cpf[cpf.length]);
     }
 }
