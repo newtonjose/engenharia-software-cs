@@ -9,13 +9,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @version 1.1
  * @since 2019-03-15
  */
-public class CrivoErastostenes {
-    /**
-     * Contrutor protegido.
-     */
-    protected CrivoErastostenes() {
-        throw new UnsupportedOperationException();
-    }
+public final class CrivoErastostenes {
 
     /**
      *

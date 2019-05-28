@@ -3,13 +3,7 @@ package com.github.newtonjose.ufg.cs.aula01;
 /**
  * Created by aluno on 16/05/19.
  */
-class FatorialNumero {
-    /**
-     * Contrutor protegido.
-     */
-    protected FatorialNumero() {
-        throw new UnsupportedOperationException();
-    }
+public final class FatorialNumero {
 
     /**
      * Menor fatorial de um número, no caso de n = 1.

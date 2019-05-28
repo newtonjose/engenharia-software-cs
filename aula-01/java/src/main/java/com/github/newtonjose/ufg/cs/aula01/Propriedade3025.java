@@ -12,12 +12,6 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @since 2019-03-15
  */
 public final class Propriedade3025 {
-    /**
-     * Contrutor protegido.
-     */
-    protected Propriedade3025() {
-        throw new UnsupportedOperationException();
-    }
 
     /**
      * Maximo número que a propriedade se aplica.

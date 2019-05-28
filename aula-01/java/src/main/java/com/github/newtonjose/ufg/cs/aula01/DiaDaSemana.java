@@ -11,13 +11,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @version 1.1.
  * @since 2019-03-15.
  */
-public class DiaDaSemana {
-    /**
-     * Contrutor protegido.
-     */
-    protected DiaDaSemana() {
-        throw new UnsupportedOperationException();
-    }
+public final class DiaDaSemana {
 
     /**
      * Constante que representa o máximo dia de um mês.

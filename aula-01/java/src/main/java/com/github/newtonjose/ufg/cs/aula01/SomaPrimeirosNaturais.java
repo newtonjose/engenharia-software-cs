@@ -10,14 +10,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @version 1.1
  * @since 2019-03-15
  */
-public class SomaPrimeirosNaturais {
-
-    /**
-     * Contrutor protegido.
-     */
-    protected SomaPrimeirosNaturais() {
-        throw new UnsupportedOperationException();
-    }
+public final class SomaPrimeirosNaturais {
 
     /**
      * Dado um número natural, soma os todos os primeiros naturais

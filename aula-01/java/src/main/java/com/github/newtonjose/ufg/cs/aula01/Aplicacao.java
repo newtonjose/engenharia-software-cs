@@ -9,13 +9,6 @@ import java.time.LocalDate;
  * <p>Veja detalhes no exercício 4 (aula-01).</p>
  */
 public final class Aplicacao {
-    /**
-     * Construtor privado, retorna error de operação não suportada em caso de
-     * uso.
-     */
-    private Aplicacao() {
-        throw new UnsupportedOperationException();
-    }
 
     /**
      * Metodo main que imprime a data do dia na tela.

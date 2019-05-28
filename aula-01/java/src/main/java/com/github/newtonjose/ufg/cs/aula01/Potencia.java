@@ -7,13 +7,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @version 1.0
  * @since 2019-03-15
  */
-public class Potencia {
-    /**
-     * Contrutor protegido.
-     */
-    protected Potencia() {
-        throw new UnsupportedOperationException();
-    }
+public final class Potencia {
 
     /**
      *

@@ -9,13 +9,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @version 1.1
  * @since 2019-03-15
  */
-public class MaiorDivisorComum {
-    /**
-     * Contrutor protegido.
-     */
-    protected MaiorDivisorComum() {
-        throw new UnsupportedOperationException();
-    }
+public final class MaiorDivisorComum {
 
     /**
      * Calcula qual o maior divisor comum entre dois números inteiros.

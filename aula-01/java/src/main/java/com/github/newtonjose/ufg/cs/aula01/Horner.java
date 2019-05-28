@@ -9,13 +9,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @version 1.1
  * @since 2019-03-15
  */
-public class Horner {
-    /**
-     * Contrutor protegido.
-     */
-    protected Horner() {
-        throw new UnsupportedOperationException();
-    }
+public final class Horner {
 
     /**
      * Avalia um polinônimo por meio de somas, produtos e potências.

@@ -11,13 +11,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @version 1.1.
  * @since 2019-03-15.
  */
-public class RestoDivisaoInteira {
-    /**
-     * Contrutor protegido.
-     */
-    protected RestoDivisaoInteira() {
-        throw new UnsupportedOperationException();
-    }
+public final class RestoDivisaoInteira {
 
     /**
      * Dado dois numeros, está função encontra o resto da divisão de x por y.
