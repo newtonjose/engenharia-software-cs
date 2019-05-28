@@ -57,7 +57,7 @@ public final class Algoritmos {
 
                 while (multiplo <= n) {
                     a[multiplo] = 1;
-                    multiplo += i;
+                    multiplo = multiplo + i;
                 }
             }
             i += 1;
@@ -192,13 +192,13 @@ public final class Algoritmos {
             return n;
         }
 
-        int fibo = 1;
+        long fibo = 1;
         int i = 1;
         while (i <= n) {
             t = fibo;
-            fibo += a;
+            fibo = fibo + a;
             a = t;
-            i += 1;
+            i = i + 1;
         }
 
         return fibo;
@@ -223,7 +223,7 @@ public final class Algoritmos {
         int i = g - 1;
         while (i >= 0) {
             p = p * x + a[i];
-            i -= 1;
+            i = i - 1;
         }
 
         return p;
@@ -253,8 +253,8 @@ public final class Algoritmos {
         while (i <= k) {
             numerador = numerador * numerador;
             denominador = denominador * i;
-            logNatural += (numerador / denominador);
-            i += 1;
+            logNatural = logNatural + (numerador / denominador);
+            i = i + 1;
         }
 
         return logNatural;
@@ -307,9 +307,9 @@ public final class Algoritmos {
         int auxB = b;
         while (auxA != auxB) {
             if (auxA > auxB) {
-                auxA -= auxB;
+                auxA = auxA - auxB;
             } else {
-                auxB -= auxA;
+                auxB = auxB - auxA;
             }
         }
 
@@ -341,7 +341,7 @@ public final class Algoritmos {
 
         while (i <= n) {
             d = d + 2;
-            s = -1 * s;
+            s = s * -1;
             numPi = numPi + (s * MULT) / d;
             i = i + 1;
         }
@@ -371,7 +371,7 @@ public final class Algoritmos {
                 return false;
             }
 
-            interator += 1;
+            interator = interator + 1;
         }
 
         return true;
@@ -534,8 +534,8 @@ public final class Algoritmos {
         int s = 1;
 
         while (s < n) {
-            i += CONST;
-            s += i;
+            i = i + CONST;
+            s = s + i;
         }
 
         return s == n;
@@ -565,7 +565,7 @@ public final class Algoritmos {
         int aux = i;
         while (aux >= 0) {
             numRaiz = (numRaiz + n / numRaiz) / DIV;
-            aux -= 1;
+            aux = aux - 1;
         }
 
         return numRaiz;
@@ -596,7 +596,7 @@ public final class Algoritmos {
         int i = 1;
         while (i <= k) {
             t = c;
-            c += a;
+            c = c + a;
             a = t;
             i = i + 1;
         }
@@ -621,7 +621,7 @@ public final class Algoritmos {
 
         int resto = x;
         while (y <= resto) {
-            resto -= y;
+            resto = resto - y;
         }
 
         return resto;
@@ -645,8 +645,8 @@ public final class Algoritmos {
         int i = 2;
         int soma = 1;
         while (i <= n) {
-            soma += i;
-            i += 1;
+            soma = soma + i;
+            i = i + 1;
         }
 
         return soma;
@@ -703,11 +703,11 @@ public final class Algoritmos {
         int k = 0;
 
         for (int i = 0; i < NOVE; i++) {
-            j += cpf[i];
+            j = j + cpf[i];
         }
 
         for (int i = 1; i < DEZ; i++) {
-            k += cpf[i];
+            k = k + cpf[i];
         }
 
         final int dj = (j % ONZE) % RESTO;
@@ -742,9 +742,9 @@ public final class Algoritmos {
         int s = cpf[NOVE];
         int o = OITO;
         while (o >= 1) {
-            p += cpf[o];
-            s += p;
-            o -= 1;
+            p = p + cpf[o];
+            s = s + p;
+            o = o - 1;
         }
 
         final int j = (s % ONZE) % RESTO;
