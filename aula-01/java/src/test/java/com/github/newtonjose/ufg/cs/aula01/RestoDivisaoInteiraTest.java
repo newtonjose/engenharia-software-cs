@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Classe para teste de unidade com corbetura de 100%.
- */
+
 class RestoDivisaoInteiraTest {
 
     @Test

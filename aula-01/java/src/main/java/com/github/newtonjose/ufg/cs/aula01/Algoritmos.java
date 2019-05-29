@@ -105,6 +105,31 @@ public final class Algoritmos {
     }
 
     /**
+     * Constante auxiliar usada no método getDiaDaSemana.
+     */
+    private static final int NUM_TRES = 3;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    private static final int NUM_QUATRO = 4;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    private static final int NUM_CINCO = 5;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    private static final int NUM_CEM = 5;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    private static final int NUM_QUATROCENTOS = 5;
+
+    /**
      * A função recebe uma data e calcula qual o dia da semana,
      * 1 - segunda; 2 - terça, 3 ...
      *
@@ -141,8 +166,9 @@ public final class Algoritmos {
             a = ano - 1;
         }
 
-        final int drDobbsExpr = (((dia + (2 * m) + ((3 * (m + 1)) / 5)
-                + a + (a / 4)) - (a / 100)) + (a / 400));
+        final int drDobbsExpr = (((dia + (2 * m) + ((NUM_TRES * (m + 1))
+                / NUM_CINCO) + a + (a / NUM_QUATRO)) - (a / NUM_CEM)
+                + (a / NUM_QUATROCENTOS)));
 
         return drDobbsExpr % DIAS_SEMANA;
     }

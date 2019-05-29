@@ -4,9 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Classe de testes de unidade para a classe FatorialNumero com cobetura 100%.
- */
 class FatorialNumeroTest {
 
     @Test

@@ -4,9 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Classe de teste da Class DiaDaSemana com 100% de cobertura.
- */
 class DiaDaSemanaTest {
 
     @Test

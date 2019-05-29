@@ -4,9 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Created by aluno on 28/05/19.
- */
 class AlgoritmosTest {
 
 //    @Test
