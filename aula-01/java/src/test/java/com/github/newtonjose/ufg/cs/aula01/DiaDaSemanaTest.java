@@ -8,19 +8,19 @@ class DiaDaSemanaTest {
 
     @Test
     void getDiaDaSemenaCorreto() {
-        assertEquals(1, Algoritmos.getDiaDaSemana(14,
+        assertEquals(2, Algoritmos.getDiaDaSemana(28,
                 5, 2019));
     }
 
     @Test
     void getDiaDaSemanaMesUm() {
-        assertEquals(0, Algoritmos.getDiaDaSemana(14,
+        assertEquals(1, Algoritmos.getDiaDaSemana(14,
                 1, 2019));
     }
 
     @Test
     void getDiaDaSemanaMesDois() {
-        assertEquals(0, Algoritmos.getDiaDaSemana(11,
+        assertEquals(1, Algoritmos.getDiaDaSemana(11,
                 2, 2019));
     }
 

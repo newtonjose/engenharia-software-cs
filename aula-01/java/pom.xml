@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.kyriosdata</groupId>
-    <artifactId>exemplo</artifactId>
+    <groupId>com.github.newtonjose</groupId>
+    <artifactId>aula01</artifactId>
     <packaging>jar</packaging>
     <version>1.0.1</version>
 
@@ -18,7 +18,7 @@
         necessidades específicas do projeto em questão.
     </description>
 
-    <url>https://github.com/kyriosdata/exemplo</url>
+    <url>https://github.com/newtonjose/cs-2019-01</url>
 
     <organization>
         <name>Instituto de Informática (UFG) - Fábrica de Software</name>
@@ -42,20 +42,20 @@
 
     <developers>
         <developer>
-            <id>kyriosdata</id>
-            <name>Fábio Nogueira de Lucena</name>
-            <email>fabio@inf.ufg.br</email>
+            <id>newtonjose</id>
+            <name>Josenilton Santos</name>
+            <email>sorry@not_public.com</email>
             <organization>Instituto de Informática (UFG)</organization>
             <organizationUrl>http://www.inf.ufg.br</organizationUrl>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/kyriosdata/exemplo.git
+        <connection>scm:git:https://github.com/newtonjose/cs-2019-01.git
         </connection>
-        <developerConnection>scm:git:https://github.com/kyriosdata/exemplo.git
+        <developerConnection>scm:git:https://github.com/newtonjose/cs-2019-01.git
         </developerConnection>
-        <url>https://github.com/kyriosdata/exemplo</url>
+        <url>https://github.com/newtonjose/cs-2019-01</url>
     </scm>
 
     <parent>

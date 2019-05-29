@@ -19,7 +19,7 @@ class CrivoEratostenesTest {
                 () -> Algoritmos.calculaCrivoEratostenes(a,
                         a.length-1));
 
-        int[] b = new int[] {0, 1, 0, 0, 0};
+        int[] b = new int[] {0, 0, 0, 1, 0};
         assertThrows(IllegalArgumentException.class,
                 () -> Algoritmos.calculaCrivoEratostenes(b,
                         b.length-1));

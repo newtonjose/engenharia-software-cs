@@ -536,7 +536,7 @@ public final class Algoritmos {
     }
 
     /**
-     * Constante usada pelo método calculaQuadradoPerfeito.
+     * Constante usada pelo método verificaQuadradoPerfeito.
      */
     private static final int CONST = 2;
 
@@ -550,7 +550,7 @@ public final class Algoritmos {
      * @throws IllegalArgumentException Se o argumento estiver fora do
      *                                  intervalo: n >= 1.
      **/
-    public static boolean calculaQuadradoPerfeito(final int n) {
+    public static boolean verificaQuadradoPerfeito(final int n) {
         if (n < 1) {
             throw new IllegalArgumentException("O numero 'n' deverá ser maior "
                     + "que 1");
