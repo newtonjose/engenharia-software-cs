@@ -11,15 +11,15 @@ class Propriedade3025Test {
 
     @Test
     void propriedade3025NaoSatisfaz() {
-        assertFalse(Algoritmos.verificaPropriedade3025(3024));
+        assertFalse(AlgoritmosMatematicos.verificaPropriedade3025(3024));
     }
 
     @Test
     void propriedade3025ArgumentoInvalido() {
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.verificaPropriedade3025(-1));
+                () -> AlgoritmosMatematicos.verificaPropriedade3025(-1));
 
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.verificaPropriedade3025(100000));
+                () -> AlgoritmosMatematicos.verificaPropriedade3025(100000));
     }
 }

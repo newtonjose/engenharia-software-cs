@@ -70,7 +70,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.mainClass>
-            com.github.newtonjose.ufg.cs.aula01.Algoritmos
+            com.github.newtonjose.ufg.cs.aula01.AlgoritmosMatematicos
         </project.mainClass>
 
         <tools.dir>${project.basedir}/tools</tools.dir>
