@@ -4,53 +4,44 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Classe de teste da Class DiaDaSemana com 100% de cobertura.
- */
 class DiaDaSemanaTest {
 
     @Test
     void getDiaDaSemenaCorreto() {
-        assertEquals(1, DiaDaSemana.getDiaDaSemana(14,
+        assertEquals(2, AlgoritmosMatematicos.getDiaDaSemana(28,
                 5, 2019));
     }
 
     @Test
     void getDiaDaSemanaMesUm() {
-        assertEquals(0, DiaDaSemana.getDiaDaSemana(14,
+        assertEquals(1, AlgoritmosMatematicos.getDiaDaSemana(14,
                 1, 2019));
     }
 
     @Test
     void getDiaDaSemanaMesDois() {
-        assertEquals(0, DiaDaSemana.getDiaDaSemana(11,
+        assertEquals(1, AlgoritmosMatematicos.getDiaDaSemana(11,
                 2, 2019));
     }
 
     @Test
     void getDiaDaSemanaArgumentoInvalido() {
         assertThrows(IllegalArgumentException.class,
-                () -> DiaDaSemana.getDiaDaSemana(0, 1, 1999));
+                () -> AlgoritmosMatematicos.getDiaDaSemana(0, 1, 1999));
 
         assertThrows(IllegalArgumentException.class,
-                () -> DiaDaSemana.getDiaDaSemana(32, 1, 1914));
+                () -> AlgoritmosMatematicos.getDiaDaSemana(32, 1, 1914));
 
         assertThrows(IllegalArgumentException.class,
-                () -> DiaDaSemana.getDiaDaSemana(16, 0, 1954));
+                () -> AlgoritmosMatematicos.getDiaDaSemana(16, 0, 1954));
 
         assertThrows(IllegalArgumentException.class,
-                () -> DiaDaSemana.getDiaDaSemana(16, 13, 1877));
+                () -> AlgoritmosMatematicos.getDiaDaSemana(16, 13, 1877));
 
         assertThrows(IllegalArgumentException.class,
-                () -> DiaDaSemana.getDiaDaSemana(16, 5, 1753));
+                () -> AlgoritmosMatematicos.getDiaDaSemana(16, 5, 1753));
 
         assertThrows(IllegalArgumentException.class,
-                () -> DiaDaSemana.getDiaDaSemana(16, 5, 1000));
-    }
-
-    @Test
-    void criarObjetodaClasse() {
-        assertThrows(UnsupportedOperationException.class,
-                () -> new DiaDaSemana());
+                () -> AlgoritmosMatematicos.getDiaDaSemana(16, 5, 1000));
     }
 }

@@ -9,12 +9,18 @@ import java.time.LocalDate;
  * <p>Veja detalhes no exercício 4 (aula-01).</p>
  */
 public final class Aplicacao {
+
     /**
-     * Construtor privado, retorna error de operação não suportada em caso de
-     * uso.
+     * Construtor privado pois a classe é do tipo final.
      */
     private Aplicacao() {
-        throw new UnsupportedOperationException();
+
+    }
+
+    public int foo() {
+        int buz = 6;
+        return buz;
+//        buz = 2;
     }
 
     /**
@@ -22,6 +28,8 @@ public final class Aplicacao {
      * @param args Argumentos de entrada.
      */
     public static void main(final String[] args) {
-        System.out.println(LocalDate.now().getDayOfWeek());
+        System.out.println(LocalDate.now().getDayOfWeek()); //NOPMD
     }
 }
+
+
