@@ -31,6 +31,36 @@ public final class ConstAux { //NOPMD
     public static final int NUM_MESES = 12;
 
     /**
+     * Constante auxiliar usada no método getDiaDaSemana.
+     */
+    public static final int NUM_TRES = 3;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    public static final int NUM_QUATRO = 4;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    public static final int NUM_CINCO = 5;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    public static final int NUM_CEM = 5;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    public static final int NUM_QUATROCENTOS = 400;
+
+    /**
+     * Constante usada como multiplicador no método numeroPi.
+     */
+    public static final int MULT = 4;
+
+    /**
      * Contrutor da classe definido como privado pois a mesma é do tipo final.
      */
     private ConstAux() {
