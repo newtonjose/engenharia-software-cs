@@ -68,8 +68,8 @@ public final class Algoritmos {
      */
     private static boolean dataInvalida(final int dia, final int mes,
                                         final int ano) {
-        return dia < 1 || dia > ConstAux.DIA_MAX || mes < 1 || mes > ConstAux.MES_MAX
-                || ano <= ConstAux.ANO_MIN;
+        return dia < 1 || dia > ConstAux.DIA_MAX || mes < 1
+                || mes > ConstAux.MES_MAX || ano <= ConstAux.ANO_MIN;
     }
 
     /**
@@ -105,8 +105,8 @@ public final class Algoritmos {
      * @return int Retorna um número representando o dia da semana.
      * @throws IllegalArgumentException Caso os argumento sejam invalidos.
      */
-    public static int getDiaDaSemana(final int dia, int mes,
-                                     int ano) {
+    public static int getDiaDaSemana(final int dia, final int mes,
+                                     final int ano) {
         if (dataInvalida(dia, mes, ano)) {
             throw new IllegalArgumentException("O numeros devem ser: "
                     + "1 <= dia <= 31, 1 <= mes <= 12 e ano > 1753!");
@@ -115,18 +115,20 @@ public final class Algoritmos {
         // FINDMORE: como funciona isso em Java
         final boolean janOuFev = mes == 1 || mes == 2;
 
+        int mesAux = mes;
         if (janOuFev) {
-            mes = mes + ConstAux.NUM_MESES;
+            mesAux = mes + ConstAux.NUM_MESES;
         }
 
+        int anoAux = ano;
         if (janOuFev) {
-            ano = ano - 1;
+            anoAux = ano - 1;
         }
 
-        final int drDobbsExpr = dia + (2 * mes)
-                + ((NUM_TRES * (mes + 1)) / NUM_CINCO) + ano
-                + (ano / NUM_QUATRO) - (ano / NUM_CEM)
-                + (ano / NUM_QUATROCENTOS);
+        final int drDobbsExpr = dia + (2 * mesAux)
+                + ((NUM_TRES * (mesAux + 1)) / NUM_CINCO) + anoAux
+                + (anoAux / NUM_QUATRO) - (anoAux / NUM_CEM)
+                + (anoAux / NUM_QUATROCENTOS);
 
         return drDobbsExpr % ConstAux.DIAS_SEMANA;
     }
@@ -166,7 +168,7 @@ public final class Algoritmos {
         long auxFibo;
         long aux = 0;
         long fibo = 1;
-        for(int i = 1; i < num; i++) {
+        for (int i = 1; i < num; i++) {
             auxFibo = fibo;
             fibo = fibo + aux;
             aux = auxFibo;
@@ -255,7 +257,8 @@ public final class Algoritmos {
      * @return int Máximo divisor comum de numA e b.
      * @throws IllegalArgumentException Se o argumento b < 0.
      **/
-    public static int maiorDivisorComumSemResto(final int numA, final int numB) {
+    public static int maiorDivisorComumSemResto(final int numA,
+                                                final int numB) {
         if (numB < 0) {
             throw new IllegalArgumentException("Os numero deverao 'b' tem que "
                     + "ser maior que zero!");
@@ -412,8 +415,9 @@ public final class Algoritmos {
 
         final int aux = num % DIVISOR_CEM;
 
-        return Math.pow(num / DIVISOR_CEM, 3) +  Math.pow(aux / DIVISOR_DEZ, 3)
-                + Math.pow(aux % DIVISOR_DEZ, 3) == num;
+        return Math.pow(num / DIVISOR_CEM, ConstAux.NUM_TRES)
+                +  Math.pow(aux / DIVISOR_DEZ, ConstAux.NUM_TRES)
+                + Math.pow(aux % DIVISOR_DEZ, ConstAux.NUM_TRES) == num;
     }
 
     /**
@@ -627,7 +631,7 @@ public final class Algoritmos {
         final int digiJ = (aux % ONZE) % RESTO;
         final int digiK = (aux1 % ONZE) % RESTO;
 
-        return digiJ == cpf[cpf.length -1] && digiK == cpf[cpf.length - 1];
+        return digiJ == cpf[cpf.length - 1] && digiK == cpf[cpf.length - 1];
     }
 
     /**
