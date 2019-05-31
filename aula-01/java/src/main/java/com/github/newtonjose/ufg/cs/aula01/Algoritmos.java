@@ -8,7 +8,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @author Josenilton Santos
  * @version 2.0
  */
-public final class Algoritmos {
+public final class Algoritmos {//NOPMD
 
     /**
      * Contrutor da classe definido como privado pois a mesma é do tipo final.
@@ -19,7 +19,7 @@ public final class Algoritmos {
 
     /**
      * Verifica se um dado número é primo usando o método Crivo de Erastóstenes.
-     * @param num Número inteiro natural.
+     * @param num    Número inteiro natural.
      * @param vetInt Array de inteiros, com valores iguais a zero.
      * @return boolean Retorna {true} se o array[n] == 1.
      * @throws IllegalArgumentException Caso argumento for n < 1.
@@ -27,7 +27,7 @@ public final class Algoritmos {
      */
     public static boolean calculaCrivoEratostenes(final int num,
                                                   final int... vetInt) {
-        if (num < 1) {
+        if (num <= 0) {
             throw new IllegalArgumentException("Argumanto fora do intervalo: "
                     + "n >= 1.");
         }
@@ -66,36 +66,11 @@ public final class Algoritmos {
      * @param ano Ano depois de 1753.
      * @return boolean Verdadeiro caso a data seja valida, false caso contrário.
      */
-    private static boolean dataInvalida(final int dia, final int mes,
-                                        final int ano) {
+    public static boolean dataInvalida(final int dia, final int mes,
+                                       final int ano) {
         return dia < 1 || dia > ConstAux.DIA_MAX || mes < 1
                 || mes > ConstAux.MES_MAX || ano <= ConstAux.ANO_MIN;
     }
-
-    /**
-     * Constante auxiliar usada no método getDiaDaSemana.
-     */
-    private static final int NUM_TRES = 3;
-
-    /**
-     * Constante auxiliar usado no método getDiaDaSemana.
-     */
-    private static final int NUM_QUATRO = 4;
-
-    /**
-     * Constante auxiliar usado no método getDiaDaSemana.
-     */
-    private static final int NUM_CINCO = 5;
-
-    /**
-     * Constante auxiliar usado no método getDiaDaSemana.
-     */
-    private static final int NUM_CEM = 5;
-
-    /**
-     * Constante auxiliar usado no método getDiaDaSemana.
-     */
-    private static final int NUM_QUATROCENTOS = 5;
 
     /**
      * Dado uma data, retorna o dia da semana: 1 - segunda; 2 - terça, 3 ...
@@ -126,9 +101,10 @@ public final class Algoritmos {
         }
 
         final int drDobbsExpr = dia + (2 * mesAux)
-                + ((NUM_TRES * (mesAux + 1)) / NUM_CINCO) + anoAux
-                + (anoAux / NUM_QUATRO) - (anoAux / NUM_CEM)
-                + (anoAux / NUM_QUATROCENTOS);
+                + ((ConstAux.NUM_TRES * (mesAux + 1)) / ConstAux.NUM_CINCO)
+                + anoAux + (anoAux / ConstAux.NUM_QUATRO)
+                - (anoAux / ConstAux.NUM_CEM)
+                + (anoAux / ConstAux.NUM_QUATROCENTOS);
 
         return drDobbsExpr % ConstAux.DIAS_SEMANA;
     }
@@ -141,7 +117,7 @@ public final class Algoritmos {
      * @throws IllegalArgumentException Argumento fora do intervalo: n >= 1.
      */
     public static long calculaFatorial(final int num) {
-        if (num < 1) {
+        if (num <= 0) {
             throw new IllegalArgumentException("O numero 'n' tem que ser "
                     + "n >= 1.");
         }
@@ -156,6 +132,7 @@ public final class Algoritmos {
 
     /**
      * Calcula o número de Fibonacci sem usar recursividade.
+     *
      * @param num Número inteiro natural.
      * @return long Número inteiro natural.
      * @throws IllegalArgumentException Argumento fora do intervalo: n >= 0.
@@ -179,15 +156,15 @@ public final class Algoritmos {
 
     /**
      * Avalia um polinônimo por meio de somas, produtos e potências.
-     * @param poli Número real.
-     * @param aprox Número real.
+     * @param poli   Número real.
+     * @param aprox  Número real.
      * @param vetNum Array de numeros rais.
      * @return int Número real.
      * @throws IllegalArgumentException Caso o argumento g < 1.
      */
     public static int regraHorner(final int poli, final int aprox,
                                   final int... vetNum) {
-        if (aprox < 1) {
+        if (aprox <= 0) {
             throw new IllegalArgumentException("g deve ser maior que zero");
         }
 
@@ -201,7 +178,8 @@ public final class Algoritmos {
 
     /**
      * Calcula o logaritmo natural de um dado número usando uma aproximação.
-     * @param num Numero inteiro natural.
+     *
+     * @param num   Numero inteiro natural.
      * @param aprox Numero inteiro nartual usado como o fator de aproximação.
      * @return double Logaritmo do parâmetro.
      * @throws IllegalArgumentException Caso temos num < 1 || k < 2.
@@ -278,11 +256,6 @@ public final class Algoritmos {
     }
 
     /**
-     * Constante usada como multiplicador no método numeroPi.
-     */
-    private static final int MULT = 4;
-
-    /**
      * Retorna o valor de Pi aproximado pelo um dado número.
      *
      * @param num Numero inteiro natural.
@@ -291,7 +264,7 @@ public final class Algoritmos {
      *                                  intervalo: n >= 1.
      */
     public static double numeroPi(final int num) {
-        if (num < 1) {
+        if (num <= 0) {
             throw new IllegalArgumentException("O numero n tem que ser n >= 1");
         }
 
@@ -302,7 +275,7 @@ public final class Algoritmos {
         for (int i = 1; i <= num; i++) {
             aux = aux + 2;
             prod = prod * -1;
-            numPi = numPi + (prod * MULT) / aux;
+            numPi = numPi + (prod * ConstAux.MULT) / aux;
         }
 
         return numPi;
@@ -310,12 +283,13 @@ public final class Algoritmos {
 
     /**
      * Verifica se um número é primo.
+     *
      * @param num Número inteiro natural.
      * @return boolean Retorna {true} caso n é primo, {false} caso contrario.
      * @throws IllegalArgumentException Se o argumento n < 1.
      */
     public static boolean numeroPrimo(final int num) {
-        if (num < 1) {
+        if (num <= 0) {
             throw new IllegalArgumentException("O numero 'n' tem que ser "
                     + "maior que 1");
         }
@@ -332,6 +306,7 @@ public final class Algoritmos {
 
     /**
      * Calcula a potência de dois numeros usando apenas somas.
+     *
      * @param numX Numero inteiro natural.
      * @param numY Número inteiro natural.
      * @return int Potência dos parâmetros.
@@ -353,6 +328,7 @@ public final class Algoritmos {
 
     /**
      * Calcula o produto dos dois numeros usando somatório.
+     *
      * @param numA Número inteiro natural.
      * @param numB Número inteiro natural.
      * @return int Produto dos dois parâmetros.
@@ -380,73 +356,48 @@ public final class Algoritmos {
         return produto;
     }
 
-    /**
-     * Maior valor válido para propriedade 153.
-     */
-    private static final int MAX = 999;
-
-    /**
-     * Menor valor válido para propriedade 153.
-     */
-    private static final int MIN = 100;
-
-    /**
-     * Número usado como divisor para obter centena.
-     */
-    private static final int DIVISOR_CEM = 100;
-
-    /**
-     * Número usado como divisor para obter dezena.
-     */
-    private static final int DIVISOR_DEZ = 10;
 
     /**
      * Verifica se a soma dos cubos dos digitos de um dado número é
      * igual ao número dado.
+     *
      * @param num Numero inteiro natural.
      * @return boolean Retorna {true} se satisfazer a propriedade 153.
      * @throws IllegalArgumentException Se o argumento n < 100 ou n > 999.
      */
     public static boolean verificaPropriedade153(final int num) {
-        if (num < MIN || num > MAX) {
+        if (num < ConstAux.MIN || num > ConstAux.MAX) {
             throw new IllegalArgumentException("O número não está no "
                     + "intervalor: 100 <= n <= 999");
         }
 
-        final int aux = num % DIVISOR_CEM;
+        final int aux = num % ConstAux.DIVISOR_CEM;
 
-        return Math.pow(num / DIVISOR_CEM, ConstAux.NUM_TRES)
-                +  Math.pow(aux / DIVISOR_DEZ, ConstAux.NUM_TRES)
-                + Math.pow(aux % DIVISOR_DEZ, ConstAux.NUM_TRES) == num;
+        return Math.pow(num / ConstAux.DIVISOR_CEM, ConstAux.NUM_TRES)
+                + Math.pow(aux / ConstAux.DIVISOR_DEZ, ConstAux.NUM_TRES)
+                + Math.pow(aux % ConstAux.DIVISOR_DEZ, ConstAux.NUM_TRES)
+                == num;
     }
 
-    /**
-     * Maximo número que a propriedade se aplica.
-     */
-    private static final int MAX2 = 9999;
 
     /**
      * Verifica se um dado numero é verdadeiro usando a Propriedade 3025.
+     *
      * @param num Numero inteiro natural.
      * @return boolean Retorna {true} se o número fornecido como argumento
      * satisfaz a propriedade Propriedade 3025, {false} caso contrário.
      * @throws IllegalArgumentException Se o argumento n < 0 ou n > 9999.
      */
     public static boolean verificaPropriedade3025(final int num) {
-        if (num < 0 || num > MAX2) {
+        if (num < 0 || num > ConstAux.MAX2) {
             throw new IllegalArgumentException("Numero fora do range "
                     + "100 <= n <= 999");
         }
 
-        final double prop = num / DIVISOR_CEM + num % DIVISOR_CEM;
+        final double prop = num / ConstAux.DIVISOR_CEM + num % ConstAux.DIVISOR_CEM;
 
         return prop * prop == num;
     }
-
-    /**
-     * Constante usada pelo método verificaQuadradoPerfeito.
-     */
-    private static final int CONST = 2;
 
     /**
      * Verifica se o dado número é um quadrado perefeito.
@@ -457,7 +408,7 @@ public final class Algoritmos {
      *                                  intervalo: n >= 1.
      */
     public static boolean verificaQuadradoPerfeito(final int num) {
-        if (num < 1) {
+        if (num <= 0) {
             throw new IllegalArgumentException("O numero 'n' deverá ser maior "
                     + "que 1");
         }
@@ -465,7 +416,7 @@ public final class Algoritmos {
         int idx = 1;
         int quadrado = 1;
         while (quadrado < num) {
-            idx = idx + CONST;
+            idx = idx + ConstAux.NUM_DOIS;
             quadrado = quadrado + idx;
         }
 
@@ -473,13 +424,8 @@ public final class Algoritmos {
     }
 
     /**
-     * Constante divisora usada pelo método @raizQuadrada.
-     */
-    private static final int DIV = 2;
-
-    /**
      * Calcula a raiz quadrada de um número usando o Método Babilônico.
-     * @param num Número racional positivo.
+     * @param num      Número racional positivo.
      * @param precisao Numero inteiro nartual usado como o fator de prescisão.
      * @return double Retorna raiz quadrada de n usando a precisão i.
      * @throws IllegalArgumentException Se os argumentos estiverem fora dos
@@ -494,7 +440,7 @@ public final class Algoritmos {
 
         int aux = precisao;
         while (aux >= 0) {
-            numRaiz = (numRaiz + num / numRaiz) / DIV;
+            numRaiz = (numRaiz + num / numRaiz) / ConstAux.NUM_DOIS;
             aux = aux - 1;
         }
 
@@ -503,8 +449,8 @@ public final class Algoritmos {
 
     /**
      * Calcula a razão área usando uma determinada prescisão.
-     * @param numX Numero inteiro natural.
-     * @param numY Numero inteiro natural.
+     * @param numX      Numero inteiro natural.
+     * @param numY      Numero inteiro natural.
      * @param prescisao Numero inteiro natural usado como fator de prescisão.
      * @return double Razão áurea de dois numeros.
      * @throws IllegalArgumentException Caso temos: x < 0 ou x > y ou k <= 0.
@@ -559,7 +505,7 @@ public final class Algoritmos {
      *                                  intervalo: n >= 1.
      */
     public static int somaNaturais(final int num) {
-        if (num < 1) {
+        if (num <= 0) {
             throw new IllegalArgumentException("O numero 'n' tem que ser "
                     + "n >= 1.");
         }
@@ -572,31 +518,19 @@ public final class Algoritmos {
         return soma;
     }
 
-    /**
-     * Constate resto usado pelos métodos: validaCPF e validaCPFRegraHorner.
-     */
-    private static final int RESTO = 10;
 
-    /**
-     * Constate estatica usado pelos métodos: validaCPF e validaCPFRegraHorner.
-     */
-    private static final int ONZE = 11;
+    private static void validaParametrosCPF(final int... cpf) {
+        if (cpf.length != ConstAux.ONZE) {
+            throw new IllegalArgumentException("o cpf deve ter 11 digitos");
+        }
 
-    /**
-     * Constate estatica usado pelos métodos: validaCPF e validaCPFRegraHorner.
-     */
-    private static final int DEZ = 10;
-
-    /**
-     * Constate estatica usado pelos métodos: validaCPF e validaCPFRegraHorner.
-     */
-    private static final int NOVE = 9;
-
-    /**
-     * Constate estatica usado pelos métodos: validaCPF e validaCPFRegraHorner.
-     */
-    private static final int OITO = 8;
-
+        for (final int v : cpf) {
+            if (v < 0 || v > ConstAux.NOVE) {
+                throw new IllegalArgumentException("os números do cpf fora do "
+                        + "range aceito.");
+            }
+        }
+    }
     /**
      * Verifica se um dado CPF é válido.
      * @param cpf Array de numeros rais.
@@ -606,30 +540,21 @@ public final class Algoritmos {
      *                                  número: 0 <= n >= 9.
      */
     public static boolean validaCPF(final int... cpf) {
-        if (cpf.length != ONZE) {
-            throw new IllegalArgumentException("o cpf deve ter 11 digitos");
-        }
-
-        for (final int v : cpf) {
-            if (v < 0 || v > NOVE) {
-                throw new IllegalArgumentException("os números do cpf fora do "
-                        + "range aceito.");
-            }
-        }
+        validaParametrosCPF(cpf);
 
         int aux = 0;
         int aux1 = 0;
 
-        for (int i = 0; i < NOVE; i++) {
+        for (int i = 0; i < ConstAux.NOVE; i++) {
             aux = aux + cpf[i];
         }
 
-        for (int i = 1; i < DEZ; i++) {
+        for (int i = 1; i < ConstAux.DEZ; i++) {
             aux1 = aux1 + cpf[i];
         }
 
-        final int digiJ = (aux % ONZE) % RESTO;
-        final int digiK = (aux1 % ONZE) % RESTO;
+        final int digiJ = (aux % ConstAux.ONZE) % ConstAux.RESTO;
+        final int digiK = (aux1 % ConstAux.ONZE) % ConstAux.RESTO;
 
         return digiJ == cpf[cpf.length - 1] && digiK == cpf[cpf.length - 1];
     }
@@ -643,28 +568,19 @@ public final class Algoritmos {
      *                                  número: 0 <= n >= 9.
      */
     public static boolean validaCPFRegraHorner(final int... cpf) {
-        if (cpf.length != ONZE) {
-            throw new IllegalArgumentException("o cpf deve ter 11 digitos");
-        }
+        validaParametrosCPF(cpf);
 
-        for (final int v : cpf) {
-            if (v < 0 || v > NOVE) {
-                throw new IllegalArgumentException("os números do cpf fora do "
-                        + "range aceito.");
-            }
-        }
-
-        int aux1 = cpf[NOVE];
-        int aux2 = cpf[NOVE];
-        int oito = OITO;
+        int aux1 = cpf[ConstAux.NOVE];
+        int aux2 = cpf[ConstAux.NOVE];
+        int oito = ConstAux.OITO;
         while (oito >= 1) {
             aux1 = aux1 + cpf[oito];
             aux2 = aux2 + aux1;
             oito = oito - 1;
         }
 
-        final int digJ = (aux2 % ONZE) % RESTO;
-        final int digK = ((aux2 - aux1 + NOVE * cpf[DEZ]) % ONZE) % RESTO;
+        final int digJ = (aux2 % ConstAux.ONZE) % ConstAux.RESTO;
+        final int digK = ((aux2 - aux1 + ConstAux.NOVE * cpf[ConstAux.DEZ]) % ConstAux.ONZE) % ConstAux.RESTO;
 
         return digJ == cpf[cpf.length - 1] && digK == cpf[cpf.length - 1];
     }
