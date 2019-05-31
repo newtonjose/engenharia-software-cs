@@ -1,5 +1,6 @@
 package com.github.newtonjose.ufg.cs.aula01;
 
+
 /**
  * Implementação dos Algoritmos Matemáticos dado na aula 01.
  * <p>Os algoritmos implementados estão disponíveis na
@@ -8,7 +9,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @author Josenilton Santos
  * @version 2.0
  */
-public final class Algoritmos {//NOPMD
+public final class Algoritmos { //NOPMD
 
     /**
      * Contrutor da classe definido como privado pois a mesma é do tipo final.
@@ -90,14 +91,18 @@ public final class Algoritmos {//NOPMD
         // FINDMORE: como funciona isso em Java
         final boolean janOuFev = mes == 1 || mes == 2;
 
-        int mesAux = mes;
+        int mesAux;
         if (janOuFev) {
             mesAux = mes + ConstAux.NUM_MESES;
+        } else {
+            mesAux = mes;
         }
 
-        int anoAux = ano;
+        int anoAux;
         if (janOuFev) {
             anoAux = ano - 1;
+        } else {
+            anoAux = ano;
         }
 
         final int drDobbsExpr = dia + (2 * mesAux)
@@ -110,24 +115,26 @@ public final class Algoritmos {//NOPMD
     }
 
     /**
-     * Calcula o fatorial de um dado numero natural sem usar recursividade.
-     *
+     * Calcula o fatorial de um número usando recursividade.
      * @param num Número inteiro natural.
-     * @return int Fatorial do número n.
-     * @throws IllegalArgumentException Argumento fora do intervalo: n >= 1.
+     * @param fat Inteiro, tomado como fatorial base, igual a 1.
+     * @param idx Inteiro, indice inicial igual a 1.
+     * @return int Fatorial do parametro num.
+     * @throws IllegalArgumentException Caso o argumento num <= 0.
      */
-    public static long calculaFatorial(final int num) {
+    public static long fatorial(final int num, final long fat, final int idx) {
         if (num <= 0) {
             throw new IllegalArgumentException("O numero 'n' tem que ser "
                     + "n >= 1.");
         }
 
-        long fatorial = 1;
-        for (int i = 2; i <= num; i++) {
-            fatorial = fatorial * i;
+        final long auxFat =  fat * idx;
+        if (idx == num) {
+            return auxFat; //NOPMD
         }
 
-        return fatorial;
+        final int aux = idx + 1;
+        return fatorial(num, auxFat, aux);
     }
 
     /**
@@ -142,13 +149,15 @@ public final class Algoritmos {//NOPMD
             throw new IllegalArgumentException("O numero 'n' tem que ser n>=0");
         }
 
-        long auxFibo;
-        long aux = 0;
         long fibo = 1;
         for (int i = 1; i < num; i++) {
-            auxFibo = fibo;
-            fibo = fibo + aux;
-            aux = auxFibo;
+            final long aux = fibo;
+            if (i == fibo) {
+                fibo = fibo + 0;
+            } else {
+                fibo = fibo + aux;
+            }
+
         }
 
         return fibo;
@@ -159,7 +168,7 @@ public final class Algoritmos {//NOPMD
      * @param poli   Número real.
      * @param aprox  Número real.
      * @param vetNum Array de numeros rais.
-     * @return int Número real.
+     * @return int Numero de horner.
      * @throws IllegalArgumentException Caso o argumento g < 1.
      */
     public static int regraHorner(final int poli, final int aprox,
@@ -256,74 +265,76 @@ public final class Algoritmos {//NOPMD
     }
 
     /**
-     * Retorna o valor de Pi aproximado pelo um dado número.
-     *
      * @param num Numero inteiro natural.
+     * @param numPi Numero racional.
+     * @param prod Variável inteira multiplicadora inicial -1.
+     * @param div Variável inteira divisora, inicial -1.
      * @return double Valor do número Pi aproximado.
-     * @throws IllegalArgumentException Se o argumento estiver fora do
-     *                                  intervalo: n >= 1.
+     * @throws IllegalArgumentException Se o argumento num <= 0.
      */
-    public static double numeroPi(final int num) {
+    public static double numeroPi(final int num, final double numPi,
+                                  final double prod, final double div) {
         if (num <= 0) {
             throw new IllegalArgumentException("O numero n tem que ser n >= 1");
         }
 
-        double numPi = 0;
-        int prod = -1;
-        int aux = -1;
-
-        for (int i = 1; i <= num; i++) {
-            aux = aux + 2;
-            prod = prod * -1;
-            numPi = numPi + (prod * ConstAux.MULT) / aux;
+        final double auxProduto = prod * -1;
+        final double auxDivisor = div + 2;
+        final double finalNumPi = numPi + (ConstAux.MULT * auxProduto)
+                / auxDivisor;
+        if (num == (int) '1') {
+            return finalNumPi; //NOPMD
         }
 
-        return numPi;
+        final int idx = num - 1;
+        return numeroPi(idx, finalNumPi, auxProduto, auxDivisor);
     }
 
     /**
      * Verifica se um número é primo.
      *
      * @param num Número inteiro natural.
+     * @param bool Valor lógico, default é igual a {true}.
      * @return boolean Retorna {true} caso n é primo, {false} caso contrario.
      * @throws IllegalArgumentException Se o argumento n < 1.
      */
-    public static boolean numeroPrimo(final int num) {
+    public static boolean numeroPrimo(final int num, final boolean bool) {
         if (num <= 0) {
             throw new IllegalArgumentException("O numero 'n' tem que ser "
                     + "maior que 1");
         }
 
-        boolean aux = true;
         for (int i = 2; i < num; i++) {
             if (num % i == 0) {
-                aux = false;
+                return false; //NOPMD
             }
         }
 
-        return aux;
+        return bool;
     }
 
     /**
-     * Calcula a potência de dois numeros usando apenas somas.
-     *
      * @param numX Numero inteiro natural.
      * @param numY Número inteiro natural.
-     * @return int Potência dos parâmetros.
+     * @param prod Número natural, inicial igual a 1.
+     * @param idx Número natural, inicial igual a 1.
+     * @return int Potencia dos parametros numX e numY
      * @throws IllegalArgumentException Se os argumentos x <= 0 ou y <= 0.
      */
-    public static int calculaPotencia(final int numX, final int numY) {
+    public static int calculaPotencia(final int numX, final int numY,
+                                      final int prod, final int idx) {
         if (numX <= 0 || numY <= 0) {
             throw new IllegalArgumentException("Os numeros x e y deverão "
                     + "ser x >=0 e y >=0.");
         }
 
-        int produtorio = 1;
-        for (int i = 1; i <= numY; i++) {
-            produtorio = calculaProdutoInteiros(produtorio, numX);
+        final int produtorio = calculaProdutoInteiros(prod, numX);
+        if (idx == numY) {
+            return produtorio; //NOPMD
         }
 
-        return produtorio;
+        final int aux = idx + 1;
+        return calculaPotencia(numX, numY, produtorio, aux);
     }
 
     /**
@@ -394,7 +405,8 @@ public final class Algoritmos {//NOPMD
                     + "100 <= n <= 999");
         }
 
-        final double prop = num / ConstAux.DIVISOR_CEM + num % ConstAux.DIVISOR_CEM;
+        final double prop = num / ConstAux.DIVISOR_CEM
+                + num % ConstAux.DIVISOR_CEM;
 
         return prop * prop == num;
     }
@@ -416,10 +428,9 @@ public final class Algoritmos {//NOPMD
         int idx = 1;
         int quadrado = 1;
         while (quadrado < num) {
-            idx = idx + ConstAux.NUM_DOIS;
+            idx = idx + (int) 2.0;
             quadrado = quadrado + idx;
         }
-
         return quadrado == num;
     }
 
@@ -518,7 +529,10 @@ public final class Algoritmos {//NOPMD
         return soma;
     }
 
-
+    /**
+     *
+     * @param cpf Array de números inteiros.
+     */
     private static void validaParametrosCPF(final int... cpf) {
         if (cpf.length != ConstAux.ONZE) {
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
@@ -580,7 +594,8 @@ public final class Algoritmos {//NOPMD
         }
 
         final int digJ = (aux2 % ConstAux.ONZE) % ConstAux.RESTO;
-        final int digK = ((aux2 - aux1 + ConstAux.NOVE * cpf[ConstAux.DEZ]) % ConstAux.ONZE) % ConstAux.RESTO;
+        final int digK = ((aux2 - aux1 + ConstAux.NOVE * cpf[ConstAux.DEZ])
+                % ConstAux.ONZE) % ConstAux.RESTO;
 
         return digJ == cpf[cpf.length - 1] && digK == cpf[cpf.length - 1];
     }
