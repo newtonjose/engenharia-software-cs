@@ -11,20 +11,20 @@ class Propriedade153Test {
 
     @Test
     void propriedade153Satisfaz() {
-        assertTrue(AlgoritmosMatematicos.verificaPropriedade153(153));
+        assertTrue(Algoritmos.verificaPropriedade153(153));
     }
 
     @Test
     void propriedade153NaoSatisfaz() {
-        assertFalse(AlgoritmosMatematicos.verificaPropriedade153(154));
+        assertFalse(Algoritmos.verificaPropriedade153(154));
     }
 
     @Test
     void propriedade153ArgumentoInvalido() {
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.verificaPropriedade153(99));
+                () -> Algoritmos.verificaPropriedade153(99));
 
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.verificaPropriedade153(1000));
+                () -> Algoritmos.verificaPropriedade153(1000));
     }
 }
