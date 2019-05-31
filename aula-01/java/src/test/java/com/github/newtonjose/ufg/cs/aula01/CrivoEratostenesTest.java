@@ -9,19 +9,19 @@ class CrivoEratostenesTest {
     @Test
     void calculaCrivoCorreto() {
         int[] a = new int[] {0, 0, 0, 0, 0};
-        assertTrue(AlgoritmosMatematicos.calculaCrivoEratostenes(a, a.length-1));
+        assertTrue(Algoritmos.calculaCrivoEratostenes( a.length-1, a));
     }
 
     @Test
     void verificaArgumentosInvalidos() {
         int[] a = new int[]{};
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.calculaCrivoEratostenes(a,
-                        a.length-1));
+                () -> Algoritmos.calculaCrivoEratostenes(
+                        a.length-1, a));
 
         int[] b = new int[] {0, 0, 0, 1, 0};
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.calculaCrivoEratostenes(b,
-                        b.length-1));
+                () -> Algoritmos.calculaCrivoEratostenes(
+                        b.length-1, b));
     }
 }

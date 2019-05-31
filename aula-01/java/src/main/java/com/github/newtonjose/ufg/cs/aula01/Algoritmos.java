@@ -68,9 +68,34 @@ public final class Algoritmos {
      */
     private static boolean dataInvalida(final int dia, final int mes,
                                         final int ano) {
-        return dia < 1 || dia > ConstAux.DIA_MAX || mes < 1
-                || mes > ConstAux.MES_MAX || ano <= ConstAux.ANO_MIN;
+        return dia < 1 || dia > ConstAux.DIA_MAX || mes < 1 || mes > ConstAux.MES_MAX
+                || ano <= ConstAux.ANO_MIN;
     }
+
+    /**
+     * Constante auxiliar usada no método getDiaDaSemana.
+     */
+    private static final int NUM_TRES = 3;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    private static final int NUM_QUATRO = 4;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    private static final int NUM_CINCO = 5;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    private static final int NUM_CEM = 5;
+
+    /**
+     * Constante auxiliar usado no método getDiaDaSemana.
+     */
+    private static final int NUM_QUATROCENTOS = 5;
 
     /**
      * Dado uma data, retorna o dia da semana: 1 - segunda; 2 - terça, 3 ...
@@ -87,6 +112,7 @@ public final class Algoritmos {
                     + "1 <= dia <= 31, 1 <= mes <= 12 e ano > 1753!");
         }
 
+        // FINDMORE: como funciona isso em Java
         final boolean janOuFev = mes == 1 || mes == 2;
 
         if (janOuFev) {
@@ -98,9 +124,9 @@ public final class Algoritmos {
         }
 
         final int drDobbsExpr = dia + (2 * mes)
-                + ((ConstAux.NUM_TRES * (mes + 1)) / ConstAux.NUM_CINCO) + ano
-                + (ano / ConstAux.NUM_QUATRO) - (ano / ConstAux.NUM_CEM)
-                + (ano / ConstAux.NUM_QUATROCENTOS);
+                + ((NUM_TRES * (mes + 1)) / NUM_CINCO) + ano
+                + (ano / NUM_QUATRO) - (ano / NUM_CEM)
+                + (ano / NUM_QUATROCENTOS);
 
         return drDobbsExpr % ConstAux.DIAS_SEMANA;
     }
@@ -140,7 +166,7 @@ public final class Algoritmos {
         long auxFibo;
         long aux = 0;
         long fibo = 1;
-        for (int i = 1; i <= num; i++) {
+        for(int i = 1; i < num; i++) {
             auxFibo = fibo;
             fibo = fibo + aux;
             aux = auxFibo;
@@ -185,8 +211,8 @@ public final class Algoritmos {
         }
 
         double logNatural = num + 1;
-        int numerador = num;
-        int denominador = 1;
+        double numerador = num;
+        double denominador = 1;
 
         for (int i = 2; i <= aprox; i++) {
             numerador = numerador * numerador;
@@ -229,8 +255,7 @@ public final class Algoritmos {
      * @return int Máximo divisor comum de numA e b.
      * @throws IllegalArgumentException Se o argumento b < 0.
      **/
-    public static int maiorDivisorComumSemResto(final int numA,
-                                                final int numB) {
+    public static int maiorDivisorComumSemResto(final int numA, final int numB) {
         if (numB < 0) {
             throw new IllegalArgumentException("Os numero deverao 'b' tem que "
                     + "ser maior que zero!");
@@ -248,6 +273,11 @@ public final class Algoritmos {
 
         return auxA;
     }
+
+    /**
+     * Constante usada como multiplicador no método numeroPi.
+     */
+    private static final int MULT = 4;
 
     /**
      * Retorna o valor de Pi aproximado pelo um dado número.
@@ -269,7 +299,7 @@ public final class Algoritmos {
         for (int i = 1; i <= num; i++) {
             aux = aux + 2;
             prod = prod * -1;
-            numPi = numPi + (prod * ConstAux.MULT) / aux;
+            numPi = numPi + (prod * MULT) / aux;
         }
 
         return numPi;
@@ -382,9 +412,8 @@ public final class Algoritmos {
 
         final int aux = num % DIVISOR_CEM;
 
-        return Math.pow(num / DIVISOR_CEM, ConstAux.NUM_TRES)
-                + Math.pow(aux / DIVISOR_DEZ, ConstAux.NUM_TRES)
-                + Math.pow(aux % DIVISOR_DEZ, ConstAux.NUM_TRES) == num;
+        return Math.pow(num / DIVISOR_CEM, 3) +  Math.pow(aux / DIVISOR_DEZ, 3)
+                + Math.pow(aux % DIVISOR_DEZ, 3) == num;
     }
 
     /**
@@ -598,7 +627,7 @@ public final class Algoritmos {
         final int digiJ = (aux % ONZE) % RESTO;
         final int digiK = (aux1 % ONZE) % RESTO;
 
-        return digiJ == cpf[cpf.length - 1] && digiK == cpf[cpf.length];
+        return digiJ == cpf[cpf.length -1] && digiK == cpf[cpf.length - 1];
     }
 
     /**
@@ -633,6 +662,6 @@ public final class Algoritmos {
         final int digJ = (aux2 % ONZE) % RESTO;
         final int digK = ((aux2 - aux1 + NOVE * cpf[DEZ]) % ONZE) % RESTO;
 
-        return digJ == cpf[cpf.length - 1] && digK == cpf[cpf.length];
+        return digJ == cpf[cpf.length - 1] && digK == cpf[cpf.length - 1];
     }
 }
