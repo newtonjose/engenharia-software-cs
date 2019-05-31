@@ -9,12 +9,12 @@ class SomaPrimeirosNaturaisTest {
 
     @Test
     void somaNaturaisCorreta() {
-        assertEquals(15, AlgoritmosMatematicos.somaNaturais(5));
+        assertEquals(15, Algoritmos.somaNaturais(5));
     }
 
     @Test
     void somaNaturaisArgumentosInvalidos() {
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.somaNaturais(0));
+                () -> Algoritmos.somaNaturais(0));
     }
 }

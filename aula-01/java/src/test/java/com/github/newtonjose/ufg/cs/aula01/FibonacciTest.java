@@ -1,0 +1,20 @@
+package com.github.newtonjose.ufg.cs.aula01;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public class FibonacciTest {
+    @Test
+    void calculaFibonacciCorreto() {
+        assertEquals(21, Algoritmos.fibonacci(8));
+    }
+
+    @Test
+    void verificaArgumentosInvalidos() {
+        int[] poli_array = new int[]{};
+        assertThrows(IllegalArgumentException.class,
+                () -> Algoritmos.fibonacci(-1));
+    }
+}

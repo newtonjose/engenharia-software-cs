@@ -8,40 +8,40 @@ class DiaDaSemanaTest {
 
     @Test
     void getDiaDaSemenaCorreto() {
-        assertEquals(2, AlgoritmosMatematicos.getDiaDaSemana(28,
+        assertEquals(2, Algoritmos.getDiaDaSemana(28,
                 5, 2019));
     }
 
     @Test
     void getDiaDaSemanaMesUm() {
-        assertEquals(1, AlgoritmosMatematicos.getDiaDaSemana(14,
+        assertEquals(1, Algoritmos.getDiaDaSemana(14,
                 1, 2019));
     }
 
     @Test
     void getDiaDaSemanaMesDois() {
-        assertEquals(1, AlgoritmosMatematicos.getDiaDaSemana(11,
+        assertEquals(1, Algoritmos.getDiaDaSemana(11,
                 2, 2019));
     }
 
     @Test
     void getDiaDaSemanaArgumentoInvalido() {
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.getDiaDaSemana(0, 1, 1999));
+                () -> Algoritmos.getDiaDaSemana(0, 1, 1999));
 
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.getDiaDaSemana(32, 1, 1914));
+                () -> Algoritmos.getDiaDaSemana(32, 1, 1914));
 
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.getDiaDaSemana(16, 0, 1954));
+                () -> Algoritmos.getDiaDaSemana(16, 0, 1954));
 
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.getDiaDaSemana(16, 13, 1877));
+                () -> Algoritmos.getDiaDaSemana(16, 13, 1877));
 
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.getDiaDaSemana(16, 5, 1753));
+                () -> Algoritmos.getDiaDaSemana(16, 5, 1753));
 
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.getDiaDaSemana(16, 5, 1000));
+                () -> Algoritmos.getDiaDaSemana(16, 5, 1000));
     }
 }

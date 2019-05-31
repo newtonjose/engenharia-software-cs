@@ -10,15 +10,15 @@ class RestoDivisaoInteiraTest {
     @Test
     void calculaRestoDivisaoArgumentoInvalido() {
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.calculaRestoDivisao(10, -5));
+                () -> Algoritmos.calculaRestoDivisao(10, -5));
 
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.calculaRestoDivisao(10, 0));
+                () -> Algoritmos.calculaRestoDivisao(10, 0));
 
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.calculaRestoDivisao(-1, 10));
+                () -> Algoritmos.calculaRestoDivisao(-1, 10));
 
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.calculaRestoDivisao(-1, 0));
+                () -> Algoritmos.calculaRestoDivisao(-1, 0));
     }
 }

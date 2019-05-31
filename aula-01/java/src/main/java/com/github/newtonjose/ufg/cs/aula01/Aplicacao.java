@@ -17,12 +17,6 @@ public final class Aplicacao {
 
     }
 
-    public int foo() {
-        int buz = 6;
-        return buz;
-//        buz = 2;
-    }
-
     /**
      * Metodo main que imprime a data do dia na tela.
      * @param args Argumentos de entrada.

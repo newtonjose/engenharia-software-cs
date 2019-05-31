@@ -9,30 +9,45 @@ class ValidaCPFTest {
 
     @Test
     void validaCPFCorreto() {
-        int[] cpf = new int[]{1, 4, 3, 5, 3, 2, 1, 3, 4, 9, 7};
-        assertFalse(AlgoritmosMatematicos.validaCPF(cpf));
+        int[] cpf = new int[]{0, 1, 5, 5, 7, 5, 3, 1, 0, 0, 5};
+        assertTrue(Algoritmos.validaCPF(cpf));
 
-        assertFalse(AlgoritmosMatematicos.validaCPFRegraHorner(cpf));
+        assertFalse(Algoritmos.validaCPFRegraHorner(cpf));
+    }
+
+    @Test
+    void verificaCPFInvalido() {
+        int[] cpf = new int[]{3, 4, 5, 6, 1, 3, 3, 9, 4, 4, 5};
+
+        assertFalse(Algoritmos.validaCPF(cpf));
+
+        assertFalse(Algoritmos.validaCPFRegraHorner(cpf));
     }
 
     @Test
     void verificaCPFComMaisDigitos() {
         int[] cpf = new int[]{1, 4, 3, 5, 3, 2, 1, 3, 4, 9, 7, 4};
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.validaCPF(cpf));
+                () -> Algoritmos.validaCPF(cpf));
 
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.validaCPFRegraHorner(cpf));
+                () -> Algoritmos.validaCPFRegraHorner(cpf));
     }
 
     @Test
     void verificaCPFComDigitosInvalidos() {
-        int[] cpf = new int[]{23, 4, 19, 5, 3, 2, -1, 3, 4, -10, 7};
-        assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.validaCPF(cpf));
+        int[] cpf = new int[]{1, 4, 3, -5, 3, 2, 1, 3, 4, 9, 7};
+        int[] cpf2 = new int[]{1, 4, 3, 15, 3, 2, 1, 3, 4, 9, 7};
 
-            int[] cpf2 = new int[]{2, 4, -19, 5, 3, 2, -1, 3, 4, -10, 7};
         assertThrows(IllegalArgumentException.class,
-                () -> AlgoritmosMatematicos.validaCPFRegraHorner(cpf2));
+                () -> Algoritmos.validaCPF(cpf));
+
+        assertThrows(IllegalArgumentException.class,
+                () -> Algoritmos.validaCPF(cpf2));
+
+        assertThrows(IllegalArgumentException.class,
+                () -> Algoritmos.validaCPFRegraHorner(cpf));
+        assertThrows(IllegalArgumentException.class,
+                () -> Algoritmos.validaCPFRegraHorner(cpf2));
     }
 }
