@@ -8,6 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class Propriedade3025Test {
+    @Test
+    void propriedade3025Satisfaz() {
+        assertTrue(Algoritmos.verificaPropriedade3025(3025));
+    }
 
     @Test
     void propriedade3025NaoSatisfaz() {

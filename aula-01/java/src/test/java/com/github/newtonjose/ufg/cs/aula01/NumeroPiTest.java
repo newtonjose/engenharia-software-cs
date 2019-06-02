@@ -8,8 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class NumeroPiTest {
     @Test
     void calculaNumeroPiAproximado() {
-        // FIXME: verifica função no javascript
-//        assertEquals(3.145, Algoritmos.numeroPi(1000));
+        assertEquals(3.140592653839794, Algoritmos.numeroPi(1000));
     }
 
     @Test

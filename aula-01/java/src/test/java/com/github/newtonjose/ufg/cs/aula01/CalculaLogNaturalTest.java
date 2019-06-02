@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CalculaLogNaturalTest {
     @Test
     void calculaLogNaturalCorreto() {
-//        assertEquals(1, Algoritmos.calculaLogNatural(10, 100));
+        assertEquals(7.666666666666666, Algoritmos.calculaLogNatural(2, 3));
     }
 
     @Test

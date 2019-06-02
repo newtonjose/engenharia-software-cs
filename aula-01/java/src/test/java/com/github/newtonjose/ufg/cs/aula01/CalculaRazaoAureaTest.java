@@ -7,11 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculaRazaoAureaTest {
 
-    //FIXME: error nesse test
     @Test
     void casoSucesso() {
-        assertEquals(2, Algoritmos.calculaRazaoAurea(4, 2,
-        10));
+        assertEquals(1.6180339887498947,
+                Algoritmos.calculaRazaoAurea(2, 4,1000));
     }
 
     @Test
@@ -19,5 +18,13 @@ public class CalculaRazaoAureaTest {
         assertThrows(IllegalArgumentException.class,
                 () -> Algoritmos.calculaRazaoAurea(-1, 2,
                         10));
+
+        assertThrows(IllegalArgumentException.class,
+                () -> Algoritmos.calculaRazaoAurea(4, 2,
+                        10));
+
+        assertThrows(IllegalArgumentException.class,
+                () -> Algoritmos.calculaRazaoAurea(2, 4,
+                        0));
     }
 }

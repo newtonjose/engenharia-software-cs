@@ -189,9 +189,9 @@ public final class Algoritmos {
             throw new IllegalArgumentException("g deve ser maior que zero");
         }
 
-        int numHorner = vetNum[aprox - 1];
-        for (int i = aprox - 1; i >= 0; i--) {
-            numHorner = numHorner * poli + vetNum[i];
+        int numHorner = vetNum[vetNum.length - 1];
+        for (int i = vetNum.length - 1; i >= 0; i--) {
+            numHorner = numHorner * (poli + vetNum[i]);
         }
 
         return numHorner;
@@ -275,11 +275,6 @@ public final class Algoritmos {
     }
 
     /**
-     * Constante usada como multiplicador no método numeroPi.
-     */
-    private static final int MULT = 4;
-
-    /**
      * Retorna o valor de Pi aproximado pelo um dado número.
      *
      * @param num Numero inteiro natural.
@@ -293,13 +288,13 @@ public final class Algoritmos {
         }
 
         double numPi = 0;
-        int prod = -1;
-        int aux = -1;
+        double prod = -1;
+        double aux = -1;
 
         for (int i = 1; i <= num; i++) {
             aux = aux + 2;
             prod = prod * -1;
-            numPi = numPi + (prod * MULT) / aux;
+            numPi = numPi + (prod * ConstAux.MULT) / aux;
         }
 
         return numPi;
@@ -512,16 +507,16 @@ public final class Algoritmos {
                     + "y e k > 0");
         }
 
-        int aux;
-        int numY1 = numY;
-        int numAurea = numX;
+        double aux;
+        double num = numY;
+        double div = numX;
         for (int i = 1; i <= prescisao; i++) {
-            aux = numY1;
-            numY1 = numY1 + numAurea;
-            numAurea = aux;
+            aux = num;
+            num = num + div;
+            div = aux;
         }
 
-        return numY1 / numAurea;
+        return num / div;
     }
 
     /**

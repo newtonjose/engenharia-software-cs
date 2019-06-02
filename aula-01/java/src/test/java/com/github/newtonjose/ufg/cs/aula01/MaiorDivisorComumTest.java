@@ -16,5 +16,8 @@ class MaiorDivisorComumTest {
     void verificaArgumentosInvalidos() {
         assertThrows(IllegalArgumentException.class,
                 () -> Algoritmos.maiorDivisorComum(2, -2));
+
+        assertThrows(IllegalArgumentException.class,
+                () -> Algoritmos.maiorDivisorComum(2, 4));
     }
 }
