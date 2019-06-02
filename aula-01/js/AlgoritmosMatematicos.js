@@ -69,7 +69,7 @@ class ValidaParametros {
      */
     validaEntrada(a) {
         for (let i = 0; i < a.length; i++) {
-            if (a[i] == null || a[i] == undefined) {
+            if (a[i] == null || a[i] === undefined) {
                 throw new Error("Entrada invalidada, null e undefined nao " +
                     "sao entradas validas");
             }
@@ -472,7 +472,7 @@ class Algoritmos {
             s = s + i;
         }
 
-        return s == n;
+        return s === n;
     }
 
     /**
@@ -526,7 +526,7 @@ class Algoritmos {
         let i = 2;
 
         while (i < n) {
-            if (n % i == 0) {
+            if (n % i === 0) {
                 return false;
             }
 
@@ -567,7 +567,7 @@ class Algoritmos {
 
         // busca por valores diferente de zero
         for (let i = 2; i < n; i++) {
-            if (a[i] != 0) {
+            if (a[i] !== 0) {
                 throw new RangeError("Existe valores em a, onde nao sao " +
                     "iguais a zero");
             }
@@ -577,7 +577,7 @@ class Algoritmos {
         let i = 2;
         const limite = Math.sqrt(n);
         while (i <= limite) {
-            if (a[i] == 0) {
+            if (a[i] === 0) {
                 let multiplo = i + 1;
 
                 while (multiplo <= n) {
@@ -589,7 +589,7 @@ class Algoritmos {
             i += 1; //TODO: Use o for
         }
 
-        return a[n - 1] == 1;
+        return a[n - 1] === 1;
     }
 
     /**
@@ -625,7 +625,7 @@ class Algoritmos {
      * sem usar resto da divisão inteira.
      *
      * @param {number} b Número inteiro natural.
-     * @param {array} a Array de números inteiros naturais.
+     * @param {number} a Número inteiro natural.
      *
      * @returns {array} a Máximo divisor comum de a e b.
      *
@@ -636,7 +636,7 @@ class Algoritmos {
     static maiorDivisorComumSemResto(b, a) {
         vp.validaEntrada([a, b]);
 
-        if (b < 0) {
+        if (b < 0 || a < 0) {
             throw new RangeError("Os numero deverao 'b tem que ser " +
                 "maior que zero!");
         }
@@ -656,9 +656,9 @@ class Algoritmos {
     /**
      * Avalia um polinônimo por meio de somas, produtos e potências.
      *
-     * @param {number} x Número real.
+     * @param {number} num Número real.
      * @param {number} g Número real.
-     * @param {array} a Array de numeros rais.
+     * @param {array} vet Array de numeros rais.
      *
      * @returns {number} p Número real.
      *
@@ -667,68 +667,66 @@ class Algoritmos {
      * @throws {RangeError} Se o segundo argumento estiver for do intervalo:
      * g > 1.
      **/
-    static regraHorner(x, g, a) {
-        vp.validaEntrada([x, g]);
+    static regraHorner(num, vet) {
+        vp.validaEntrada([num,]);
 
-        if (!vp.verificaTipoArray(a)) {
+        if (!vp.verificaTipoArray(vet)) {
             throw new TypeError("o argumento a deve ser do tipo array");
         }
 
-        if (g < 1) {
+        if (vet.length === 0) {
             throw new RangeError("o agumento g deve ser maior que zero");
         }
 
-        let p = a[g - 1];
-        let i = g - 1;
-        while (i >= 0) {
-            p = p * x + a[i];
-            i -= 1; //TODO: Use o for
+        for (let i = 0; i < vet.length; i++) {
+            vp.validaEntrada([vet[i]]);
         }
 
-        return p;
+        let num_horner = vet[vet.length - 1];
+        for (let i = vet.length - 1; i >= 0; i--) {
+            num_horner = num_horner * (num + vet[i]);
+        }
+
+        return num_horner;
     }
 
     /**
      * Calcula o número de Fibonacci sem usar recursividade.
      *
-     * @param {number} n Número inteiro natural.
+     * @param {number} num Número inteiro natural.
      *
      * @returns {number} f Número inteiro natural.
      *
      * @throws {TypeError} Se o argumento não for um número.
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 0.
      **/
-    static fibonacci(n) {
-        if (!vp.verificaTipoNumero(n)) {
-            throw new TypeError("O argumento n deve ser um número");
-        }
+    static fibonacci(num) {
+        vp.validaEntrada([num]);
 
-        if (n <= 0) {
+        if (num <= 0) {
             throw new RangeError("O argumento 'n' tem que ser n>=0");
         }
 
-        if (n == 0 || n == 1) {
-            return n;
+        if (num === 0 || num === 1) {
+            return 1;
         }
 
-        let a = 0;
-        let f = 1;
-        let i = 1;
-        while (i <= n) {
-            const t = f;
-            f = f + a;
-            a = t;
-            i += 1; //TODO: Use o for
+        let aux = 0;
+        let fibo = 1;
+        for (let i = 2; i <= num; i++) {
+            const auxFibo = fibo;
+            fibo = fibo + aux;
+            aux = auxFibo;
         }
 
-        return f;
+        return fibo;
     }
 
     /**
      * Verifica se um dado CPF segue a regra de formação dos digitos
      * corretamente.
      *
-     * @param {array} a Array de numeros rais.
+     * @param {array} cpf Array de numeros rais.
      *
      * @returns {boolean} true ou false Valor lógico.
      *
@@ -737,48 +735,47 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento não tiver 11 digitos.
      * @throws {RangeError} Se no argumento tiver algum número: 0 <= n >= 9.
      **/
-    static validaCPF(a) {
-        if (!vp.verificaTipoArray(a)) {
+    static validaCPF(cpf) {
+        if (!vp.verificaTipoArray(cpf)) {
             throw new TypeError("o argumento d deve ser do tipo array");
         }
 
-        if (!vp.validaParametrosTipoNumero(a)) {
-            throw new TypeError("Os valores do array dever ser do tipo " +
-                "número.");
-        }
-
-        if (a.length != 11) {
+        if (cpf.length !== 11) {
             throw RangeError("O cpf deve ter 11 digitos");
         }
 
+        for (let i = 0; i < cpf.length; i++) {
+            vp.validaEntrada([cpf[i]]);
+        }
+
         for (let i = 0; i < 11; i++) {
-            if (a[i] < 0 || a[i] > 9) {
+            if (cpf[i] < 0 || cpf[i] > 9) {
                 throw RangeError("Os números do CPF devem ser de 0 a 9: " +
-                    a[i]);
+                    cpf[i]);
             }
         }
 
-        let j = 0;
+        let aux1 = 0;
         let k = 0;
         for (let i = 0; i < 9; i++) {
-            j = j + a[i];
+            aux1 = aux1 + cpf[i];
         }
 
         for (let i = 1; i < 10; i++) {
-            k = k + a[i];
+            k = k + cpf[i];
         }
 
-        const aj = (j % 11) % 10;
+        const aj = (aux1 % 11) % 10;
         const ak = (k % 11) % 10;
 
-        return (ak === a[a.length]) && (aj === a[a.length - 1]);
+        return (ak === cpf[cpf.length - 1]) && (aj === cpf[cpf.length - 1]);
     }
 
     /**
      * Verifica se um dado CPF segue a regra de formação dos digitos
      * corretamenten usando o Método de Horner.
      *
-     * @param {array} d Array de numeros rais.
+     * @param {array} cpf Array de numeros rais.
      *
      * @returns {boolean} true ou false Valor lógico.
      *
@@ -787,41 +784,38 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento não tiver 11 digitos.
      * @throws {RangeError} Se no argumento tiver algum número: 0 <= n >= 9.
      **/
-    static validaCPFRegraHorner(d) {
-        if (!vp.verificaTipoArray(d)) {
+    static validaCPFRegraHorner(cpf) {
+        if (!vp.verificaTipoArray(cpf)) {
             throw new TypeError("o argumento d deve ser do tipo array");
         }
 
-        if (!vp.validaParametrosTipoNumero(d)) {
-            throw new TypeError("Os valores do array dever ser do tipo " +
-                "número.");
+        if (cpf.length !== 11) {
+            throw RangeError("O cpf deve ter 11 digitos");
         }
 
-        if (d.length !== 11) {
-            throw RangeError("o cpf deve ter 11 digitos");
+        for (let i = 0; i < cpf.length; i++) {
+            vp.validaEntrada([cpf[i]]);
         }
 
         for (let i = 0; i < 11; i++) {
-            if (d[i] < 0 || d[i] > 9) {
+            if (cpf[i] < 0 || cpf[i] > 9) {
                 throw RangeError("Os números do CPF devem ser de 0 a 9: " +
-                    d[i]);
+                    cpf[i]);
             }
         }
 
-        let c = 8;
-        let p = d[9];
-        let s = d[9];
+        let aux_cpf = cpf[9];
+        let aux = cpf[9];
 
-        while (c >= 1) {
-            p = p + d[c];
-            s = s + p;
-            c -= 1; //TODO: Use o for
+        for (let i = 7; i >= 0; i--) {
+            aux_cpf = aux_cpf + cpf[i];
+            aux = aux + aux_cpf;
         }
 
-        const j = (s % 11) % 10;
-        const k = ((s - p + (9 * d[10])) % 11) % 10;
+        const j = (aux % 11) % 10;
+        const k = ((aux - aux_cpf + (10 * cpf[10])) % 11) % 10;
 
-        return (j === d[d.length - 1]) && (k === d[d.length]);
+        return (j === cpf[9]) && (k === cpf[9]);
     }
 }
 

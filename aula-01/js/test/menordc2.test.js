@@ -1,14 +1,14 @@
 const Algoritmos = require("../AlgoritmosMatematicos");
 const funcao = Algoritmos.maiorDivisorComumSemResto;
 
-test("verifica se o numero é primo pelo crivo de erastostenes (situação verdadeira)", () => {
+test("verifica se o numero é primo (situação verdadeira)", () => {
     expect(funcao(4, 2)).toBe(2);
 })
 
 test("argumento null/undefined", () => {
     expect(() => {
-		funcao();
-	}).toThrow();
+        funcao();
+    }).toThrow();
 });
 
 test("argumento nao numerico", () => {
@@ -26,9 +26,9 @@ test("o argumento fora da faixa", () => {
 test("os argumentos devem ser do tipo inteiro", () => {
     expect(() => {
         funcao(1.5, 2);
-    }).toThrow(RangeError);
-    
+    }).toThrow(TypeError);
+
     expect(() => {
         funcao(1, 2.4);
-    }).toThrow(RangeError);
+    }).toThrow(TypeError);
 });

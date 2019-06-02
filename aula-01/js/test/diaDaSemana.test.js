@@ -25,5 +25,5 @@ test("valor negativo fora da faixa", () => {
 });
 
 test("valor deve ser inteiro", () => {
-    expect(() => funcao(11.1, 10, 1755)).toThrow(RangeError);
+    expect(() => funcao(11.1, 10, 1755)).toThrow(TypeError);
 });

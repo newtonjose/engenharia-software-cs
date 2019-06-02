@@ -15,7 +15,7 @@ test("valor zero fora da faixa", () => {
 });
 
 test("valor deve ser inteiro", () => {
-    expect(() => funcao(10.3)).toThrow(RangeError);
+    expect(() => funcao(10.3)).toThrow(TypeError);
 });
 
 test("fatorial de um numero (caso de sucesso)", () => {

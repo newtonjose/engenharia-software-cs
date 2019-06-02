@@ -34,5 +34,5 @@ test("terceiro argumento fora da faixa", () => {
 });
 
 test("os argumento devem ser do tipo inteiro", () => {
-    expect(() => funcao(1.0, 2.5, 1.0)).toThrow(RangeError);
+    expect(() => funcao(1.1, 2.5, 1.0)).toThrow(TypeError);
 });

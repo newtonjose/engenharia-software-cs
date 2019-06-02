@@ -7,8 +7,8 @@ test("verifica se o numero é primo pelo crivo de erastostenes (situação verda
 
 test("argumento null/undefined", () => {
     expect(() => {
-		funcao();
-	}).toThrow();
+        funcao();
+    }).toThrow();
 });
 
 test("argumento nao numerico", () => {
@@ -30,9 +30,9 @@ test("os argumentos fora da faixa", () => {
 test("os argumentos devem ser do tipo inteiro", () => {
     expect(() => {
         funcao(1.5, 2);
-    }).toThrow(RangeError);
-    
+    }).toThrow(TypeError);
+
     expect(() => {
         funcao(1, 2.4);
-    }).toThrow(RangeError);
+    }).toThrow(TypeError);
 });

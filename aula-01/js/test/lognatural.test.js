@@ -28,9 +28,9 @@ test("segundo argumento fora da faixa", () => {
 });
 
 test("primeiro argumento deve ser inteiro", () => {
-    expect(() => funcao(11.1, 10)).toThrow(RangeError);
+    expect(() => funcao(11.1, 10)).toThrow(TypeError);
 });
 
 test("segundo argumento deve ser inteiro", () => {
-    expect(() => funcao(11, 10.1)).toThrow(RangeError);
+    expect(() => funcao(11, 10.1)).toThrow(TypeError);
 });
