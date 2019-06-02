@@ -184,8 +184,8 @@ class Algoritmos {
 
 
         if (mes === 1 || mes === 2) {
-            mes += 12;
-            ano -= 1;
+            mes = mes + 12;
+            ano = ano - 1;
         }
 
         const i = dia + 2 * mes + (3 * (mes + 1)) / 5;
@@ -217,7 +217,7 @@ class Algoritmos {
 
         let resto = x;
         while (y <= resto) {
-            resto -= y;
+            resto = resto - y;
         }
 
         return resto;
@@ -241,11 +241,9 @@ class Algoritmos {
             throw new RangeError("O numero 'n' tem que ser n >= 1");
         }
 
-        let i = 2;
         let s = 1;
-        while (i <= n) {
-            s += i;
-            i += 1;
+        for(let i = 2; i <= n; i++) {
+            s = s + i;
         }
 
         return s;
@@ -272,7 +270,7 @@ class Algoritmos {
         let i = 2;
         let fat = 1;
         while (i <= n) {
-            fat *= i;
+            fat = fat * i;
             i += 1;
         }
 
@@ -309,8 +307,8 @@ class Algoritmos {
         let i = 1;
         let prod = 0;
         while (i <= totalParcelas) {
-            prod += parcela;
-            i += 1;
+            prod = prod + parcela;
+            i += 1; //TODO: Use o for
         }
 
         return prod;
@@ -339,7 +337,7 @@ class Algoritmos {
         let i = 1;
         while (i <= y) {
             p = Algoritmos.produtoInteiros(p, x);
-            i += 1;
+            i += 1; //TODO: Use o for
         }
 
         return p;
@@ -368,10 +366,10 @@ class Algoritmos {
         let pi = 0;
 
         while (i <= n) {
-            d += 2;
-            s *= -1;
-            pi += (4 * s) / d;
-            i += 1;
+            d = d + 2;
+            s = s * -1;
+            pi = pi + (4 * s) / d;
+            i += 1; //TODO: Use o for
         }
 
         return pi;
@@ -404,10 +402,10 @@ class Algoritmos {
         let denominador = 1;
 
         while (i <= k) {
-            numerador *= numerador;
-            denominador *= i;
-            e += (numerador / denominador);
-            i += 1;
+            numerador = numerador * numerador;
+            denominador = denominador * i;
+            e = e + (numerador / denominador);
+            i += 1; //TODO: Use o for
         }
 
         return e;
@@ -440,9 +438,9 @@ class Algoritmos {
 
         while (i <= k) {
             const t = c;
-            c += a;
+            c = c + a;
             a = t;
-            i += 1;
+            i += 1; //TODO: Use o for
         }
 
         return c / a;
@@ -470,8 +468,8 @@ class Algoritmos {
         let s = 1;
 
         while (s < n) {
-            i += 2;
-            s += i;
+            i = i + 2;
+            s = s + i;
         }
 
         return s == n;
@@ -501,7 +499,7 @@ class Algoritmos {
 
         while (prescisao >= 0) {
             r = (r + n / r) / 2;
-            prescisao -= 1;
+            prescisao = prescisao - 1;
         }
 
         return r;
@@ -532,7 +530,7 @@ class Algoritmos {
                 return false;
             }
 
-            i += 1;
+            i += 1; //TODO: Use o for
         }
 
         return true;
@@ -584,11 +582,11 @@ class Algoritmos {
 
                 while (multiplo <= n) {
                     a[multiplo] = 1;
-                    multiplo += i;
+                    multiplo = multiplo + i;
                 }
             }
 
-            i += 1;
+            i += 1; //TODO: Use o for
         }
 
         return a[n - 1] == 1;
@@ -643,12 +641,12 @@ class Algoritmos {
                 "maior que zero!");
         }
 
-        while (a != b) {
+        while (a !== b) {
             // 'a' sempre sera maior que 'b' pelo if anterior
             if (a > b) {
-                a -= b;
+                a = a - b;
             } else {
-                b -= a;
+                b = b - a;
             }
         }
 
@@ -684,7 +682,7 @@ class Algoritmos {
         let i = g - 1;
         while (i >= 0) {
             p = p * x + a[i];
-            i -= 1;
+            i -= 1; //TODO: Use o for
         }
 
         return p;
@@ -718,9 +716,9 @@ class Algoritmos {
         let i = 1;
         while (i <= n) {
             const t = f;
-            f += a;
+            f = f + a;
             a = t;
-            i += 1;
+            i += 1; //TODO: Use o for
         }
 
         return f;
@@ -763,11 +761,11 @@ class Algoritmos {
         let j = 0;
         let k = 0;
         for (let i = 0; i < 9; i++) {
-            j += a[i];
+            j = j + a[i];
         }
 
         for (let i = 1; i < 10; i++) {
-            k += a[i];
+            k = k + a[i];
         }
 
         const aj = (j % 11) % 10;
@@ -815,9 +813,9 @@ class Algoritmos {
         let s = d[9];
 
         while (c >= 1) {
-            p += d[c];
-            s += p;
-            c -= 1;
+            p = p + d[c];
+            s = s + p;
+            c -= 1; //TODO: Use o for
         }
 
         const j = (s % 11) % 10;
