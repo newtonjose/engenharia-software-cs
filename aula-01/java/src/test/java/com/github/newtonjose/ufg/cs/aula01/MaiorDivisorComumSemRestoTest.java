@@ -11,8 +11,8 @@ public class MaiorDivisorComumSemRestoTest {
         assertEquals(2, Algoritmos.maiorDivisorComumSemResto(4,
                 2));
 
-        assertEquals(2, Algoritmos.maiorDivisorComumSemResto(4,
-                2));
+        assertEquals(2, Algoritmos.maiorDivisorComumSemResto(2,
+                4));
     }
 
     @Test
