@@ -286,11 +286,9 @@ class Algoritmos {
             parcela = a;
         }
 
-        let i = 1;
         let prod = 0;
-        while (i <= totalParcelas) {
+        for (let i = 1; i <= totalParcelas; i++) {
             prod = prod + parcela;
-            i += 1; //TODO: Use o for
         }
 
         return prod;
@@ -315,43 +313,39 @@ class Algoritmos {
             throw new RangeError("Os argumentos devem ser: x >= 0; y >= 0");
         }
 
-        let p = 1;
-        let i = 1;
-        while (i <= y) {
-            p = Algoritmos.produtoInteiros(p, x);
-            i += 1; //TODO: Use o for
+        let potencia = 1;
+        for (let i = 1; i <= y; i++) {
+            potencia = Algoritmos.produtoInteiros(potencia, x);
         }
 
-        return p;
+        return potencia;
     }
 
     /**
      * Retorna o valor de Pi aproximado pelo um dado número.
      *
-     * @param {number} n Numero inteiro natural.
+     * @param {number} num Numero inteiro natural.
      *
      * @returns {number} pi Número racional positivo.
      *
      * @throws {TypeError} Se o argumento não for um número.
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
-    static valorPi(n) {
-        ValidaParametros.validaEntrada([n]);
+    static valorPi(num) {
+        ValidaParametros.validaEntrada([num]);
 
-        if (n < 1) {
+        if (num < 1) {
             throw new RangeError("O numero num tem que ser num >= 1");
         }
 
-        let i = 1;
-        let s = -1;
-        let d = -1;
+        let prod = -1;
+        let div = -1;
         let pi = 0;
 
-        while (i <= n) {
-            d = d + 2;
-            s = s * -1;
-            pi = pi + (4 * s) / d;
-            i += 1; //TODO: Use o for
+        for (let i = 1; i <= num; i++) {
+            div = div + 2;
+            prod = prod * -1;
+            pi = pi + (4 * prod) / div;
         }
 
         return pi;
@@ -378,19 +372,17 @@ class Algoritmos {
             throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
         }
 
-        let i = 2;
-        let e = n + 1;
+        let log = n + 1;
         let numerador = n;
         let denominador = 1;
 
-        while (i <= k) {
+        for (let i = 2; i <= k; i++) {
             numerador = numerador * numerador;
             denominador = denominador * i;
-            e = e + (numerador / denominador);
-            i += 1; //TODO: Use o for
+            log = log + (numerador / denominador);
         }
 
-        return e;
+        return log;
     }
 
     /**
@@ -414,18 +406,16 @@ class Algoritmos {
             throw new RangeError("Números deve ser: x >= 0, x < y e k > 0");
         }
 
-        let c = y;
-        let a = x;
-        let i = 1;
+        let numerador = y;
+        let denominador = x;
 
-        while (i <= k) {
-            const t = c;
-            c = c + a;
-            a = t;
-            i += 1; //TODO: Use o for
+        for (let i = 1; i <= k; i++) {
+            const aux = numerador;
+            numerador = numerador + denominador;
+            denominador = aux;
         }
 
-        return c / a;
+        return numerador / denominador;
     }
 
     /**
@@ -505,14 +495,10 @@ class Algoritmos {
             throw new RangeError("O numero 'n' tem que ser maior que 1");
         }
 
-        let i = 2;
-
-        while (i < n) {
+        for (let i = 2; i < n; i++) {
             if (n % i === 0) {
                 return false;
             }
-
-            i += 1; //TODO: Use o for
         }
 
         return true;
@@ -546,19 +532,16 @@ class Algoritmos {
         if (n < 1) {
             throw new RangeError("O numero 'n' tem que ser maior que 1");
         }
-
-        // busca por valores diferente de zero
+        
         for (let i = 2; i < n; i++) {
             if (a[i] !== 0) {
                 throw new RangeError("Existe valores em a, onde nao sao " +
                     "iguais a zero");
             }
         }
-
-
-        let i = 2;
+        
         const limite = Math.sqrt(n);
-        while (i <= limite) {
+        for (let i = 2; i <= limite; i++) {
             if (a[i] === 0) {
                 let multiplo = i + 1;
 
@@ -567,8 +550,6 @@ class Algoritmos {
                     multiplo = multiplo + i;
                 }
             }
-
-            i += 1; //TODO: Use o for
         }
 
         return a[n - 1] === 1;
