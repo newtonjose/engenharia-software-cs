@@ -530,7 +530,7 @@ public final class Algoritmos { //NOPMD
     }
 
     /**
-     *
+     * Método auxiliar para validar parametros de um vetor.
      * @param cpf Array de números inteiros.
      */
     private static void validaParametrosCPF(final int... cpf) {
@@ -538,8 +538,8 @@ public final class Algoritmos { //NOPMD
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
         }
 
-        for (final int v : cpf) {
-            if (v < 0 || v > ConstAux.NOVE) {
+        for (final int value : cpf) {
+            if (value < 0 || value > ConstAux.NOVE) {
                 throw new IllegalArgumentException("os números do cpf fora do "
                         + "range aceito.");
             }
