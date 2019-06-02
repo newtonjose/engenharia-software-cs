@@ -10,7 +10,7 @@ class ValidaParametros {
      * @param n Parametros tipo número.
      * @returns {boolean}
      */
-    verificaTipoNumero(n) {
+    static verificaTipoNumero(n) {
         return typeof n == "number";
     }
 
@@ -19,7 +19,7 @@ class ValidaParametros {
      * @param a Váriável do tipo array.
      * @returns {arg is Array<any>}
      */
-    verificaTipoArray(a) {
+    static verificaTipoArray(a) {
         return Array.isArray(a);
     }
 
@@ -28,25 +28,9 @@ class ValidaParametros {
      * @param n Número inteiro.
      * @returns {boolean}
      */
-    verificaTipoFloat(n) {
+    static verificaTipoFloat(n) {
         return Number(n) === n && n % 1 !== 0;
     }
-
-    /**
-     * Verifica se os elementos de um array de parametros é do tipo número.
-     *
-     * @param {array} prts Array de numeros.
-     * @returns {boolean} true ou false Valor lógico.
-     **/
-    validaParametrosTipoNumero(prts) {
-        for (let i = 0; i < prts.length; i++) {
-            if (!this.verificaTipoNumero(prts[i])) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 
     /**
      * Função auxiliar que verifica se uma data é invalida para a
@@ -56,7 +40,7 @@ class ValidaParametros {
      * @param a Inteiro ano.
      * @returns {boolean}
      */
-    validaData(d, m, a) {
+    static validaData(d, m, a) {
         return d < 1 || d > 31 || m < 1 || m > 12 || a <= 1753;
     }
 
@@ -67,26 +51,24 @@ class ValidaParametros {
      * @throws {TypeError} Caso a entrada não do tipo numero.
      * @throws {TypeError} Caso a entrada não seja números inteiros.
      */
-    validaEntrada(a) {
+    static validaEntrada(a) {
         for (let i = 0; i < a.length; i++) {
             if (a[i] == null || a[i] === undefined) {
                 throw new Error("Entrada invalidada, null e undefined nao " +
                     "sao entradas validas");
             }
             
-            if (!this.verificaTipoNumero(a[i])) {
+            if (!ValidaParametros.verificaTipoNumero(a[i])) {
                 throw new TypeError("argumento(s) valido(s) é/são do tipo " + 
                     "número.");
             }
 
-            if (this.verificaTipoFloat(a[i])) {
+            if (ValidaParametros.verificaTipoFloat(a[i])) {
                 throw new TypeError("agumento(s) deve(m) ser tipo inteiro.");
             }
         }
     }
 }
-
-const vp = new ValidaParametros();
 
 /**
  * 21 algoritmos matemáticos com o propósito de fazer aquecimento em
@@ -108,9 +90,9 @@ class Algoritmos {
      * @returns {boolean} true ou false Valor lógico.
      **/
     static propriedade3025(n) {
-        vp.validaEntrada([n]);
+        ValidaParametros.validaEntrada([n]);
 
-        if (!vp.verificaTipoNumero(n)) {
+        if (!ValidaParametros.verificaTipoNumero(n)) {
             throw new TypeError("Argumento deve ser um número");
         }
 
@@ -118,7 +100,7 @@ class Algoritmos {
             throw new RangeError("O numeros devem ser 0 ≤ n ≤ 9999");
         }
 
-        if (vp.verificaTipoFloat(n)) {
+        if (ValidaParametros.verificaTipoFloat(n)) {
             throw new RangeError("O numeros devem ser tipo inteiro.");
         }
 
@@ -141,9 +123,9 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo 100 a 999.
      **/
     static propriedade153(n) {
-        vp.validaEntrada([n]);
+        ValidaParametros.validaEntrada([n]);
 
-        if (!vp.verificaTipoNumero(n)) {
+        if (!ValidaParametros.verificaTipoNumero(n)) {
             throw new TypeError("Argumento deve ser um número");
         }
 
@@ -175,9 +157,9 @@ class Algoritmos {
      * intervalos: 1 <= dia <= 31; 1 <= mes <= 12 e ano > 1753.
      **/
     static diaDaSemana(dia, mes, ano) {
-        vp.validaEntrada([dia, mes, ano]);
+        ValidaParametros.validaEntrada([dia, mes, ano]);
 
-        if (vp.validaData(dia, mes, ano)) {
+        if (ValidaParametros.validaData(dia, mes, ano)) {
             throw new RangeError("A data é invalida! Para uma data valida " +
                 "1 <= dia <= 31, 1 <= mes <= 12 e ano > 1753!");
         }
@@ -209,7 +191,7 @@ class Algoritmos {
      * y >= 0; x > 0.
      **/
     static restoDivisaoInteira(x, y) {
-        vp.validaEntrada([x, y]);
+        ValidaParametros.validaEntrada([x, y]);
 
         if (x < 0 || y <= 0) {
             throw new RangeError("Os numeros devem ser y >= 0 && x > 0");
@@ -235,7 +217,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     static somaNaturais(n) {
-        vp.validaEntrada([n]);
+        ValidaParametros.validaEntrada([n]);
 
         if (n < 1) {
             throw new RangeError("O numero 'n' tem que ser n >= 1");
@@ -261,7 +243,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     static fatorialNumero(n) {
-        vp.validaEntrada([n]);
+        ValidaParametros.validaEntrada([n]);
 
         if (n < 1) {
             throw new RangeError("O argumento deve ser maior ou igual a 1.");
@@ -291,7 +273,7 @@ class Algoritmos {
      * a >= 0; b >= 0.
      **/
     static produtoInteiros(a, b) {
-        vp.validaEntrada([a, b]);
+        ValidaParametros.validaEntrada([a, b]);
 
         if (a < 0 || b < 0) {
             throw new RangeError("Os argumentos devem ser: a >= 0; b >= 0");
@@ -327,7 +309,7 @@ class Algoritmos {
      * x >= 0; y >= 0.
      **/
     static calculaPotencia(x, y) {
-        vp.validaEntrada([x, y]);
+        ValidaParametros.validaEntrada([x, y]);
 
         if (x < 0 || y < 0) {
             throw new RangeError("Os argumentos devem ser: x >= 0; y >= 0");
@@ -354,7 +336,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     static valorPi(n) {
-        vp.validaEntrada([n]);
+        ValidaParametros.validaEntrada([n]);
 
         if (n < 1) {
             throw new RangeError("O numero num tem que ser num >= 1");
@@ -390,7 +372,7 @@ class Algoritmos {
      * n >= 1; k >= 2.
      **/
     static logaritmoNatural(n, k) {
-        vp.validaEntrada([n, k]);
+        ValidaParametros.validaEntrada([n, k]);
 
         if (n < 1 || k < 2) {
             throw new RangeError("O numeros tem que ser n >= 1 && k >= 2");
@@ -426,7 +408,7 @@ class Algoritmos {
      * x >= 0; x < y e k > 0.
      **/
     static razaoAurea(x, y, k) {
-        vp.validaEntrada([x, y, k]);
+        ValidaParametros.validaEntrada([x, y, k]);
 
         if ((x < 0 || x > y) || k <= 0) {
             throw new RangeError("Números deve ser: x >= 0, x < y e k > 0");
@@ -458,7 +440,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     static quadradoPerfeito(n) {
-        vp.validaEntrada([n]);
+        ValidaParametros.validaEntrada([n]);
 
         if (n < 1) {
             throw new RangeError("O numero 'n' deverá ser maior que 1");
@@ -489,7 +471,7 @@ class Algoritmos {
      * n > 0.
      **/
     static raizQuadrada(n, prescisao) {
-        vp.validaEntrada([n, prescisao]);
+        ValidaParametros.validaEntrada([n, prescisao]);
 
         if (n < 0) {
             throw new RangeError("O numero 'n' deverá ser maior que 0");
@@ -517,7 +499,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 1.
      **/
     static numeroPrimo(n) {
-        vp.validaEntrada([n]);
+        ValidaParametros.validaEntrada([n]);
 
         if (n < 1) {
             throw new RangeError("O numero 'n' tem que ser maior que 1");
@@ -551,13 +533,13 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento array tiver valor diferente de zero.
      **/
     static crivoErastostenes(n, a) {
-        vp.validaEntrada([n]);
+        ValidaParametros.validaEntrada([n]);
 
         for (let j = 0; j < n; j++) {
-            vp.validaEntrada(a[j]);
+            ValidaParametros.validaEntrada(a[j]);
         }
         
-        if (!vp.verificaTipoArray(a)) {
+        if (!ValidaParametros.verificaTipoArray(a)) {
             throw new TypeError("O argumento a deve ser do tipo array.");
         }
 
@@ -605,7 +587,7 @@ class Algoritmos {
      * a >= b e b > 0.
      **/
     static maiorDivisorComum(a, b) {
-        vp.validaEntrada([a, b]);
+        ValidaParametros.validaEntrada([a, b]);
 
         if (b > a || b < 0) {
             throw new RangeError("Os numeros deverao ser a >= b e b > 0");
@@ -627,14 +609,14 @@ class Algoritmos {
      * @param {number} b Número inteiro natural.
      * @param {number} a Número inteiro natural.
      *
-     * @returns {array} a Máximo divisor comum de a e b.
+     * @returns {number} a Máximo divisor comum de a e b.
      *
      * @throws {TypeError} Se o primeiro argumento não for um número.
      * @throws {RangeError} Se o primeiro argumento estiver fora do intervalo:
      * b > 0.
      **/
     static maiorDivisorComumSemResto(b, a) {
-        vp.validaEntrada([a, b]);
+        ValidaParametros.validaEntrada([a, b]);
 
         if (b < 0 || a < 0) {
             throw new RangeError("Os numero deverao 'b tem que ser " +
@@ -657,7 +639,6 @@ class Algoritmos {
      * Avalia um polinônimo por meio de somas, produtos e potências.
      *
      * @param {number} num Número real.
-     * @param {number} g Número real.
      * @param {array} vet Array de numeros rais.
      *
      * @returns {number} p Número real.
@@ -668,9 +649,9 @@ class Algoritmos {
      * g > 1.
      **/
     static regraHorner(num, vet) {
-        vp.validaEntrada([num,]);
+        ValidaParametros.validaEntrada([num,]);
 
-        if (!vp.verificaTipoArray(vet)) {
+        if (!ValidaParametros.verificaTipoArray(vet)) {
             throw new TypeError("o argumento a deve ser do tipo array");
         }
 
@@ -679,7 +660,7 @@ class Algoritmos {
         }
 
         for (let i = 0; i < vet.length; i++) {
-            vp.validaEntrada([vet[i]]);
+            ValidaParametros.validaEntrada([vet[i]]);
         }
 
         let num_horner = vet[vet.length - 1];
@@ -701,7 +682,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 0.
      **/
     static fibonacci(num) {
-        vp.validaEntrada([num]);
+        ValidaParametros.validaEntrada([num]);
 
         if (num <= 0) {
             throw new RangeError("O argumento 'n' tem que ser n>=0");
@@ -736,7 +717,7 @@ class Algoritmos {
      * @throws {RangeError} Se no argumento tiver algum número: 0 <= n >= 9.
      **/
     static validaCPF(cpf) {
-        if (!vp.verificaTipoArray(cpf)) {
+        if (!ValidaParametros.verificaTipoArray(cpf)) {
             throw new TypeError("o argumento d deve ser do tipo array");
         }
 
@@ -745,7 +726,7 @@ class Algoritmos {
         }
 
         for (let i = 0; i < cpf.length; i++) {
-            vp.validaEntrada([cpf[i]]);
+            ValidaParametros.validaEntrada([cpf[i]]);
         }
 
         for (let i = 0; i < 11; i++) {
@@ -785,7 +766,7 @@ class Algoritmos {
      * @throws {RangeError} Se no argumento tiver algum número: 0 <= n >= 9.
      **/
     static validaCPFRegraHorner(cpf) {
-        if (!vp.verificaTipoArray(cpf)) {
+        if (!ValidaParametros.verificaTipoArray(cpf)) {
             throw new TypeError("o argumento d deve ser do tipo array");
         }
 
@@ -794,7 +775,7 @@ class Algoritmos {
         }
 
         for (let i = 0; i < cpf.length; i++) {
-            vp.validaEntrada([cpf[i]]);
+            ValidaParametros.validaEntrada([cpf[i]]);
         }
 
         for (let i = 0; i < 11; i++) {
