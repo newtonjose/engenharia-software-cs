@@ -743,7 +743,7 @@ class Algoritmos {
      * @throws {TypeError} Se o argumento não for um número.
      * @throws {RangeError} Se o argumento estiver fora do intervalo: n >= 0.
      **/
-    fibonacci(n) {
+    static fibonacci(n) {
         if (!vp.verificaTipoNumero(n)) {
             throw new TypeError("O argumento n deve ser um número");
         }
@@ -785,7 +785,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento não tiver 11 digitos.
      * @throws {RangeError} Se no argumento tiver algum número: 0 <= n >= 9.
      **/
-    validaCPF(a) {
+    static validaCPF(a) {
         if (!vp.verificaTipoArray(a)) {
             throw new TypeError("o argumento d deve ser do tipo array");
         }
@@ -837,7 +837,7 @@ class Algoritmos {
      * @throws {RangeError} Se o argumento não tiver 11 digitos.
      * @throws {RangeError} Se no argumento tiver algum número: 0 <= n >= 9.
      **/
-    validaCPFRegraHorner(d) {
+    static validaCPFRegraHorner(d) {
         if (!vp.verificaTipoArray(d)) {
             throw new TypeError("o argumento d deve ser do tipo array");
         }
