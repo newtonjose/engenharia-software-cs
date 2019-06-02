@@ -1,4 +1,4 @@
-const Algoritmos = require("../aula-01");
+const Algoritmos = require("../AlgoritmosMatematicos");
 const funcao = Algoritmos.restoDivisaoInteira;
 
 test("resto da divisão caso valido (data valida)", () => {
@@ -18,5 +18,5 @@ test("valor negativo fora da faixa", () => {
 });
 
 test("valor deve ser inteiro", () => {
-    expect(() => { funcao(10.3, 10.5);}).toThrow(RangeError);
+    expect(() => { funcao(10.3, 10.5);}).toThrow(TypeError);
 });

@@ -1,4 +1,4 @@
-const Algoritmos = require("../aula-01");
+const Algoritmos = require("../AlgoritmosMatematicos");
 const funcao = Algoritmos.somaNaturais;
 
 test("soma dos naturais caso valido", () => {
@@ -18,5 +18,5 @@ test("valor fora da faixa", () => {
 });
 
 test("valor que não é inteiro", () => {
-    expect(() => { funcao(10.3);}).toThrow(RangeError);
+    expect(() => { funcao(10.3);}).toThrow(TypeError);
 });

@@ -1,4 +1,4 @@
-const Algoritmos = require("../aula-01");
+const Algoritmos = require("../AlgoritmosMatematicos");
 const funcao = Algoritmos.propriedade3025;
 
 test("3025 satisfaz (caso classico)", () => {
@@ -26,5 +26,5 @@ test("valor com mais de 4 digitos fora da faixa", () => {
 });
 
 test("valor deve ser inteiro", () => {
-    expect(() => funcao(10.3)).toThrow(RangeError);
+    expect(() => funcao(10.3)).toThrow(TypeError);
 });

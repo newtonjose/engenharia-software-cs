@@ -1,4 +1,4 @@
-const Algoritmos = require("../aula-01");
+const Algoritmos = require("../AlgoritmosMatematicos");
 const funcao = Algoritmos.diaDaSemana;
 
 test("data que satisfaz (data valida)", () => {
@@ -25,5 +25,5 @@ test("valor negativo fora da faixa", () => {
 });
 
 test("valor deve ser inteiro", () => {
-    expect(() => funcao(11.1, 10, 1755)).toThrow(RangeError);
+    expect(() => funcao(11.1, 10, 1755)).toThrow(TypeError);
 });
