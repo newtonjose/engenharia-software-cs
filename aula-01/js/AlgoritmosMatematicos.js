@@ -151,10 +151,6 @@ class Algoritmos {
             throw new RangeError("O numeros devem ser 100 <= n <= 999");
         }
 
-        if (vp.verificaTipoFloat(n)) {
-            throw new RangeError("O numeros devem ser tipo inteiro.");
-        }
-
         const c = Math.floor(n / 100);
         const du = n % 100;
         const d = Math.floor(du / 10);
@@ -181,19 +177,11 @@ class Algoritmos {
     static diaDaSemana(dia, mes, ano) {
         vp.validaEntrada([dia, mes, ano]);
 
-        if (!vp.validaParametrosTipoNumero([dia, mes, ano])) {
-            throw new TypeError("os argumentos devem ser do tipo número");
-        }
-
         if (vp.validaData(dia, mes, ano)) {
             throw new RangeError("A data é invalida! Para uma data valida " +
                 "1 <= dia <= 31, 1 <= mes <= 12 e ano > 1753!");
         }
 
-        if (vp.verificaTipoFloat(dia) || vp.verificaTipoFloat(mes) ||
-            vp.verificaTipoFloat(ano)) {
-            throw new RangeError("O numeros devem ser tipo inteiro.");
-        }
 
         if (mes === 1 || mes === 2) {
             mes += 12;
@@ -223,20 +211,11 @@ class Algoritmos {
     static restoDivisaoInteira(x, y) {
         vp.validaEntrada([x, y]);
 
-        if (!vp.validaParametrosTipoNumero([x, y])) {
-            throw new TypeError("Os argumentos devem ser do tipo número");
-        }
-
         if (x < 0 || y <= 0) {
             throw new RangeError("Os numeros devem ser y >= 0 && x > 0");
         }
 
-        if (vp.verificaTipoFloat(x) || vp.verificaTipoFloat(y)) {
-            throw new RangeError("O numeros devem ser tipo inteiro.");
-        }
-
         let resto = x;
-
         while (y <= resto) {
             resto -= y;
         }
@@ -258,21 +237,12 @@ class Algoritmos {
     static somaNaturais(n) {
         vp.validaEntrada([n]);
 
-        if (!vp.verificaTipoNumero(n)) {
-            throw new TypeError("O argumento deve ser um número");
-        }
-
         if (n < 1) {
             throw new RangeError("O numero 'n' tem que ser n >= 1");
         }
 
-        if (vp.verificaTipoFloat(n)) {
-            throw new RangeError("O numero deve ser tipo inteiro.");
-        }
-
         let i = 2;
         let s = 1;
-
         while (i <= n) {
             s += i;
             i += 1;
@@ -299,13 +269,8 @@ class Algoritmos {
             throw new RangeError("O argumento deve ser maior ou igual a 1.");
         }
 
-        if (vp.verificaTipoFloat(n)) {
-            throw new RangeError("O argumento deve ser tipo inteiro.");
-        }
-
         let i = 2;
         let fat = 1;
-
         while (i <= n) {
             fat *= i;
             i += 1;
@@ -336,7 +301,6 @@ class Algoritmos {
 
         let totalParcelas = a;
         let parcela = b;
-
         if (b < a) {
             totalParcelas = b;
             parcela = a;
@@ -344,7 +308,6 @@ class Algoritmos {
 
         let i = 1;
         let prod = 0;
-
         while (i <= totalParcelas) {
             prod += parcela;
             i += 1;
@@ -374,7 +337,6 @@ class Algoritmos {
 
         let p = 1;
         let i = 1;
-
         while (i <= y) {
             p = Algoritmos.produtoInteiros(p, x);
             i += 1;
@@ -475,10 +437,9 @@ class Algoritmos {
         let c = y;
         let a = x;
         let i = 1;
-        let t;
 
         while (i <= k) {
-            t = c;
+            const t = c;
             c += a;
             a = t;
             i += 1;
@@ -614,13 +575,12 @@ class Algoritmos {
             }
         }
 
-        let i = 2;
-        let multiplo;
-        const limite = Math.sqrt(n);
 
+        let i = 2;
+        const limite = Math.sqrt(n);
         while (i <= limite) {
             if (a[i] == 0) {
-                multiplo = i + 1;
+                let multiplo = i + 1;
 
                 while (multiplo <= n) {
                     a[multiplo] = 1;
@@ -630,7 +590,7 @@ class Algoritmos {
 
             i += 1;
         }
-        console.log(a[n-1]);
+
         return a[n - 1] == 1;
     }
 
@@ -653,10 +613,8 @@ class Algoritmos {
             throw new RangeError("Os numeros deverao ser a >= b e b > 0");
         }
 
-        let m;
-
-        while (b != 0) {
-            m = a % b;
+        while (b !== 0) {
+            const m = a % b;
             a = b;
             b = m;
         }
@@ -724,7 +682,6 @@ class Algoritmos {
 
         let p = a[g - 1];
         let i = g - 1;
-
         while (i >= 0) {
             p = p * x + a[i];
             i -= 1;
@@ -752,18 +709,15 @@ class Algoritmos {
             throw new RangeError("O argumento 'n' tem que ser n>=0");
         }
 
-        let a = 0;
-        let f = 1;
-
         if (n == 0 || n == 1) {
             return n;
         }
 
+        let a = 0;
+        let f = 1;
         let i = 1;
-        let t;
-
         while (i <= n) {
-            t = f;
+            const t = f;
             f += a;
             a = t;
             i += 1;
@@ -808,13 +762,11 @@ class Algoritmos {
 
         let j = 0;
         let k = 0;
-        let i;
-
-        for (i = 0; i < 9; i++) {
+        for (let i = 0; i < 9; i++) {
             j += a[i];
         }
 
-        for (i = 1; i < 10; i++) {
+        for (let i = 1; i < 10; i++) {
             k += a[i];
         }
 
