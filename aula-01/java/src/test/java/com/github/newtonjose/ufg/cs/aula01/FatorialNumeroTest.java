@@ -8,12 +8,12 @@ class FatorialNumeroTest {
 
     @Test
     void calculaFatorialCorreto() {
-        assertEquals(6, Algoritmos.calculaFatorial(3));
+        assertEquals(6, Algoritmos.fatorial(3, 1, 2));
     }
 
     @Test
     void verificaArgumentosInvalidos() {
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaFatorial(0));
+                () -> Algoritmos.fatorial(0, 1, 2));
     }
 }

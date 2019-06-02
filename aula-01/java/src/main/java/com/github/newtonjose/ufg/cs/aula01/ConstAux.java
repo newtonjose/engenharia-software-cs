@@ -3,7 +3,7 @@ package com.github.newtonjose.ufg.cs.aula01;
 /**
  *
  */
-public final class ConstAux { //NOPMD
+public final class ConstAux {//NOPMD
 
     /**
      * Constante que representa o máximo dia de um mês.

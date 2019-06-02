@@ -9,16 +9,16 @@ class PotenciaTest {
 
     @Test
     void calculaPotenciaCorreta() {
-        assertEquals(16, Algoritmos.calculaPotencia(2, 4));
+        assertEquals(16, Algoritmos.calculaPotencia(2, 4, 1, 1));
     }
 
     @Test
     void verificaArgumentosInvalidos() {
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaPotencia(0, 4));
+                () -> Algoritmos.calculaPotencia(0, 4, 1, 1));
 
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaPotencia(2, 0));
+                () -> Algoritmos.calculaPotencia(2, 0, 1, 1));
     }
 
 }
