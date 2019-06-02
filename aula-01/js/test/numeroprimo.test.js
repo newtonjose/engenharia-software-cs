@@ -1,4 +1,4 @@
-const Algoritmos = require("../aula-01");
+const Algoritmos = require("../AlgoritmosMatematicos");
 const funcao = Algoritmos.numeroPrimo;
 
 test("verifica se numero o numero é primo (situação verdadeira)", () => {

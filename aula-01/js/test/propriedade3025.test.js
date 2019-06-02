@@ -1,4 +1,4 @@
-const Algoritmos = require("../aula-01");
+const Algoritmos = require("../AlgoritmosMatematicos");
 const funcao = Algoritmos.propriedade3025;
 
 test("3025 satisfaz (caso classico)", () => {

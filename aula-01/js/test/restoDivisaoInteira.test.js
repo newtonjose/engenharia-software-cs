@@ -1,4 +1,4 @@
-const Algoritmos = require("../aula-01");
+const Algoritmos = require("../AlgoritmosMatematicos");
 const funcao = Algoritmos.restoDivisaoInteira;
 
 test("resto da divisão caso valido (data valida)", () => {

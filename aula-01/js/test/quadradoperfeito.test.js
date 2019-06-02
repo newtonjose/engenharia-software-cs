@@ -1,4 +1,4 @@
-const Algoritmos = require("../aula-01");
+const Algoritmos = require("../AlgoritmosMatematicos");
 const funcao = Algoritmos.quadradoPerfeito;
 
 test("verifica se numero é quadrado perfeito (situação verdadeira)", () => {

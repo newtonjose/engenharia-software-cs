@@ -1,4 +1,4 @@
-const Algoritmos = require("../aula-01");
+const Algoritmos = require("../AlgoritmosMatematicos");
 const funcao = Algoritmos.maiorDivisorComumSemResto;
 
 test("verifica se o numero é primo pelo crivo de erastostenes (situação verdadeira)", () => {
