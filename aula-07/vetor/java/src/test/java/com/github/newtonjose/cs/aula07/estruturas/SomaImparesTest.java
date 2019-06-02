@@ -4,19 +4,19 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+class SomaImparesTest {
 
-class MenorTemperaturaTest {
     @Test
-    void retornaMenorTemperatura() {
-        int[] t = new int[]{0, 2, -3, 5};
-        assertEquals(-3, MenorTemperatura.getMenorTemperatura(t));
+    void getTotalSomaImpares() {
+        int[] vet = new int[]{1, 3, 5};
+        assertEquals(3, SomaImpares.getTotalSomaImpares(vet));
     }
 
     @Test
     void testeParamentroInvalido() {
         int[] t = new int[]{};
         assertThrows(IllegalArgumentException.class,
-                () -> MenorTemperatura.getMenorTemperatura(t)
+                () -> SomaImpares.getTotalSomaImpares(t)
         );
     }
 }

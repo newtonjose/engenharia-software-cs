@@ -5,28 +5,28 @@ package com.github.newtonjose.cs.aula07.estruturas;
  *
  *<p>Encontrar a menor valor em um vetor de valores recebido como argumento.</p>
  */
-public final class MenorTemperatura {
+public final class MenorTemperatura { //NOPMD
     /**
-     * Contrutor protegido,.
+     * Contrutor privado devido classe ser estatica.
      */
-    protected MenorTemperatura() {
-        throw new UnsupportedOperationException();
+    private MenorTemperatura() {
+
     }
 
     /**
-     * @param temps Vetor de temperaturas.
+     * @param temperatures Vetor de temperaturas.
      * @return int Menor temperatura do vetor passado como paramentro.
      */
-    public static int getMenorTemperatura(final int... temps) {
-        if (temps.length == 0) {
+    public static int getMenorTemperatura(final int... temperatures) {
+        if (temperatures.length == 0) {
             throw new IllegalArgumentException("nenhuma temperatura foi "
                     + "informada.");
         }
 
-        int menorTemp = temps[0];
-        int maiorTemp = temps[0];
+        int menorTemp = temperatures[0];
+        int maiorTemp = temperatures[0];
 
-        for (final int tmp : temps) {
+        for (final int tmp : temperatures) {
             if (tmp > maiorTemp) {
                 maiorTemp = tmp;
             }
