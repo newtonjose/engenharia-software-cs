@@ -88,7 +88,6 @@ public final class Algoritmos { //NOPMD
                     + "1 <= dia <= 31, 1 <= mes <= 12 e ano > 1753!");
         }
 
-        // FINDMORE: como funciona isso em Java
         final boolean janOuFev = mes == 1 || mes == 2;
 
         int mesAux;
@@ -105,8 +104,8 @@ public final class Algoritmos { //NOPMD
             anoAux = ano;
         }
 
-        final int drDobbsExpr = dia + (2 * mesAux)
-                + ((ConstAux.NUM_TRES * (mesAux + 1)) / ConstAux.NUM_CINCO)
+        final int drDobbsExpr = dia + 2 * mesAux
+                + (ConstAux.NUM_TRES * (mesAux + 1)) / ConstAux.NUM_CINCO
                 + anoAux + (anoAux / ConstAux.NUM_QUATRO)
                 - (anoAux / ConstAux.NUM_CEM)
                 + (anoAux / ConstAux.NUM_QUATROCENTOS);
@@ -151,7 +150,7 @@ public final class Algoritmos { //NOPMD
 
         long fibo = 1;
         for (int i = 1; i < num; i++) {
-            final long aux = fibo;
+            final long aux = fibo; //NOPMD
             if (i == fibo) {
                 fibo = fibo + 0;
             } else {
@@ -165,21 +164,24 @@ public final class Algoritmos { //NOPMD
 
     /**
      * Avalia um polinônimo por meio de somas, produtos e potências.
-     * @param poli   Número real.
-     * @param aprox  Número real.
+     * @param poli   Número polinomial.
      * @param vetNum Array de numeros rais.
      * @return int Numero de horner.
      * @throws IllegalArgumentException Caso o argumento g < 1.
      */
-    public static int regraHorner(final int poli, final int aprox,
-                                  final int... vetNum) {
-        if (aprox <= 0) {
-            throw new IllegalArgumentException("g deve ser maior que zero");
+    public static int regraHorner(final int poli, final int... vetNum) {
+        if (vetNum.length == 0) {
+            throw new IllegalArgumentException("o vetor não pode ser vazio.");
         }
 
-        int numHorner = vetNum[aprox - 1];
-        for (int i = aprox - 1; i >= 0; i--) {
-            numHorner = numHorner * poli + vetNum[i];
+        if (poli <= 0) {
+            throw new IllegalArgumentException("o parametro pili deve ser "
+                    + "maior que zero");
+        }
+
+        int numHorner = vetNum[vetNum.length - 1]; //NOPMD
+        for (int i = vetNum.length - 1; i >= 0; i--) {
+            numHorner = numHorner * (poli + vetNum[i]);
         }
 
         return numHorner;
@@ -199,9 +201,9 @@ public final class Algoritmos { //NOPMD
                     + "&& k >= 2");
         }
 
-        double logNatural = num + 1;
-        double numerador = num;
-        double denominador = 1;
+        double logNatural = num + 1; //NOPMD
+        double numerador = num; //NOPMD
+        double denominador = 1; //NOPMD
 
         for (int i = 2; i <= aprox; i++) {
             numerador = numerador * numerador;
@@ -351,15 +353,15 @@ public final class Algoritmos { //NOPMD
                     + "maior ou igual a zero");
         }
 
-        int totalParcelas = numA;
-        int parcela = numB;
+        int totalParcelas = numA; //NOPMD
+        int parcela = numB; //NOPMD
 
         if (numB < numA) {
             totalParcelas = numB;
-            parcela = numA;
+            parcela = numA; //NOPMD
         }
 
-        int produto = 0;
+        int produto = 0; //NOPMD
         for (int i = 1; i <= totalParcelas; i++) {
             produto = produto + parcela;
         }
@@ -425,7 +427,7 @@ public final class Algoritmos { //NOPMD
                     + "que 1");
         }
 
-        int idx = 1;
+        int idx = 1; //NOPMD
         int quadrado = 1;
         while (quadrado < num) {
             idx = idx + (int) 2.0;
@@ -447,7 +449,7 @@ public final class Algoritmos { //NOPMD
             throw new IllegalArgumentException("O numero 'n' deverá ser maior "
                     + "que 0");
         }
-        double numRaiz = 1;
+        double numRaiz = 1; //NOPMD
 
         int aux = precisao;
         while (aux >= 0) {
@@ -473,9 +475,9 @@ public final class Algoritmos { //NOPMD
                     + "y e k > 0");
         }
 
-        int aux;
-        int numY1 = numY;
-        int numAurea = numX;
+        double aux;
+        double numY1 = numY;
+        double numAurea = numX;
         for (int i = 1; i <= prescisao; i++) {
             aux = numY1;
             numY1 = numY1 + numAurea;
@@ -521,7 +523,7 @@ public final class Algoritmos { //NOPMD
                     + "n >= 1.");
         }
 
-        int soma = 1;
+        int soma = 1; //NOPMD
         for (int i = 2; i <= num; i++) {
             soma = soma + i;
         }
@@ -532,8 +534,10 @@ public final class Algoritmos { //NOPMD
     /**
      * Método auxiliar para validar parametros de um vetor.
      * @param cpf Array de números inteiros.
+     * @throws IllegalArgumentException Se o array não tiver 11 digitos ou
+     * se algum valor no array for fora do intervalo: 0 <= x <= 9.
      */
-    private static void validaParametrosCPF(final int... cpf) {
+    private static void validaParametrosCPF(final int... cpf) { //NOPMD
         if (cpf.length != ConstAux.ONZE) {
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
         }
@@ -556,8 +560,8 @@ public final class Algoritmos { //NOPMD
     public static boolean validaCPF(final int... cpf) {
         validaParametrosCPF(cpf);
 
-        int aux = 0;
-        int aux1 = 0;
+        int aux = 0; //NOPMD
+        int aux1 = 0; //NOPMD
 
         for (int i = 0; i < ConstAux.NOVE; i++) {
             aux = aux + cpf[i];
@@ -584,8 +588,8 @@ public final class Algoritmos { //NOPMD
     public static boolean validaCPFRegraHorner(final int... cpf) {
         validaParametrosCPF(cpf);
 
-        int aux1 = cpf[ConstAux.NOVE];
-        int aux2 = cpf[ConstAux.NOVE];
+        int aux1 = cpf[ConstAux.NOVE]; //NOPMD
+        int aux2 = cpf[ConstAux.NOVE]; //NOPMD
         int oito = ConstAux.OITO;
         while (oito >= 1) {
             aux1 = aux1 + cpf[oito];
