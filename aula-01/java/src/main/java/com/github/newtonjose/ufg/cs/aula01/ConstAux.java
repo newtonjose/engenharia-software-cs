@@ -1,9 +1,9 @@
 package com.github.newtonjose.ufg.cs.aula01;
 
 /**
- *
+ * Classe auxiliar com definição as das constantes usadas pelo pacote.
  */
-public final class ConstAux {//NOPMD
+public final class ConstAux { //NOPMD
 
     /**
      * Constante que representa o máximo dia de um mês.
@@ -53,7 +53,7 @@ public final class ConstAux {//NOPMD
     /**
      * Constante auxiliar usado no método getDiaDaSemana.
      */
-    public static final int NUM_CEM = 5;
+    public static final int NUM_CEM = 100;
 
     /**
      * Constante auxiliar usado no método getDiaDaSemana.
