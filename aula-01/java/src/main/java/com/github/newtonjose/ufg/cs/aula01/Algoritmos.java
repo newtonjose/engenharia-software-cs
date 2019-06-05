@@ -179,7 +179,7 @@ public final class Algoritmos { //NOPMD
                     + "maior que zero");
         }
 
-        int numHorner = vetNum[vetNum.length - 1];
+        int numHorner = vetNum[vetNum.length - 1]; //NOPMD
         for (int i = vetNum.length - 1; i >= 0; i--) {
             numHorner = numHorner * (poli + vetNum[i]);
         }
@@ -537,13 +537,13 @@ public final class Algoritmos { //NOPMD
      * @throws IllegalArgumentException Se o array não tiver 11 digitos ou
      * se algum valor no array for fora do intervalo: 0 <= x <= 9.
      */
-    private static void validaParametrosCPF(final int... cpf) {
+    private static void validaParametrosCPF(final int... cpf) { //NOPMD
         if (cpf.length != ConstAux.ONZE) {
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
         }
 
-        for (int i = 0; i < cpf.length; i++) {
-            if (cpf[i] < 0 || cpf[i] > ConstAux.NOVE) {
+        for (final int value : cpf) {
+            if (value < 0 || value > ConstAux.NOVE) {
                 throw new IllegalArgumentException("os números do cpf fora do "
                         + "range aceito.");
             }
