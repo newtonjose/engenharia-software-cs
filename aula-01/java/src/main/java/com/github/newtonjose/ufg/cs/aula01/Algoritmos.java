@@ -165,21 +165,24 @@ public final class Algoritmos { //NOPMD
 
     /**
      * Avalia um polinônimo por meio de somas, produtos e potências.
-     * @param poli   Número real.
-     * @param aprox  Número real.
+     * @param poli   Número polinomial.
      * @param vetNum Array de numeros rais.
      * @return int Numero de horner.
      * @throws IllegalArgumentException Caso o argumento g < 1.
      */
-    public static int regraHorner(final int poli, final int aprox,
-                                  final int... vetNum) {
-        if (aprox <= 0) {
-            throw new IllegalArgumentException("g deve ser maior que zero");
+    public static int regraHorner(final int poli, final int... vetNum) {
+        if (vetNum.length == 0) {
+            throw new IllegalArgumentException("o vetor não pode ser vazio.");
         }
 
-        int numHorner = vetNum[aprox - 1];
-        for (int i = aprox - 1; i >= 0; i--) {
-            numHorner = numHorner * poli + vetNum[i];
+        if (poli <= 0) {
+            throw new IllegalArgumentException("o parametro pili deve ser "
+                    + "maior que zero");
+        }
+
+        int numHorner = vetNum[vetNum.length - 1];
+        for (int i = vetNum.length - 1; i >= 0; i--) {
+            numHorner = numHorner * (poli + vetNum[i]);
         }
 
         return numHorner;
@@ -473,9 +476,9 @@ public final class Algoritmos { //NOPMD
                     + "y e k > 0");
         }
 
-        int aux;
-        int numY1 = numY;
-        int numAurea = numX;
+        double aux;
+        double numY1 = numY;
+        double numAurea = numX;
         for (int i = 1; i <= prescisao; i++) {
             aux = numY1;
             numY1 = numY1 + numAurea;
