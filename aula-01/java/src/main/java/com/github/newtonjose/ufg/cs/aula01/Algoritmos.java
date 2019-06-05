@@ -151,7 +151,7 @@ public final class Algoritmos { //NOPMD
 
         long fibo = 1;
         for (int i = 1; i < num; i++) {
-            final long aux = fibo;
+            final long aux = fibo; //NOPMD
             if (i == fibo) {
                 fibo = fibo + 0;
             } else {
@@ -202,9 +202,9 @@ public final class Algoritmos { //NOPMD
                     + "&& k >= 2");
         }
 
-        double logNatural = num + 1;
-        double numerador = num;
-        double denominador = 1;
+        double logNatural = num + 1; //NOPMD
+        double numerador = num; //NOPMD
+        double denominador = 1; //NOPMD
 
         for (int i = 2; i <= aprox; i++) {
             numerador = numerador * numerador;
@@ -354,15 +354,15 @@ public final class Algoritmos { //NOPMD
                     + "maior ou igual a zero");
         }
 
-        int totalParcelas = numA;
-        int parcela = numB;
+        int totalParcelas = numA; //NOPMD
+        int parcela = numB; //NOPMD
 
         if (numB < numA) {
             totalParcelas = numB;
-            parcela = numA;
+            parcela = numA; //NOPMD
         }
 
-        int produto = 0;
+        int produto = 0; //NOPMD
         for (int i = 1; i <= totalParcelas; i++) {
             produto = produto + parcela;
         }
@@ -428,7 +428,7 @@ public final class Algoritmos { //NOPMD
                     + "que 1");
         }
 
-        int idx = 1;
+        int idx = 1; //NOPMD
         int quadrado = 1;
         while (quadrado < num) {
             idx = idx + (int) 2.0;
@@ -450,7 +450,7 @@ public final class Algoritmos { //NOPMD
             throw new IllegalArgumentException("O numero 'n' deverá ser maior "
                     + "que 0");
         }
-        double numRaiz = 1;
+        double numRaiz = 1; //NOPMD
 
         int aux = precisao;
         while (aux >= 0) {
@@ -524,7 +524,7 @@ public final class Algoritmos { //NOPMD
                     + "n >= 1.");
         }
 
-        int soma = 1;
+        int soma = 1; //NOPMD
         for (int i = 2; i <= num; i++) {
             soma = soma + i;
         }
@@ -535,14 +535,16 @@ public final class Algoritmos { //NOPMD
     /**
      * Método auxiliar para validar parametros de um vetor.
      * @param cpf Array de números inteiros.
+     * @throws IllegalArgumentException Se o array não tiver 11 digitos ou
+     * se algum valor no array for fora do intervalo: 0 <= x <= 9.
      */
     private static void validaParametrosCPF(final int... cpf) {
         if (cpf.length != ConstAux.ONZE) {
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
         }
 
-        for (final int value : cpf) {
-            if (value < 0 || value > ConstAux.NOVE) {
+        for (int i = cpf.length - 1; i < cpf.length; i++) {
+            if (cpf[i] < 0 || cpf[i] > ConstAux.NOVE) {
                 throw new IllegalArgumentException("os números do cpf fora do "
                         + "range aceito.");
             }
@@ -559,8 +561,8 @@ public final class Algoritmos { //NOPMD
     public static boolean validaCPF(final int... cpf) {
         validaParametrosCPF(cpf);
 
-        int aux = 0;
-        int aux1 = 0;
+        int aux = 0; //NOPMD
+        int aux1 = 0; //NOPMD
 
         for (int i = 0; i < ConstAux.NOVE; i++) {
             aux = aux + cpf[i];
@@ -587,8 +589,8 @@ public final class Algoritmos { //NOPMD
     public static boolean validaCPFRegraHorner(final int... cpf) {
         validaParametrosCPF(cpf);
 
-        int aux1 = cpf[ConstAux.NOVE];
-        int aux2 = cpf[ConstAux.NOVE];
+        int aux1 = cpf[ConstAux.NOVE]; //NOPMD
+        int aux2 = cpf[ConstAux.NOVE]; //NOPMD
         int oito = ConstAux.OITO;
         while (oito >= 1) {
             aux1 = aux1 + cpf[oito];

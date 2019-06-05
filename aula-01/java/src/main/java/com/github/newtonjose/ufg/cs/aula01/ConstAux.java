@@ -1,9 +1,9 @@
 package com.github.newtonjose.ufg.cs.aula01;
 
 /**
- *
+ * Classe auxiliar com definição as das constantes usadas pelo pacote.
  */
-public final class ConstAux {//NOPMD
+public final class ConstAux { //NOPMD
 
     /**
      * Constante que representa o máximo dia de um mês.
