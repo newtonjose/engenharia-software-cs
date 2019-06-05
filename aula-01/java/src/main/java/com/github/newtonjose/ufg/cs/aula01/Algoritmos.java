@@ -88,7 +88,6 @@ public final class Algoritmos { //NOPMD
                     + "1 <= dia <= 31, 1 <= mes <= 12 e ano > 1753!");
         }
 
-        // FINDMORE: como funciona isso em Java
         final boolean janOuFev = mes == 1 || mes == 2;
 
         int mesAux;
@@ -105,8 +104,8 @@ public final class Algoritmos { //NOPMD
             anoAux = ano;
         }
 
-        final int drDobbsExpr = dia + (2 * mesAux)
-                + ((ConstAux.NUM_TRES * (mesAux + 1)) / ConstAux.NUM_CINCO)
+        final int drDobbsExpr = dia + 2 * mesAux
+                + (ConstAux.NUM_TRES * (mesAux + 1)) / ConstAux.NUM_CINCO
                 + anoAux + (anoAux / ConstAux.NUM_QUATRO)
                 - (anoAux / ConstAux.NUM_CEM)
                 + (anoAux / ConstAux.NUM_QUATROCENTOS);
@@ -543,7 +542,7 @@ public final class Algoritmos { //NOPMD
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
         }
 
-        for (int i = cpf.length - 1; i < cpf.length; i++) {
+        for (int i = 0; i < cpf.length; i++) {
             if (cpf[i] < 0 || cpf[i] > ConstAux.NOVE) {
                 throw new IllegalArgumentException("os números do cpf fora do "
                         + "range aceito.");

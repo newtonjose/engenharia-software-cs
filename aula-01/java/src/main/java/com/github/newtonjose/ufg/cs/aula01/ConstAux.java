@@ -53,7 +53,7 @@ public final class ConstAux { //NOPMD
     /**
      * Constante auxiliar usado no método getDiaDaSemana.
      */
-    public static final int NUM_CEM = 5;
+    public static final int NUM_CEM = 100;
 
     /**
      * Constante auxiliar usado no método getDiaDaSemana.
