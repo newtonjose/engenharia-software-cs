@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.newtonjose</groupId>
-    <artifactId>aula01</artifactId>
+    <artifactId>aula08</artifactId>
     <packaging>jar</packaging>
     <version>1.0.1</version>
 
@@ -70,7 +70,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.mainClass>
-            com.github.newtonjose.ufg.cs.aula01.Algoritmos
+            com.github.newtonjose.ufg.cs.aula08...
         </project.mainClass>
 
         <tools.dir>${project.basedir}/tools</tools.dir>
