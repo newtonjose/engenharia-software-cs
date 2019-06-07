@@ -41,16 +41,17 @@ public final class ProgramaVerificaJPEG {
      * Método main que instancia a classe VerificaJPEG e imprime se o arquivo
      * recebido como parâmetro é do tipo JPEG ou não.
      * <p>Verifica se um arquivo é do tipo JPEG, e imprime 'sim' ou 'não'.</p>
-     * @param args Argumento de entrada será o nome do arquivo disponível na
+     * @param argv Argumento de entrada será o nome do arquivo disponível na
      *             pasta static. //FINDMORE: Necessário documentar exception
      * @throws IOException Caso o aquivo não seja encontrado.
      */
-    public static void main(final String... args) {
-        try (RandomAccessFile raf = new RandomAccessFile(args[0], "r")) {
+    public static void main(final String[] argv) {
+
+        try (RandomAccessFile raf = new RandomAccessFile(argv[0], "r")) {
 
             final VerificaJpegBytes vjb = new VerificaJpegBytes(raf);
 
-            final Path filePath = get(args[0]); //NOPMD: lawofdemeter
+            final Path filePath = get(argv[0]); //NOPMD: lawofdemeter
             final int fileLen = (int) Files.size(filePath);
 
             if (vjb.verificaTipoJpeg(fileLen)) {

@@ -29,7 +29,8 @@ public class VerificaJpegBytes {
     /**
      * Váriavel privada que recebe a referencia do arquivo.
      */
-    private final transient RandomAccessFile randomAccessFile;
+    private final RandomAccessFile randomAccessFile; //NOPMD:
+    // BeanMembersShouldSerialize
 
     /**
      * Construtor da classe, que instância a variável numBytes.
@@ -37,7 +38,7 @@ public class VerificaJpegBytes {
      *            de um arquivo binário.
      */
     public VerificaJpegBytes(final RandomAccessFile rAf) {
-        this.randomAccessFile = rAf;
+        randomAccessFile = rAf;
     }
 
     /**
@@ -47,7 +48,7 @@ public class VerificaJpegBytes {
      */
     private byte[] lerDoisPrimeirosBytes() throws IOException {
         final byte[] data = new byte[2];
-        this.randomAccessFile.read(data);
+        randomAccessFile.read(data);
 
         return data;
     }
@@ -60,8 +61,8 @@ public class VerificaJpegBytes {
      */
     private byte[] lerDoisUltimosBytes(final int len) throws IOException {
         final byte[] data = new byte[2];
-        this.randomAccessFile.seek(len - 2);
-        this.randomAccessFile.read(data);
+        randomAccessFile.seek(len - 2);
+        randomAccessFile.read(data);
 
         return data;
     }
