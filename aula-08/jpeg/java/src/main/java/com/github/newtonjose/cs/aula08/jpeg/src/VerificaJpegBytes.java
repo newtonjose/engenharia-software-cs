@@ -69,20 +69,20 @@ public class VerificaJpegBytes {
     /**
      * Método que verifica se o um número int bytes é igual ao número
      * hexadecimal, dito número mágico do tipo de arquivo JPEG.
-     * @param fileLen int.
-     * @return Boolean - Verdadeiro ou Falso.
+     * @param fileLen int Tamanho do arquivo em bytes.
+     * @return boolean - Verdadeiro ou Falso.
      * @throws IOException Caso tenha error na leitura.
      */
     public boolean verificaTipoJpeg(final int fileLen) throws IOException {
         final byte[] twoInBytes = lerDoisPrimeirosBytes();
         final byte[] twoFiBytes = lerDoisUltimosBytes(fileLen);
 
-        final boolean inicioAquivo = twoInBytes[0] == (byte) HEX_255
+        final boolean inicioArquivo = twoInBytes[0] == (byte) HEX_255
                 && twoInBytes[1] == (byte) HEX_216;
 
         final boolean finalArquivo = twoFiBytes[0] == (byte) HEX_255
                 && twoFiBytes[1] == (byte) HEX_217;
 
-        return inicioAquivo && finalArquivo;
+        return inicioArquivo && finalArquivo;
     }
 }
