@@ -43,6 +43,7 @@ public final class ProgramaVerificaJPEG {
      * @throws IOException Caso o aquivo não seja encontrado.
      */
     public static void main(final String... args) throws IOException {
+
         // leitura do arquivo.
         final Path filePath = get(args[0]);
         final InputStream ipSt = newInputStream(filePath);
