@@ -7,7 +7,7 @@ addons:
       secure: "a48e64f0843e9991e7965e7a1e8a67c313891907" # encrypted value of your token
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - cd aula-01/java && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  - cd aula-01/java && mvn clean -X org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 
 cache:
   directories:
