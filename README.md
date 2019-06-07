@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/newtonjose/cs-2019-01.svg?branch=master)](https://travis-ci.org/newtonjose/cs-2019-01)
 # Construção de Software (2019)
 Disciplina do curso de Bacharelado em Engenharia de Software (UFG).
 
