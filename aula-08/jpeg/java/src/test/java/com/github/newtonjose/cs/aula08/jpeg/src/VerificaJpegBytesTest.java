@@ -57,6 +57,33 @@ class VerificaJpegBytesTest {
         @BeforeEach
         void inicializaClasse() {
             try {
+                raf = new RandomAccessFile(imgInvalid, "r");
+                final Path filePath = get(imgInvalid);
+                fileLen = (int) Files.size(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Test
+        void verificaTipoInvalido() {
+            verificaJpegBytes = new VerificaJpegBytes(raf);
+            try {
+                assertFalse(verificaJpegBytes.verificaTipoJpeg(fileLen));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Nested
+    class testAquivoInvalido {
+        final String imgInvalid = "/home/th3clansman/Development/" +
+                "projects/cs-2019-01/aula-08/jpeg/java/static/texto.txt";
+
+        @BeforeEach
+        void inicializaClasse() {
+            try {
                 raf = new RandomAccessFile(imgInvalid,"r");
                 final Path filePath = get(imgInvalid);
                 fileLen = (int) Files.size(filePath);
@@ -74,6 +101,5 @@ class VerificaJpegBytesTest {
                 e.printStackTrace();
             }
         }
-
     }
 }
