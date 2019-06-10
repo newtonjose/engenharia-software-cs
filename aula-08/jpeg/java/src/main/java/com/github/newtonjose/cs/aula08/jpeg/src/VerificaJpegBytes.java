@@ -61,7 +61,7 @@ public class VerificaJpegBytes {
      */
     private byte[] lerDoisUltimosBytes(final int len) throws IOException {
         final byte[] data = new byte[2];
-        randomAccessFile.seek(len - 2);
+        randomAccessFile.seek((long) len - 2);
         randomAccessFile.read(data);
 
         return data;
