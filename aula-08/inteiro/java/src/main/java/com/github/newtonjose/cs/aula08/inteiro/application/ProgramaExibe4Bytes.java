@@ -34,9 +34,7 @@ public final class ProgramaExibe4Bytes {
      * Método main que instancia a classe Exibe4Bytes recebe um aquivo
      * como entrada e loga a saída.
      * <p>Imporime os quatros primeiros bytes em hexadecimal de um arquivo.</p>
-     * @param argv Nome do arquivo
-     * @throws IOException Caso o aquivo não seja encontrado ou não seja
-     *                     possivel fazer a leitura.
+     * @param argv Nome do arquivo.
      */
     public static void main(final String[] argv) {
 

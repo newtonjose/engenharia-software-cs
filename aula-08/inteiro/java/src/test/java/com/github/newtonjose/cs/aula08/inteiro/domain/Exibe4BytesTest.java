@@ -12,8 +12,8 @@ import static java.nio.file.Paths.get;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Exibe4BytesTest {
-    Exibe4Bytes exibe4Bytes;
-    RandomAccessFile raf;
+    private Exibe4Bytes exibe4Bytes;
+    private RandomAccessFile raf;
 
     @BeforeEach
     void setUp() {
