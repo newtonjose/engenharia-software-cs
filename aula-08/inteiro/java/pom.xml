@@ -700,7 +700,7 @@
                     <!-- PASSO (2/2) PARA GERAÇÃO DE JAR FILE EXECUTÁVEL   -->
                     <!-- Configura arquivo MANIFEST.MF                     -->
                     <!-- Class-Path: formado pelos arquivos em 'jars'      -->
-                    <!-- Main-Class: classe a ser executada (método main)) -->
+                    <!-- Main-Class: classe a ser executada (método application)) -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-jar-plugin</artifactId>

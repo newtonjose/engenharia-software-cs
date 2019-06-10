@@ -8,8 +8,7 @@ class ProgramaVerificaJPEGTest {
 
     @BeforeEach
     void initPath() {
-        final String imgValid = "/home/th3clansman/Development/" +
-                "projects/cs-2019-01/aula-08/jpeg/java/static/";
+        final String imgValid = "./static/";
 
         args = new String[]{imgValid};
     }
