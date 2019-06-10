@@ -24,7 +24,7 @@ import static java.nio.file.Paths.get;
 public final class ProgramaVerificaJPEG {
 
     /**
-     * Constante usada para chamar os métodos da classe Logger.
+     * Constante usada como saída padrão.
      */
     private static final Logger LOGGER = Logger.getLogger(
             ProgramaVerificaJPEG.class.getName()
@@ -43,7 +43,6 @@ public final class ProgramaVerificaJPEG {
      * <p>Verifica se um arquivo é do tipo JPEG, e imprime 'sim' ou 'não'.</p>
      * @param argv Argumento de entrada será o nome do arquivo disponível na
      *             pasta static. //FINDMORE: Necessário documentar exception
-     * @throws IOException Caso o aquivo não seja encontrado.
      */
     public static void main(final String[] argv) {
 

@@ -36,11 +36,13 @@ class VerificaJpegBytesTest {
         @Test
         void testarContrutor() {
             verificaJpegBytes = new VerificaJpegBytes(raf);
+            assertNotNull(verificaJpegBytes);
         }
 
         @Test
         void verificaTipoJpeg() {
             verificaJpegBytes = new VerificaJpegBytes(raf);
+            assertNotNull(verificaJpegBytes);
             try {
                 assertTrue(verificaJpegBytes.verificaTipoJpeg(fileLen));
             } catch (IOException e) {
@@ -68,6 +70,7 @@ class VerificaJpegBytesTest {
         @Test
         void verificaTipoInvalido() {
             verificaJpegBytes = new VerificaJpegBytes(raf);
+            assertNotNull(verificaJpegBytes);
             try {
                 assertFalse(verificaJpegBytes.verificaTipoJpeg(fileLen));
             } catch (IOException e) {
@@ -79,7 +82,7 @@ class VerificaJpegBytesTest {
     @Nested
     class testAquivoInvalido {
         final String imgInvalid = "/home/th3clansman/Development/" +
-                "projects/cs-2019-01/aula-08/jpeg/java/static/texto.txt";
+                "projects/cs-2019-01/aula-08/jpeg/java/static/mario.png";
 
         @BeforeEach
         void inicializaClasse() {
@@ -95,6 +98,7 @@ class VerificaJpegBytesTest {
         @Test
         void verificaTipoInvalido() {
             verificaJpegBytes = new VerificaJpegBytes(raf);
+            assertNotNull(verificaJpegBytes);
             try {
                 assertFalse(verificaJpegBytes.verificaTipoJpeg(fileLen));
             } catch (IOException e) {
