@@ -19,8 +19,7 @@ class VerificaJpegBytesTest {
 
     @Nested
     class testImagemValida {
-        final String imgValid = "/home/th3clansman/Development/" +
-                "projects/cs-2019-01/aula-08/jpeg/java/static/panda.jpg";
+        final String imgValid = "./static/panda.jpg";
 
         @BeforeEach
         void inicializaClasse() {
@@ -53,8 +52,7 @@ class VerificaJpegBytesTest {
 
     @Nested
     class testImagemInvalida {
-        final String imgInvalid = "/home/th3clansman/Development/" +
-                "projects/cs-2019-01/aula-08/jpeg/java/static/mario.png";
+        final String imgInvalid = "./static/mario.png";
 
         @BeforeEach
         void inicializaClasse() {
@@ -81,8 +79,7 @@ class VerificaJpegBytesTest {
 
     @Nested
     class testAquivoInvalido {
-        final String imgInvalid = "/home/th3clansman/Development/" +
-                "projects/cs-2019-01/aula-08/jpeg/java/static/mario.png";
+        final String imgInvalid = "./static/mario.png";
 
         @BeforeEach
         void inicializaClasse() {
