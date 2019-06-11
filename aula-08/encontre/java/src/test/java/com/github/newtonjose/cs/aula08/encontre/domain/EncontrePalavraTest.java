@@ -26,7 +26,7 @@ class EncontrePalavraTest {
 
     @Test
     void encontraLinhaColuna() throws IOException {
-        ArrayList<LinhasTexto> lt = encontrePalavra.encontraOcorrenciasPalavras(
+        ArrayList<LinhaTexto> lt = encontrePalavra.encontraOcorrencias(
                 "int", arquivo
         );
     }
