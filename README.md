@@ -18,3 +18,6 @@ npm run doc
 ```
 <navegador> out/index.html
 ```
+
+### Minha preferência
+- Atividade documentada no tópico aula-09
