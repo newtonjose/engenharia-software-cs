@@ -15,3 +15,7 @@ em questão. ==> Obter esse a hash usando um programa SHA-256.
 - Cada sequência de bytes corresponde a uma nota é armazenadas em um arquivo
 .dat.
 - Compressão do arquivo em formato zip.
+
+## Refêrencias
+
+- http://www.ricardogiaviti.com.br/2016/10/serializacao-objetos-java-json-jackson-gson/
