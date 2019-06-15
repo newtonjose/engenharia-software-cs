@@ -6,6 +6,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * <p>Os algoritmos implementados estão disponíveis na
  * <a href="https://drive.google.com/file/d/1zCxtSyjkEvF6T3ieJ0r3_BJii9kx-FMI"/>
  * aula 01.</p>
+ *
  * @author Josenilton Santos
  * @version 2.0
  */
@@ -20,6 +21,7 @@ public final class Algoritmos {
 
     /**
      * Verifica se um dado número é primo usando o método Crivo de Erastóstenes.
+     *
      * @param num    Número inteiro natural.
      * @param vetInt Array de inteiros, com valores iguais a zero.
      * @return boolean Retorna {true} se o array[n] == 1.
@@ -29,8 +31,8 @@ public final class Algoritmos {
     public static boolean calculaCrivoEratostenes(final int num,
                                                   final int... vetInt) {
         if (num <= 0) {
-            throw new IllegalArgumentException("Argumanto fora do intervalo: "
-                    + "n >= 1.");
+            throw new IllegalArgumentException("Argumanto fora do intervalo, "
+                    + "necessário n >= 1.");
         }
 
         for (int i = 0; i < num; i++) {
@@ -75,6 +77,7 @@ public final class Algoritmos {
 
     /**
      * Dado uma data, retorna o dia da semana: 1 - segunda; 2 - terça, 3 ...
+     *
      * @param dia Numero natural menor ou igual a 31.
      * @param mes Número natural menor ou igual a 12.
      * @param ano Número natural maior ou igual a 1753.
@@ -115,6 +118,7 @@ public final class Algoritmos {
 
     /**
      * Calcula o fatorial de um número usando recursividade.
+     *
      * @param num Número inteiro natural.
      * @param fat Inteiro, tomado como fatorial base, igual a 1.
      * @param idx Inteiro, indice inicial igual a 1.
@@ -123,11 +127,11 @@ public final class Algoritmos {
      */
     public static long fatorial(final int num, final long fat, final int idx) {
         if (num <= 0) {
-            throw new IllegalArgumentException("O numero 'n' tem que ser "
+            throw new IllegalArgumentException("O numero n tem que ser "
                     + "n >= 1.");
         }
 
-        final long auxFat =  fat * idx;
+        final long auxFat = fat * idx;
         if (idx == num) {
             return auxFat;
         }
@@ -164,6 +168,7 @@ public final class Algoritmos {
 
     /**
      * Avalia um polinônimo por meio de somas, produtos e potências.
+     *
      * @param poli   Número polinomial.
      * @param vetNum Array de numeros rais.
      * @return int Numero de horner.
@@ -201,7 +206,7 @@ public final class Algoritmos {
                     + "&& k >= 2");
         }
 
-        double logNatural = num + 1;
+        double logNatural = (double) num + 1;
         double numerador = num;
         double denominador = 1;
 
@@ -216,6 +221,7 @@ public final class Algoritmos {
 
     /**
      * Calcula qual o maior divisor comum entre dois números inteiros.
+     *
      * @param numA Número inteiro natural.
      * @param numB Número inteiro natural.
      * @return int Máximo divisor comum de a e b.
@@ -241,6 +247,7 @@ public final class Algoritmos {
 
     /**
      * Calcula maior divisor comum entre dois números inteiros sem usar resto.
+     *
      * @param numB Número inteiro natural.
      * @param numA Array de números inteiros naturais.
      * @return int Máximo divisor comum de numA e b.
@@ -267,10 +274,10 @@ public final class Algoritmos {
     }
 
     /**
-     * @param num Numero inteiro natural.
+     * @param num   Numero inteiro natural.
      * @param numPi Numero racional.
-     * @param prod Variável inteira multiplicadora inicial -1.
-     * @param div Variável inteira divisora, inicial -1.
+     * @param prod  Variável inteira multiplicadora inicial -1.
+     * @param div   Variável inteira divisora, inicial -1.
      * @return double Valor do número Pi aproximado.
      * @throws IllegalArgumentException Se o argumento num <= 0.
      */
@@ -295,7 +302,7 @@ public final class Algoritmos {
     /**
      * Verifica se um número é primo.
      *
-     * @param num Número inteiro natural.
+     * @param num  Número inteiro natural.
      * @param bool Valor lógico, default é igual a {true}.
      * @return boolean Retorna {true} caso n é primo, {false} caso contrario.
      * @throws IllegalArgumentException Se o argumento n < 1.
@@ -319,7 +326,7 @@ public final class Algoritmos {
      * @param numX Numero inteiro natural.
      * @param numY Número inteiro natural.
      * @param prod Número natural, inicial igual a 1.
-     * @param idx Número natural, inicial igual a 1.
+     * @param idx  Número natural, inicial igual a 1.
      * @return int Potencia dos parametros numX e numY
      * @throws IllegalArgumentException Se os argumentos x <= 0 ou y <= 0.
      */
@@ -415,6 +422,7 @@ public final class Algoritmos {
 
     /**
      * Verifica se o dado número é um quadrado perefeito.
+     *
      * @param num Número inteiro.
      * @return {boolean} boolean Retorna {true} se o número fornecido é
      * um quadrado perfeito, caso contrário, {false}.
@@ -438,6 +446,7 @@ public final class Algoritmos {
 
     /**
      * Calcula a raiz quadrada de um número usando o Método Babilônico.
+     *
      * @param num      Número racional positivo.
      * @param precisao Numero inteiro nartual usado como o fator de prescisão.
      * @return double Retorna raiz quadrada de n usando a precisão i.
@@ -462,6 +471,7 @@ public final class Algoritmos {
 
     /**
      * Calcula a razão área usando uma determinada prescisão.
+     *
      * @param numX      Numero inteiro natural.
      * @param numY      Numero inteiro natural.
      * @param prescisao Numero inteiro natural usado como fator de prescisão.
@@ -489,6 +499,7 @@ public final class Algoritmos {
 
     /**
      * Dado dois numeros, está função encontra o resto da divisão de x por y.
+     *
      * @param numX Numero racional.
      * @param numY Número racional.
      * @return int Retorna o resto da duvisão inteira.
@@ -512,6 +523,7 @@ public final class Algoritmos {
     /**
      * Dado um número natural, soma os todos os primeiros naturais
      * ate o dado número.
+     *
      * @param num Número inteiro natural.
      * @return int Número inteiro natural.
      * @throws IllegalArgumentException Se o argumento estiver fora do
@@ -533,9 +545,10 @@ public final class Algoritmos {
 
     /**
      * Método auxiliar para validar parametros de um vetor.
+     *
      * @param cpf Array de números inteiros.
      * @throws IllegalArgumentException Se o array não tiver 11 digitos ou
-     * se algum valor no array for fora do intervalo: 0 <= x <= 9.
+     *                                  se algum valor no array for fora do intervalo: 0 <= x <= 9.
      */
     private static void validaParametrosCPF(final int... cpf) {
         if (cpf.length != ConstAuxUtils.ONZE) {
@@ -549,8 +562,10 @@ public final class Algoritmos {
             }
         }
     }
+
     /**
      * Verifica se um dado CPF é válido.
+     *
      * @param cpf Array de numeros rais.
      * @return boolean true ou false Valor lógico.
      * @throws IllegalArgumentException Se o argumento não tiver 11 digitos.
@@ -579,6 +594,7 @@ public final class Algoritmos {
 
     /**
      * Verifica se um dado CPF é valido usando o Método de Horner.
+     *
      * @param cpf Array de numeros rais.
      * @return boolean true ou false Valor lógico.
      * @throws IllegalArgumentException Se o argumento não tiver 11 digitos.
