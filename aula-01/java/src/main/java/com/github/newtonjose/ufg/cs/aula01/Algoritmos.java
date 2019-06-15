@@ -9,7 +9,7 @@ package com.github.newtonjose.ufg.cs.aula01;
  * @author Josenilton Santos
  * @version 2.0
  */
-public final class Algoritmos { //NOPMD
+public final class Algoritmos {
 
     /**
      * Contrutor da classe definido como privado pois a mesma é do tipo final.
@@ -69,8 +69,8 @@ public final class Algoritmos { //NOPMD
      */
     public static boolean dataInvalida(final int dia, final int mes,
                                        final int ano) {
-        return dia < 1 || dia > ConstAux.DIA_MAX || mes < 1
-                || mes > ConstAux.MES_MAX || ano <= ConstAux.ANO_MIN;
+        return dia < 1 || dia > ConstAuxUtils.DIA_MAX || mes < 1
+                || mes > ConstAuxUtils.MES_MAX || ano <= ConstAuxUtils.ANO_MIN;
     }
 
     /**
@@ -92,7 +92,7 @@ public final class Algoritmos { //NOPMD
 
         int mesAux;
         if (janOuFev) {
-            mesAux = mes + ConstAux.NUM_MESES;
+            mesAux = mes + ConstAuxUtils.NUM_MESES;
         } else {
             mesAux = mes;
         }
@@ -105,12 +105,12 @@ public final class Algoritmos { //NOPMD
         }
 
         final int drDobbsExpr = dia + 2 * mesAux
-                + (ConstAux.NUM_TRES * (mesAux + 1)) / ConstAux.NUM_CINCO
-                + anoAux + (anoAux / ConstAux.NUM_QUATRO)
-                - (anoAux / ConstAux.NUM_CEM)
-                + (anoAux / ConstAux.NUM_QUATROCENTOS);
+                + (ConstAuxUtils.NUM_TRES * (mesAux + 1)) / ConstAuxUtils.NUM_CINCO
+                + anoAux + (anoAux / ConstAuxUtils.NUM_QUATRO)
+                - (anoAux / ConstAuxUtils.NUM_CEM)
+                + (anoAux / ConstAuxUtils.NUM_QUATROCENTOS);
 
-        return drDobbsExpr % ConstAux.DIAS_SEMANA;
+        return drDobbsExpr % ConstAuxUtils.DIAS_SEMANA;
     }
 
     /**
@@ -129,7 +129,7 @@ public final class Algoritmos { //NOPMD
 
         final long auxFat =  fat * idx;
         if (idx == num) {
-            return auxFat; //NOPMD
+            return auxFat;
         }
 
         final int aux = idx + 1;
@@ -150,7 +150,7 @@ public final class Algoritmos { //NOPMD
 
         long fibo = 1;
         for (int i = 1; i < num; i++) {
-            final long aux = fibo; //NOPMD
+            final long aux = fibo;
             if (i == fibo) {
                 fibo = fibo + 0;
             } else {
@@ -179,7 +179,7 @@ public final class Algoritmos { //NOPMD
                     + "maior que zero");
         }
 
-        int numHorner = vetNum[vetNum.length - 1]; //NOPMD
+        int numHorner = vetNum[vetNum.length - 1];
         for (int i = vetNum.length - 1; i >= 0; i--) {
             numHorner = numHorner * (poli + vetNum[i]);
         }
@@ -201,9 +201,9 @@ public final class Algoritmos { //NOPMD
                     + "&& k >= 2");
         }
 
-        double logNatural = num + 1; //NOPMD
-        double numerador = num; //NOPMD
-        double denominador = 1; //NOPMD
+        double logNatural = num + 1;
+        double numerador = num;
+        double denominador = 1;
 
         for (int i = 2; i <= aprox; i++) {
             numerador = numerador * numerador;
@@ -282,10 +282,10 @@ public final class Algoritmos { //NOPMD
 
         final double auxProduto = prod * -1;
         final double auxDivisor = div + 2;
-        final double finalNumPi = numPi + (ConstAux.MULT * auxProduto)
+        final double finalNumPi = numPi + (ConstAuxUtils.MULT * auxProduto)
                 / auxDivisor;
         if (num == (int) '1') {
-            return finalNumPi; //NOPMD
+            return finalNumPi;
         }
 
         final int idx = num - 1;
@@ -308,7 +308,7 @@ public final class Algoritmos { //NOPMD
 
         for (int i = 2; i < num; i++) {
             if (num % i == 0) {
-                return false; //NOPMD
+                return false;
             }
         }
 
@@ -332,7 +332,7 @@ public final class Algoritmos { //NOPMD
 
         final int produtorio = calculaProdutoInteiros(prod, numX);
         if (idx == numY) {
-            return produtorio; //NOPMD
+            return produtorio;
         }
 
         final int aux = idx + 1;
@@ -353,15 +353,15 @@ public final class Algoritmos { //NOPMD
                     + "maior ou igual a zero");
         }
 
-        int totalParcelas = numA; //NOPMD
-        int parcela = numB; //NOPMD
+        int totalParcelas = numA;
+        int parcela = numB;
 
         if (numB < numA) {
             totalParcelas = numB;
-            parcela = numA; //NOPMD
+            parcela = numA;
         }
 
-        int produto = 0; //NOPMD
+        int produto = 0;
         for (int i = 1; i <= totalParcelas; i++) {
             produto = produto + parcela;
         }
@@ -379,16 +379,16 @@ public final class Algoritmos { //NOPMD
      * @throws IllegalArgumentException Se o argumento n < 100 ou n > 999.
      */
     public static boolean verificaPropriedade153(final int num) {
-        if (num < ConstAux.MIN || num > ConstAux.MAX) {
+        if (num < ConstAuxUtils.MIN || num > ConstAuxUtils.MAX) {
             throw new IllegalArgumentException("O número não está no "
                     + "intervalor: 100 <= n <= 999");
         }
 
-        final int aux = num % ConstAux.DIVISOR_CEM;
+        final int aux = num % ConstAuxUtils.DIVISOR_CEM;
 
-        return Math.pow(num / ConstAux.DIVISOR_CEM, ConstAux.NUM_TRES)
-                + Math.pow(aux / ConstAux.DIVISOR_DEZ, ConstAux.NUM_TRES)
-                + Math.pow(aux % ConstAux.DIVISOR_DEZ, ConstAux.NUM_TRES)
+        return Math.pow(num / ConstAuxUtils.DIVISOR_CEM, ConstAuxUtils.NUM_TRES)
+                + Math.pow(aux / ConstAuxUtils.DIVISOR_DEZ, ConstAuxUtils.NUM_TRES)
+                + Math.pow(aux % ConstAuxUtils.DIVISOR_DEZ, ConstAuxUtils.NUM_TRES)
                 == num;
     }
 
@@ -402,13 +402,13 @@ public final class Algoritmos { //NOPMD
      * @throws IllegalArgumentException Se o argumento n < 0 ou n > 9999.
      */
     public static boolean verificaPropriedade3025(final int num) {
-        if (num < 0 || num > ConstAux.MAX2) {
+        if (num < 0 || num > ConstAuxUtils.MAX2) {
             throw new IllegalArgumentException("Numero fora do range "
                     + "100 <= n <= 999");
         }
 
-        final double prop = num / ConstAux.DIVISOR_CEM
-                + num % ConstAux.DIVISOR_CEM;
+        final double prop = num / ConstAuxUtils.DIVISOR_CEM
+                + num % ConstAuxUtils.DIVISOR_CEM;
 
         return prop * prop == num;
     }
@@ -427,7 +427,7 @@ public final class Algoritmos { //NOPMD
                     + "que 1");
         }
 
-        int idx = 1; //NOPMD
+        int idx = 1;
         int quadrado = 1;
         while (quadrado < num) {
             idx = idx + (int) 2.0;
@@ -449,11 +449,11 @@ public final class Algoritmos { //NOPMD
             throw new IllegalArgumentException("O numero 'n' deverá ser maior "
                     + "que 0");
         }
-        double numRaiz = 1; //NOPMD
+        double numRaiz = 1;
 
         int aux = precisao;
         while (aux >= 0) {
-            numRaiz = (numRaiz + num / numRaiz) / ConstAux.NUM_DOIS;
+            numRaiz = (numRaiz + num / numRaiz) / ConstAuxUtils.NUM_DOIS;
             aux = aux - 1;
         }
 
@@ -523,7 +523,7 @@ public final class Algoritmos { //NOPMD
                     + "n >= 1.");
         }
 
-        int soma = 1; //NOPMD
+        int soma = 1;
         for (int i = 2; i <= num; i++) {
             soma = soma + i;
         }
@@ -537,13 +537,13 @@ public final class Algoritmos { //NOPMD
      * @throws IllegalArgumentException Se o array não tiver 11 digitos ou
      * se algum valor no array for fora do intervalo: 0 <= x <= 9.
      */
-    private static void validaParametrosCPF(final int... cpf) { //NOPMD
-        if (cpf.length != ConstAux.ONZE) {
+    private static void validaParametrosCPF(final int... cpf) {
+        if (cpf.length != ConstAuxUtils.ONZE) {
             throw new IllegalArgumentException("o cpf deve ter 11 digitos");
         }
 
         for (final int value : cpf) {
-            if (value < 0 || value > ConstAux.NOVE) {
+            if (value < 0 || value > ConstAuxUtils.NOVE) {
                 throw new IllegalArgumentException("os números do cpf fora do "
                         + "range aceito.");
             }
@@ -560,19 +560,19 @@ public final class Algoritmos { //NOPMD
     public static boolean validaCPF(final int... cpf) {
         validaParametrosCPF(cpf);
 
-        int aux = 0; //NOPMD
-        int aux1 = 0; //NOPMD
+        int aux = 0;
+        int aux1 = 0;
 
-        for (int i = 0; i < ConstAux.NOVE; i++) {
+        for (int i = 0; i < ConstAuxUtils.NOVE; i++) {
             aux = aux + cpf[i];
         }
 
-        for (int i = 1; i < ConstAux.DEZ; i++) {
+        for (int i = 1; i < ConstAuxUtils.DEZ; i++) {
             aux1 = aux1 + cpf[i];
         }
 
-        final int digiJ = (aux % ConstAux.ONZE) % ConstAux.RESTO;
-        final int digiK = (aux1 % ConstAux.ONZE) % ConstAux.RESTO;
+        final int digiJ = (aux % ConstAuxUtils.ONZE) % ConstAuxUtils.RESTO;
+        final int digiK = (aux1 % ConstAuxUtils.ONZE) % ConstAuxUtils.RESTO;
 
         return digiJ == cpf[cpf.length - 1] && digiK == cpf[cpf.length - 1];
     }
@@ -588,18 +588,18 @@ public final class Algoritmos { //NOPMD
     public static boolean validaCPFRegraHorner(final int... cpf) {
         validaParametrosCPF(cpf);
 
-        int aux1 = cpf[ConstAux.NOVE]; //NOPMD
-        int aux2 = cpf[ConstAux.NOVE]; //NOPMD
-        int oito = ConstAux.OITO;
+        int aux1 = cpf[ConstAuxUtils.NOVE];
+        int aux2 = cpf[ConstAuxUtils.NOVE];
+        int oito = ConstAuxUtils.OITO;
         while (oito >= 1) {
             aux1 = aux1 + cpf[oito];
             aux2 = aux2 + aux1;
             oito = oito - 1;
         }
 
-        final int digJ = (aux2 % ConstAux.ONZE) % ConstAux.RESTO;
-        final int digK = ((aux2 - aux1 + ConstAux.NOVE * cpf[ConstAux.DEZ])
-                % ConstAux.ONZE) % ConstAux.RESTO;
+        final int digJ = (aux2 % ConstAuxUtils.ONZE) % ConstAuxUtils.RESTO;
+        final int digK = ((aux2 - aux1 + ConstAuxUtils.NOVE * cpf[ConstAuxUtils.DEZ])
+                % ConstAuxUtils.ONZE) % ConstAuxUtils.RESTO;
 
         return digJ == cpf[cpf.length - 1] && digK == cpf[cpf.length - 1];
     }
