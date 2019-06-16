@@ -155,7 +155,6 @@ public final class AlgoritmosUtils {
 
         long auxFibo = 0;
 
-
         for (int i = 1; i < num; i++) {
             final long aux = fibo;
             fibo = fibo + auxFibo;
