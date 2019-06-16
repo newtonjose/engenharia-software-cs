@@ -9,7 +9,15 @@ class ContaPalavrasTest {
     @Test
     void contaPalavraOcorrencias() {
         String[] strings = {"Ola", "Cara", "Mundo", "Mundo"};
-        String ret = ContaPalavras.contaPalavraOcorrencias(strings);
+        assertEquals("Mundo",
+                ContaPalavras.contaPalavraOcorrencias(strings));
+    }
 
+    @Test
+    void argumentoInvalido() {
+        String[] strings = {};
+
+        assertThrows(IllegalArgumentException.class,
+                () -> ContaPalavras.contaPalavraOcorrencias(strings));
     }
 }
