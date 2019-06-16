@@ -9,14 +9,14 @@ class SomaImparesTest {
     @Test
     void getTotalSomaImpares() {
         int[] vet = new int[]{1, 3, 5};
-        assertEquals(3, SomaImpares.getTotalSomaImpares(vet));
+        assertEquals(3, SomaImparesUtils.getTotalSomaImpares(vet));
     }
 
     @Test
     void testeParamentroInvalido() {
         int[] t = new int[]{};
         assertThrows(IllegalArgumentException.class,
-                () -> SomaImpares.getTotalSomaImpares(t)
+                () -> SomaImparesUtils.getTotalSomaImpares(t)
         );
     }
 }

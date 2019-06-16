@@ -1,11 +1,15 @@
 package com.github.newtonjose.cs.aula07.estruturas;
 
-public final class SomaElementos { //NOPMD
+/**
+ * Classe que implementa método retorna a quantidade elementos de um array
+ * de inteiros.
+ */
+public final class SomaElementosUtils {
 
     /**
      * Contrutor privado devido classe ser estatica.
      */
-    private SomaElementos() {
+    private SomaElementosUtils() {
 
     }
 

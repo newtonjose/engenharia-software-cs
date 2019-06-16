@@ -3,16 +3,16 @@ package com.github.newtonjose.cs.aula07.estruturas;
 import java.util.Arrays;
 
 /**
- * <h1>Implementa a soma de numeros impares</h1>
+ * Implementa a soma de numeros impares.
  *
  * <p>Retornar a soma de números ímpares contidos em um vetor de inteiros.</p>
  */
-public final class SomaImpares { //NOPMD
+public final class SomaImparesUtils {
 
     /**
      * Contrutor privado devido classe ser estatica.
      */
-    private SomaImpares() {
+    private SomaImparesUtils() {
 
     }
 
