@@ -1,6 +1,9 @@
 package com.github.newtonjose.ufg.cs.aula01;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Implementação dos AlgoritmosUtils Matemáticos dado na aula 01.
  * <p>Os algoritmos implementados estão disponíveis na
@@ -19,43 +22,35 @@ public final class AlgoritmosUtils {
     /**
      * Verifica se um dado número é primo usando o método Crivo de Erastóstenes.
      *
-     * @param num    Número inteiro natural.
-     * @param vetInt Array de inteiros, com valores iguais a zero.
+     * @param valorMaximo    Número inteiro natural.
      * @return boolean Retorna {true} se o array[n] == 1.
      * @throws IllegalArgumentException Se o argumento num <= 0 ou array se o
      *                                  array iver valor != 0.
      */
-    public static boolean calculaCrivoEratostenes(final int num,
-                                                  final int... vetInt) {
-        if (num <= 0) {
+    public static Map<Integer, Boolean> sieveOfEratosthenes(final int valorMaximo) {
+        if (valorMaximo <= 0) {
             throw new IllegalArgumentException("Argumanto fora do intervalo, "
                     + "necessário n >= 1.");
         }
 
-        for (int i = 0; i < num; i++) {
-            if (vetInt[i] != 0) {
-                throw new IllegalArgumentException("Existe valores em a, onde "
-                        + "nao sao iguais a zero");
-            }
+        final Map<Integer, Boolean> mapBool = new HashMap<>();
+        final double raiz = Math.sqrt(valorMaximo);
+
+        mapBool.put(0, false);
+        mapBool.put(1, false);
+        for (int i = 2; i < valorMaximo; i++) {
+            mapBool.put(i, true);
         }
 
-        int multiplo;
-        final double limite = Math.sqrt(num);
-
-        int idx = 2;
-        while (idx <= limite) {
-            if (vetInt[idx] == 0) {
-                multiplo = idx + 1;
-
-                while (multiplo <= num) {
-                    vetInt[multiplo] = 1;
-                    multiplo = multiplo + idx;
+        for (int i = 0; i < raiz; i++) {
+            if (mapBool.get(i)) {
+                for (int j = (i * i); j < valorMaximo; j = j + i) {
+                    mapBool.put(j, false);
                 }
             }
-            idx += 1;
         }
 
-        return vetInt[num] != 1;
+        return mapBool;
     }
 
     /**
@@ -387,12 +382,12 @@ public final class AlgoritmosUtils {
 
         final int aux = num % ConstAuxUtils.DIVISOR_CEM;
 
-        final double prop = Math.pow((double) num / ConstAuxUtils.DIVISOR_CEM,
+        final int prop = (int) (Math.pow(num / ConstAuxUtils.DIVISOR_CEM,
                 ConstAuxUtils.NUM_TRES)
-                + Math.pow((double) aux / ConstAuxUtils.DIVISOR_DEZ,
+                + Math.pow(aux / ConstAuxUtils.DIVISOR_DEZ,
                 ConstAuxUtils.NUM_TRES)
                 + Math.pow(aux % ConstAuxUtils.DIVISOR_DEZ,
-                ConstAuxUtils.NUM_TRES);
+                ConstAuxUtils.NUM_TRES));
 
         return prop == num;
     }
@@ -412,7 +407,7 @@ public final class AlgoritmosUtils {
                     + "100 <= n <= 999");
         }
 
-        final double prop = (double) num / ConstAuxUtils.DIVISOR_CEM
+        final int prop = num / ConstAuxUtils.DIVISOR_CEM
                 + num % ConstAuxUtils.DIVISOR_CEM;
 
         return prop * prop == num;
@@ -601,20 +596,23 @@ public final class AlgoritmosUtils {
     public static boolean validaCPFRegraHorner(final int... cpf) {
         validaParametrosCPF(cpf);
 
-        int aux1 = cpf[ConstAuxUtils.NOVE];
-        int aux2 = cpf[ConstAuxUtils.NOVE];
-        int oito = ConstAuxUtils.OITO;
-        while (oito >= 1) {
-            aux1 = aux1 + cpf[oito];
+        int aux1 = cpf[ConstAuxUtils.OITO];
+        int aux2 = cpf[ConstAuxUtils.OITO];
+
+        for (int idx = ConstAuxUtils.SETE; 0 <= idx; idx--) {
+            aux1 = aux1 + cpf[idx];
             aux2 = aux2 + aux1;
-            oito = oito - 1;
         }
 
-        final int digJ = (aux2 % ConstAuxUtils.ONZE) % ConstAuxUtils.RESTO;
-        final int digK = ((aux2 - aux1 + ConstAuxUtils.NOVE
-                * cpf[ConstAuxUtils.DEZ])
-                % ConstAuxUtils.ONZE) % ConstAuxUtils.RESTO;
+        final int digJ = Math.floorMod(Math.floorMod(aux2, ConstAuxUtils.ONZE),
+                ConstAuxUtils.DEZ);
 
-        return digJ == cpf[cpf.length - 1] && digK == cpf[cpf.length - 1];
+        final int digK = Math.floorMod(Math.floorMod((aux2 - aux1
+                        + (ConstAuxUtils.NOVE * cpf[ConstAuxUtils.NOVE])),
+                        ConstAuxUtils.ONZE),
+                ConstAuxUtils.DEZ);
+
+        return digJ == cpf[ConstAuxUtils.NOVE]
+                && digK == cpf[ConstAuxUtils.DEZ];
     }
 }

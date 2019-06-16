@@ -15,7 +15,14 @@ public class RegraHornerTest {
 
     @Test
     void verificaArgumentosInvalidos() {
+
+        int[] vet = {0,1,2};
+
         int[] empty_vet = new int[]{};
+
+        assertThrows(IllegalArgumentException.class,
+                () -> AlgoritmosUtils.regraHorner(0, vet));
+
         assertThrows(IllegalArgumentException.class,
                 () -> AlgoritmosUtils.regraHorner(4, empty_vet));
     }

@@ -116,6 +116,8 @@ public final class ConstAuxUtils {
      */
     public static final int OITO = 8;
 
+    public static final int SETE = 7;
+
     /**
      * Contrutor da classe definido como privado pois a mesma é do tipo final.
      */
