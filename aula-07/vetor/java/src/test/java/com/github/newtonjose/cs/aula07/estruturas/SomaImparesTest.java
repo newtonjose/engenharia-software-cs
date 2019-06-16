@@ -8,7 +8,7 @@ class SomaImparesTest {
 
     @Test
     void getTotalSomaImpares() {
-        int[] vet = new int[]{1, 3, 5};
+        int[] vet = new int[]{1, 3, 5, 8};
         assertEquals(3, SomaImparesUtils.getTotalSomaImpares(vet));
     }
 
