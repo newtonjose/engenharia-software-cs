@@ -25,6 +25,6 @@ public final class SomaImparesUtils {
             throw new IllegalArgumentException("vetor de numeros vazio.");
         }
 
-        return Arrays.stream(numbers).filter(v -> v % 2 == 1).count(); //NOPMD
+        return Arrays.stream(numbers).filter(v ->  v % 2 != 0).count();
     }
 }
