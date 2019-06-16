@@ -151,12 +151,7 @@ public final class AlgoritmosUtils {
         long fibo = 1;
         for (int i = 1; i < num; i++) {
             final long aux = fibo;
-            if (i == fibo) {
-                fibo = fibo + 0;
-            } else {
-                fibo = fibo + aux;
-            }
-
+            fibo = fibo + aux;
         }
 
         return fibo;
@@ -385,12 +380,14 @@ public final class AlgoritmosUtils {
 
         final int aux = num % ConstAuxUtils.DIVISOR_CEM;
 
-        return Math.pow(num / ConstAuxUtils.DIVISOR_CEM, ConstAuxUtils.NUM_TRES)
+        final double prop = Math.pow(num / ConstAuxUtils.DIVISOR_CEM,
+                ConstAuxUtils.NUM_TRES)
                 + Math.pow(aux / ConstAuxUtils.DIVISOR_DEZ,
                 ConstAuxUtils.NUM_TRES)
                 + Math.pow(aux % ConstAuxUtils.DIVISOR_DEZ,
-                ConstAuxUtils.NUM_TRES)
-                == num;
+                ConstAuxUtils.NUM_TRES);
+
+        return prop == num;
     }
 
 

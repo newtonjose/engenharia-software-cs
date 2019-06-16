@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class FibonacciTest {
+class FibonacciTest {
     @Test
     void calculaFibonacciCorreto() {
-        //assertEquals(21, AlgoritmosUtils.fibonacci(8));
+        assertEquals(21, AlgoritmosUtils.fibonacci(8));
     }
 
     @Test
