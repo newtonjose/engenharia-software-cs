@@ -149,9 +149,17 @@ public final class AlgoritmosUtils {
         }
 
         long fibo = 1;
+        if (num == 0 || num == 1) {
+            fibo = num;
+        }
+
+        long auxFibo = 0;
+
+
         for (int i = 1; i < num; i++) {
             final long aux = fibo;
-            fibo = fibo + aux;
+            fibo = fibo + auxFibo;
+            auxFibo = aux;
         }
 
         return fibo;
