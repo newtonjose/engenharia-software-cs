@@ -388,9 +388,9 @@ public final class AlgoritmosUtils {
 
         final int aux = num % ConstAuxUtils.DIVISOR_CEM;
 
-        final double prop = Math.pow(num / ConstAuxUtils.DIVISOR_CEM,
+        final double prop = Math.pow((double) num / ConstAuxUtils.DIVISOR_CEM,
                 ConstAuxUtils.NUM_TRES)
-                + Math.pow(aux / ConstAuxUtils.DIVISOR_DEZ,
+                + Math.pow((double) aux / ConstAuxUtils.DIVISOR_DEZ,
                 ConstAuxUtils.NUM_TRES)
                 + Math.pow(aux % ConstAuxUtils.DIVISOR_DEZ,
                 ConstAuxUtils.NUM_TRES);
@@ -413,7 +413,7 @@ public final class AlgoritmosUtils {
                     + "100 <= n <= 999");
         }
 
-        final double prop = num / ConstAuxUtils.DIVISOR_CEM
+        final double prop = (double) num / ConstAuxUtils.DIVISOR_CEM
                 + num % ConstAuxUtils.DIVISOR_CEM;
 
         return prop * prop == num;
