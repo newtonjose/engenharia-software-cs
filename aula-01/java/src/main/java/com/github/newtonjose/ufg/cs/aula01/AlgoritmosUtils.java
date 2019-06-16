@@ -2,20 +2,17 @@ package com.github.newtonjose.ufg.cs.aula01;
 
 
 /**
- * Implementação dos Algoritmos Matemáticos dado na aula 01.
+ * Implementação dos AlgoritmosUtils Matemáticos dado na aula 01.
  * <p>Os algoritmos implementados estão disponíveis na
  * <a href="https://drive.google.com/file/d/1zCxtSyjkEvF6T3ieJ0r3_BJii9kx-FMI"/>
  * aula 01.</p>
- *
- * @author Josenilton Santos
- * @version 2.0
  */
-public final class Algoritmos {
+public final class AlgoritmosUtils {
 
     /**
      * Contrutor da classe definido como privado pois a mesma é do tipo final.
      */
-    private Algoritmos() {
+    private AlgoritmosUtils() {
 
     }
 
@@ -25,8 +22,8 @@ public final class Algoritmos {
      * @param num    Número inteiro natural.
      * @param vetInt Array de inteiros, com valores iguais a zero.
      * @return boolean Retorna {true} se o array[n] == 1.
-     * @throws IllegalArgumentException Caso argumento for n < 1.
-     * @throws IllegalArgumentException Caso o array tiver valor != 0.
+     * @throws IllegalArgumentException Se o argumento num <= 0 ou array se o
+     *                                  array iver valor != 0.
      */
     public static boolean calculaCrivoEratostenes(final int num,
                                                   final int... vetInt) {
@@ -108,7 +105,8 @@ public final class Algoritmos {
         }
 
         final int drDobbsExpr = dia + 2 * mesAux
-                + (ConstAuxUtils.NUM_TRES * (mesAux + 1)) / ConstAuxUtils.NUM_CINCO
+                + (ConstAuxUtils.NUM_TRES * (mesAux + 1))
+                / ConstAuxUtils.NUM_CINCO
                 + anoAux + (anoAux / ConstAuxUtils.NUM_QUATRO)
                 - (anoAux / ConstAuxUtils.NUM_CEM)
                 + (anoAux / ConstAuxUtils.NUM_QUATROCENTOS);
@@ -120,24 +118,22 @@ public final class Algoritmos {
      * Calcula o fatorial de um número usando recursividade.
      *
      * @param num Número inteiro natural.
-     * @param fat Inteiro, tomado como fatorial base, igual a 1.
-     * @param idx Inteiro, indice inicial igual a 1.
      * @return int Fatorial do parametro num.
      * @throws IllegalArgumentException Caso o argumento num <= 0.
      */
-    public static long fatorial(final int num, final long fat, final int idx) {
+    public static long fatorial(final int num) {
         if (num <= 0) {
             throw new IllegalArgumentException("O numero n tem que ser "
                     + "n >= 1.");
         }
 
-        final long auxFat = fat * idx;
-        if (idx == num) {
-            return auxFat;
+        long fat = 1;
+
+        for (int i = 2; i <= num; i++) {
+            fat = fat * i;
         }
 
-        final int aux = idx + 1;
-        return fatorial(num, auxFat, aux);
+        return fat;
     }
 
     /**
@@ -274,48 +270,48 @@ public final class Algoritmos {
     }
 
     /**
+     * Método que retorna o número pi aproximado dado um número.
+     *
      * @param num   Numero inteiro natural.
-     * @param numPi Numero racional.
-     * @param prod  Variável inteira multiplicadora inicial -1.
-     * @param div   Variável inteira divisora, inicial -1.
      * @return double Valor do número Pi aproximado.
      * @throws IllegalArgumentException Se o argumento num <= 0.
      */
-    public static double numeroPi(final int num, final double numPi,
-                                  final double prod, final double div) {
+    public static double numeroPi(final int num) {
         if (num <= 0) {
             throw new IllegalArgumentException("O numero n tem que ser n >= 1");
         }
 
-        final double auxProduto = prod * -1;
-        final double auxDivisor = div + 2;
-        final double finalNumPi = numPi + (ConstAuxUtils.MULT * auxProduto)
-                / auxDivisor;
-        if (num == (int) '1') {
-            return finalNumPi;
+        double numPi = 0;
+        double auxProduto = -1;
+        double auxDivisor = -1;
+
+        for (int i = 0; i <= num; i++) {
+            auxDivisor = auxDivisor + 2;
+            auxProduto = auxProduto * -1;
+            numPi = numPi + ((ConstAuxUtils.NUM_QUATRO * auxProduto)
+                    / auxDivisor);
         }
 
-        final int idx = num - 1;
-        return numeroPi(idx, finalNumPi, auxProduto, auxDivisor);
+        return numPi;
     }
 
     /**
      * Verifica se um número é primo.
      *
      * @param num  Número inteiro natural.
-     * @param bool Valor lógico, default é igual a {true}.
      * @return boolean Retorna {true} caso n é primo, {false} caso contrario.
      * @throws IllegalArgumentException Se o argumento n < 1.
      */
-    public static boolean numeroPrimo(final int num, final boolean bool) {
+    public static boolean numeroPrimo(final int num) {
         if (num <= 0) {
             throw new IllegalArgumentException("O numero 'n' tem que ser "
                     + "maior que 1");
         }
 
+        boolean bool = true;
         for (int i = 2; i < num; i++) {
             if (num % i == 0) {
-                return false;
+                bool = false;
             }
         }
 
@@ -323,27 +319,23 @@ public final class Algoritmos {
     }
 
     /**
-     * @param numX Numero inteiro natural.
-     * @param numY Número inteiro natural.
-     * @param prod Número natural, inicial igual a 1.
-     * @param idx  Número natural, inicial igual a 1.
-     * @return int Potencia dos parametros numX e numY
-     * @throws IllegalArgumentException Se os argumentos x <= 0 ou y <= 0.
+     * @param base Numero inteiro natural usado como base.
+     * @param exp Número inteiro natural usado como expoente.
+     * @return int Potencia dos parametros base e exp
+     * @throws IllegalArgumentException Se os argumentos base <= 0 ou exp <= 0.
      */
-    public static int calculaPotencia(final int numX, final int numY,
-                                      final int prod, final int idx) {
-        if (numX <= 0 || numY <= 0) {
+    public static int calculaPotencia(final int base, final int exp) {
+        if (base <= 0 || exp <= 0) {
             throw new IllegalArgumentException("Os numeros x e y deverão "
                     + "ser x >=0 e y >=0.");
         }
 
-        final int produtorio = calculaProdutoInteiros(prod, numX);
-        if (idx == numY) {
-            return produtorio;
+        int potencia = 1;
+        for (int i = 1; i <= exp; i++) {
+            potencia = calculaProdutoInteiros(potencia, base);
         }
 
-        final int aux = idx + 1;
-        return calculaPotencia(numX, numY, produtorio, aux);
+        return potencia;
     }
 
     /**
@@ -394,8 +386,10 @@ public final class Algoritmos {
         final int aux = num % ConstAuxUtils.DIVISOR_CEM;
 
         return Math.pow(num / ConstAuxUtils.DIVISOR_CEM, ConstAuxUtils.NUM_TRES)
-                + Math.pow(aux / ConstAuxUtils.DIVISOR_DEZ, ConstAuxUtils.NUM_TRES)
-                + Math.pow(aux % ConstAuxUtils.DIVISOR_DEZ, ConstAuxUtils.NUM_TRES)
+                + Math.pow(aux / ConstAuxUtils.DIVISOR_DEZ,
+                ConstAuxUtils.NUM_TRES)
+                + Math.pow(aux % ConstAuxUtils.DIVISOR_DEZ,
+                ConstAuxUtils.NUM_TRES)
                 == num;
     }
 
@@ -521,8 +515,7 @@ public final class Algoritmos {
     }
 
     /**
-     * Dado um número natural, soma os todos os primeiros naturais
-     * ate o dado número.
+     * Soma os n primeiros naturais ate um dado número.
      *
      * @param num Número inteiro natural.
      * @return int Número inteiro natural.
@@ -548,7 +541,8 @@ public final class Algoritmos {
      *
      * @param cpf Array de números inteiros.
      * @throws IllegalArgumentException Se o array não tiver 11 digitos ou
-     *                                  se algum valor no array for fora do intervalo: 0 <= x <= 9.
+     *                                  se algum valor no array for value < 0 ou
+     *                                  value > 9.
      */
     private static void validaParametrosCPF(final int... cpf) {
         if (cpf.length != ConstAuxUtils.ONZE) {
@@ -569,8 +563,8 @@ public final class Algoritmos {
      * @param cpf Array de numeros rais.
      * @return boolean true ou false Valor lógico.
      * @throws IllegalArgumentException Se o argumento não tiver 11 digitos.
-     * @throws IllegalArgumentException Se no argumento tiver algum
-     *                                  número: 0 <= n >= 9.
+     * @throws IllegalArgumentException Se os argumentos estiver fora dos
+     *                                  intervalos: y >= 0; x > 0.
      */
     public static boolean validaCPF(final int... cpf) {
         validaParametrosCPF(cpf);
@@ -597,9 +591,8 @@ public final class Algoritmos {
      *
      * @param cpf Array de numeros rais.
      * @return boolean true ou false Valor lógico.
-     * @throws IllegalArgumentException Se o argumento não tiver 11 digitos.
-     * @throws IllegalArgumentException Se no argumento tiver algum
-     *                                  número: 0 <= n >= 9.
+     * @throws IllegalArgumentException Se o array não tiver 11 digitos ou se
+     *                                  tiver algum número n < 0 ou n > 9.
      */
     public static boolean validaCPFRegraHorner(final int... cpf) {
         validaParametrosCPF(cpf);
@@ -614,7 +607,8 @@ public final class Algoritmos {
         }
 
         final int digJ = (aux2 % ConstAuxUtils.ONZE) % ConstAuxUtils.RESTO;
-        final int digK = ((aux2 - aux1 + ConstAuxUtils.NOVE * cpf[ConstAuxUtils.DEZ])
+        final int digK = ((aux2 - aux1 + ConstAuxUtils.NOVE
+                * cpf[ConstAuxUtils.DEZ])
                 % ConstAuxUtils.ONZE) % ConstAuxUtils.RESTO;
 
         return digJ == cpf[cpf.length - 1] && digK == cpf[cpf.length - 1];

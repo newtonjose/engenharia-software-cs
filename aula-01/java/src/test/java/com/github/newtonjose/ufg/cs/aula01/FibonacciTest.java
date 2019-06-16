@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class FibonacciTest {
     @Test
     void calculaFibonacciCorreto() {
-        //assertEquals(21, Algoritmos.fibonacci(8));
+        //assertEquals(21, AlgoritmosUtils.fibonacci(8));
     }
 
     @Test
     void verificaArgumentosInvalidos() {
         int[] poli_array = new int[]{};
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.fibonacci(-1));
+                () -> AlgoritmosUtils.fibonacci(-1));
     }
 }
