@@ -1,6 +1,8 @@
 package com.github.newtonjose.cs.aula07.estruturas;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Classe que implementa a contagem de ocorrencias de cada letra em uma string.
@@ -20,18 +22,25 @@ public final class ContaLetrasUtils {
      * @param msgs String
      * @return long[] Arrays de inteiros.
      */
-    public static long[] getQuantidadeLetras(final String... msgs) {
-        if (msgs.length == 0) {
+    public static Map<Character, Integer> contaOcorrenciasLetras(
+            final String msgs) {
+
+        if (msgs.isEmpty()) {
             throw new IllegalArgumentException("a string é vazia.");
         }
 
-        final long[] numLetras = new long[]{};
-        for (int i = 0; i < msgs.length; i++) {
-            final int finalI = i;
+        final String auxMags = msgs.toLowerCase(Locale.US);
+        final char[] charArray = auxMags.toCharArray();
 
-            numLetras[i] = Arrays.stream(msgs).filter(
-                    m -> m.equals(msgs[finalI])
-            ).count();  //TODO: array index out of bounds
+        final HashMap<Character, Integer> numLetras = new HashMap<>();
+        for (final char ch: charArray) {
+            int ocorr = 0;
+            for (final char chAux: charArray) {
+                if (ch == chAux) {
+                    ocorr = ocorr + 1;
+                }
+            }
+            numLetras.put(ch, ocorr);
         }
 
         return numLetras;
