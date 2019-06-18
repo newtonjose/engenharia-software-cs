@@ -19,8 +19,10 @@ class EncontrePalavraTest {
         encontrePalavra = new EncontrePalavra();
         assertNotNull(encontrePalavra);
 
-        arquivo = Paths.get("./src/main/java/com.github.newtonjose.cs."
-                + "aula08.encontre.domain.EncontrePalavra");
+        arquivo = Paths.get("" +
+                "./src/main/java/com/github/newtonjose/cs/aula08/encontre" +
+                "/domain/" +
+                "EncontrePalavra.java");
 
     }
 
@@ -29,5 +31,7 @@ class EncontrePalavraTest {
         ArrayList<LinhaTexto> lt = encontrePalavra.encontraOcorrencias(
                 "int", arquivo
         );
+
+        System.out.println(lt);
     }
 }

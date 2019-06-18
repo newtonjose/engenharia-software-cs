@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author Josenilton Santos
  * @version 1.0
  */
-public final class EncontrePalavra { //NOPMD
+public final class EncontrePalavra {
 
     /**
      * Constante padrão de arquivo UTF-8.
