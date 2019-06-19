@@ -1,8 +1,9 @@
 package com.github.newtonjose.ufg.cs.aula01;
 
-
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
+
 
 /**
  * Implementação dos AlgoritmosUtils Matemáticos dado na aula 01.
@@ -27,7 +28,8 @@ public final class AlgoritmosUtils {
      * @throws IllegalArgumentException Se o argumento num <= 0 ou array se o
      *                                  array iver valor != 0.
      */
-    public static Map<Integer, Boolean> sieveOfEratosthenes(final int valorMaximo) {
+    public static Map<Integer, Boolean> sieveOfEratosthenes(
+            final int valorMaximo) {
         if (valorMaximo <= 0) {
             throw new IllegalArgumentException("Argumanto fora do intervalo, "
                     + "necessário n >= 1.");
@@ -44,7 +46,7 @@ public final class AlgoritmosUtils {
 
         for (int i = 0; i < raiz; i++) {
             if (mapBool.get(i)) {
-                for (int j = (i * i); j < valorMaximo; j = j + i) {
+                for (int j = i * i; j < valorMaximo; j = j + i) {
                     mapBool.put(j, false);
                 }
             }
@@ -122,13 +124,7 @@ public final class AlgoritmosUtils {
                     + "n >= 1.");
         }
 
-        long fat = 1;
-
-        for (int i = 2; i <= num; i++) {
-            fat = fat * i;
-        }
-
-        return fat;
+        return (num == 1) ? 1 : num * fatorial(num - 1);
     }
 
     /**
@@ -143,20 +139,11 @@ public final class AlgoritmosUtils {
             throw new IllegalArgumentException("O numero 'n' tem que ser n>=0");
         }
 
-        long fibo = 1;
-        if (num == 0 || num == 1) {
-            fibo = num;
-        }
+        final double phi1 = (1 + Math.sqrt(ConstAuxUtils.NUM_CINCO)) / 2.0;
+        final double phi2 = (1 - Math.sqrt(ConstAuxUtils.NUM_CINCO)) / 2.0;
 
-        long auxFibo = 0;
-
-        for (int i = 1; i < num; i++) {
-            final long aux = fibo;
-            fibo = fibo + auxFibo;
-            auxFibo = aux;
-        }
-
-        return fibo;
+        return (long) ((Math.pow(phi1, num) - Math.pow(phi2, num))
+                / Math.sqrt(ConstAuxUtils.NUM_CINCO));
     }
 
     /**
@@ -199,17 +186,16 @@ public final class AlgoritmosUtils {
                     + "&& k >= 2");
         }
 
-        double logNatural = (double) num + 1;
-        double numerador = num;
-        double denominador = 1;
 
-        for (int i = 2; i <= aprox; i++) {
-            numerador = numerador * numerador;
-            denominador = denominador * i;
-            logNatural = logNatural + (numerador / denominador);
-        }
+        final double[] log = {num + 1, num, 1};
 
-        return logNatural;
+        IntStream.range(2,aprox + 1).forEach(i -> {
+            log[1] = log[1] * log[1];
+            log[2] = log[2] * i;
+            log[0] = log[0] + (log[1] / log[2]);
+        });
+
+        return log[0];
     }
 
     /**
@@ -382,8 +368,8 @@ public final class AlgoritmosUtils {
 
         final int aux = num % ConstAuxUtils.DIVISOR_CEM;
 
-        int centena = (int) Math.floor(num / ConstAuxUtils.DIVISOR_CEM);
-        int dezena = (int) Math.floor(aux / ConstAuxUtils.DIVISOR_DEZ);
+        final double centena = num / ConstAuxUtils.DIVISOR_CEM;
+        final double dezena = aux / ConstAuxUtils.DIVISOR_DEZ;
 
         final int prop = (int) (Math.pow(centena, ConstAuxUtils.NUM_TRES)
                         + Math.pow(dezena, ConstAuxUtils.NUM_TRES)
@@ -608,10 +594,9 @@ public final class AlgoritmosUtils {
         final int digJ = Math.floorMod(Math.floorMod(aux2, ConstAuxUtils.ONZE),
                 ConstAuxUtils.DEZ);
 
-        final int digK = Math.floorMod(Math.floorMod((aux2 - aux1
-                        + (ConstAuxUtils.NOVE * cpf[ConstAuxUtils.NOVE])),
-                        ConstAuxUtils.ONZE),
-                ConstAuxUtils.DEZ);
+        final int digK = Math.floorMod(Math.floorMod(aux2 - aux1
+                        + (ConstAuxUtils.NOVE * cpf[ConstAuxUtils.NOVE]),
+                        ConstAuxUtils.ONZE), ConstAuxUtils.DEZ);
 
         return digJ == cpf[ConstAuxUtils.NOVE]
                 && digK == cpf[ConstAuxUtils.DEZ];
