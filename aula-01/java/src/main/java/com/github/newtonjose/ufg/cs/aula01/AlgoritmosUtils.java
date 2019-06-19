@@ -381,13 +381,12 @@ public final class AlgoritmosUtils {
         }
 
         final int aux = num % ConstAuxUtils.DIVISOR_CEM;
-        Math.floor(10/1);
-        int c = (int) Math.floor(
-                num / ConstAuxUtils.DIVISOR_CEM);
-        int d = (int) Math.floor(aux / ConstAuxUtils.DIVISOR_DEZ);
 
-        final int prop = (int) (Math.pow(c, ConstAuxUtils.NUM_TRES)
-                        + Math.pow(d, ConstAuxUtils.NUM_TRES)
+        int centena = (int) Math.floor(num / ConstAuxUtils.DIVISOR_CEM);
+        int dezena = (int) Math.floor(aux / ConstAuxUtils.DIVISOR_DEZ);
+
+        final int prop = (int) (Math.pow(centena, ConstAuxUtils.NUM_TRES)
+                        + Math.pow(dezena, ConstAuxUtils.NUM_TRES)
                         + Math.pow(aux % ConstAuxUtils.DIVISOR_DEZ,
                         ConstAuxUtils.NUM_TRES));
 
