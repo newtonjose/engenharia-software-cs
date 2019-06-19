@@ -1,4 +1,4 @@
-package com.github.newtonjose.ufg.cs.domain.notafiscal;
+package com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal;
 
 /**
  * Created by aluno on 13/06/19.
@@ -6,11 +6,11 @@ package com.github.newtonjose.ufg.cs.domain.notafiscal;
 public class ItemNotaFiscal {
     private Integer quatidade;
     private Double preco;
-    private long codigo;
+    private Integer codigo;
     private String descricao;
 
     public ItemNotaFiscal(final Integer quatidade, final Double preco,
-                          final long codigo, final String descricao) {
+                          final Integer codigo, final String descricao) {
         this.quatidade = quatidade;
         this.preco = preco;
         this.codigo = codigo;
