@@ -6,7 +6,7 @@ addons:
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - cd aula-01/java
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=newtonjose_cs-2019-01 -Dsonar.organization=newtonjose-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=com.github.newtonjose:aula01 -Dsonar.organization=newtonjose-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
   - mvn checkstyle:checkstyle #pmd:check
 
 cache:
