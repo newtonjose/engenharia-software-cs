@@ -5,11 +5,11 @@ package com.github.newtonjose.cs.aula07.estruturas;
  *
  *<p>Encontrar a menor valor em um vetor de valores recebido como argumento.</p>
  */
-public final class MenorTemperatura { //NOPMD
+public final class MenorTemperaturaUtils {
     /**
      * Contrutor privado devido classe ser estatica.
      */
-    private MenorTemperatura() {
+    private MenorTemperaturaUtils() {
 
     }
 

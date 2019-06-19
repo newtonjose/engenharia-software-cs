@@ -9,14 +9,14 @@ class AlgoritmosTest {
     @Test
     void calculaProdutoInteiros() {
         // Calcula valor correto
-        assertEquals(8, Algoritmos.calculaProdutoInteiros(4, 2));
+        assertEquals(8, AlgoritmosUtils.calculaProdutoInteiros(4, 2));
 
         // Testa entrada de argumentos invalidos
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaProdutoInteiros(-1, 4));
+                () -> AlgoritmosUtils.calculaProdutoInteiros(-1, 4));
 
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaProdutoInteiros(1, -1));
+                () -> AlgoritmosUtils.calculaProdutoInteiros(1, -1));
     }
 
 
@@ -24,24 +24,24 @@ class AlgoritmosTest {
     void calculaQuadradoPerfeito() {
 
         // caso de sucesso
-        assertTrue(Algoritmos.verificaQuadradoPerfeito(4));
+        assertTrue(AlgoritmosUtils.verificaQuadradoPerfeito(4));
 
         // caso falso
-        assertFalse(Algoritmos.verificaQuadradoPerfeito(3));
+        assertFalse(AlgoritmosUtils.verificaQuadradoPerfeito(3));
 
         // Testa entrada de argumentos invalidos
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.verificaQuadradoPerfeito( 0));
+                () -> AlgoritmosUtils.verificaQuadradoPerfeito( 0));
     }
 
     @Test
     void calculaRestoDivisao() {
 
         // calcula valor correto
-        assertEquals(0, Algoritmos.calculaRestoDivisao(10,2));
+        assertEquals(0, AlgoritmosUtils.calculaRestoDivisao(10,2));
 
         // Testa entrada de argumentos invalidos
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaRestoDivisao( -1,10));
+                () -> AlgoritmosUtils.calculaRestoDivisao( -1,10));
     }
 }

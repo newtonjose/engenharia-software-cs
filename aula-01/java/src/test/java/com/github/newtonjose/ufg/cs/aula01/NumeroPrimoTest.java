@@ -10,16 +10,16 @@ public class NumeroPrimoTest {
 
     @Test
     void verificaNumeroPrimoCorreto() {
-        assertTrue(Algoritmos.numeroPrimo(2, true));
+        assertTrue(AlgoritmosUtils.numeroPrimo(2));
     }
 
     @Test
     void verificaNumeroPrimoIncorreto() {
-        assertFalse(Algoritmos.numeroPrimo(4, true));
+        assertFalse(AlgoritmosUtils.numeroPrimo(4));
     }
     @Test
     void entradaArgumentoInvalido() {
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.numeroPrimo(0, true));
+                () -> AlgoritmosUtils.numeroPrimo(0));
     }
 }

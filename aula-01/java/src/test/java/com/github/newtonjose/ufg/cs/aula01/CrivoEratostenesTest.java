@@ -2,26 +2,28 @@ package com.github.newtonjose.ufg.cs.aula01;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CrivoEratostenesTest {
 
     @Test
     void calculaCrivoCorreto() {
-        int[] a = new int[] {0, 0, 0, 0, 0};
-        assertTrue(Algoritmos.calculaCrivoEratostenes( a.length-1, a));
+
+        Map<Integer, Boolean> map = AlgoritmosUtils.sieveOfEratosthenes(
+                6);
+        assertTrue(map.get(5));
+        assertFalse(map.get(4));
     }
 
     @Test
     void verificaArgumentosInvalidos() {
-        int[] a = new int[]{};
-        assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaCrivoEratostenes(
-                        a.length-1, a));
 
-        int[] b = new int[] {0, 0, 0, 1, 0};
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaCrivoEratostenes(
-                        b.length-1, b));
+                () -> AlgoritmosUtils.sieveOfEratosthenes(
+                        0));
+
     }
 }

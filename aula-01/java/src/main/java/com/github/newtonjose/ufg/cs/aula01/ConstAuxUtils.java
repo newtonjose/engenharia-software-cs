@@ -3,7 +3,7 @@ package com.github.newtonjose.ufg.cs.aula01;
 /**
  * Classe auxiliar com definição as das constantes usadas pelo pacote.
  */
-public final class ConstAux { //NOPMD
+public final class ConstAuxUtils {
 
     /**
      * Constante que representa o máximo dia de um mês.
@@ -116,10 +116,12 @@ public final class ConstAux { //NOPMD
      */
     public static final int OITO = 8;
 
+    public static final int SETE = 7;
+
     /**
      * Contrutor da classe definido como privado pois a mesma é do tipo final.
      */
-    private ConstAux() {
+    private ConstAuxUtils() {
 
     }
 }

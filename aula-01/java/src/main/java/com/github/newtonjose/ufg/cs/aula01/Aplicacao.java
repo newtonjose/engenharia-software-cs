@@ -22,7 +22,7 @@ public final class Aplicacao {
      * @param args Argumentos de entrada.
      */
     public static void main(final String[] args) {
-        System.out.println(LocalDate.now().getDayOfWeek()); //NOPMD
+        System.out.println(LocalDate.now().getDayOfWeek());
     }
 }
 

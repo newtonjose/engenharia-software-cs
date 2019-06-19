@@ -9,13 +9,12 @@ public class NumeroPiTest {
     @Test
     void calculaNumeroPiAproximado() {
         // FIXME: verifica função no javascript
-        assertEquals(3.140262866943628, Algoritmos.numeroPi(800, 0,
-                -1, -1));
+        assertEquals(3.142841092554028, AlgoritmosUtils.numeroPi(800));
     }
 
-//    @Test
-//    void verificaArgumentosInvalidos() {
-//        assertThrows(IllegalArgumentException.class,
-//                () -> Algoritmos.numeroPi(0, 0));
-//    }
+    @Test
+    void verificaArgumentosInvalidos() {
+        assertThrows(IllegalArgumentException.class,
+                () -> AlgoritmosUtils.numeroPi(0));
+    }
 }

@@ -10,21 +10,21 @@ public class CalculaRazaoAureaTest {
     @Test
     void casoSucesso() {
         assertEquals(1.6180339887498947,
-                Algoritmos.calculaRazaoAurea(2, 4,1000));
+                AlgoritmosUtils.calculaRazaoAurea(2, 4,1000));
     }
 
     @Test
     void argumentosInvalidos() {
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaRazaoAurea(-1, 2,
+                () -> AlgoritmosUtils.calculaRazaoAurea(-1, 2,
                         10));
 
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaRazaoAurea(4, 2,
+                () -> AlgoritmosUtils.calculaRazaoAurea(4, 2,
                         10));
 
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaRazaoAurea(2, 4,
+                () -> AlgoritmosUtils.calculaRazaoAurea(2, 4,
                         0));
     }
 }

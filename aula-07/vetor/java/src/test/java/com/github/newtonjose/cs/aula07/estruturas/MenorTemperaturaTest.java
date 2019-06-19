@@ -9,14 +9,14 @@ class MenorTemperaturaTest {
     @Test
     void retornaMenorTemperatura() {
         int[] t = new int[]{0, 2, -3, 5};
-        assertEquals(-3, MenorTemperatura.getMenorTemperatura(t));
+        assertEquals(-3, MenorTemperaturaUtils.getMenorTemperatura(t));
     }
 
     @Test
     void testeParamentroInvalido() {
         int[] t = new int[]{};
         assertThrows(IllegalArgumentException.class,
-                () -> MenorTemperatura.getMenorTemperatura(t)
+                () -> MenorTemperaturaUtils.getMenorTemperatura(t)
         );
     }
 }

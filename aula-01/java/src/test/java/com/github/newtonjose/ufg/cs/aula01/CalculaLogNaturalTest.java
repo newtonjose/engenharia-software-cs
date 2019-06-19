@@ -11,15 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CalculaLogNaturalTest {
     @Test
     void calculaLogNaturalCorreto() {
-        assertEquals(7.666666666666666, Algoritmos.calculaLogNatural(2, 3));
+        assertEquals(7.666666666666666, AlgoritmosUtils.calculaLogNatural(2, 3));
     }
 
     @Test
     void verificaArgumentosInvalidos() {
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaLogNatural(0, 100));
+                () -> AlgoritmosUtils.calculaLogNatural(0, 100));
 
         assertThrows(IllegalArgumentException.class,
-                () -> Algoritmos.calculaLogNatural(3, 1));
+                () -> AlgoritmosUtils.calculaLogNatural(3, 1));
     }
 }
