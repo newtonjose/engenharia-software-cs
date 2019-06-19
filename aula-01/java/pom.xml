@@ -46,26 +46,26 @@
         </developer>
     </developers>
 
-    <scm>
-        <connection>
-            scm:git:https://github.com/newtonjose/cs-2019-01.git
-        </connection>
-        <developerConnection>
-            scm:git:https://github.com/newtonjose/cs-2019-01.git
-        </developerConnection>
-        <url>https://github.com/newtonjose/cs-2019-01</url>
-    </scm>
+    <!--<scm>-->
+        <!--<connection>-->
+            <!--scm:git:https://github.com/newtonjose/cs-2019-01.git-->
+        <!--</connection>-->
+        <!--<developerConnection>-->
+            <!--scm:git:https://github.com/newtonjose/cs-2019-01.git-->
+        <!--</developerConnection>-->
+        <!--<url>https://github.com/newtonjose/cs-2019-01</url>-->
+    <!--</scm>-->
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<snapshotRepository>-->
+            <!--<id>ossrh</id>-->
+            <!--<url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+        <!--</snapshotRepository>-->
+        <!--<repository>-->
+            <!--<id>ossrh</id>-->
+            <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 
     <parent>
         <groupId>org.springframework.boot</groupId>
