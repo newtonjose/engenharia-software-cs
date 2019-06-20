@@ -19,7 +19,7 @@ public class FromNotaFiscalToBinario {
 
     private final DataOutputStream dos = new DataOutputStream(baos);
 
-    private final static Log logger = new Log(FromNotaFiscalToBinario.class);
+    private static final Log logger = new Log(FromNotaFiscalToBinario.class);
 
     public byte[] notaFiscalToByteArray(final NotaFiscal notaFiscal)
             throws IOException {
@@ -31,10 +31,10 @@ public class FromNotaFiscalToBinario {
         dos.writeDouble(notaFiscal.getTotal());
 
         for (ItemNotaFiscal item: notaFiscal.getItens()) {
-            dos.writeInt(item.getQuantidade());
-            dos.writeDouble(item.getPreco());
             dos.writeInt(item.getCodigo());
             dos.write(item.getDescricaoAsByteArray());
+            dos.writeInt(item.getQuantidade());
+            dos.writeDouble(item.getPreco());
         }
 
         logger.info("Data em bytes: " + Arrays.toString(baos.toByteArray()));

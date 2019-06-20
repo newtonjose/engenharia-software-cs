@@ -3,7 +3,7 @@ package com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.text.Normalizer;
 import java.util.Arrays;
 
 /**
@@ -20,25 +20,23 @@ public class ItemNotaFiscal {
     private static final Integer DESCRICAO_LENGTH = 80;
 
 
-    public ItemNotaFiscal(final Integer qtd, final Double prc,
-                          final Integer cdo, final String desc) {
+    /**
+     * @param qtd
+     * @param prc
+     * @param cdo
+     * @param desc
+     */
+    ItemNotaFiscal(final Integer qtd, final Double prc,
+                   final Integer cdo, final String desc) {
         this.quatidade = qtd;
         this.preco = prc;
         this.codigo = cdo;
         this.descricao = desc;
     }
 
-    @Override
-    public String toString() {
-        stringBuilder.append("Quantidada: ").append(this.quatidade);
-        stringBuilder.append(", ");
-        stringBuilder.append("Preço: ").append(this.preco).append(", ");
-        stringBuilder.append("Codigo: ").append(this.codigo).append(", ");
-        stringBuilder.append("Descrição: ").append(this.descricao);
-
-        return stringBuilder.toString();
-    }
-
+    /**
+     * @return
+     */
     public int getQuantidade() {
         return this.quatidade;
     }
@@ -51,9 +49,16 @@ public class ItemNotaFiscal {
         return this.codigo;
     }
 
-    private String convertDescricaoToUSASCII(){
-        byte[] bytes = this.descricao.getBytes(StandardCharsets.US_ASCII);
-        return new String(bytes);
+    private static String removeSinaisDescricao(String descricao) {
+        String str = Normalizer.normalize(descricao, Normalizer.Form.NFD);
+
+        return str.replaceAll("\\p{M}", "");
+    }
+
+    private static String convertDescricaoToUSASCII(String descricao) {
+        String dsc = descricao.replaceAll("ç", "c");
+
+        return removeSinaisDescricao(dsc);
     }
 
     public byte[] getDescricaoAsByteArray() throws IOException {
@@ -62,7 +67,8 @@ public class ItemNotaFiscal {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         final DataOutputStream dos = new DataOutputStream(baos);
 
-        dos.writeUTF(this.convertDescricaoToUSASCII());
+        String dsc = convertDescricaoToUSASCII(this.descricao);
+        dos.writeUTF(dsc);
 
         byte[] auxByteArr = baos.toByteArray();
         if (auxByteArr.length < DESCRICAO_LENGTH) {
@@ -73,6 +79,18 @@ public class ItemNotaFiscal {
         }
 
         dos.flush();
+
         return Arrays.copyOfRange(baos.toByteArray(), 0, DESCRICAO_LENGTH);
+    }
+
+    @Override
+    public String toString() {
+        stringBuilder.append("Quantidada: ").append(this.quatidade);
+        stringBuilder.append(", ");
+        stringBuilder.append("Preço: ").append(this.preco).append(", ");
+        stringBuilder.append("Codigo: ").append(this.codigo).append(", ");
+        stringBuilder.append("Descrição: ").append(this.descricao);
+
+        return stringBuilder.toString();
     }
 }
