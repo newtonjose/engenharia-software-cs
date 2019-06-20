@@ -13,6 +13,12 @@ class FromJsonToNotaFiscalTest {
 
         FromNotaFiscalToBinario nftb = new FromNotaFiscalToBinario();
 
-        nftb.notaFiscalToByteArray(nota);
+        byte[] bytes = nftb.notaFiscalToByteArray(nota);
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            sb.append(String.format("%02X", b));
+        }
+        System.out.println(sb.toString());
     }
 }
+
