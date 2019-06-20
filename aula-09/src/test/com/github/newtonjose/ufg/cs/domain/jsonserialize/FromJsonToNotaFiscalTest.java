@@ -1,15 +1,18 @@
 package com.github.newtonjose.ufg.cs.domain.jsonserialize;
 
+import com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal.NotaFiscal;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FromJsonToNotaFiscalTest {
 
     @Test
     void readJsonFile() throws IOException {
-        FromJsonToNotaFiscal.readJsonFile();
+        NotaFiscal nota = FromJsonToNotaFiscal.readJsonFileToNotaFiscal();
+
+        FromNotaFiscalToBinario nftb = new FromNotaFiscalToBinario();
+
+        nftb.notaFiscalToByteArray(nota);
     }
 }
