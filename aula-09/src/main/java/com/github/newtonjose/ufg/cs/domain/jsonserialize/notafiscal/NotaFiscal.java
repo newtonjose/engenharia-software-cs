@@ -1,19 +1,21 @@
 package com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by aluno on 13/06/19.
  */
 public class NotaFiscal {
-    private String data;
-    private Double total;
 
+    private String data;
+
+    private Double total;
     private List<ItemNotaFiscal> itens = new ArrayList<>();
+
     private final StringBuilder stringBuilder = new StringBuilder();
+
+    /**TODO: Usar reguex dataNode.asText().matches(".+/.+\\.[0-9]+");*/
 
     public void setData(final String dt) {
         this.data = dt;
@@ -23,27 +25,11 @@ public class NotaFiscal {
         this.total = ttl;
     }
 
-    public void setItens(final List itensNF) {
-        for (final Object item: itensNF) {
-            Object[] obj = ((LinkedHashMap) item).entrySet().toArray();
-
-            final Integer quantidade = (Integer) ((Map.Entry) obj[0]).getValue();
-
-            final Double preco = (Double) ((Map.Entry) obj[1]).getValue();
-
-            final Integer codigo = (Integer) ((Map.Entry) obj[2]).getValue();
-
-            final String descricao = (String) ((Map.Entry) obj[3]).getValue();
-
-            final ItemNotaFiscal itemNota = new ItemNotaFiscal(quantidade,
-                    preco, codigo, descricao);
-
-            this.itens.add(itemNota);
-        }
+    public void setItem(ItemNotaFiscal itemNota) {
+        this.itens.add(itemNota);
     }
 
     public int getDataAsInt() {
-
         final String[] dayMonthYear = this.data.split("/");
         return Integer.parseInt(
                 dayMonthYear[2] + dayMonthYear[1] + dayMonthYear[0]

@@ -2,7 +2,6 @@ package com.github.newtonjose.ufg.cs.domain.jsonserialize.utils;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
 import static org.junit.jupiter.api.Assertions.*;

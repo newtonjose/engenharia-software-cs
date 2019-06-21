@@ -1,7 +1,6 @@
 package com.github.newtonjose.ufg.cs.domain.jsonserialize.utils;
 
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,9 +19,11 @@ public class Log {
         if(logger.isDebugEnabled()){
             logger.debug(msg);
         }
+    }
 
-//        if(logger.isInfoEnabled()){
-//            logger.info(msg, Level.DEBUG);
-//        }
+    public void error(String msg, Exception exp) {
+        if(logger.isErrorEnabled()){
+            logger.error(msg + exp);
+        }
     }
 }

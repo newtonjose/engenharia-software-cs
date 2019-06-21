@@ -9,6 +9,7 @@ import java.util.Arrays;
 /**
  * Created by aluno on 13/06/19.
  */
+
 public class ItemNotaFiscal {
     private final Integer quatidade;
     private final Double preco;
@@ -16,7 +17,6 @@ public class ItemNotaFiscal {
     private final String descricao;
 
     private final StringBuilder stringBuilder = new StringBuilder();
-
     private static final Integer DESCRICAO_LENGTH = 80;
 
 
@@ -26,8 +26,8 @@ public class ItemNotaFiscal {
      * @param cdo
      * @param desc
      */
-    ItemNotaFiscal(final Integer qtd, final Double prc,
-                   final Integer cdo, final String desc) {
+    public ItemNotaFiscal(final Integer qtd, final Double prc,
+                          final Integer cdo, final String desc) {
         this.quatidade = qtd;
         this.preco = prc;
         this.codigo = cdo;
