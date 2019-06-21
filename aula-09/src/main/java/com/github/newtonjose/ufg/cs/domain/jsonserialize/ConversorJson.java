@@ -18,8 +18,8 @@ public final class ConversorJson {
     private ConversorJson() {
     }
 
-    // recebe a sinalização de que o diretório de entrada recebe a criação de um arquivo.
-
+    // recebe a sinalização de que o diretório de entrada recebe a criação
+    // de um arquivo.
     public static void realizaConversao(final String notaJsonFile) {
 
         final ArquivoService arqSer = new ArquivoService();
@@ -34,25 +34,21 @@ public final class ConversorJson {
             final Seguranca seg = new Seguranca();
             final byte[] hash = seg.getHashSH256(data);
 
-
             arqSer.persisteAsZip(hash, data);
 
-        } catch (IOException | NoSuchAlgorithmException | NullPointerException e) {
+            //Remover nota da pasta json
+            arqSer.removeJsonNotaFiscal(notaJsonFile);
+        } catch (IOException | NoSuchAlgorithmException
+                | NullPointerException e) {
             try {
                 arqSer.copiaJsonNotaFiscal(notaJsonFile);
             } catch (IOException ioe) {
-                LOGGER.error(ioe.getMessage(), ioe);
+                LOGGER.error(ioe);
             }
 
-            LOGGER.info("Erro na conversão da nota");
-            LOGGER.error(e.getMessage(), e);
-
-        } finally {
-            try {
-                arqSer.removeJsonNotaFiscal(notaJsonFile);
-            } catch (IOException e) {
-                LOGGER.error(e.getMessage(), e);
-            }
+            LOGGER.info("Erro ao realizar a conversão da nota fiscal: "
+                    + notaJsonFile);
+            LOGGER.error(e);
         }
     }
 }

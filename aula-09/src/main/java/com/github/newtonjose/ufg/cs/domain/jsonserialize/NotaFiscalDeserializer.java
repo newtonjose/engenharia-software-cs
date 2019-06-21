@@ -1,28 +1,28 @@
 package com.github.newtonjose.ufg.cs.domain.jsonserialize;
 
+import com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal.ItemNotaFiscal;
+import com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal.NotaFiscal;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal.ItemNotaFiscal;
-import com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal.NotaFiscal;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Objects;
 
 public class NotaFiscalDeserializer extends StdDeserializer<NotaFiscal> {
 
-
-        public NotaFiscalDeserializer() {
+    public NotaFiscalDeserializer() {
             this(null);
         }
 
-        public NotaFiscalDeserializer(Class<?> vc) {
+    public NotaFiscalDeserializer(final Class<?> vc) {
             super(vc);
         }
 
-        private static void verificaCampoExiste(JsonNode node, String field)
+    private static void verificaCampoExiste(final JsonNode node, final String field)
                 throws IOException {
             try {
                 Objects.requireNonNull(node);
@@ -32,19 +32,23 @@ public class NotaFiscalDeserializer extends StdDeserializer<NotaFiscal> {
         }
 
         @Override
-        public NotaFiscal deserialize(JsonParser parser,
-                                      DeserializationContext deserializer)
+        public NotaFiscal deserialize(final JsonParser parser,
+                                      final DeserializationContext deserializer)
                 throws IOException {
 
             NotaFiscal notaFiscal = new NotaFiscal();
             ObjectCodec codec = parser.getCodec();
             JsonNode node = codec.readTree(parser);
 
-            // try catch block
-
             JsonNode dataNode = node.get("data");
             verificaCampoExiste(dataNode, "data");
-            notaFiscal.setData(dataNode.asText());
+            try {
+                notaFiscal.setData(dataNode.asText());
+            } catch (ParseException pe) {
+                throw new IOException(
+                        "campo data fora do formato: dd/MM/yyyy."
+                );
+            }
 
             JsonNode totalNode = node.get("total");
             verificaCampoExiste(totalNode, "total");

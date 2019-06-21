@@ -67,4 +67,10 @@ public class ArquivoService {
         Files.delete(path);
     }
 
+    public void removeDatZipeFile(final byte[] hash) throws IOException {
+        final String hashHex = convertHashToHex(hash);
+        final String filePath = NOTAS_FISCAIS + "dat/" + hashHex + ".dat";
+        Path path = Paths.get(filePath);
+        Files.delete(path);
+    }
 }

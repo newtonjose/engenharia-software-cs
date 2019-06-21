@@ -1,6 +1,5 @@
 package com.github.newtonjose.ufg.cs.domain.jsonserialize.utils;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,14 +15,14 @@ public class Log {
     }
 
     public void info(final String msg) {
-        if(logger.isDebugEnabled()){
+        if (logger.isDebugEnabled()) {
             logger.debug(msg);
         }
     }
 
-    public void error(String msg, Exception exp) {
-        if(logger.isErrorEnabled()){
-            logger.error(msg + exp);
+    public void error(final Exception exp) {
+        if (logger.isErrorEnabled()) {
+            logger.error(exp);
         }
     }
 }

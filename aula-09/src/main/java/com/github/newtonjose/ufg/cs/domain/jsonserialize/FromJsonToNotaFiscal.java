@@ -26,20 +26,20 @@ public final class FromJsonToNotaFiscal {
 
     }
 
-    public static NotaFiscal readJsonFileToNotaFiscal(String fileName) throws IOException {
+    public static NotaFiscal readJsonFileToNotaFiscal(final String fileName)
+            throws IOException {
 
 
-        SimpleModule module = new SimpleModule("NotaFiscalDeserializer",
-                new Version(1, 0, 0, null, null, null));
+        SimpleModule module = new SimpleModule(
+                "NotaFiscalDeserializer", new Version(1,
+                0, 0, null, null,
+                null)
+        );
 
         module.addDeserializer(NotaFiscal.class, new NotaFiscalDeserializer());
         objectMapper.registerModule(module);
 
-
         final String path = NOTAS_FISCAIS + "json/" + fileName;
-
-
-
         NotaFiscal notaFiscal;
         try {
             // Validação do arquivo json
@@ -48,7 +48,7 @@ public final class FromJsonToNotaFiscal {
                     new File(path), NotaFiscal.class
             );
         } catch (IOException ioe) {
-            logger.error(ioe.getMessage(), ioe);
+            logger.error(ioe);
             throw ioe;
         }
 
