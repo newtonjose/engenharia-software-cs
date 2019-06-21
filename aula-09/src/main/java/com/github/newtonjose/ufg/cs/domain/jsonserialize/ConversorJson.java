@@ -5,6 +5,7 @@ import com.github.newtonjose.ufg.cs.domain.jsonserialize.service.ArquivoService;
 import com.github.newtonjose.ufg.cs.domain.jsonserialize.utils.Log;
 import com.github.newtonjose.ufg.cs.domain.jsonserialize.utils.Seguranca;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
@@ -20,7 +21,8 @@ public final class ConversorJson {
 
     // recebe a sinalização de que o diretório de entrada recebe a criação
     // de um arquivo.
-    public static void realizaConversao(final String notaJsonFile) {
+    public static void realizaConversao(final String notaJsonFile)
+            throws NoSuchAlgorithmException {
 
         final ArquivoService arqSer = new ArquivoService();
 
@@ -38,17 +40,19 @@ public final class ConversorJson {
 
             //Remover nota da pasta json
             arqSer.removeJsonNotaFiscal(notaJsonFile);
-        } catch (IOException | NoSuchAlgorithmException
-                | NullPointerException e) {
+        } catch (FileNotFoundException ioe) {
+            LOGGER.info("Error: arquivo " + notaJsonFile
+                    + " não encontrado.");
+        } catch (IOException ioe) {
             try {
                 arqSer.copiaJsonNotaFiscal(notaJsonFile);
-            } catch (IOException ioe) {
-                LOGGER.error(ioe);
+            } catch (IOException cioe) {
+                // error provável é que não existe o arquivo.
             }
-
             LOGGER.info("Erro ao realizar a conversão da nota fiscal: "
                     + notaJsonFile);
-            LOGGER.error(e);
+        } catch (NoSuchAlgorithmException nsae) {
+            throw nsae;
         }
     }
 }

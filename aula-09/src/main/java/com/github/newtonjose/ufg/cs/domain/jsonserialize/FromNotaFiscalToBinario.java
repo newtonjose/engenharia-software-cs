@@ -7,8 +7,6 @@ import com.github.newtonjose.ufg.cs.domain.jsonserialize.utils.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
-
 
 /**
  * Created by aluno on 13/06/19.
@@ -26,21 +24,28 @@ public class FromNotaFiscalToBinario {
 
         logger.info("Convertendo dodos da Nota Fiscal em bytes.");
 
-        // convertendo data como inteiro em 4 bytes
-        dos.writeInt(notaFiscal.getDataAsInt());
-        dos.writeDouble(notaFiscal.getTotal());
+        try {
+            // convertendo data como inteiro em 4 bytes
+            dos.writeInt(notaFiscal.getDataAsInt());
+            dos.writeDouble(notaFiscal.getTotal());
 
-        for (ItemNotaFiscal item: notaFiscal.getItens()) {
-            dos.writeInt(item.getCodigo());
-            dos.write(item.getDescricaoAsByteArray());
-            dos.writeInt(item.getQuantidade());
-            dos.writeDouble(item.getPreco());
+            for (ItemNotaFiscal item: notaFiscal.getItens()) {
+                dos.writeInt(item.getCodigo());
+                dos.write(item.getDescricaoAsByteArray());
+                dos.writeInt(item.getQuantidade());
+                dos.writeDouble(item.getPreco());
+            }
+
+            dos.flush();
+        } catch (IOException ioe) {
+            logger.error(ioe);
         }
 
-        logger.info("Data em bytes: " + Arrays.toString(baos.toByteArray()));
+        final byte[] byteArr = baos.toByteArray();
 
-        dos.flush();
+        logger.info("Dodos convertidos: " + byteArr.length + " bytes.");
+
         // retorna o array de bytes dos atributos do objeto nota fiscal
-        return baos.toByteArray();
+        return byteArr;
     }
 }

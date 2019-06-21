@@ -42,11 +42,10 @@ public class ArquivoService {
         return baos.toByteArray();
     }
 
-    public void persisteAsZip(final byte[] hash, byte[] data)
+    public void persisteAsZip(final byte[] hash, final byte[] data)
             throws IOException {
 
         // converte dados em arquivo zip.
-
         final String hashHex = convertHashToHex(hash);
         final String fileName = NOTAS_FISCAIS + "dat/" + hashHex + ".dat";
         final byte[] zipByteArr = zipBytes(fileName, data);
@@ -62,8 +61,8 @@ public class ArquivoService {
         Files.move(oldPath, newPath, REPLACE_EXISTING);
     }
 
-    public void removeJsonNotaFiscal(final String filePath) throws IOException {
-        Path path = Paths.get(filePath);
+    public void removeJsonNotaFiscal(final String fileName) throws IOException {
+        Path path = Paths.get(NOTAS_FISCAIS + "json/" + fileName);
         Files.delete(path);
     }
 

@@ -22,7 +22,7 @@ public class Log {
 
     public void error(final Exception exp) {
         if (logger.isErrorEnabled()) {
-            logger.error(exp);
+            logger.error(exp.toString());
         }
     }
 }
