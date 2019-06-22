@@ -10,6 +10,6 @@ class ConversorTest {
     void realizaConversao() throws NoSuchAlgorithmException {
 //        ConversorJson.realizaConversao("nota_fiscal.json");
 
-        ConversorJson.realizaConversao("nota_fiscal.json");
+//        ConversorJson.realizaConversao("nota_fiscal.json");
     }
 }

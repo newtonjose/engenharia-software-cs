@@ -1,6 +1,6 @@
 package com.github.newtonjose.ufg.cs.domain.jsonserialize;
 
-import com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal.NotaFiscal;
+import com.github.newtonjose.ufg.cs.domain.notafiscal.NotaFiscal;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

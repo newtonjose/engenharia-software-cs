@@ -1,7 +1,7 @@
 package com.github.newtonjose.ufg.cs.domain.jsonserialize;
 
-import com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal.ItemNotaFiscal;
-import com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal.NotaFiscal;
+import com.github.newtonjose.ufg.cs.domain.notafiscal.ItemNotaFiscal;
+import com.github.newtonjose.ufg.cs.domain.notafiscal.NotaFiscal;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;

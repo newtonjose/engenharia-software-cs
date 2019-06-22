@@ -3,8 +3,8 @@ package com.github.newtonjose.ufg.cs.domain.jsonserialize;
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal.NotaFiscal;
-import com.github.newtonjose.ufg.cs.domain.jsonserialize.utils.Log;
+import com.github.newtonjose.ufg.cs.domain.notafiscal.NotaFiscal;
+import com.github.newtonjose.ufg.cs.utils.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -16,17 +16,16 @@ import java.io.IOException;
  */
 public final class FromJsonToNotaFiscal {
 
-    private static final Log logger = new Log(FromJsonToNotaFiscal.class);
-    private static final String NOTAS_FISCAIS = "./static/";
+    private static final Log LOG = new Log(FromJsonToNotaFiscal.class);
 
-    // REF.: https://www.journaldev.com/2324/jackson-json-java-parser-api-example-tutorial
+    // REF.: https://www.journaldev.com/2324/jackson-json-java-parser-api-
+    // example-tutorial
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     private FromJsonToNotaFiscal() {
-
     }
 
-    public static NotaFiscal readJsonFileToNotaFiscal(final String fileName)
+    public static NotaFiscal readJsonFileToNotaFiscal(final String filePath)
             throws IOException {
 
 
@@ -39,16 +38,15 @@ public final class FromJsonToNotaFiscal {
         module.addDeserializer(NotaFiscal.class, new NotaFiscalDeserializer());
         objectMapper.registerModule(module);
 
-        final String path = NOTAS_FISCAIS + "json/" + fileName;
         NotaFiscal notaFiscal;
         try {
             // Validação do arquivo json
-            objectMapper.readTree(new File(path));
+            objectMapper.readTree(new File(filePath));
             notaFiscal = objectMapper.readValue(
-                    new File(path), NotaFiscal.class
+                    new File(filePath), NotaFiscal.class
             );
         } catch (IOException ioe) {
-            logger.error(ioe);
+            LOG.error(ioe);
             throw ioe;
         }
 

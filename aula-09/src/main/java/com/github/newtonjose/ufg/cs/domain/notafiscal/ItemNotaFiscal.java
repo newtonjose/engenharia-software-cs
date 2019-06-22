@@ -1,4 +1,4 @@
-package com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal;
+package com.github.newtonjose.ufg.cs.domain.notafiscal;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

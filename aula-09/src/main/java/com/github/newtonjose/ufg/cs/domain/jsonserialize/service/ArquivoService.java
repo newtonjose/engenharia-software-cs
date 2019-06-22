@@ -15,10 +15,14 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
  */
 public class ArquivoService {
 
-    private static final String NOTAS_FISCAIS = "./static/";
+    private String notasFiscaisDir;
+
+    public ArquivoService(final String nfEnvVar) {
+        notasFiscaisDir = nfEnvVar;
+    }
 
     private static String convertHashToHex(final byte[] hash) {
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         for (byte b : hash) {
             sb.append(String.format("%02X", b));
         }
@@ -26,11 +30,11 @@ public class ArquivoService {
         return sb.toString();
     }
 
-    private static byte[] zipBytes(String filename, byte[] input)
+    private static byte[] zipBytes(final String filename, final byte[] input)
             throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ZipOutputStream zos = new ZipOutputStream(baos);
-        ZipEntry entry = new ZipEntry(filename);
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        final ZipOutputStream zos = new ZipOutputStream(baos);
+        final ZipEntry entry = new ZipEntry(filename);
 
         entry.setSize(input.length);
         zos.putNextEntry(entry);
@@ -47,29 +51,29 @@ public class ArquivoService {
 
         // converte dados em arquivo zip.
         final String hashHex = convertHashToHex(hash);
-        final String fileName = NOTAS_FISCAIS + "dat/" + hashHex + ".dat";
+        final String fileName = notasFiscaisDir + "dat/" + hashHex + ".dat";
         final byte[] zipByteArr = zipBytes(fileName, data);
 
-        Path path = Paths.get(fileName);
+        final Path path = Paths.get(fileName);
         Files.write(path, zipByteArr);
     }
 
     public void copiaJsonNotaFiscal(final String fileName) throws IOException {
 
-        Path oldPath = Paths.get(NOTAS_FISCAIS + "json/" + fileName);
-        Path newPath = Paths.get(NOTAS_FISCAIS + "erros/" + fileName);
+        final Path oldPath = Paths.get(notasFiscaisDir + "json/" + fileName);
+        final Path newPath = Paths.get(notasFiscaisDir + "erros/" + fileName);
         Files.move(oldPath, newPath, REPLACE_EXISTING);
     }
 
     public void removeJsonNotaFiscal(final String fileName) throws IOException {
-        Path path = Paths.get(NOTAS_FISCAIS + "json/" + fileName);
+        final Path path = Paths.get(notasFiscaisDir + "json/" + fileName);
         Files.delete(path);
     }
 
     public void removeDatZipeFile(final byte[] hash) throws IOException {
         final String hashHex = convertHashToHex(hash);
-        final String filePath = NOTAS_FISCAIS + "dat/" + hashHex + ".dat";
-        Path path = Paths.get(filePath);
+        final String filePath = notasFiscaisDir + "dat/" + hashHex + ".dat";
+        final Path path = Paths.get(filePath);
         Files.delete(path);
     }
 }

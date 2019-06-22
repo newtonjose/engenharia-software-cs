@@ -1,8 +1,8 @@
 package com.github.newtonjose.ufg.cs.domain.jsonserialize;
 
-import com.github.newtonjose.ufg.cs.domain.jsonserialize.notafiscal.NotaFiscal;
+import com.github.newtonjose.ufg.cs.domain.notafiscal.NotaFiscal;
 import com.github.newtonjose.ufg.cs.domain.jsonserialize.service.ArquivoService;
-import com.github.newtonjose.ufg.cs.domain.jsonserialize.utils.Log;
+import com.github.newtonjose.ufg.cs.utils.Log;
 import com.github.newtonjose.ufg.cs.domain.jsonserialize.utils.Seguranca;
 
 import java.io.FileNotFoundException;
@@ -14,21 +14,32 @@ import java.security.NoSuchAlgorithmException;
  */
 public final class ConversorJson {
 
+    private String notasFiscaisDir;
+
     private static final Log LOGGER = new Log(ConversorJson.class);
 
-    private ConversorJson() {
+    public ConversorJson(final String nfEnvVar) {
+        notasFiscaisDir = nfEnvVar;
     }
 
     // recebe a sinalização de que o diretório de entrada recebe a criação
     // de um arquivo.
-    public static void realizaConversao(final String notaJsonFile)
+    public void realizaConversao(final String notaJsonFile)
             throws NoSuchAlgorithmException {
 
-        final ArquivoService arqSer = new ArquivoService();
+        //TODO: Data inclompleta sendo serelializada
+        //TODO: Criar pacote .jar
+
+        final ArquivoService arqSer = new ArquivoService(this.notasFiscaisDir);
 
         try {
-            final NotaFiscal nota = FromJsonToNotaFiscal.
-                    readJsonFileToNotaFiscal(notaJsonFile);
+            LOGGER.info("Aplicação em operção de conversão da nota "
+                    + "fiscal: " + notaJsonFile + ".");
+
+            final String nfPath = this.notasFiscaisDir + "json/" + notaJsonFile;
+
+            final NotaFiscal nota =
+                    FromJsonToNotaFiscal.readJsonFileToNotaFiscal(nfPath);
 
             final FromNotaFiscalToBinario nftb = new FromNotaFiscalToBinario();
             final byte[] data = nftb.notaFiscalToByteArray(nota);
@@ -40,6 +51,9 @@ public final class ConversorJson {
 
             //Remover nota da pasta json
             arqSer.removeJsonNotaFiscal(notaJsonFile);
+
+            LOGGER.info("Conversão realizada com sucesso!");
+
         } catch (FileNotFoundException ioe) {
             LOGGER.info("Error: arquivo " + notaJsonFile
                     + " não encontrado.");
