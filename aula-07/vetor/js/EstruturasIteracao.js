@@ -33,18 +33,6 @@ class ValidaParametros {
     }
 
     /**
-     * Função auxiliar que verifica se uma data é invalida para a
-     * função diaDaSemana.
-     * @param d Inteiro dia da semana.
-     * @param m Inteiro mes do ano.
-     * @param a Inteiro ano.
-     * @returns {boolean}
-     */
-    static validaData(d, m, a) {
-        return d < 1 || d > 31 || m < 1 || m > 12 || a <= 1753;
-    }
-
-    /**
      * Método auxiliar que realiza teste sobre um array de parâmetros.
      * @param a Array de parâmetros de entrada.
      * @throws {Error} Caso a entrada seja null ou undefined.
@@ -75,7 +63,7 @@ class EstruturasIteracao {
     /**
      * Método que encontra a menor temperatura em um vetor.
      *
-     * @param {array} temperatures Vetor de temperaturas.
+     * @param {array} temps Vetor de temperaturas.
      * @return {int} Menor temperatura do vetor passado como paramentro.
      * @throws {TypeError} Se o argumento 'temps' não for um array.
      * @throws {RangeError} Se o vetor de temperatura for vazio.
@@ -93,24 +81,58 @@ class EstruturasIteracao {
         }
 
         temps.forEach((temp) => {
-            ValidaParametros.validaEntrada(temp);
+            ValidaParametros.validaEntrada([temp,]);
         });
 
-        let menorTemp = temperatures[0];
-        let maiorTemp = temperatures[0];
+        let menorTemp = temps[0];
+        let maiorTemp = temps[0];
 
         temps.forEach((value) => {
             if (value > maiorTemp) {
                 maiorTemp = value
-            };
+            }
 
             if (value < menorTemp) {
                 menorTemp = value
-            };
+            }
         });
 
         return menorTemp;
     }
+
+    /**
+     * Soma a quantidade de números impares em um dado vetor.
+     *
+     * @param {array} numbers Vetor de numeros naturais.
+     * @returns {int} Soma de todos os impares do vetor passado como parametro.
+     * @throws {TypeError} Se o argumento 'numbers' não for um array.
+     * @throws {RangeError} Se o vetor for vazio.
+     * @throws {TypeError} Se algum elemento do vetor não for do tipo número.
+     */
+    static somaNumerosImpares(numbers) {
+        if (!ValidaParametros.verificaTipoArray(numbers)) {
+            throw new TypeError("o argumento a deve ser do tipo array");
+        }
+
+        if (numbers.length === 0) {
+            throw new RangeError("nenhuma temperatura fio informada");
+        }
+
+        numbers.forEach((temp) => {
+            ValidaParametros.validaEntrada([temp]);
+        });
+
+
+        const impares = numbers.filter(value => {
+            if (value % 2 !== 0) {
+                return value;
+            }
+        });
+
+        return impares.reduce((total, value) => {
+            return total + value;
+        });
+    }
 }
 
-module.exports = EstruturasIteracao
+module.exports = EstruturasIteracao;
