@@ -10,12 +10,15 @@ aula-01/java/.idea/
 *.class
 
 # node files
-*/js/node_modules/
-*/js/package-lock.json
+aula07/vetor/js/node_modules/
+aula07/vetor/js/package-lock.json
+aula07/vetor/js/coverage/
 
 # jsdoc files
 aula-01/js/out/
 
+# jstest coverage
+*/js/coverage/
 
 #mvn files
 *target/
