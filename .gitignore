@@ -10,8 +10,8 @@ aula-01/java/.idea/
 *.class
 
 # node files
-aula-01/js/node_modules/
-aula-01/js/package-lock.json
+*/js/node_modules/
+*/js/package-lock.json
 
 # jsdoc files
 aula-01/js/out/
