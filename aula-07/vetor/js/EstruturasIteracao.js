@@ -17,7 +17,7 @@ class ValidaParametros {
     /**
      * Função auxiliar que verifica se um dado paramêtro é do tipo 'array'.
      * @param a Váriável do tipo array.
-     * @returns {arg is Array<any>}
+     * @returns {boolean} arg is Array
      */
     static verificaTipoArray(a) {
         return Array.isArray(a);
@@ -58,20 +58,20 @@ class ValidaParametros {
     }
 }
 
+// TODO: Documentação da classe.
 class EstruturasIteracao {
 
     /**
      * Método que encontra a menor temperatura em um vetor.
      *
      * @param {array} temps Vetor de temperaturas.
-     * @return {int} Menor temperatura do vetor passado como paramentro.
+     * @returns {int} Menor temperatura do vetor passado como paramentro.
      * @throws {TypeError} Se o argumento 'temps' não for um array.
      * @throws {RangeError} Se o vetor de temperatura for vazio.
      * @throws {TypeError} Se algum elemento do vetor de temperaturas
      * não for do tipo número.
      */
     static encontrarMenorTemp(temps) {
-
         if (!ValidaParametros.verificaTipoArray(temps)) {
             throw new TypeError("o argumento a deve ser do tipo array");
         }
@@ -115,7 +115,7 @@ class EstruturasIteracao {
         }
 
         if (numbers.length === 0) {
-            throw new RangeError("nenhuma temperatura fio informada");
+            throw new RangeError("nenhuma temperatura foi informada");
         }
 
         numbers.forEach((temp) => {
@@ -132,6 +132,33 @@ class EstruturasIteracao {
         return impares.reduce((total, value) => {
             return total + value;
         });
+    }
+
+    /**
+     * Conta a quanidade de um elemento dado em vetor.
+     * @param num Número inteiro a ser contado no vetor.
+     * @param numbers Array de números inteiros.
+     * @return int
+     */
+    static getQuantidadeElementos(num, numbers) {
+        ValidaParametros.validaEntrada([num]);
+        if (!ValidaParametros.verificaTipoArray(numbers)) {
+            throw new TypeError("o argumento a deve ser do tipo array");
+        }
+
+        if (numbers.length === 0) {
+            throw new RangeError("nenhuma elemento foi informado");
+        }
+
+        let count = 0;
+
+        numbers.forEach((n) => {
+            if (n === num) {
+                count = count + 1;
+            }
+        });
+
+        return count;
     }
 }
 
