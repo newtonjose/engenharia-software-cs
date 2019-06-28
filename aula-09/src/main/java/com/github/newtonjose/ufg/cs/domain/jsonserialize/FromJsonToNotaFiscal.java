@@ -1,40 +1,55 @@
 package com.github.newtonjose.ufg.cs.domain.jsonserialize;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.github.newtonjose.ufg.cs.domain.notafiscal.NotaFiscal;
+import com.github.newtonjose.ufg.cs.utils.Log;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by aluno on 13/06/19.
  */
-public class FromJsonToNotaFiscal {
+public final class FromJsonToNotaFiscal {
 
-    public static void readJsonFile() throws IOException {
-        // REF.: https://www.journaldev.com/2324/jackson-json-java-parser-api-example-tutorial
-        ObjectMapper objectMapper = new ObjectMapper();
+    private static final Log LOG = new Log(FromJsonToNotaFiscal.class);
 
-        NotaFiscal notaFiscal = objectMapper.readValue(
-                new File("./static/nota_fiscal.json"), NotaFiscal.class
+    // REF.: https://www.journaldev.com/2324/jackson-json-java-parser-api-
+    // example-tutorial
+    private static ObjectMapper objectMapper = new ObjectMapper();
+
+    private FromJsonToNotaFiscal() {
+    }
+
+    public static NotaFiscal readJsonFileToNotaFiscal(final String filePath)
+            throws IOException {
+
+
+        SimpleModule module = new SimpleModule(
+                "NotaFiscalDeserializer", new Version(1,
+                0, 0, null, null,
+                null)
         );
 
-        //converting json to Map
-        byte[] mapData = Files.readAllBytes(Paths.get("data.txt"));
-        Map<String,String> myMap = new HashMap<>();
+        module.addDeserializer(NotaFiscal.class, new NotaFiscalDeserializer());
+        objectMapper.registerModule(module);
 
+        NotaFiscal notaFiscal;
+        try {
+            // Validação do arquivo json
+            objectMapper.readTree(new File(filePath));
+            notaFiscal = objectMapper.readValue(
+                    new File(filePath), NotaFiscal.class
+            );
+        } catch (IOException ioe) {
+            LOG.error(ioe);
+            throw ioe;
+        }
 
-        myMap = objectMapper.readValue(mapData, HashMap.class);
-        System.out.println("Map is: "+myMap);
-
-        //another way
-        myMap = objectMapper.readValue(mapData, new TypeReference<HashMap<String,String>>() {});
-        System.out.println("Map using TypeReference: "+myMap);
-
+        return notaFiscal;
     }
 }
