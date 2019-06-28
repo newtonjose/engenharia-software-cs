@@ -138,10 +138,14 @@ class EstruturasIteracao {
      * Conta a quanidade de um elemento dado em vetor.
      * @param num Número inteiro a ser contado no vetor.
      * @param numbers Array de números inteiros.
-     * @return int
+     * @returns int Quantidade de ocorrências de num no vetor.
+     * @throws {TypeError} Se o argumento num não for do tipo inteiro.
+     * @throws {TypeError} Se o argumento 'numbers' não for um array.
+     * @throws {RangeError} Se o vetor for vazio.
      */
     static getQuantidadeElementos(num, numbers) {
         ValidaParametros.validaEntrada([num]);
+
         if (!ValidaParametros.verificaTipoArray(numbers)) {
             throw new TypeError("o argumento a deve ser do tipo array");
         }
