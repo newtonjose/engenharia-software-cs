@@ -164,8 +164,11 @@ class EstruturasIteracao {
     /**
      * Método que conta a quantidade de ocorrencias de cada letras em uma
      * string.
-     * @param msgs String
-     * @return long[] Arrays de inteiros.
+     *
+     * @param {string} msgs Sequencia de caracteres.
+     * @return {Object} Objeto com a ocorrencias de cada palavra.
+     * @throws {TypeError} Se parâmetro não for do tipo string.
+     * @throws {RangeError} Caso o parametro seja uma string vazia.
      */
     static getOcorrenciasLetras(msgs) {
 
@@ -189,6 +192,43 @@ class EstruturasIteracao {
         return num_letras;
     }
 
+    /**
+     * Método que encontra a palavra com mais orcorrencia numa array de string.
+     *
+     * @param {string} msgs Sequencia de caracteres.
+     * @returns {string} Palavra com mais ocorrência no Arrays.
+     * @throws {TypeError} Se parâmetro não for do tipo string.
+     * @throws {RangeError} Caso o parametro seja uma string vazia.
+     */
+    static localizaPalavraMaisFrequente(msgs) {
+        if (typeof msgs != "string") {
+            throw new TypeError("o parametro tem que ser do tipo string.")
+        }
+
+        if (msgs.length === 0) {
+            throw new RangeError("a string está vazia.");
+        }
+
+        const num_palavras = {};
+
+        const msgs_vet = msgs.split(' ');
+        msgs_vet.forEach((value) => {
+            num_palavras[value] = msgs_vet.filter((caracter) => {
+                return value === caracter;
+            }).length;
+        });
+
+        const sortable = [];
+        for (let palavra in num_palavras) {
+            sortable.push([palavra, num_palavras[palavra]]);
+        }
+
+        sortable.sort(function(a, b) {
+            return a[1] - b[1];
+        });
+
+        return sortable[sortable.length-1][0];
+    }
 }
 
 module.exports = EstruturasIteracao;
