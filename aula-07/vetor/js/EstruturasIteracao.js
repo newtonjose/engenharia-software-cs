@@ -154,16 +154,41 @@ class EstruturasIteracao {
             throw new RangeError("nenhuma elemento foi informado");
         }
 
-        let count = 0;
-
-        numbers.forEach((n) => {
-            if (n === num) {
-                count = count + 1;
-            }
+        const finds = numbers.filter((value) => {
+            return value === num;
         });
 
-        return count;
+        return finds.length;
     }
+
+    /**
+     * Método que conta a quantidade de ocorrencias de cada letras em uma
+     * string.
+     * @param msgs String
+     * @return long[] Arrays de inteiros.
+     */
+    static getOcorrenciasLetras(msgs) {
+
+        if (typeof msgs != "string") {
+            throw new TypeError("o parametro tem que ser do tipo string.")
+        }
+
+        if (msgs.length === 0) {
+            throw new RangeError("a string está vazia.");
+        }
+
+        const num_letras = {};
+
+        const msgs_vet = msgs.split('');
+        msgs_vet.forEach((value) => {
+            num_letras[value] = msgs_vet.filter((caracter) => {
+                return value === caracter;
+            }).length;
+        });
+
+        return num_letras;
+    }
+
 }
 
 module.exports = EstruturasIteracao;
