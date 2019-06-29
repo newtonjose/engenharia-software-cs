@@ -5,6 +5,7 @@ import com.github.newtonjose.cs.aula08.inteiro.domain.Exibe4Bytes;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Arrays;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -46,8 +47,11 @@ public final class ProgramaExibe4Bytes {
                     raf
             );
 
-            System.out.println("Os quatros primeiros Hexadecimal: " //NOPMD
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info("Os quatros primeiros Hexadecimal: "
                         + Arrays.toString(primeiros4Hexa));
+            }
+
         } catch (IOException ioe) {
             LOGGER.warning(ioe.getMessage());
         }
