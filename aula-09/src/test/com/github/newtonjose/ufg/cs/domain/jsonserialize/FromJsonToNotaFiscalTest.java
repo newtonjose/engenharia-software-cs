@@ -9,7 +9,8 @@ class FromJsonToNotaFiscalTest {
 
     @Test
     void readJsonFile() throws IOException {
-        NotaFiscal nota = FromJsonToNotaFiscal.readJsonFileToNotaFiscal("notaError.json");
+        NotaFiscal nota = FromJsonToNotaFiscal.readJsonFileToNotaFiscal(
+                "./static/json/nota_fiscal.json");
 
         FromNotaFiscalToBinario nftb = new FromNotaFiscalToBinario();
 
