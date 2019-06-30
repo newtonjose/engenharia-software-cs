@@ -10,20 +10,44 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by aluno on 13/06/19.
+ * Implementação da classe que implementa o método para a conversão
+ * de um arquivo JSON.
+ *
+ * <p>Classe encapsula a coordenação de ações para que a conversão possa
+ * ser realizada de forma assincrona.</p>
  */
 public final class ConversorJson {
 
+    /**
+     * Variável para o path diretório com as notas fiscais.
+     */
     private String notasFiscaisDir;
 
+    /**
+     * Constante com instância de logger.
+     */
     private static final Log LOGGER = new Log(ConversorJson.class);
 
+    /**
+     * Construtor que intancia variável com path do diretório das notas.
+     *
+     * @param nfEnvVar String Path do diretório base.
+     */
     public ConversorJson(final String nfEnvVar) {
         notasFiscaisDir = nfEnvVar;
     }
 
-    // recebe a sinalização de que o diretório de entrada recebe a criação
-    // de um arquivo.
+    /**
+     * Método que coordena a realização da conversão. Convertendo arquivo json
+     * para objeto, converter objeto para formato binário e gera a hash sha-256.
+     * Em caso de sucesso, salva o arquivo no diretório dat/ e remove do
+     * dirétorio json/. Em caso de erro, a nota fiscal é movida para o diretório
+     * error/.
+     *
+     * @param notaJsonFile String Nome do arquivo a ser convertido.
+     * @throws NoSuchAlgorithmException Caso o algoritmo SHA-256 não exista nos
+     * pacotes java.
+     */
     public void realizaConversao(final String notaJsonFile)
             throws NoSuchAlgorithmException {
 
@@ -49,7 +73,6 @@ public final class ConversorJson {
 
             arqSer.persisteAsZip(hash, data);
 
-            //Remover nota da pasta json
             arqSer.removeJsonNotaFiscal(notaJsonFile);
 
             LOGGER.info("Conversão realizada com sucesso!");

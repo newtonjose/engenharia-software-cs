@@ -9,23 +9,42 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 /**
- * Created by aluno on 13/06/19.
+ * Implementação da classe que converte objeto em formato binario.
+ *
+ * <p>Classe com método que realiza a conversão do objeto NotaFiscal em
+ * array de bytes.</p>
  */
 public class FromNotaFiscalToBinario {
 
+    /**
+     * Instância da classe  que realiza a conversão.
+     */
     private final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
+    /**
+     * Instância com padrão de bytes para cada tipo de dado.
+     */
     private final DataOutputStream dos = new DataOutputStream(baos);
 
+    /**
+     * Constante com instância de logger.
+     */
     private static final Log LOG = new Log(FromNotaFiscalToBinario.class);
 
+    /**
+     * Método estático de conversão de um objeto NotaFiscal para um array de
+     * bytes usando a ByteArrayOutputStream e DataOutputStream.
+     *
+     * @param notaFiscal NotaFiscal Objeto a ser convertido.
+     * @return byte[] Array de byte bytes dos atributos do objeto nota fiscal.
+     * @throws IOException Caso exita erro na conversão dos tipos.
+     */
     public byte[] notaFiscalToByteArray(final NotaFiscal notaFiscal)
             throws IOException {
 
         LOG.info("Convertendo dodos da Nota Fiscal em bytes.");
 
         try {
-            // convertendo data como inteiro em 4 bytes
             dos.writeInt(notaFiscal.getDataAsInt());
             dos.writeDouble(notaFiscal.getTotal());
 
@@ -45,7 +64,6 @@ public class FromNotaFiscalToBinario {
 
         LOG.info("Dodos convertidos: " + byteArr.length + " bytes.");
 
-        // retorna o array de bytes dos atributos do objeto nota fiscal
         return byteArr;
     }
 }

@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/newtonjose/cs-2019-01.svg)](https://jitpack.io/#newtonjose/cs-2019-01)
+
 # Programa de serialização de arquivo Json.
 ## Requisitos:
 

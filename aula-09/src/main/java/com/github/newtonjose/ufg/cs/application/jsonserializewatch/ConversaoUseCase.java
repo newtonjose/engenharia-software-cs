@@ -15,13 +15,37 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 /**
- * Created by aluno on 13/06/19.
+ * Implementação da classe principal do programa que serializa arquivos json.
+ *
+ * <p>Classe main responsável por inicializar o programa obtém a váriavel
+ * de ambiente e iniciar o monitoramento do diretório de entrada dos arquivos
+ * json</p>
  */
 public final class ConversaoUseCase {
 
+    /**
+     * Constante com valor do path do diretório a ser monitorado.
+     */
     private static final String NOTASFISCAIS = System.getenv("NOTAS_FISCAIS");
+
+    /**
+     * Constante com instância de logger.
+     */
     private static final Log LOG = new Log(ConversaoUseCase.class);
 
+    /**
+     * Construtor privado pois a classe não é instanciável.
+     */
+    private ConversaoUseCase() {
+
+    }
+
+    /**
+     * Método main que verifica se a variável de ambiente foi inicializada,
+     * executa o watchService para monitorar o repositório json/ e instancia,
+     * o programa de serialização do arquivo .json.
+     * @param args Argumentos default do método main, mas não usados.
+     */
     public static void main(final String[] args) {
         try {
             Objects.requireNonNull(NOTASFISCAIS);
@@ -67,5 +91,4 @@ public final class ConversaoUseCase {
             System.exit(1);
         }
     }
-
 }
