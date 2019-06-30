@@ -12,19 +12,37 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by aluno on 13/06/19.
+ * Implementação da classe que converte Json para objeto.
+ *
+ * <p>Classe com método que realiza a leitura do arquivo json e converte em
+ * objeto NotaFiscal.</p>
  */
 public final class FromJsonToNotaFiscal {
 
+    /**
+     * Constante com instância de logger.
+     */
     private static final Log LOG = new Log(FromJsonToNotaFiscal.class);
 
-    // REF.: https://www.journaldev.com/2324/jackson-json-java-parser-api-
-    // example-tutorial
+    /**
+     * Intância da classe ObjectMapper da lib Jackson.
+     */
     private static ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * Construtor privado pois a classe não é instanciável.
+     */
     private FromJsonToNotaFiscal() {
     }
 
+    /**
+     * Método estático que realiza a leitura do arquivo json para o objeto
+     * Nota Fiscal realizando validação básica.
+     *
+     * @param filePath String Path do arquivo json.
+     * @return NotaFiscal Objeto com todos os campos do json.
+     * @throws IOException Caso tenha erro na leitura do arquivo json.
+     */
     public static NotaFiscal readJsonFileToNotaFiscal(final String filePath)
             throws IOException {
 
@@ -40,7 +58,6 @@ public final class FromJsonToNotaFiscal {
 
         NotaFiscal notaFiscal;
         try {
-            // Validação do arquivo json
             objectMapper.readTree(new File(filePath));
             notaFiscal = objectMapper.readValue(
                     new File(filePath), NotaFiscal.class
