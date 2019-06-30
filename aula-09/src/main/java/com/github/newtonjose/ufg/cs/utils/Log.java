@@ -13,12 +13,12 @@ public class Log {
     private final Logger logger;
 
     public Log(final Class cls) {
-        this.logger = LogManager.getLogger(cls);
+        this.logger = LogManager.getLogger(cls.getName());
     }
 
     public void info(final String msg) {
-        if (logger.isDebugEnabled()) {
-            logger.debug(msg);
+        if (logger.isInfoEnabled()) {
+            logger.info(msg);
         }
     }
 
