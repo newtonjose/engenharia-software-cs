@@ -26,7 +26,7 @@ public final class ConversaoUseCase {
         try {
             Objects.requireNonNull(NOTASFISCAIS);
         } catch (NullPointerException npe) {
-            LOG.info("Váriável de ambiente notasfiscaisvar não foi"
+            LOG.info("Váriável de ambiente NOTAS_FISCAIS não foi"
                     + " inicializada.");
             System.exit(1);
         }
