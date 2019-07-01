@@ -26,6 +26,7 @@ public final class ContaPalavras {
      *
      * @param msgs Arrays de palavras.
      * @return String Palavra com mais ocorrência no Arrays.
+     * @throws IllegalArgumentException Caso o parametro seja uma string vazia.
      */
     public static String contaPalavraOcorrencias(final String... msgs) {
         if (msgs.length == 0) {

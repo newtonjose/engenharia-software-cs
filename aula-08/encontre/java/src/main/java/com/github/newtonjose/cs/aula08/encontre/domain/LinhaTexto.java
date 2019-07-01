@@ -43,4 +43,41 @@ public final class LinhaTexto {
         this.numColuna = nCol;
         this.linha = lin;
     }
+
+    /**
+     * Método para ter acesso ao número da coluna de uma linha  do arquivo.
+     *
+     * @return int Número da coluna.
+     */
+    public int getNumColuna() {
+        return numColuna;
+    }
+
+    /**
+     * Método para ter acesso ao número da linha de uma linha do arquivo.
+     *
+     * @return int Número da coluna.
+     */
+    public int getNumLinha() {
+        return numLinha;
+    }
+
+    /**
+     * Método para retornar as ocoreencias de uma palavra em uma linha
+     * arquivo.
+     *
+     * @return int
+     */
+    public int getOcorrencias() {
+        return ocorrencias;
+    }
+
+    /**
+     * Linha do arquivo onde existe ocorrencias da palavra que se busca.
+     *
+     * @return String
+     */
+    public String getLinha() {
+        return linha;
+    }
 }

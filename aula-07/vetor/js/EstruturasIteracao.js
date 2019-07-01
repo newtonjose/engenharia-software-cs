@@ -154,15 +154,126 @@ class EstruturasIteracao {
             throw new RangeError("nenhuma elemento foi informado");
         }
 
-        let count = 0;
+        const finds = numbers.filter((value) => {
+            return value === num;
+        });
 
-        numbers.forEach((n) => {
-            if (n === num) {
-                count = count + 1;
+        return finds.length;
+    }
+
+    /**
+     * Método que conta a quantidade de ocorrencias de cada letras em uma
+     * string.
+     *
+     * @param {string} msgs Sequencia de caracteres.
+     * @return {Object} Objeto com a ocorrencias de cada palavra.
+     * @throws {TypeError} Se parâmetro não for do tipo string.
+     * @throws {RangeError} Caso o parametro seja uma string vazia.
+     */
+    static getOcorrenciasLetras(msgs) {
+
+        if (typeof msgs != "string") {
+            throw new TypeError("o parametro tem que ser do tipo string.")
+        }
+
+        if (msgs.length === 0) {
+            throw new RangeError("a string está vazia.");
+        }
+
+        const num_letras = {};
+
+        const msgs_vet = msgs.split('');
+        msgs_vet.forEach((value) => {
+            num_letras[value] = msgs_vet.filter((caracter) => {
+                return value === caracter;
+            }).length;
+        });
+
+        return num_letras;
+    }
+
+    /**
+     * Método que encontra a palavra com mais orcorrencia numa array de string.
+     *
+     * @param {string} msgs Sequencia de caracteres.
+     * @returns {string} Palavra com mais ocorrência no Arrays.
+     * @throws {TypeError} Se parâmetro não for do tipo string.
+     * @throws {RangeError} Caso o parametro seja uma string vazia.
+     */
+    static localizaPalavraMaisFrequente(msgs) {
+        if (typeof msgs != "string") {
+            throw new TypeError("o parametro tem que ser do tipo string.")
+        }
+
+        if (msgs.length === 0) {
+            throw new RangeError("a string está vazia.");
+        }
+
+        const num_palavras = {};
+
+        const msgs_vet = msgs.split(' ');
+        msgs_vet.forEach((value) => {
+            num_palavras[value] = msgs_vet.filter((caracter) => {
+                return value === caracter;
+            }).length;
+        });
+
+        const sortable = this.ordenaObject(num_palavras);
+
+        return sortable[sortable.length-1][0];
+    }
+
+    /**
+     * Método auxiliar para ordenar um objeto pelo valor.
+     *
+     * @param values Objeto com valores inteiros.
+     * @returns {Array}
+     */
+    static ordenaObject(values) {
+        const sortable = [];
+        for (let val in values) {
+            sortable.push([val, values[val]]);
+        }
+
+        sortable.sort(function(a, b) {
+            return a[1] - b[1];
+        });
+
+        return sortable;
+    }
+
+    /**
+     * Sorteia 1.000.000 números de inteiros, faz a ordenação pelo número
+     * de ocorrencia, e retorna número foi o “mais frequente”, então todos os
+     * mais frequentes.
+     *
+     * @returns {Array} Vetor com os números mais frequentes e suas frequencias.
+     */
+    static sorteioAleatorio() {
+        const MAX_SORT = 1000000;
+
+        const numeros = {};
+        for (let i = 1; i <= MAX_SORT; i++) {
+            const num = Math.floor(Math.random() * MAX_SORT);
+
+            if (num in numeros) {
+                numeros[num] = numeros[num] + 1;
+            } else {
+                numeros[num] = 1;
+            }
+        }
+
+        const num_order = EstruturasIteracao.ordenaObject(numeros);
+        const num_freq = num_order[num_order.length-1][1];
+
+        const mais_freq = [];
+        num_order.forEach(value => {
+            if (value[1] === num_freq) {
+                mais_freq.push(value);
             }
         });
 
-        return count;
+        return mais_freq;
     }
 }
 
