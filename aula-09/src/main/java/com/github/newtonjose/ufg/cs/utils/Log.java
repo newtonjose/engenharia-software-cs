@@ -38,23 +38,23 @@ public class Log {
 
     /**
      * Método para logar uma expection.
-     *
+     * @param msg String Messagem da exception.
      * @param exp Exception
      */
-    public void error(final Exception exp) {
+    public void error(final String msg, final Exception exp) {
         if (logger.isErrorEnabled()) {
-            logger.error(exp.toString());
+            logger.error(msg + " " + exp);
         }
     }
 
     /**
      * Método para exception fatal.
-     *
+     * @param msg String Messagem da exception.
      * @param nsae NoSuchAlgorithmException
      */
-    public void fatal(final NoSuchAlgorithmException nsae) {
+    public void fatal(final String msg, final NoSuchAlgorithmException nsae) {
         if (logger.isFatalEnabled()) {
-            logger.fatal(nsae);
+            logger.fatal(msg + " " + nsae);
         }
     }
 }

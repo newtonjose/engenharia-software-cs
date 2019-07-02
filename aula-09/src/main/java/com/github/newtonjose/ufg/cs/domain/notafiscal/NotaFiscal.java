@@ -24,7 +24,7 @@ public class NotaFiscal {
     /**
      * Lista para armazenar os objetos ItemNotaFiscal.
      */
-    private List<ItemNotaFiscal> itens = new ArrayList<>();
+    private final List<ItemNotaFiscal> itens = new ArrayList<>();
 
     /**
      * Método de validação do formato de uma data: dd/MM/yyyy.
@@ -33,7 +33,7 @@ public class NotaFiscal {
      * @throws ParseException Caso a data não esteja no formato.
      */
     private void validaFormatoData(final String date) throws ParseException {
-        SimpleDateFormat sdfrmt = new SimpleDateFormat("dd/MM/yyyy");
+        final SimpleDateFormat sdfrmt = new SimpleDateFormat("dd/MM/yyyy");
         sdfrmt.parse(date);
     }
     /**

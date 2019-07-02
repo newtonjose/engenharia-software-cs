@@ -47,7 +47,7 @@ public final class FromJsonToNotaFiscal {
             throws IOException {
 
 
-        SimpleModule module = new SimpleModule(
+        final SimpleModule module = new SimpleModule(
                 "NotaFiscalDeserializer", new Version(1,
                 0, 0, null, null,
                 null)
@@ -56,17 +56,15 @@ public final class FromJsonToNotaFiscal {
         module.addDeserializer(NotaFiscal.class, new NotaFiscalDeserializer());
         objectMapper.registerModule(module);
 
-        NotaFiscal notaFiscal;
         try {
             objectMapper.readTree(new File(filePath));
-            notaFiscal = objectMapper.readValue(
+
+            return objectMapper.readValue(
                     new File(filePath), NotaFiscal.class
             );
         } catch (IOException ioe) {
-            LOG.error(ioe);
+            LOG.error(ioe.getMessage(), ioe);
             throw ioe;
         }
-
-        return notaFiscal;
     }
 }

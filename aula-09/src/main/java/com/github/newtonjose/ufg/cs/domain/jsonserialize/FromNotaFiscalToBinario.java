@@ -48,7 +48,7 @@ public class FromNotaFiscalToBinario {
             dos.writeInt(notaFiscal.getDataAsInt());
             dos.writeDouble(notaFiscal.getTotal());
 
-            for (ItemNotaFiscal item: notaFiscal.getItens()) {
+            for (final ItemNotaFiscal item: notaFiscal.getItens()) {
                 dos.writeInt(item.getCodigo());
                 dos.write(item.getDescricaoAsByteArray());
                 dos.writeInt(item.getQuantidade());
@@ -57,7 +57,7 @@ public class FromNotaFiscalToBinario {
 
             dos.flush();
         } catch (IOException ioe) {
-            LOG.error(ioe);
+            LOG.error(ioe.getMessage(), ioe);
         }
 
         final byte[] byteArr = baos.toByteArray();

@@ -12,7 +12,6 @@ import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 import java.security.NoSuchAlgorithmException;
-import java.util.Objects;
 
 /**
  * Implementação da classe principal do programa que serializa arquivos json.
@@ -47,15 +46,14 @@ public final class ConversaoUseCase {
      * @param args Argumentos default do método main, mas não usados.
      */
     public static void main(final String[] args) {
-        try {
-            Objects.requireNonNull(NOTASFISCAIS);
-        } catch (NullPointerException npe) {
+
+        if (NOTASFISCAIS == null) {
             LOG.info("Váriável de ambiente NOTAS_FISCAIS não foi"
                     + " inicializada.");
-            System.exit(1);
+            return;
         }
 
-        Path path = Paths.get(NOTASFISCAIS + "json/");
+        final Path path = Paths.get(NOTASFISCAIS + "json/");
 
         final ConversorJson convJson = new ConversorJson(NOTASFISCAIS);
 
@@ -73,22 +71,24 @@ public final class ConversaoUseCase {
             LOG.info("Diretório " + NOTASFISCAIS + "json/ disponível "
                     + "para armazenar os arquivos .json");
 
-            WatchKey key;
-            while ((key = watchService.take()) != null) {
-                for (WatchEvent<?> event : key.pollEvents()) {
+            for (;;) {
+
+                WatchKey key;
+                key = watchService.take();
+
+                for (final WatchEvent<?> event : key.pollEvents()) {
                     LOG.info("Arquivo detectado: " + event.context());
                     convJson.realizaConversao(event.context().toString());
                 }
                 key.reset();
             }
         } catch (IOException e) {
-            LOG.error(e);
-        } catch (InterruptedException e) {
+            LOG.error(e.getMessage(), e);
+        } catch (InterruptedException ie) {
             LOG.info("Programa encerrado...");
             Thread.currentThread().interrupt();
         } catch (NoSuchAlgorithmException e) {
-            LOG.fatal(e);
-            System.exit(1);
+            LOG.fatal(e.getMessage(), e);
         }
     }
 }
