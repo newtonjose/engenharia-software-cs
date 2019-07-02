@@ -21,7 +21,7 @@ public class ArquivoService {
     /**
      * Variável para o path diretório com as notas fiscais.
      */
-    private String notasFiscaisDir;
+    private final String notasFiscaisDir;
 
     /**
      * Construtor que inicializa a variável com path do diretório das notas.
@@ -40,7 +40,7 @@ public class ArquivoService {
      */
     private static String convertHashToHex(final byte[] hash) {
         final StringBuilder sb = new StringBuilder();
-        for (byte b : hash) {
+        for (final byte b : hash) {
             sb.append(String.format("%02X", b));
         }
 

@@ -71,8 +71,11 @@ public final class ConversaoUseCase {
             LOG.info("Diretório " + NOTASFISCAIS + "json/ disponível "
                     + "para armazenar os arquivos .json");
 
-            WatchKey key;
-            while ((key = watchService.take()) != null) {
+            for (;;) {
+
+                WatchKey key;
+                key = watchService.take();
+
                 for (final WatchEvent<?> event : key.pollEvents()) {
                     LOG.info("Arquivo detectado: " + event.context());
                     convJson.realizaConversao(event.context().toString());
@@ -81,7 +84,7 @@ public final class ConversaoUseCase {
             }
         } catch (IOException e) {
             LOG.error(e.getMessage(), e);
-        } catch (InterruptedException e) {
+        } catch (InterruptedException ie) {
             LOG.info("Programa encerrado...");
             Thread.currentThread().interrupt();
         } catch (NoSuchAlgorithmException e) {

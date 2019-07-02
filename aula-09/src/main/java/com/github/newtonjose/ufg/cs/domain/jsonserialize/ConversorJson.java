@@ -21,12 +21,12 @@ public final class ConversorJson {
     /**
      * Variável para o path diretório com as notas fiscais.
      */
-    private String notasFiscaisDir;
+    private final String notasFiscaisDir;
 
     /**
      * Constante com instância de logger.
      */
-    private static final Log LOGGER = new Log(ConversorJson.class);
+    private static final Log LOG = new Log(ConversorJson.class);
 
     /**
      * Construtor que intancia variável com path do diretório das notas.
@@ -51,13 +51,10 @@ public final class ConversorJson {
     public void realizaConversao(final String notaJsonFile)
             throws NoSuchAlgorithmException {
 
-        //TODO: Data inclompleta sendo serelializada
-        //TODO: Criar pacote .jar
-
         final ArquivoService arqSer = new ArquivoService(this.notasFiscaisDir);
 
         try {
-            LOGGER.info("Aplicação em operção de conversão da nota "
+            LOG.info("Aplicação em operção de conversão da nota "
                     + "fiscal: " + notaJsonFile + ".");
 
             final String nfPath = this.notasFiscaisDir + "json/" + notaJsonFile;
@@ -75,18 +72,18 @@ public final class ConversorJson {
 
             arqSer.removeJsonNotaFiscal(notaJsonFile);
 
-            LOGGER.info("Conversão realizada com sucesso!");
+            LOG.info("Conversão realizada com sucesso!");
 
         } catch (FileNotFoundException ioe) {
-            LOGGER.info("Error: arquivo " + notaJsonFile
+            LOG.info("Error: arquivo " + notaJsonFile
                     + " não encontrado.");
         } catch (IOException ioe) {
             try {
                 arqSer.copiaJsonNotaFiscal(notaJsonFile);
             } catch (IOException cioe) {
-                // error provável é que não existe o arquivo.
+                LOG.error(cioe.getMessage(), cioe);
             }
-            LOGGER.info("Erro ao realizar a conversão da nota fiscal: "
+            LOG.info("Erro ao realizar a conversão da nota fiscal: "
                     + notaJsonFile);
         } catch (NoSuchAlgorithmException nsae) {
             throw nsae;
