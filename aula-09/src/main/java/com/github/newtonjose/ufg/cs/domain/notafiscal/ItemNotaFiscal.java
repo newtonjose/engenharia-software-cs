@@ -87,9 +87,9 @@ public class ItemNotaFiscal {
      * @return String Descrição em formato ASCII.
      */
     private static String convertDescricaoToUSASCII(final String descricao) {
-        String dsc = descricao.replaceAll("ç", "c");
+        final String dsc = descricao.replaceAll("ç", "c");
 
-        String str = Normalizer.normalize(dsc, Normalizer.Form.NFD);
+        final String str = Normalizer.normalize(dsc, Normalizer.Form.NFD);
         return str.replaceAll("\\p{M}", "");
     }
 
@@ -106,12 +106,12 @@ public class ItemNotaFiscal {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         final DataOutputStream dos = new DataOutputStream(baos);
 
-        String dsc = convertDescricaoToUSASCII(this.descricao);
+        final String dsc = convertDescricaoToUSASCII(this.descricao);
         dos.writeUTF(dsc);
 
-        byte[] auxByteArr = baos.toByteArray();
+        final byte[] auxByteArr = baos.toByteArray();
         if (auxByteArr.length < DESCRICAO_LENGTH) {
-            int diff = DESCRICAO_LENGTH - auxByteArr.length;
+            final int diff = DESCRICAO_LENGTH - auxByteArr.length;
             for (int i = 0; i < diff; i++) {
                 dos.writeUTF("\00");
             }

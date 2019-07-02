@@ -10,7 +10,6 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Objects;
 
 /**
  * Implementação do deserializador de um arquivo json que representa uma nota
@@ -20,6 +19,11 @@ import java.util.Objects;
  * deserialização de arquivo json para objetos NotaFiscal.</p>
  */
 public class NotaFiscalDeserializer extends StdDeserializer<NotaFiscal> {
+
+    /**
+     * Versão da deserializer.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Construtor base.
@@ -47,9 +51,8 @@ public class NotaFiscalDeserializer extends StdDeserializer<NotaFiscal> {
     private static void verificaCampoExiste(final JsonNode node,
                                             final String field)
             throws IOException {
-        try {
-            Objects.requireNonNull(node);
-        } catch (NullPointerException npe) {
+
+        if (node == null) {
             throw new IOException("field " + field +  " cant be null ");
         }
     }
@@ -68,11 +71,11 @@ public class NotaFiscalDeserializer extends StdDeserializer<NotaFiscal> {
                                   final DeserializationContext deserializer)
             throws IOException {
 
-        NotaFiscal notaFiscal = new NotaFiscal();
-        ObjectCodec codec = parser.getCodec();
-        JsonNode node = codec.readTree(parser);
+        final NotaFiscal notaFiscal = new NotaFiscal();
+        final ObjectCodec codec = parser.getCodec();
+        final JsonNode node = codec.readTree(parser);
 
-        JsonNode dataNode = node.get("data");
+        final JsonNode dataNode = node.get("data");
         verificaCampoExiste(dataNode, "data");
         try {
             notaFiscal.setData(dataNode.asText());
@@ -82,24 +85,24 @@ public class NotaFiscalDeserializer extends StdDeserializer<NotaFiscal> {
             );
         }
 
-        JsonNode totalNode = node.get("total");
+        final JsonNode totalNode = node.get("total");
         verificaCampoExiste(totalNode, "total");
         notaFiscal.setTotal(totalNode.asDouble());
 
-        JsonNode itensNode = node.get("itens");
+        final JsonNode itensNode = node.get("itens");
         verificaCampoExiste(itensNode, "itens");
 
-        for (JsonNode jn: itensNode) {
-            JsonNode qtdNode = jn.get("quantidade");
+        for (final JsonNode jn: itensNode) {
+            final JsonNode qtdNode = jn.get("quantidade");
             verificaCampoExiste(qtdNode, "itens: quantidade");
 
-            JsonNode prNode = jn.get("preco");
+            final JsonNode prNode = jn.get("preco");
             verificaCampoExiste(prNode, "itens: preco");
 
-            JsonNode codNode = jn.get("codigo");
+            final JsonNode codNode = jn.get("codigo");
             verificaCampoExiste(codNode, "itens: codigo");
 
-            JsonNode desNode = jn.get("descricao");
+            final JsonNode desNode = jn.get("descricao");
             verificaCampoExiste(desNode, "itens: descicrao");
 
             final ItemNotaFiscal itemNota = new ItemNotaFiscal(qtdNode.asInt(),
