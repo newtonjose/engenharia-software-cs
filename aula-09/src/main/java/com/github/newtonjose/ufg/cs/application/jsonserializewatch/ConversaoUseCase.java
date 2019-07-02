@@ -47,12 +47,11 @@ public final class ConversaoUseCase {
      * @param args Argumentos default do método main, mas não usados.
      */
     public static void main(final String[] args) {
-        try {
-            Objects.requireNonNull(NOTASFISCAIS);
-        } catch (NullPointerException npe) {
+
+        if (NOTASFISCAIS.length() == 0) {
             LOG.info("Váriável de ambiente NOTAS_FISCAIS não foi"
                     + " inicializada.");
-            System.exit(1);
+            return;
         }
 
         Path path = Paths.get(NOTASFISCAIS + "json/");
