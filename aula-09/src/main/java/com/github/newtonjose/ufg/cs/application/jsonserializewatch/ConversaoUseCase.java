@@ -12,7 +12,6 @@ import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 import java.security.NoSuchAlgorithmException;
-import java.util.Objects;
 
 /**
  * Implementação da classe principal do programa que serializa arquivos json.
@@ -48,7 +47,7 @@ public final class ConversaoUseCase {
      */
     public static void main(final String[] args) {
 
-        if (NOTASFISCAIS.length() == 0) {
+        if (NOTASFISCAIS == null) {
             LOG.info("Váriável de ambiente NOTAS_FISCAIS não foi"
                     + " inicializada.");
             return;
