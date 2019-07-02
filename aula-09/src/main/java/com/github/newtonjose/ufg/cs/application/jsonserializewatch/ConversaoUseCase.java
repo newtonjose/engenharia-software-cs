@@ -53,7 +53,7 @@ public final class ConversaoUseCase {
             return;
         }
 
-        Path path = Paths.get(NOTASFISCAIS + "json/");
+        final Path path = Paths.get(NOTASFISCAIS + "json/");
 
         final ConversorJson convJson = new ConversorJson(NOTASFISCAIS);
 
@@ -73,19 +73,19 @@ public final class ConversaoUseCase {
 
             WatchKey key;
             while ((key = watchService.take()) != null) {
-                for (WatchEvent<?> event : key.pollEvents()) {
+                for (final WatchEvent<?> event : key.pollEvents()) {
                     LOG.info("Arquivo detectado: " + event.context());
                     convJson.realizaConversao(event.context().toString());
                 }
                 key.reset();
             }
         } catch (IOException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         } catch (InterruptedException e) {
             LOG.info("Programa encerrado...");
             Thread.currentThread().interrupt();
         } catch (NoSuchAlgorithmException e) {
-            LOG.fatal(e);
+            LOG.fatal(e.getMessage(), e);
             System.exit(1);
         }
     }
