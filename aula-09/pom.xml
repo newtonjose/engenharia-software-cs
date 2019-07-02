@@ -108,11 +108,11 @@
             <version>2.9.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.newtonjose</groupId>
-            <artifactId>cs-2019-01-aula09</artifactId>
-            <version>master-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.github.newtonjose</groupId>-->
+<!--            <artifactId>cs-2019-01-aula09</artifactId>-->
+<!--            <version>master-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
     </dependencies>
     <repositories>
