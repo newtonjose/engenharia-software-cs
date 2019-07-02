@@ -63,7 +63,7 @@ public final class FromJsonToNotaFiscal {
                     new File(filePath), NotaFiscal.class
             );
         } catch (IOException ioe) {
-            LOG.error(ioe);
+            LOG.error(ioe.getMessage(), ioe);
             throw ioe;
         }
 

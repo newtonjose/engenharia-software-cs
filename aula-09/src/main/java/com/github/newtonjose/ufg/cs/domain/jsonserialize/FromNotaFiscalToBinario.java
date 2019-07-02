@@ -57,7 +57,7 @@ public class FromNotaFiscalToBinario {
 
             dos.flush();
         } catch (IOException ioe) {
-            LOG.error(ioe);
+            LOG.error(ioe.getMessage(), ioe);
         }
 
         final byte[] byteArr = baos.toByteArray();

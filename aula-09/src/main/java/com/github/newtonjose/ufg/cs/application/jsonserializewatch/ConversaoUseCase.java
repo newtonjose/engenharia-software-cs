@@ -86,7 +86,6 @@ public final class ConversaoUseCase {
             Thread.currentThread().interrupt();
         } catch (NoSuchAlgorithmException e) {
             LOG.fatal(e.getMessage(), e);
-            System.exit(1);
         }
     }
 }
