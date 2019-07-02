@@ -4,15 +4,13 @@ addons:
   sonarcloud:
     organization: "newtonjose-github" # the key of the org you chose at step #3
 env:
-  global:
-    - SONAR_CLOUND=org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=newtonjose_cs-2019-01 -Dsonar.organization=newtonjose-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+  matrix:
+    - TARGET=aula-01/java
+    - TARGET=aula-09/
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - cd aula-01/java
-  - mvn clean $SONAR_CLOUND
+  - cd $TARGET && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=newtonjose_cs-2019-01 -Dsonar.organization=newtonjose-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
   - mvn checkstyle:checkstyle pmd:pmd
-  - cd $HOME/aula09/
-  - mvn clean $SONAR_CLOUND
 
 cache:
   directories:
