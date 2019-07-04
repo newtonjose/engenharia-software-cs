@@ -5,7 +5,9 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "doc": "jsdoc .",
-    "lint": "eslint \"./**/*.js\""
+    "lint": "eslint \"./**/*.js\"",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
@@ -19,6 +21,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "babel-eslint": "^10.0.1"
-  }
+    "babel-eslint": "^10.0.1",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
