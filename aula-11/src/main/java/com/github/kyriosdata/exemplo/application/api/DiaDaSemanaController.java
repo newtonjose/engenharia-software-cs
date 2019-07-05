@@ -21,10 +21,12 @@ public class DiaDaSemanaController {
 
     @CrossOrigin
     @RequestMapping("ds")
-    public DiaDaSemana diaDaSemana(@RequestParam(value="data", defaultValue =
-            "não fornecida") String arg) {
+    public DiaDaSemana diaDaSemana(
+            @RequestParam(value = "dataI", required = true) String dataInicial,
+            @RequestParam(value="dataF", required = true) String dataFinal
+    ) {
 
-        LocalDate data = localDateFromString(arg);
+        LocalDate data = localDateFromString(dataInicial);
 
         // Se data não é fornecida, ou é inválida, use o dia corrente.
         if (data == null) {
