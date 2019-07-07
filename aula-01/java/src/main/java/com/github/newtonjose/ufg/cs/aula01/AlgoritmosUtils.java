@@ -368,8 +368,8 @@ public final class AlgoritmosUtils {
 
         final int aux = num % ConstAuxUtils.DIVISOR_CEM;
 
-        final int centena = (num / ConstAuxUtils.DIVISOR_CEM);
-        final int dezena = (aux / ConstAuxUtils.DIVISOR_DEZ);
+        final int centena = num / ConstAuxUtils.DIVISOR_CEM;
+        final int dezena = aux / ConstAuxUtils.DIVISOR_DEZ;
 
         final int prop = (int) (Math.pow(centena, ConstAuxUtils.NUM_TRES)
                                 + Math.pow(dezena, ConstAuxUtils.NUM_TRES)
