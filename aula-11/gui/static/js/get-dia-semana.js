@@ -1,14 +1,11 @@
-// Path para a requisição (URL)
-
-//TODO: usar variável local ou config
-const PATH = "http://localhost:8000/ds?data=";
+const URL = "http://" + host + ":" + port + "/ds?data=";
 
 function atualizaDiaDaSemana() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            let dds = extraiDiaDaSemanaDaResposta(xhttp.responseText);
-            document.getElementById("resultado").innerHTML = dds;
+            document.getElementById("resultado").innerHTML =
+                extraiDiaDaSemanaDaResposta(xhttp.responseText);
         } else if (this.status === 0) {
             console.log("Error: Service NotFound!");
             document.getElementById("resultado").innerHTML =
@@ -24,7 +21,7 @@ function atualizaDiaDaSemana() {
 
     const dataAnoMesDia = document.getElementById("data").value;
     const data = formataData(dataAnoMesDia);
-    xhttp.open("GET", PATH + data, true);
+    xhttp.open("GET", URL + data, true);
     xhttp.send();
 }
 
