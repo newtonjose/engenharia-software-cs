@@ -11,7 +11,6 @@ cache:
 
 before_script:
   - echo $HOME
-  - $TRAVIS_BUILD_DIR
 
 jdk:
   - openjdk8
