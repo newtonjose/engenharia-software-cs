@@ -6,17 +6,24 @@ const PATH = "http://localhost:8000/ds?data=";
 function atualizaDiaDaSemana() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             let dds = extraiDiaDaSemanaDaResposta(xhttp.responseText);
             document.getElementById("resultado").innerHTML = dds;
-        } else if (this.status == 0) {
-            console.log("Error: service NotFound!")
-            document.getElementById("resultado").innerHTML = "NotFound";
+        } else if (this.status === 0) {
+            console.log("Error: Service NotFound!");
+            document.getElementById("resultado").innerHTML =
+                "Service NotFound";
+        } else {
+            console.error(xhttp.responseText);
+
+            const respTextObj = JSON.parse(xhttp.responseText);
+            document.getElementById("resultado").innerHTML =
+                respTextObj['message'];
         }
     };
 
-    let dataAnoMesDia = document.getElementById("data").value;
-    let data = formataData(dataAnoMesDia);
+    const dataAnoMesDia = document.getElementById("data").value;
+    const data = formataData(dataAnoMesDia);
     xhttp.open("GET", PATH + data, true);
     xhttp.send();
 }
@@ -45,9 +52,9 @@ function formataAno(n) {
 function formataData(data) {
     let [a, m, d] = data.split("-");
 
-    let dia = formataDiaOuMes(d);
-    let mes = formataDiaOuMes(m);
-    let ano = formataAno(a);
+    formataDiaOuMes(d);
+    formataDiaOuMes(m);
+    formataAno(a);
 
     return `${d}-${m}-${a}`;
 }
