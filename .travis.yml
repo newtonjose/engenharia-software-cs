@@ -6,10 +6,10 @@ addons:
 env:
   matrix:
     - AULA01=aula-01/java
-    - AULA02=$HOME/aula-09/
+    - AULA09=$HOME/aula-09
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - cd $AULA01 && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
+  - cd AULA01 && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
     sonar:sonar -Dsonar.projectKey=newtonjose_cs-2019-01 \
     -Dsonar.organization=newtonjose-github \
     -Dsonar.host.url=https://sonarcloud.io \
