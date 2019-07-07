@@ -5,22 +5,22 @@ addons:
     organization: "newtonjose-github" # the key of the org you chose at step #3
 env:
   matrix:
-    - AULA01=aula-01/java
-    - AULA09=$HOME/aula-09
-script:
-  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - cd AULA01 && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
-    sonar:sonar -Dsonar.projectKey=newtonjose_cs-2019-01 \
-    -Dsonar.organization=newtonjose-github \
-    -Dsonar.host.url=https://sonarcloud.io \
-    -Dsonar.login=$SONAR_TOKEN
-  - mvn checkstyle:checkstyle pmd:pmd
-  - cd AULA09 && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar \
-    -Dsonar.projectKey=aula09_projeto \
-    -Dsonar.organization=newtonjose-github \
-    -Dsonar.host.url=https://sonarcloud.io \
-    -Dsonar.login=$AULA09
-  - mvn checkstyle:checkstyle pmd:pmd
+    - TARGET=cd aula-01/java SONAR=mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
+        sonar:sonar -Dsonar.projectKey=newtonjose_cs-2019-01 \
+        -Dsonar.organization=newtonjose-github \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=$SONAR_TOKEN STYLE=mvn checkstyle:checkstyle pmd:pmd
+    - AULA09=cd aula-09/ STYLE=mvn checkstyle:checkstyle pmd:pmd
+#script:
+#  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+#  - cd AULA01 &&
+#  -
+#  - cd AULA09 && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar \
+#    -Dsonar.projectKey=aula09_projeto \
+#    -Dsonar.organization=newtonjose-github \
+#    -Dsonar.host.url=https://sonarcloud.io \
+#    -Dsonar.login=$AULA09
+#  - mvn checkstyle:checkstyle pmd:pmd
 
 cache:
   directories:
