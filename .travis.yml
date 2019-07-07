@@ -17,12 +17,12 @@ jdk:
 
 env:
   matrix:
-    - TARGET=mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
+    - TARGET=clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
       sonar:sonar -Dsonar.projectKey=newtonjose_cs-2019-01 \
       -Dsonar.organization=newtonjose-github \
       -Dsonar.host.url=https://sonarcloud.io \
       -Dsonar.login=$SONAR_TOKEN
-    - TARGET=mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar \
+    - TARGET=clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar \
       -Dsonar.projectKey=aula09_projeto \
       -Dsonar.organization=newtonjose-github \
       -Dsonar.host.url=https://sonarcloud.io \
@@ -30,5 +30,6 @@ env:
 
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - cd aula01/java && TARGET
-  - cd $HOME/aula09 && TARGET
+  - cd aula01/java && mvn TARGET
+  - cd $HOME/aula09 && mvn TARGET
+  - mvn checkstyle:checkstyle pmd:pmd
