@@ -4,17 +4,28 @@ addons:
   sonarcloud:
     organization: "newtonjose-github" # the key of the org you chose at step #3
 
-jobs:
+cache:
+  directories:
+    - "$HOME/.m2/repository"
+    - "$HOME/.sonar/cache"
+
+before_script:
+  - echo $HOME
+  - $TRAVIS_BUILD_DIR
+
+jdk:
+  - openjdk8
+
+matrix:
   include:
-    - stage: test
-      jdk: openjdk8
-      script: cd $TRAVIS_BUILD_DIR/aula01 && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
+    - name: Build and check aula01
+      script:
+        - cd aula01/java
+        - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
         sonar:sonar -Dsonar.projectKey=newtonjose_cs-2019-01 \
         -Dsonar.organization=newtonjose-github \
         -Dsonar.host.url=https://sonarcloud.io \
         -Dsonar.login=$SONAR_TOKEN
-      after_success:
-        - mvn checkstyle:checkstyle pmd:pmd
 #script:
 #  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
 #  - cd AULA01 &&
@@ -25,11 +36,3 @@ jobs:
 #    -Dsonar.host.url=https://sonarcloud.io \
 #    -Dsonar.login=$AULA09
 #  - mvn checkstyle:checkstyle pmd:pmd
-
-cache:
-  directories:
-  - "$HOME/.m2/repository"
-  - "$HOME/.sonar/cache"
-
-jdk:
-  - openjdk8
