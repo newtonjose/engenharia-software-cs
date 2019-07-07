@@ -16,6 +16,8 @@ before_script:
 jdk:
   - openjdk8
 
+install: true
+
 matrix:
   include:
     - name: Build and check aula01
