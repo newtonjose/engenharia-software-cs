@@ -3,14 +3,18 @@ language: java
 addons:
   sonarcloud:
     organization: "newtonjose-github" # the key of the org you chose at step #3
-env:
-  matrix:
-    - TARGET=cd aula-01/java SONAR=mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
+
+jobs:
+  include:
+    - stage: test
+      jdk: openjdk8
+      script: cd $TRAVIS_BUILD_DIR/aula01 && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
         sonar:sonar -Dsonar.projectKey=newtonjose_cs-2019-01 \
         -Dsonar.organization=newtonjose-github \
         -Dsonar.host.url=https://sonarcloud.io \
-        -Dsonar.login=$SONAR_TOKEN STYLE=mvn checkstyle:checkstyle pmd:pmd
-    - AULA09=cd aula-09/ STYLE=mvn checkstyle:checkstyle pmd:pmd
+        -Dsonar.login=$SONAR_TOKEN
+      after_success:
+        - mvn checkstyle:checkstyle pmd:pmd
 #script:
 #  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
 #  - cd AULA01 &&
