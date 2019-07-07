@@ -20,7 +20,8 @@ install: true
 
 matrix:
   include:
-    - name: Build and check aula01
+    - stage: test
+      name: Build and check aula01
       script:
         - cd aula01/java
         - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
