@@ -1,7 +1,8 @@
-const URL = "http://" + host + ":" + port + "/ds?data=";
+const URL = "http://" + host + ":" + port + "/ds?";
 
 function atualizaDiaDaSemana() {
     var xhttp = new XMLHttpRequest();
+
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             document.getElementById("resultado").innerHTML =
@@ -10,7 +11,7 @@ function atualizaDiaDaSemana() {
             console.log("Error: Service NotFound!");
             document.getElementById("resultado").innerHTML =
                 "Service NotFound";
-        } else {
+        } else if (this.status !== 200) {
             console.error(xhttp.responseText);
 
             const respTextObj = JSON.parse(xhttp.responseText);
@@ -19,15 +20,19 @@ function atualizaDiaDaSemana() {
         }
     };
 
-    const dataAnoMesDia = document.getElementById("data").value;
-    const data = formataData(dataAnoMesDia);
-    xhttp.open("GET", URL + data, true);
+    const dataInicial = document.getElementById("datai").value;
+    const dataFinal = document.getElementById("dataf").value;
+    const data_i = formataData(dataInicial);
+    const data_f = formataData(dataFinal);
+    const parametros = "dataI=" + data_i + "&" + "dataF=" + data_f;
+    console.debug(URL + parametros);
+    xhttp.open("GET", URL + parametros, true);
     xhttp.send();
 }
 
-function dataCorrente() {
-    document.getElementById("data").valueAsDate = new Date();
-}
+// function dataCorrente() {
+//     document.getElementById("data").valueAsDate = new Date();
+// }
 
 // Funções para integração (satisfazer contrato do servidor)
 
