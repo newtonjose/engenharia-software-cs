@@ -6,7 +6,6 @@
 
 package com.github.newtonjose.exemplo.domain;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -16,20 +15,29 @@ import java.util.concurrent.TimeUnit;
  */
 public class DirencaEntreDatas {
 
-    private final LocalDate data;
-    private final String diaDaSemana;
+    private final long days;
+    private final String msg;
 
-    public DirencaEntreDatas(LocalDate data, String diaDaSemana) {
-        this.data = data;
-        this.diaDaSemana = diaDaSemana;
+    /**
+     * Objeto que será rendenrizado como resposta da API.
+     *
+     * @param dateI Date Data inicial.
+     * @param dateF Date Data final.
+     * @param diff long Número de dias entre as datas.
+     */
+    public DirencaEntreDatas(final Date dateI, final Date dateF,
+                             final long diff) {
+        this.msg = "Diferença entre as datas: " + dateI + " e " + dateF;
+        this.days = diff;
+
     }
 
-    public LocalDate getData() {
-        return data;
+    public long getDays() {
+        return days;
     }
 
-    public String getDiaDaSemana() {
-        return diaDaSemana;
+    public String getMsg() {
+        return msg;
     }
 
     /**
@@ -40,7 +48,7 @@ public class DirencaEntreDatas {
      * @return long Número de dias entre as duas datas.
      */
     public static long getDataEmDias(final Date dateI, final Date dateF) {
-        final long diff = dateI.getTime() - dateF.getTime();
+        final long diff = dateF.getTime() - dateI.getTime();
         return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 }

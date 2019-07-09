@@ -30,7 +30,7 @@ public class DirencaEntreDatasController {
 
         final long days = DirencaEntreDatas.getDataEmDias(dataI, dateF);
 
-        return null; //new DirencaEntreDatas(days);
+        return new DirencaEntreDatas(dataI, dateF, days);
     }
 
     /**
@@ -43,7 +43,7 @@ public class DirencaEntreDatasController {
      */
     private Date localDateFromString(String date) {
         try {
-            SimpleDateFormat fmt = new SimpleDateFormat("dd MM yyyy");
+            SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
             return fmt.parse(date);
         } catch (Exception exp) {
             return null;
