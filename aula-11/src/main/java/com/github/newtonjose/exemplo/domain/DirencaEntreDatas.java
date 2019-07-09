@@ -4,7 +4,7 @@
  * Creative Commons Attribution 4.0 International License.
  */
 
-package com.github.kyriosdata.exemplo.domain;
+package com.github.newtonjose.exemplo.domain;
 
 import java.time.LocalDate;
 
@@ -12,12 +12,12 @@ import java.time.LocalDate;
  * Reúne uma data e o dia da semana correspondente.
  * Criada exclusivamente para ilustrar a resposta via RESTFul API.
  */
-public class DiaDaSemana {
+public class DirencaEntreDatas {
 
     private final LocalDate data;
     private final String diaDaSemana;
 
-    public DiaDaSemana(LocalDate data, String diaDaSemana) {
+    public DirencaEntreDatas(LocalDate data, String diaDaSemana) {
         this.data = data;
         this.diaDaSemana = diaDaSemana;
     }

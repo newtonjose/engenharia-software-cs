@@ -4,10 +4,10 @@
  * Creative Commons Attribution 4.0 International License.
  */
 
-package com.github.kyriosdata.exemplo.application.api;
+package com.github.newtonjose.exemplo.application.api;
 
-import com.github.kyriosdata.exemplo.domain.Calendario;
-import com.github.kyriosdata.exemplo.domain.DiaDaSemana;
+import com.github.newtonjose.exemplo.domain.Calendario;
+import com.github.newtonjose.exemplo.domain.DirencaEntreDatas;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,11 +17,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @RestController
-public class DiaDaSemanaController {
+public class DirencaEntreDatasController {
 
     @CrossOrigin
     @RequestMapping("ds")
-    public DiaDaSemana diaDaSemana(
+    public DirencaEntreDatas diaDaSemana(
             @RequestParam(value = "dataI", required = true) String dataInicial,
             @RequestParam(value="dataF", required = true) String dataFinal
     ) {
@@ -39,7 +39,7 @@ public class DiaDaSemanaController {
 
         int ds = Calendario.diaDaSemana(dia, mes, ano);
 
-        return new DiaDaSemana(data, Calendario.semana[ds]);
+        return new DirencaEntreDatas(data, Calendario.semana[ds]);
     }
 
     /**

@@ -4,7 +4,7 @@
  * Creative Commons Attribution 4.0 International License.
  */
 
-package com.github.kyriosdata.exemplo.domain;
+package com.github.newtonjose.exemplo.domain;
 
 import java.time.LocalDate;
 
