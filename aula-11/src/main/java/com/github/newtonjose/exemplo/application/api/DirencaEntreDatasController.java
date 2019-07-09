@@ -6,15 +6,14 @@
 
 package com.github.newtonjose.exemplo.application.api;
 
-import com.github.newtonjose.exemplo.domain.Calendario;
 import com.github.newtonjose.exemplo.domain.DirencaEntreDatas;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 public class DirencaEntreDatasController {
@@ -22,38 +21,30 @@ public class DirencaEntreDatasController {
     @CrossOrigin
     @RequestMapping("ds")
     public DirencaEntreDatas diaDaSemana(
-            @RequestParam(value = "dataI", required = true) String dataInicial,
-            @RequestParam(value="dataF", required = true) String dataFinal
+            @RequestParam(value = "dataI") String dataInicial,
+            @RequestParam(value="dataF") String dataFinal
     ) {
 
-        LocalDate data = localDateFromString(dataInicial);
+        final Date dataI = localDateFromString(dataInicial);
+        final Date dateF = localDateFromString(dataFinal);
 
-        // Se data não é fornecida, ou é inválida, use o dia corrente.
-        if (data == null) {
-            data = LocalDate.now();
-        }
+        final long days = DirencaEntreDatas.getDataEmDias(dataI, dateF);
 
-        int dia = data.getDayOfMonth();
-        int mes = data.getMonthValue();
-        int ano = data.getYear();
-
-        int ds = Calendario.diaDaSemana(dia, mes, ano);
-
-        return new DirencaEntreDatas(data, Calendario.semana[ds]);
+        return null; //new DirencaEntreDatas(days);
     }
 
     /**
-     * Recupera a instância de {@link LocalDate} correspondente à sequência
+     * Recupera a instância de {@link Date} correspondente à sequência
      * de caracteres.
-     * @param data Sequência de caracteres no formato dd-MM-yyyy.
+     * @param date Sequência de caracteres no formato dd-MM-yyyy.
      *
-     * @return Instância de {@link LocalDate} ou {@code null}, se a sequência
+     * @return Instância de {@link Date} ou {@code null}, se a sequência
      * não está no formato esperado (por exemplo, "01-01-2018")
      */
-    public LocalDate localDateFromString(String data) {
+    private Date localDateFromString(String date) {
         try {
-            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            return LocalDate.parse(data, fmt);
+            SimpleDateFormat fmt = new SimpleDateFormat("dd MM yyyy");
+            return fmt.parse(date);
         } catch (Exception exp) {
             return null;
         }
