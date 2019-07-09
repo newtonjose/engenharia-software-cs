@@ -1,0 +1,1 @@
+package com.github.newtonjose.exemplo.application.api.customexception;
