@@ -7,16 +7,10 @@ function atualizaDiaDaSemana() {
         if (this.readyState === 4 && this.status === 200) {
             document.getElementById("resultado").innerHTML =
                 extraiDiaDaSemanaDaResposta(xhttp.responseText);
-        } else if (this.status === 0) {
-            console.log("Error: Service NotFound!");
-            document.getElementById("resultado").innerHTML =
-                "Service NotFound";
-        } else if (this.status !== 200) {
+        } else if (this.readyState === 4 && this.status === 400) {
             console.error(xhttp.responseText);
-
             const respTextObj = JSON.parse(xhttp.responseText);
-            document.getElementById("resultado").innerHTML =
-                respTextObj['message'];
+            window.alert(respTextObj['message']);
         }
     };
 
