@@ -6,6 +6,7 @@
 
 package com.github.newtonjose.exemplo.application.api;
 
+import com.github.newtonjose.exemplo.application.api.customexception.DateArgumentNull;
 import com.github.newtonjose.exemplo.domain.DirencaEntreDatas;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,26 +20,22 @@ import java.util.Date;
 @RestController
 public class DirencaEntreDatasController {
 
-
-
-    @ResponseStatus(code=HttpStatus.BAD_REQUEST, reason = "Some parameters are invalid")
-    private void onIllegalArgumentException(IllegalArgumentException exception) {}
-
-
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    class CustomException extends RuntimeException {}
 
     @CrossOrigin
     @RequestMapping("ds")
     @ResponseBody
     public DirencaEntreDatas diaDaSemana(
             @RequestParam(value = "dataI") String dataInicial,
-            @RequestParam(value="dataF") String dataFinal
+            @RequestParam(value = "dataF") String dataFinal
     ) {
 
         final Date dateI = localDateFromString(dataInicial);
         final Date dateF = localDateFromString(dataFinal);
 
         if (dateI == null || dateF == null) {
-            onIllegalArgumentException(new IllegalArgumentException("ola mundo"));
+            throw new DateArgumentNull();
         }
 
         final long days = DirencaEntreDatas.getDataEmDias(dateI, dateF);
