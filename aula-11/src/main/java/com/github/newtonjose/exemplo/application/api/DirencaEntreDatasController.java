@@ -7,6 +7,7 @@
 package com.github.newtonjose.exemplo.application.api;
 
 import com.github.newtonjose.exemplo.application.api.customexception.DateArgumentNull;
+import com.github.newtonjose.exemplo.application.api.customexception.DateFinalBeforeDateInicial;
 import com.github.newtonjose.exemplo.domain.DirencaEntreDatas;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,10 @@ public class DirencaEntreDatasController {
 
         if (dateI == null || dateF == null) {
             throw new DateArgumentNull();
+        }
+
+        if (dateF.before(dateI)) {
+            throw new DateFinalBeforeDateInicial();
         }
 
         final long days = DirencaEntreDatas.getDataEmDias(dateI, dateF);
