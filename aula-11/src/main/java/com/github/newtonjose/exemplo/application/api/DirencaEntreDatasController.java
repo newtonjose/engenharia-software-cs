@@ -45,7 +45,7 @@ public class DirencaEntreDatasController {
 
         final long days = DirencaEntreDatas.getDataEmDias(dateI, dateF);
 
-        return new DirencaEntreDatas(dateI, dateF, days);
+        return new DirencaEntreDatas(days);
     }
 
     /**

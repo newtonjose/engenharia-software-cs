@@ -5,8 +5,11 @@ function atualizaDiaDaSemana() {
 
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            document.getElementById("resultado").innerHTML =
-                extraiDiaDaSemanaDaResposta(xhttp.responseText);
+        document.getElementById("menssagem").innerHTML =
+                        JSON.parse(xhttp.responseText).msg;
+            document.getElementById("dias").innerHTML =
+                JSON.parse(xhttp.responseText).days + " dias.";
+
         } else if (this.readyState === 4 && this.status === 400) {
             console.error(xhttp.responseText);
             const respTextObj = JSON.parse(xhttp.responseText);
@@ -27,12 +30,6 @@ function atualizaDiaDaSemana() {
 // function dataCorrente() {
 //     document.getElementById("data").valueAsDate = new Date();
 // }
-
-// Funções para integração (satisfazer contrato do servidor)
-
-function extraiDiaDaSemanaDaResposta(resposta) {
-    return JSON.parse(resposta).diaDaSemana;
-}
 
 // Dia ou mês deve possuir dois dígitos
 function formataDiaOuMes(n) {

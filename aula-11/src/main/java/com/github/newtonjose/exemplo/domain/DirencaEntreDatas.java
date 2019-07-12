@@ -21,13 +21,12 @@ public class DirencaEntreDatas {
     /**
      * Objeto que será rendenrizado como resposta da API.
      *
-     * @param dateI Date Data inicial.
-     * @param dateF Date Data final.
+     * @param dateI String Data inicial.
+     * @param dateF String Data final.
      * @param diff long Número de dias entre as datas.
      */
-    public DirencaEntreDatas(final Date dateI, final Date dateF,
-                             final long diff) {
-        this.msg = "Diferença entre as datas: " + dateI + " e " + dateF;
+    public DirencaEntreDatas(final long diff) {
+        this.msg = "Diferença entre as datas é: ";
         this.days = diff;
 
     }
